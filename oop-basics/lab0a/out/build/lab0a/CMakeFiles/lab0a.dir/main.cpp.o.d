@@ -1,6 +1,6 @@
 CMakeFiles/lab0a.dir/main.cpp.o: \
-  /home/chopisdish/Programming/Labs/lab0a/main.cpp \
-  /home/chopisdish/Programming/Labs/lab0a/module1.h \
+  /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/main.cpp \
+  /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module1.h \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/string \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/bits/requires_hosted.h \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/x86_64-redhat-linux/bits/c++config.h \
@@ -123,8 +123,8 @@ CMakeFiles/lab0a.dir/main.cpp.o: \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/bits/uses_allocator.h \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/bits/uses_allocator_args.h \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/tuple \
-  /home/chopisdish/Programming/Labs/lab0a/module2.h \
-  /home/chopisdish/Programming/Labs/lab0a/module3.h \
+  /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module2.h \
+  /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module3.h \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/iostream \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/ostream \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/ios \

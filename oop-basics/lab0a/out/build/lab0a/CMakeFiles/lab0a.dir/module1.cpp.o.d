@@ -1,6 +1,6 @@
 CMakeFiles/lab0a.dir/module1.cpp.o: \
-  /home/chopisdish/Programming/Labs/lab0a/module1.cpp \
-  /home/chopisdish/Programming/Labs/lab0a/module1.h \
+  /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module1.cpp \
+  /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module1.h \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/string \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/bits/requires_hosted.h \
   /usr/bin/../lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/x86_64-redhat-linux/bits/c++config.h \

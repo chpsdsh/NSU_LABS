@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chopisdish/Programming/Labs/lab0a
+CMAKE_SOURCE_DIR = /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chopisdish/Programming/Labs/lab0a/out/build/lab0a
+CMAKE_BINARY_DIR = /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a
 
 # Utility rule file for ExperimentalStart.
 
@@ -82,6 +82,6 @@ CMakeFiles/ExperimentalStart.dir/clean:
 .PHONY : CMakeFiles/ExperimentalStart.dir/clean
 
 CMakeFiles/ExperimentalStart.dir/depend:
-	cd /home/chopisdish/Programming/Labs/lab0a/out/build/lab0a && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chopisdish/Programming/Labs/lab0a /home/chopisdish/Programming/Labs/lab0a /home/chopisdish/Programming/Labs/lab0a/out/build/lab0a /home/chopisdish/Programming/Labs/lab0a/out/build/lab0a /home/chopisdish/Programming/Labs/lab0a/out/build/lab0a/CMakeFiles/ExperimentalStart.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a/CMakeFiles/ExperimentalStart.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/ExperimentalStart.dir/depend
 

@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/chopisdish/Programming/Labs/lab0a/main.cpp" "CMakeFiles/lab0a.dir/main.cpp.o" "gcc" "CMakeFiles/lab0a.dir/main.cpp.o.d"
-  "/home/chopisdish/Programming/Labs/lab0a/module1.cpp" "CMakeFiles/lab0a.dir/module1.cpp.o" "gcc" "CMakeFiles/lab0a.dir/module1.cpp.o.d"
-  "/home/chopisdish/Programming/Labs/lab0a/module2.cpp" "CMakeFiles/lab0a.dir/module2.cpp.o" "gcc" "CMakeFiles/lab0a.dir/module2.cpp.o.d"
-  "/home/chopisdish/Programming/Labs/lab0a/module3.cpp" "CMakeFiles/lab0a.dir/module3.cpp.o" "gcc" "CMakeFiles/lab0a.dir/module3.cpp.o.d"
+  "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/main.cpp" "CMakeFiles/lab0a.dir/main.cpp.o" "gcc" "CMakeFiles/lab0a.dir/main.cpp.o.d"
+  "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module1.cpp" "CMakeFiles/lab0a.dir/module1.cpp.o" "gcc" "CMakeFiles/lab0a.dir/module1.cpp.o.d"
+  "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module2.cpp" "CMakeFiles/lab0a.dir/module2.cpp.o" "gcc" "CMakeFiles/lab0a.dir/module2.cpp.o.d"
+  "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module3.cpp" "CMakeFiles/lab0a.dir/module3.cpp.o" "gcc" "CMakeFiles/lab0a.dir/module3.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/lab0b.dir/main.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/main.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/main.cpp",
+  "output": "CMakeFiles/lab0b.dir/main.cpp.o"
+}
+]

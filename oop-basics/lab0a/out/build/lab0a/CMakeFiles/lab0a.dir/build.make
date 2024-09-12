@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chopisdish/Programming/Labs/lab0a
+CMAKE_SOURCE_DIR = /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/chopisdish/Programming/Labs/lab0a/out/build/lab0a
+CMAKE_BINARY_DIR = /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a
 
 # Include any dependencies generated for this target.
 include CMakeFiles/lab0a.dir/depend.make
@@ -70,60 +70,60 @@ include CMakeFiles/lab0a.dir/progress.make
 include CMakeFiles/lab0a.dir/flags.make
 
 CMakeFiles/lab0a.dir/main.cpp.o: CMakeFiles/lab0a.dir/flags.make
-CMakeFiles/lab0a.dir/main.cpp.o: /home/chopisdish/Programming/Labs/lab0a/main.cpp
+CMakeFiles/lab0a.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/main.cpp
 CMakeFiles/lab0a.dir/main.cpp.o: CMakeFiles/lab0a.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/Labs/lab0a/out/build/lab0a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab0a.dir/main.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab0a.dir/main.cpp.o -MF CMakeFiles/lab0a.dir/main.cpp.o.d -o CMakeFiles/lab0a.dir/main.cpp.o -c /home/chopisdish/Programming/Labs/lab0a/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab0a.dir/main.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab0a.dir/main.cpp.o -MF CMakeFiles/lab0a.dir/main.cpp.o.d -o CMakeFiles/lab0a.dir/main.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/main.cpp
 
 CMakeFiles/lab0a.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab0a.dir/main.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chopisdish/Programming/Labs/lab0a/main.cpp > CMakeFiles/lab0a.dir/main.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/main.cpp > CMakeFiles/lab0a.dir/main.cpp.i
 
 CMakeFiles/lab0a.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab0a.dir/main.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/Labs/lab0a/main.cpp -o CMakeFiles/lab0a.dir/main.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/main.cpp -o CMakeFiles/lab0a.dir/main.cpp.s
 
 CMakeFiles/lab0a.dir/module1.cpp.o: CMakeFiles/lab0a.dir/flags.make
-CMakeFiles/lab0a.dir/module1.cpp.o: /home/chopisdish/Programming/Labs/lab0a/module1.cpp
+CMakeFiles/lab0a.dir/module1.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module1.cpp
 CMakeFiles/lab0a.dir/module1.cpp.o: CMakeFiles/lab0a.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/Labs/lab0a/out/build/lab0a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab0a.dir/module1.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab0a.dir/module1.cpp.o -MF CMakeFiles/lab0a.dir/module1.cpp.o.d -o CMakeFiles/lab0a.dir/module1.cpp.o -c /home/chopisdish/Programming/Labs/lab0a/module1.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab0a.dir/module1.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab0a.dir/module1.cpp.o -MF CMakeFiles/lab0a.dir/module1.cpp.o.d -o CMakeFiles/lab0a.dir/module1.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module1.cpp
 
 CMakeFiles/lab0a.dir/module1.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab0a.dir/module1.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chopisdish/Programming/Labs/lab0a/module1.cpp > CMakeFiles/lab0a.dir/module1.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module1.cpp > CMakeFiles/lab0a.dir/module1.cpp.i
 
 CMakeFiles/lab0a.dir/module1.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab0a.dir/module1.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/Labs/lab0a/module1.cpp -o CMakeFiles/lab0a.dir/module1.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module1.cpp -o CMakeFiles/lab0a.dir/module1.cpp.s
 
 CMakeFiles/lab0a.dir/module2.cpp.o: CMakeFiles/lab0a.dir/flags.make
-CMakeFiles/lab0a.dir/module2.cpp.o: /home/chopisdish/Programming/Labs/lab0a/module2.cpp
+CMakeFiles/lab0a.dir/module2.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module2.cpp
 CMakeFiles/lab0a.dir/module2.cpp.o: CMakeFiles/lab0a.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/Labs/lab0a/out/build/lab0a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab0a.dir/module2.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab0a.dir/module2.cpp.o -MF CMakeFiles/lab0a.dir/module2.cpp.o.d -o CMakeFiles/lab0a.dir/module2.cpp.o -c /home/chopisdish/Programming/Labs/lab0a/module2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab0a.dir/module2.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab0a.dir/module2.cpp.o -MF CMakeFiles/lab0a.dir/module2.cpp.o.d -o CMakeFiles/lab0a.dir/module2.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module2.cpp
 
 CMakeFiles/lab0a.dir/module2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab0a.dir/module2.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chopisdish/Programming/Labs/lab0a/module2.cpp > CMakeFiles/lab0a.dir/module2.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module2.cpp > CMakeFiles/lab0a.dir/module2.cpp.i
 
 CMakeFiles/lab0a.dir/module2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab0a.dir/module2.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/Labs/lab0a/module2.cpp -o CMakeFiles/lab0a.dir/module2.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module2.cpp -o CMakeFiles/lab0a.dir/module2.cpp.s
 
 CMakeFiles/lab0a.dir/module3.cpp.o: CMakeFiles/lab0a.dir/flags.make
-CMakeFiles/lab0a.dir/module3.cpp.o: /home/chopisdish/Programming/Labs/lab0a/module3.cpp
+CMakeFiles/lab0a.dir/module3.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module3.cpp
 CMakeFiles/lab0a.dir/module3.cpp.o: CMakeFiles/lab0a.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/Labs/lab0a/out/build/lab0a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/lab0a.dir/module3.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab0a.dir/module3.cpp.o -MF CMakeFiles/lab0a.dir/module3.cpp.o.d -o CMakeFiles/lab0a.dir/module3.cpp.o -c /home/chopisdish/Programming/Labs/lab0a/module3.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/lab0a.dir/module3.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab0a.dir/module3.cpp.o -MF CMakeFiles/lab0a.dir/module3.cpp.o.d -o CMakeFiles/lab0a.dir/module3.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module3.cpp
 
 CMakeFiles/lab0a.dir/module3.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab0a.dir/module3.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chopisdish/Programming/Labs/lab0a/module3.cpp > CMakeFiles/lab0a.dir/module3.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module3.cpp > CMakeFiles/lab0a.dir/module3.cpp.i
 
 CMakeFiles/lab0a.dir/module3.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab0a.dir/module3.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/Labs/lab0a/module3.cpp -o CMakeFiles/lab0a.dir/module3.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/module3.cpp -o CMakeFiles/lab0a.dir/module3.cpp.s
 
 # Object files for target lab0a
 lab0a_OBJECTS = \
@@ -141,7 +141,7 @@ lab0a: CMakeFiles/lab0a.dir/module2.cpp.o
 lab0a: CMakeFiles/lab0a.dir/module3.cpp.o
 lab0a: CMakeFiles/lab0a.dir/build.make
 lab0a: CMakeFiles/lab0a.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/chopisdish/Programming/Labs/lab0a/out/build/lab0a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable lab0a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable lab0a"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lab0a.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,6 +153,6 @@ CMakeFiles/lab0a.dir/clean:
 .PHONY : CMakeFiles/lab0a.dir/clean
 
 CMakeFiles/lab0a.dir/depend:
-	cd /home/chopisdish/Programming/Labs/lab0a/out/build/lab0a && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chopisdish/Programming/Labs/lab0a /home/chopisdish/Programming/Labs/lab0a /home/chopisdish/Programming/Labs/lab0a/out/build/lab0a /home/chopisdish/Programming/Labs/lab0a/out/build/lab0a /home/chopisdish/Programming/Labs/lab0a/out/build/lab0a/CMakeFiles/lab0a.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a/CMakeFiles/lab0a.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/lab0a.dir/depend
 

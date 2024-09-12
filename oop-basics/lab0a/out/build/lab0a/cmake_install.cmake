@@ -1,8 +1,8 @@
-# Install script for directory: /home/chopisdish/Programming/Labs/lab0a
+# Install script for directory: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/chopisdish/Programming/Labs/lab0a/out/install/lab0a")
+  set(CMAKE_INSTALL_PREFIX "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/install/lab0a")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/chopisdish/Programming/Labs/lab0a/out/build/lab0a/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

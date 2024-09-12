@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/chopisdish/Programming/Labs/lab0a
-BuildDirectory: /home/chopisdish/Programming/Labs/lab0a/out/build/lab0a
+SourceDirectory: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a
+BuildDirectory: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a/out/build/lab0a
 
 # Where to place the cost data store
 CostDataFile: 
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/chopisdish/Programming/Labs/lab0a"
+ConfigureCommand: "/usr/bin/cmake" "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab0a"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
