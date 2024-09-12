@@ -65,8 +65,10 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
   /usr/include/bits/wchar.h \
   /usr/include/bits/wctype-wchar.h \
   /usr/include/bits/wordsize.h \
+  /usr/include/c++/14/algorithm \
   /usr/include/c++/14/backward/binders.h \
   /usr/include/c++/14/bit \
+  /usr/include/c++/14/bits/algorithmfwd.h \
   /usr/include/c++/14/bits/alloc_traits.h \
   /usr/include/c++/14/bits/allocated_ptr.h \
   /usr/include/c++/14/bits/allocator.h \
@@ -114,9 +116,12 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
   /usr/include/c++/14/bits/requires_hosted.h \
   /usr/include/c++/14/bits/sstream.tcc \
   /usr/include/c++/14/bits/std_abs.h \
+  /usr/include/c++/14/bits/stl_algo.h \
   /usr/include/c++/14/bits/stl_algobase.h \
+  /usr/include/c++/14/bits/stl_bvector.h \
   /usr/include/c++/14/bits/stl_construct.h \
   /usr/include/c++/14/bits/stl_function.h \
+  /usr/include/c++/14/bits/stl_heap.h \
   /usr/include/c++/14/bits/stl_iterator.h \
   /usr/include/c++/14/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/14/bits/stl_iterator_base_types.h \
@@ -124,14 +129,19 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
   /usr/include/c++/14/bits/stl_map.h \
   /usr/include/c++/14/bits/stl_multimap.h \
   /usr/include/c++/14/bits/stl_pair.h \
+  /usr/include/c++/14/bits/stl_tempbuf.h \
   /usr/include/c++/14/bits/stl_tree.h \
+  /usr/include/c++/14/bits/stl_uninitialized.h \
+  /usr/include/c++/14/bits/stl_vector.h \
   /usr/include/c++/14/bits/streambuf.tcc \
   /usr/include/c++/14/bits/streambuf_iterator.h \
   /usr/include/c++/14/bits/string_view.tcc \
   /usr/include/c++/14/bits/stringfwd.h \
+  /usr/include/c++/14/bits/uniform_int_dist.h \
   /usr/include/c++/14/bits/uses_allocator.h \
   /usr/include/c++/14/bits/uses_allocator_args.h \
   /usr/include/c++/14/bits/utility.h \
+  /usr/include/c++/14/bits/vector.tcc \
   /usr/include/c++/14/bits/version.h \
   /usr/include/c++/14/cctype \
   /usr/include/c++/14/cerrno \
@@ -161,6 +171,8 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
   /usr/include/c++/14/map \
   /usr/include/c++/14/new \
   /usr/include/c++/14/ostream \
+  /usr/include/c++/14/pstl/execution_defs.h \
+  /usr/include/c++/14/pstl/glue_algorithm_defs.h \
   /usr/include/c++/14/pstl/pstl_config.h \
   /usr/include/c++/14/sstream \
   /usr/include/c++/14/stdexcept \
@@ -171,6 +183,7 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
   /usr/include/c++/14/tuple \
   /usr/include/c++/14/type_traits \
   /usr/include/c++/14/typeinfo \
+  /usr/include/c++/14/vector \
   /usr/include/c++/14/x86_64-redhat-linux/bits/atomic_word.h \
   /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h \
   /usr/include/c++/14/x86_64-redhat-linux/bits/c++allocator.h \
@@ -253,11 +266,11 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
 
 /usr/include/c++/14/sstream:
 
+/usr/include/c++/14/pstl/glue_algorithm_defs.h:
+
+/usr/include/c++/14/pstl/execution_defs.h:
+
 /usr/include/c++/14/list:
-
-/usr/include/stdlib.h:
-
-/usr/include/c++/14/istream:
 
 /usr/include/c++/14/iosfwd:
 
@@ -295,17 +308,35 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
 
 /usr/include/c++/14/bits/version.h:
 
+/usr/include/c++/14/bits/vector.tcc:
+
 /usr/include/c++/14/bits/utility.h:
 
 /usr/include/c++/14/bits/uses_allocator_args.h:
 
 /usr/include/c++/14/bits/uses_allocator.h:
 
+/usr/include/c++/14/vector:
+
+/usr/include/c++/14/bits/uniform_int_dist.h:
+
 /usr/include/gnu/stubs-64.h:
 
 /usr/include/c++/14/bits/stringfwd.h:
 
+/usr/include/c++/14/bits/stl_uninitialized.h:
+
+/usr/include/c++/14/bits/stl_tree.h:
+
+/usr/include/c++/14/bits/stl_tempbuf.h:
+
 /usr/include/bits/types/time_t.h:
+
+/usr/include/c++/14/streambuf:
+
+/usr/include/c++/14/bits/string_view.tcc:
+
+/usr/include/bits/types/struct_tm.h:
 
 /usr/include/bits/wchar.h:
 
@@ -357,6 +388,10 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
 
 /usr/include/c++/14/bits/nested_exception.h:
 
+/usr/include/c++/14/bits/streambuf_iterator.h:
+
+/usr/include/bits/types/__FILE.h:
+
 /usr/include/bits/types/FILE.h:
 
 /usr/include/c++/14/bits/exception_ptr.h:
@@ -391,13 +426,11 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
 
 /usr/include/bits/floatn-common.h:
 
-/usr/include/features.h:
+/usr/include/stdlib.h:
 
-/usr/include/bits/endianness.h:
+/usr/include/c++/14/istream:
 
-/usr/include/bits/types/__FILE.h:
-
-/usr/include/c++/14/bits/streambuf_iterator.h:
+/usr/include/c++/14/algorithm:
 
 /usr/include/c++/14/bits/sstream.tcc:
 
@@ -408,6 +441,10 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
 /usr/include/bits/types/__mbstate_t.h:
 
 /usr/include/bits/time.h:
+
+/usr/include/c++/14/bits/stl_vector.h:
+
+/usr/include/c++/14/bits/stl_bvector.h:
 
 /usr/include/c++/14/bits/basic_ios.tcc:
 
@@ -447,12 +484,6 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
 
 /usr/include/c++/14/bits/stl_function.h:
 
-/usr/include/c++/14/streambuf:
-
-/usr/include/bits/types/struct_tm.h:
-
-/usr/include/c++/14/bits/string_view.tcc:
-
 /usr/include/bits/libc-header-start.h:
 
 /usr/include/wctype.h:
@@ -460,10 +491,6 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
 /usr/include/bits/errno.h:
 
 /usr/include/bits/timex.h:
-
-/usr/include/bits/typesizes.h:
-
-/usr/include/c++/14/bits/ostream.tcc:
 
 /usr/include/c++/14/x86_64-redhat-linux/bits/c++locale.h:
 
@@ -521,7 +548,13 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
 
 /usr/include/c++/14/bit:
 
-/usr/include/c++/14/bits/stl_tree.h:
+/usr/include/bits/typesizes.h:
+
+/usr/include/c++/14/bits/ostream.tcc:
+
+/usr/include/c++/14/bits/algorithmfwd.h:
+
+/usr/include/c++/14/bits/ostream_insert.h:
 
 /usr/include/c++/14/bits/alloc_traits.h:
 
@@ -593,8 +626,6 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
 
 /usr/include/c++/14/bits/node_handle.h:
 
-/usr/include/c++/14/bits/ostream_insert.h:
-
 /usr/include/c++/14/bits/postypes.h:
 
 /usr/include/c++/14/bits/refwrap.h:
@@ -606,6 +637,14 @@ CMakeFiles/lab0b.dir/main.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basic
 /usr/include/c++/14/pstl/pstl_config.h:
 
 /usr/include/c++/14/bits/std_abs.h:
+
+/usr/include/c++/14/bits/stl_algo.h:
+
+/usr/include/features.h:
+
+/usr/include/bits/endianness.h:
+
+/usr/include/c++/14/bits/stl_heap.h:
 
 /usr/include/c++/14/ext/numeric_traits.h:
 

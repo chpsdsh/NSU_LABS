@@ -39,6 +39,8 @@ public:
             std::string word;
             while (iss >> word)
             {
+                if (word[size(word) - 1] == ',' || word[size(word) - 1] == '.')
+                    word.pop_back();
                 wordCount++;
                 inputData[word]++;
             }
