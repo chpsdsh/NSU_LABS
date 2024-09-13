@@ -153,4 +153,29 @@ CMakeFiles/lab0b.dir/main.cpp.o: \
  /usr/include/c++/14/bits/uniform_int_dist.h \
  /usr/include/c++/14/bits/stl_tempbuf.h \
  /usr/include/c++/14/pstl/glue_algorithm_defs.h \
- /usr/include/c++/14/pstl/execution_defs.h
+ /usr/include/c++/14/pstl/execution_defs.h /usr/include/c++/14/iterator \
+ /usr/include/c++/14/bits/stream_iterator.h /usr/include/c++/14/regex \
+ /usr/include/c++/14/bitset /usr/include/c++/14/locale \
+ /usr/include/c++/14/bits/locale_facets_nonio.h /usr/include/c++/14/ctime \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/time_members.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/14/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/14/bits/locale_conv.h /usr/include/c++/14/stack \
+ /usr/include/c++/14/deque /usr/include/c++/14/bits/stl_deque.h \
+ /usr/include/c++/14/bits/deque.tcc /usr/include/c++/14/bits/stl_stack.h \
+ /usr/include/c++/14/bits/shared_ptr.h \
+ /usr/include/c++/14/bits/shared_ptr_base.h \
+ /usr/include/c++/14/bits/unique_ptr.h \
+ /usr/include/c++/14/ext/concurrence.h \
+ /usr/include/c++/14/bits/std_function.h \
+ /usr/include/c++/14/bits/regex_constants.h \
+ /usr/include/c++/14/bits/regex_error.h \
+ /usr/include/c++/14/bits/regex_automaton.h \
+ /usr/include/c++/14/bits/regex_automaton.tcc \
+ /usr/include/c++/14/bits/regex_scanner.h \
+ /usr/include/c++/14/bits/regex_scanner.tcc \
+ /usr/include/c++/14/bits/regex_compiler.h \
+ /usr/include/c++/14/bits/regex_compiler.tcc \
+ /usr/include/c++/14/bits/regex.h /usr/include/c++/14/bits/regex.tcc \
+ /usr/include/c++/14/bits/regex_executor.h \
+ /usr/include/c++/14/bits/regex_executor.tcc
