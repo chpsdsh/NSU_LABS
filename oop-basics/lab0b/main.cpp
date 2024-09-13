@@ -6,6 +6,8 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
+#include <iterator>
+#include <regex>
 
 class FileData
 {
@@ -33,48 +35,34 @@ public:
 
     void createMap()
     {
-        for (const std::string &line : inputStrings)
+        std::regex wordRegex("[\\w]+");
+        for (const auto &line : inputStrings)
         {
-            std::istringstream iss(line);
-            std::string word;
-            while (iss >> word)
-            {
-                if (word[size(word) - 1] == ',' || word[size(word) - 1] == '.')
-                    word.pop_back();
-                wordCount++;
-                inputData[word]++;
-            }
+        auto wordsBegin = std::sregex_iterator(line.begin(), line.end(), wordRegex);
+        auto wordsEnd = std::sregex_iterator();
+        for (auto i = wordsBegin;i!= wordsEnd;i++){
+            std::string word = (*i).str();
+            wordCount++;
+            inputData[word]++;
+        }  
         }
-    }
-
-    const std::map<std::string, int> &mapReturn() const
-    {
-        return inputData;
-    }
-
-    int wordCountReturn() const
-    {
-        return wordCount;
-    }
-
-    std::vector<std::pair<std::string, int>> getSortedData() const
-    {
-        std::vector<std::pair<std::string, int>> sortedData(inputData.begin(), inputData.end());
-
-        std::sort(sortedData.begin(), sortedData.end(),
-                  [](const std::pair<std::string, int> &a, const std::pair<std::string, int> &b)
-                  {
-                      return a.second > b.second;
-                  });
-
-        return sortedData;
-    }
+        }
+    
+  const std::map<std::string, int> &mapReturn() const
+  {
+      return inputData;
+  }
+  int wordCountReturn() const
+  {
+      return wordCount;
+  }   
+  
 };
 
 class WriteCSV
 {
 public:
-    static void inputDataToCSV(const std::string &outputFileName, const std::vector<std::pair<std::string, int>> &sortedData, int wordCount)
+    static void inputDataToCSV(const std::string &outputFileName, const std::map<std::string, int>& sortedData, int wordCount)
     {
         std::ofstream outputFile(outputFileName);
         if (outputFile.is_open())
@@ -108,9 +96,8 @@ int main(int argc, char *argv[])
     data.readInputData(inputFileName);
     data.createMap();
 
-    std::vector<std::pair<std::string, int>> sortedData = data.getSortedData();
 
-    WriteCSV::inputDataToCSV(outputFileName, sortedData, data.wordCountReturn());
+    WriteCSV::inputDataToCSV(outputFileName, data.mapReturn(), data.wordCountReturn());
 
     return 0;
 }
