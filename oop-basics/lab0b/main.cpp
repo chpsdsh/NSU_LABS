@@ -28,7 +28,7 @@ public:
         }
         else
         {
-            std::cerr << "Cannot open input file: " << inputFileName << std::endl;
+            std::cerr << "Can not open input file: " << inputFileName << std::endl;
         }
         inputFile.close();
     }
@@ -38,31 +38,36 @@ public:
         std::regex wordRegex("[\\w]+");
         for (const auto &line : inputStrings)
         {
-        auto wordsBegin = std::sregex_iterator(line.begin(), line.end(), wordRegex);
-        auto wordsEnd = std::sregex_iterator();
-        for (auto i = wordsBegin;i!= wordsEnd;i++){
-            std::string word = (*i).str();
-            wordCount++;
-            inputData[word]++;
-        }  
+            auto wordsBegin = std::sregex_iterator(line.begin(), line.end(), wordRegex);
+            auto wordsEnd = std::sregex_iterator();
+            for (auto i = wordsBegin; i != wordsEnd; i++)
+            {
+                std::string word = (*i).str();
+                wordCount++;
+                inputData[word]++;
+            }
         }
-        }
-    
-  const std::map<std::string, int> &mapReturn() const
-  {
-      return inputData;
-  }
-  int wordCountReturn() const
-  {
-      return wordCount;
-  }   
-  
+    }
+
+    std::vector<std::pair<std::string, int>> returnSortedPair() const
+    {
+        std::vector<std::pair<std::string, int>> sortedData(inputData.begin(), inputData.end());
+
+        std::sort(sortedData.begin(), sortedData.end(), [](const auto &a, const auto &b)
+                  { return a.second > b.second; });
+        return sortedData;
+    }
+
+    int wordCountReturn() const
+    {
+        return wordCount;
+    }
 };
 
 class WriteCSV
 {
 public:
-    static void inputDataToCSV(const std::string &outputFileName, const std::map<std::string, int>& sortedData, int wordCount)
+    static void inputDataToCSV(const std::string &outputFileName, const std::vector<std::pair<std::string, int>> &sortedData, int wordCount)
     {
         std::ofstream outputFile(outputFileName);
         if (outputFile.is_open())
@@ -96,8 +101,7 @@ int main(int argc, char *argv[])
     data.readInputData(inputFileName);
     data.createMap();
 
-
-    WriteCSV::inputDataToCSV(outputFileName, data.mapReturn(), data.wordCountReturn());
+    WriteCSV::inputDataToCSV(outputFileName, data.returnSortedPair(), data.wordCountReturn());
 
     return 0;
 }
