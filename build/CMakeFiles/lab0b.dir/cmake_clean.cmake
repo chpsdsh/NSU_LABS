@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/lab0b.dir/fileData.cpp.o"
+  "CMakeFiles/lab0b.dir/fileData.cpp.o.d"
   "CMakeFiles/lab0b.dir/main.cpp.o"
   "CMakeFiles/lab0b.dir/main.cpp.o.d"
+  "CMakeFiles/lab0b.dir/writeCSV.cpp.o"
+  "CMakeFiles/lab0b.dir/writeCSV.cpp.o.d"
   "lab0b"
   "lab0b.pdb"
 )

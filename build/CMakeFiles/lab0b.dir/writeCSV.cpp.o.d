@@ -1,7 +1,8 @@
-CMakeFiles/lab0b.dir/main.cpp.o: \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/14/iostream \
- /usr/include/c++/14/bits/requires_hosted.h \
+CMakeFiles/lab0b.dir/writeCSV.cpp.o: \
+ /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/writeCSV.cpp \
+ /usr/include/stdc-predef.h \
+ /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/writeCSV.h \
+ /usr/include/c++/14/iostream /usr/include/c++/14/bits/requires_hosted.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/os_defines.h \
@@ -128,56 +129,12 @@ CMakeFiles/lab0b.dir/main.cpp.o: \
  /usr/include/c++/14/bits/locale_facets.tcc \
  /usr/include/c++/14/bits/basic_ios.tcc \
  /usr/include/c++/14/bits/ostream.tcc /usr/include/c++/14/istream \
- /usr/include/c++/14/bits/istream.tcc \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/writeCSV.h \
- /usr/include/c++/14/fstream /usr/include/c++/14/bits/codecvt.h \
+ /usr/include/c++/14/bits/istream.tcc /usr/include/c++/14/fstream \
+ /usr/include/c++/14/bits/codecvt.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++io.h \
  /usr/include/c++/14/bits/fstream.tcc /usr/include/c++/14/vector \
  /usr/include/c++/14/bits/stl_uninitialized.h \
  /usr/include/c++/14/bits/stl_vector.h \
  /usr/include/c++/14/bits/stl_bvector.h \
- /usr/include/c++/14/bits/vector.tcc \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/fileData.h \
- /usr/include/c++/14/map /usr/include/c++/14/bits/stl_tree.h \
- /usr/include/c++/14/ext/aligned_buffer.h \
- /usr/include/c++/14/bits/node_handle.h \
- /usr/include/c++/14/bits/stl_map.h \
- /usr/include/c++/14/bits/stl_multimap.h \
- /usr/include/c++/14/bits/erase_if.h /usr/include/c++/14/list \
- /usr/include/c++/14/bits/stl_list.h \
- /usr/include/c++/14/bits/allocated_ptr.h \
- /usr/include/c++/14/bits/list.tcc /usr/include/c++/14/algorithm \
- /usr/include/c++/14/bits/stl_algo.h \
- /usr/include/c++/14/bits/algorithmfwd.h \
- /usr/include/c++/14/bits/stl_heap.h \
- /usr/include/c++/14/bits/uniform_int_dist.h \
- /usr/include/c++/14/bits/stl_tempbuf.h \
- /usr/include/c++/14/pstl/glue_algorithm_defs.h \
- /usr/include/c++/14/pstl/execution_defs.h /usr/include/c++/14/iterator \
- /usr/include/c++/14/bits/stream_iterator.h /usr/include/c++/14/regex \
- /usr/include/c++/14/bitset /usr/include/c++/14/locale \
- /usr/include/c++/14/bits/locale_facets_nonio.h /usr/include/c++/14/ctime \
- /usr/include/c++/14/x86_64-redhat-linux/bits/time_members.h \
- /usr/include/c++/14/x86_64-redhat-linux/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/14/bits/locale_facets_nonio.tcc \
- /usr/include/c++/14/bits/locale_conv.h /usr/include/c++/14/sstream \
- /usr/include/c++/14/bits/sstream.tcc /usr/include/c++/14/stack \
- /usr/include/c++/14/deque /usr/include/c++/14/bits/stl_deque.h \
- /usr/include/c++/14/bits/deque.tcc /usr/include/c++/14/bits/stl_stack.h \
- /usr/include/c++/14/bits/shared_ptr.h \
- /usr/include/c++/14/bits/shared_ptr_base.h \
- /usr/include/c++/14/bits/unique_ptr.h \
- /usr/include/c++/14/ext/concurrence.h \
- /usr/include/c++/14/bits/std_function.h \
- /usr/include/c++/14/bits/regex_constants.h \
- /usr/include/c++/14/bits/regex_error.h \
- /usr/include/c++/14/bits/regex_automaton.h \
- /usr/include/c++/14/bits/regex_automaton.tcc \
- /usr/include/c++/14/bits/regex_scanner.h \
- /usr/include/c++/14/bits/regex_scanner.tcc \
- /usr/include/c++/14/bits/regex_compiler.h \
- /usr/include/c++/14/bits/regex_compiler.tcc \
- /usr/include/c++/14/bits/regex.h /usr/include/c++/14/bits/regex.tcc \
- /usr/include/c++/14/bits/regex_executor.h \
- /usr/include/c++/14/bits/regex_executor.tcc
+ /usr/include/c++/14/bits/vector.tcc

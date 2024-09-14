@@ -1,7 +1,8 @@
-CMakeFiles/lab0b.dir/main.cpp.o: \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/14/iostream \
- /usr/include/c++/14/bits/requires_hosted.h \
+CMakeFiles/lab0b.dir/fileData.cpp.o: \
+ /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/fileData.cpp \
+ /usr/include/stdc-predef.h \
+ /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/fileData.h \
+ /usr/include/c++/14/iostream /usr/include/c++/14/bits/requires_hosted.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/os_defines.h \
@@ -128,18 +129,12 @@ CMakeFiles/lab0b.dir/main.cpp.o: \
  /usr/include/c++/14/bits/locale_facets.tcc \
  /usr/include/c++/14/bits/basic_ios.tcc \
  /usr/include/c++/14/bits/ostream.tcc /usr/include/c++/14/istream \
- /usr/include/c++/14/bits/istream.tcc \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/writeCSV.h \
- /usr/include/c++/14/fstream /usr/include/c++/14/bits/codecvt.h \
+ /usr/include/c++/14/bits/istream.tcc /usr/include/c++/14/fstream \
+ /usr/include/c++/14/bits/codecvt.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++io.h \
- /usr/include/c++/14/bits/fstream.tcc /usr/include/c++/14/vector \
- /usr/include/c++/14/bits/stl_uninitialized.h \
- /usr/include/c++/14/bits/stl_vector.h \
- /usr/include/c++/14/bits/stl_bvector.h \
- /usr/include/c++/14/bits/vector.tcc \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab0b/fileData.h \
- /usr/include/c++/14/map /usr/include/c++/14/bits/stl_tree.h \
+ /usr/include/c++/14/bits/fstream.tcc /usr/include/c++/14/map \
+ /usr/include/c++/14/bits/stl_tree.h \
  /usr/include/c++/14/ext/aligned_buffer.h \
  /usr/include/c++/14/bits/node_handle.h \
  /usr/include/c++/14/bits/stl_map.h \
@@ -147,7 +142,11 @@ CMakeFiles/lab0b.dir/main.cpp.o: \
  /usr/include/c++/14/bits/erase_if.h /usr/include/c++/14/list \
  /usr/include/c++/14/bits/stl_list.h \
  /usr/include/c++/14/bits/allocated_ptr.h \
- /usr/include/c++/14/bits/list.tcc /usr/include/c++/14/algorithm \
+ /usr/include/c++/14/bits/list.tcc /usr/include/c++/14/vector \
+ /usr/include/c++/14/bits/stl_uninitialized.h \
+ /usr/include/c++/14/bits/stl_vector.h \
+ /usr/include/c++/14/bits/stl_bvector.h \
+ /usr/include/c++/14/bits/vector.tcc /usr/include/c++/14/algorithm \
  /usr/include/c++/14/bits/stl_algo.h \
  /usr/include/c++/14/bits/algorithmfwd.h \
  /usr/include/c++/14/bits/stl_heap.h \
