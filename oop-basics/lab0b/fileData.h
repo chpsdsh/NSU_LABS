@@ -18,8 +18,8 @@ private:
 public:
     void readInputData(const std::string &inputFileName);
     void createMap();
-    std::vector<std::pair<std::string, int>> returnSortedPair() const;
+    std::vector<const std::pair<const std::string, int> *> returnSortedPair() const;
     int getWordCounter() const;
     const std::map<std::string, int> &getInputData() const;
-    const std::list<std::string>& getInputStrings() const;
+    const std::list<std::string> &getInputStrings() const;
 };

@@ -1,3 +1,0 @@
-/home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/lab0b.dir
-/home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/edit_cache.dir
-/home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/rebuild_cache.dir

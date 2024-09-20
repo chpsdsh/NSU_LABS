@@ -64,7 +64,7 @@ UpdateType:
 
 # Compiler info
 Compiler: /usr/bin/clang++
-CompilerVersion: 18.1.6
+CompilerVersion: 18.1.8
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 

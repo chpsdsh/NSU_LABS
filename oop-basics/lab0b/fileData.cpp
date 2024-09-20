@@ -47,11 +47,17 @@ void FileData::createMap()
     }
 }
 
-std::vector<std::pair<std::string, int>> FileData::returnSortedPair() const
+std::vector<const std::pair<const std::string, int> *> FileData::returnSortedPair() const
 {
-    std::vector<std::pair<std::string, int>> sortedData(inputData.begin(), inputData.end());
+    std::vector<const std::pair<const std::string, int> *> sortedData;
 
-    std::sort(sortedData.begin(), sortedData.end(), [](const auto &a, const auto &b)
-              { return a.second > b.second; });
+    for (const auto &elem : inputData)
+    {
+        sortedData.push_back(&elem);
+    }
+
+    std::sort(sortedData.begin(), sortedData.end(), [](const auto *a, const auto *b)
+              { return a->second > b->second; });
+
     return sortedData;
 }

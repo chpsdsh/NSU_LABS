@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/lab0b.dir/main.cpp.o CMakeFiles/lab0b.dir/fileData.cpp.o CMakeFiles/lab0b.dir/writeCSV.cpp.o -o lab0b 
