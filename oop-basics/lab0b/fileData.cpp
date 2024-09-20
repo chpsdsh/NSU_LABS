@@ -1,6 +1,6 @@
 #include "fileData.h"
 
-const std::map<std::string, int> &FileData::getInputData() const
+const std::map<std::string, int> &FileData::getInputData(   ) const
 {
     return inputData;
 }
@@ -33,7 +33,7 @@ void FileData::readInputData(const std::string &inputFileName)
 
 void FileData::createMap()
 {
-    std::regex wordRegex("[\\w]+");
+    std::regex wordRegex("[a-zA-Z'-]+");
     for (const auto &line : inputStrings)
     {
         auto wordsBegin = std::sregex_iterator(line.begin(), line.end(), wordRegex);
@@ -41,13 +41,14 @@ void FileData::createMap()
         for (auto i = wordsBegin; i != wordsEnd; i++)
         {
             std::string word = (*i).str();
+            std::transform(word.begin(), word.end(), word.begin(), ::tolower);
             wordCount++;
             inputData[word]++;
         }
     }
 }
 
-std::vector<const std::pair<const std::string, int> *> FileData::returnSortedPair() const
+const std::vector<const std::pair<const std::string, int> *> FileData::returnSortedPair() const
 {
     std::vector<const std::pair<const std::string, int> *> sortedData;
 
