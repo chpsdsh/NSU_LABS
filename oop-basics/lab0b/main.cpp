@@ -14,8 +14,7 @@ int main(int argc, char *argv[])
     std::string outputFileName = argv[2];
 
     FileData data;
-    data.readInputData(inputFileName);
-    data.createMap();
+    data.createMap(inputFileName);
     WriteCSV::inputDataToCSV(outputFileName, data.returnSortedPair(), data.getWordCounter());
 
     return 0;

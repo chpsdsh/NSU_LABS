@@ -1,50 +1,39 @@
 #include "fileData.h"
 
-const std::map<std::string, int> &FileData::getInputData(   ) const
+const std::map<std::string, int> &FileData::getInputData() const
 {
     return inputData;
 }
 
-const std::list<std::string> &FileData::getInputStrings() const
-{
-    return inputStrings;
-}
-
-int FileData::getWordCounter() const
+const int FileData::getWordCounter() const
 {
     return wordCount;
 }
 
-void FileData::readInputData(const std::string &inputFileName)
+void FileData::createMap(const std::string &inputFileName)
 {
     std::ifstream inputFile(inputFileName);
+    std::regex wordRegex("[a-zA-Z'-]+");
     if (inputFile.is_open())
     {
-        std::string newLine;
-        while (getline(inputFile, newLine))
-            inputStrings.push_back(newLine);
+        std::string line;
+        while (getline(inputFile, line))
+        {
+            auto wordsBegin = std::sregex_iterator(line.begin(), line.end(), wordRegex);
+            auto wordsEnd = std::sregex_iterator();
+            
+            for (auto i = wordsBegin; i != wordsEnd; i++)
+            {
+                std::string word = (*i).str();
+                std::transform(word.begin(), word.end(), word.begin(), ::tolower);
+                wordCount++;
+                inputData[word]++;
+            }
+        }
     }
     else
     {
-        std::cerr << "Can not open input file: " << inputFileName << std::endl;
-    }
-    inputFile.close();
-}
-
-void FileData::createMap()
-{
-    std::regex wordRegex("[a-zA-Z'-]+");
-    for (const auto &line : inputStrings)
-    {
-        auto wordsBegin = std::sregex_iterator(line.begin(), line.end(), wordRegex);
-        auto wordsEnd = std::sregex_iterator();
-        for (auto i = wordsBegin; i != wordsEnd; i++)
-        {
-            std::string word = (*i).str();
-            std::transform(word.begin(), word.end(), word.begin(), ::tolower);
-            wordCount++;
-            inputData[word]++;
-        }
+        std::cerr << "Can not open input file" << inputFileName << std::endl;
     }
 }
 

@@ -13,13 +13,9 @@ class FileData
 private:
     int wordCount = 0;
     std::map<std::string, int> inputData;
-    std::list<std::string> inputStrings;
-
 public:
-    void readInputData(const std::string &inputFileName);
-    void createMap();
+    void createMap(const std::string &inputFileName);
     const std::vector<const std::pair<const std::string, int> *> returnSortedPair() const;
-    int getWordCounter() const;
+    const int getWordCounter() const;
     const std::map<std::string, int> &getInputData() const;
-    const std::list<std::string> &getInputStrings() const;
 };

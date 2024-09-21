@@ -1,4 +1,112 @@
-A short poem may be a stylistic choice or it may be th
-at you have said what you intende
-d to say in a more concise way. Either
- way, they differ stylistically from a long poem in that there tends to be more care in word choice. Since there are fewer words people tend to spend more time on choosing a word that fits the subject to perfection. Because of this meticulous attitude, writing a short poem is often more tedious than writing a long poem.
+#include "fileData.h"
+
+const std::map<std::string, int> &FileData::getInputData(   ) const
+{
+    return inputData;
+}
+
+const std::list<std::string> &FileData::getInputStrings() const
+{
+    return inputStrings;
+}
+
+int FileData::getWordCounter() const
+{
+    return wordCount;
+}
+
+void FileData::readInputData(const std::string &inputFileName)
+{
+    std::ifstream inputFile(inputFileName);
+    if (inputFile.is_open())
+    {
+        std::string newLine;
+        while (getline(inputFile, newLine))
+            inputStrings.push_back(newLine);
+    }
+    else
+    {
+        std::cerr << "Can not open input file: " << inputFileName << std::endl;
+    }
+    inputFile.close();
+}
+
+void FileData::createMap()
+{
+    std::regex wordRegex("[a-zA-Z'-]+");
+    for (const auto &line : inputStrings)
+    {
+        auto wordsBegin = std::sregex_iterator(line.begin(), line.end(), wordRegex);
+        auto wordsEnd = std::sregex_iterator();
+        for (auto i = wordsBegin; i != wordsEnd; i++)
+        {
+            std::string word = (*i).str();
+            std::transform(word.begin(), word.end(), word.begin(), ::tolower);
+            wordCount++;
+            inputData[word]++;
+        }
+    }
+}
+
+const std::vector<const std::pair<const std::string, int> *> FileData::returnSortedPair() const
+{
+    std::vector<const std::pair<const std::string, int> *> sortedData;
+
+    for (const auto &elem : inputData)
+    {
+        sortedData.push_back(&elem);
+    }
+
+    std::sort(sortedData.begin(), sortedData.end(), [](const auto *a, const auto *b)
+              { return a->second > b->second; });
+
+    return sortedData;
+}
+#include <iostream>
+#include <fstream>
+#include <map>
+#include <list>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+#include <regex>
+
+class FileData
+{
+private:
+    int wordCount = 0;
+    std::map<std::string, int> inputData;
+    std::list<std::string> inputStrings;
+
+public:
+    void readInputData(const std::string &inputFileName);
+    void createMap();
+    const std::vector<const std::pair<const std::string, int> *> returnSortedPair() const;
+    int getWordCounter() const;
+    const std::map<std::string, int> &getInputData() const;
+    const std::list<std::string> &getInputStrings() const;
+};
+#include "writeCSV.h"
+
+void WriteCSV::inputDataToCSV(const std::string &outputFileName, const std::vector<const std::pair<const std::string, int> *> &sortedData, int wordCount)
+{
+    std::ofstream outputFile(outputFileName);
+    if (outputFile.is_open())
+    {
+        outputFile << "Слово,Частота,Частота(%)\n";
+
+        for (const auto *pair : sortedData)
+        {
+            const std::string &word = pair->first;
+            int count = pair->second;
+            outputFile << word << "," << count << "," << (float(count) / float(wordCount) * 100) << "\n";
+        }
+    }
+    else
+    {
+        std::cerr << "Cannot open output file: " << outputFileName << std::endl;
+    }
+
+    outputFile.close();
+}
