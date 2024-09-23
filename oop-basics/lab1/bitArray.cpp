@@ -1,82 +1,69 @@
-#include <iostream>
+#include "bitArray.h"
 
-//В этой задаче для простоты не требуется делать контейнер шаблонным,
-//но это вполне допускается по желанию студента.
-class BitArray
+// В этой задаче для простоты не требуется делать контейнер шаблонным,
+// но это вполне допускается по желанию студента.
+BitArray::BitArray() : numBits(0) {};
+BitArray::~BitArray() = default;
+// Конструирует массив, хранящий заданное количество бит.
+// Первые sizeof(long) бит можно инициализровать с помощью параметра value.
+explicit BitArray::BitArray(int num_bits, unsigned long value = 0) : numBits(num_bits)
 {
-public:
-  BitArray();
-  ~BitArray();
-  
-  //Конструирует массив, хранящий заданное количество бит.
-  //Первые sizeof(long) бит можно инициализровать с помощью параметра value.
-  explicit BitArray(int num_bits, unsigned long value = 0);
-  BitArray(const BitArray& b);
+  array.resize((num_bits + BYTE_SIZE - 1) / BYTE_SIZE, 0);
+  if (num_bits != 0 && !array.empty())
+    array[0] = value;
+}
 
+BitArray::BitArray(const BitArray &b) : array(b.array), numBits(b.numBits) {}
+// ebal OOP NAHUY SUkaaaaa
+//  Обменивает фзначения двух битовых массивов.
+void BitArray::swap(BitArray &b)
+{
+  std::swap(array, b.array);
+  std::swap(numBits, b.numBits);
+}
 
-  //Обменивает значения двух битовых массивов.
-  void swap(BitArray& b);
+BitArray &BitArray::operator=(const BitArray &b)
+{
+  if (&b == this)
+  {
+    return *this;
+  }
+  array = b.array;
+  numBits = b.numBits;
+  return *this;
+}
 
-  BitArray& operator=(const BitArray& b);
+void BitArray::resize(int num_bits, bool value = false)
+{
+  array.resize((num_bits + BYTE_SIZE - 1) / BYTE_SIZE);
+}
+// Очищает массив.
+void BitArray::clear()
+{
+  array.clear();
+  numBits = 0;
+}
 
+void BitArray::push_back(bool bit)
+{
+  array.resize(numBits + 1);
+  array[numBits] = bit;
+}
 
-  //Изменяет размер массива. В случае расширения, новые элементы 
-  //инициализируются значением value.
-  void resize(int num_bits, bool value = false);
-  //Очищает массив.
-  void clear();
-  //Добавляет новый бит в конец массива. В случае необходимости 
-  //происходит перераспределение памяти.
-  void push_back(bool bit);
+BitArray &BitArray::operator&=(const BitArray &b)
+{
+  if (&b == this)
+    return *this;
 
+  if (numBits != b.numBits)
+  {
+    throw std::invalid_argument("Array sizes do not match");
+  }
 
-  //Битовые операции над массивами.
-  //Работают только на массивах одинакового размера.
-  //Обоснование реакции на параметр неверного размера входит в задачу.
-  BitArray& operator&=(const BitArray& b);
-  BitArray& operator|=(const BitArray& b);
-  BitArray& operator^=(const BitArray& b);
- 
-  //Битовый сдвиг с заполнением нулями.
-  BitArray& operator<<=(int n);
-  BitArray& operator>>=(int n);
-  BitArray operator<<(int n) const;
-  BitArray operator>>(int n) const;
+  for (std::size_t i = 0; i < numBits; ++i)
+  {
+    array[i] &= b.array[i];
+  }
 
-
-  //Устанавливает бит с индексом n в значение val.
-  BitArray& set(int n, bool val = true);
-  //Заполняет массив истиной.
-  BitArray& set();
-
-  //Устанавливает бит с индексом n в значение false.
-  BitArray& reset(int n);
-  //Заполняет массив ложью.
-  BitArray& reset();
-
-  //true, если массив содержит истинный бит.
-  bool any() const;
-  //true, если все биты массива ложны.
-  bool none() const;
-  //Битовая инверсия
-  BitArray operator~() const;
-  //Подсчитывает количество единичных бит.
-  int count() const;
-
-
-  //Возвращает значение бита по индексу i.
-  bool operator[](int i) const;
-
-  int size() const;
-  bool empty() const;
-  
-  //Возвращает строковое представление массива.
-  std::string to_string() const;
-};
-
-bool operator==(const BitArray & a, const BitArray & b);
-bool operator!=(const BitArray & a, const BitArray & b);
-
-BitArray operator&(const BitArray& b1, const BitArray& b2);
-BitArray operator|(const BitArray& b1, const BitArray& b2);
-BitArray operator^(const BitArray& b1, const BitArray& b2);
+  return *this;
+}

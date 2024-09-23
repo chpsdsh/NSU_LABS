@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5.0)
 project(lab1 VERSION 0.1.0 LANGUAGES C CXX)
 
-add_executable(lab1 bitArray.cpp)
+add_executable(lab1 bitArray.cpp bitArray.h)
 
 include(CTest)
 enable_testing()
