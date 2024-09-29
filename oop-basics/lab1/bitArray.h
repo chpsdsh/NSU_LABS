@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <string>
 
-
 const int BYTE_SIZE = 8;
 // В этой задаче для простоты не требуется делать контейнер шаблонным,
 // но это вполне допускается по желанию студента.
@@ -23,7 +22,6 @@ public:
     explicit BitArray(int num_bits, unsigned long value = 0);
     BitArray(const BitArray &b);
 
-    
     // Обменивает фзначения двух битовых массивов.
     void swap(BitArray &b);
 
