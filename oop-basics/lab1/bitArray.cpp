@@ -44,7 +44,7 @@ void BitArray::resize(int num_bits, bool value)
   }
   std::size_t newSize = (num_bits + BYTE_SIZE - 1) / BYTE_SIZE;
   numBits = num_bits;
-  array.resize(newSize, value ? 0xFF : 0x00);
+  array.resize(newSize, value ? 1 : 0);
 }
 
 void BitArray::clear()
@@ -303,10 +303,9 @@ std::string BitArray::to_string() const
   std::string res;
   for (std::size_t i = 0; i < numBits; ++i)
   {
-    int byte = i / BYTE_SIZE;
-    int bitIndex = i % BYTE_SIZE;
-    res.push_back(array[byte] & (1 << bitIndex));
+    res.push_back((*this)[i] ? '1': '0');
   }
+  
   return res;
 }
 
