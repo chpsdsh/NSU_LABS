@@ -4,11 +4,19 @@ BitArray::BitArray() : numBits(0) {};
 BitArray::~BitArray() = default;
 BitArray::BitArray(const BitArray &b) : array(b.array), numBits(b.numBits) {}
 
-explicit BitArray::BitArray(int num_bits, unsigned long value = 0) : numBits(num_bits)
+BitArray::BitArray(int num_bits, unsigned long value) : numBits(num_bits)
 {
-  array.resize((num_bits + BYTE_SIZE - 1) / BYTE_SIZE, 0);
-  if (num_bits != 0 && !array.empty())
-    array[0] = value;
+  int size = (num_bits + BYTE_SIZE - 1) / BYTE_SIZE;
+  array.resize(size, 0);
+  for (int i = 0; i < num_bits && i < sizeof(value) * 8; ++i)
+  {
+    if (value & (0x80 >> i))
+    {
+      int byteIndex = (size * 8 - 1 - i) / BYTE_SIZE;
+      int bitIndex = i % BYTE_SIZE;
+      array[byteIndex] |= (0x80 >> bitIndex);
+    }
+  }
 }
 
 void BitArray::swap(BitArray &b)
@@ -193,7 +201,7 @@ BitArray BitArray::operator>>(int n) const
   return res >> n;
 }
 
-BitArray &BitArray::set(int n, bool val = true)
+BitArray &BitArray::set(int n, bool val)
 {
   int byteIndex = n / BYTE_SIZE;
   int bitIndex = n % BYTE_SIZE;
@@ -272,9 +280,13 @@ int BitArray::count() const
 
 bool BitArray::operator[](int i) const
 {
-  int byte = i / BYTE_SIZE;
-  int bitIndex = i % BYTE_SIZE;
-  return array[byte] & (1 << bitIndex);
+  if (i < 0 || i >= numBits)
+  {
+    throw std::out_of_range("Index out of range");
+  }
+  int byteIndex = i / BYTE_SIZE;                  
+  int bitIndex = i % BYTE_SIZE;                   
+  return (array[byteIndex] & (0x80 >> bitIndex)); 
 }
 
 int BitArray::size() const

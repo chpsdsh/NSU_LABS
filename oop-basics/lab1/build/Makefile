@@ -503,6 +503,70 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/build
 .PHONY : ContinuousSubmit/fast
 
+#=============================================================================
+# Target rules for targets named tests
+
+# Build rule for target.
+tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests
+.PHONY : tests
+
+# fast build rule for target.
+tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
+.PHONY : tests/fast
+
+bitArray.o: bitArray.cpp.o
+.PHONY : bitArray.o
+
+# target to build an object file
+bitArray.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/bitArray.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/bitArray.cpp.o
+.PHONY : bitArray.cpp.o
+
+bitArray.i: bitArray.cpp.i
+.PHONY : bitArray.i
+
+# target to preprocess a source file
+bitArray.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/bitArray.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/bitArray.cpp.i
+.PHONY : bitArray.cpp.i
+
+bitArray.s: bitArray.cpp.s
+.PHONY : bitArray.s
+
+# target to generate assembly for a file
+bitArray.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/bitArray.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/bitArray.cpp.s
+.PHONY : bitArray.cpp.s
+
+bitArrayTest.o: bitArrayTest.cpp.o
+.PHONY : bitArrayTest.o
+
+# target to build an object file
+bitArrayTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/bitArrayTest.cpp.o
+.PHONY : bitArrayTest.cpp.o
+
+bitArrayTest.i: bitArrayTest.cpp.i
+.PHONY : bitArrayTest.i
+
+# target to preprocess a source file
+bitArrayTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/bitArrayTest.cpp.i
+.PHONY : bitArrayTest.cpp.i
+
+bitArrayTest.s: bitArrayTest.cpp.s
+.PHONY : bitArrayTest.s
+
+# target to generate assembly for a file
+bitArrayTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/bitArrayTest.cpp.s
+.PHONY : bitArrayTest.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -565,6 +629,13 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... lab1"
+	@echo "... tests"
+	@echo "... bitArray.o"
+	@echo "... bitArray.i"
+	@echo "... bitArray.s"
+	@echo "... bitArrayTest.o"
+	@echo "... bitArrayTest.i"
+	@echo "... bitArrayTest.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/lab1.dir/bitArray.cpp.o"
+  "CMakeFiles/lab1.dir/bitArray.cpp.o.d"
   "CMakeFiles/lab1.dir/main.cpp.o"
   "CMakeFiles/lab1.dir/main.cpp.o.d"
   "lab1"

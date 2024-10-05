@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab1/bitArray.cpp" "CMakeFiles/lab1.dir/bitArray.cpp.o" "gcc" "CMakeFiles/lab1.dir/bitArray.cpp.o.d"
   "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab1/main.cpp" "CMakeFiles/lab1.dir/main.cpp.o" "gcc" "CMakeFiles/lab1.dir/main.cpp.o.d"
   )
 
