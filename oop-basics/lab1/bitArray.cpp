@@ -8,13 +8,14 @@ BitArray::BitArray(int num_bits, unsigned long value) : numBits(num_bits)
 {
   int size = (num_bits + BYTE_SIZE - 1) / BYTE_SIZE;
   array.resize(size, 0);
+
   for (int i = 0; i < num_bits && i < sizeof(value) * 8; ++i)
   {
-    if (value & (0x80 >> i))
+    if (value & (1UL << i))
     {
-      int byteIndex = (size * 8 - 1 - i) / BYTE_SIZE;
+      int byteIndex = size - 1 - (i / BYTE_SIZE);
       int bitIndex = i % BYTE_SIZE;
-      array[byteIndex] |= (0x80 >> bitIndex);
+      array[byteIndex] |= (1 << bitIndex);
     }
   }
 }
@@ -178,7 +179,6 @@ BitArray &BitArray::operator>>=(int n)
 
   return *this;
 }
-
 
 BitArray BitArray::operator<<(int n) const
 {
