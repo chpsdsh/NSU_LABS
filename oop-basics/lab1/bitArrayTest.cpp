@@ -68,9 +68,21 @@ TEST(BitArrayTests, ResizeTest)
 {
     BitArray bitArray; 
     ASSERT_THROW(bitArray.resize(-5, false), std::invalid_argument);
-    
     BitArray bitArr(8, 170);  
-    bitArray.resize(16, true);  
+    bitArr.resize(16, true);  
     ASSERT_EQ(bitArr.size(), 16);
     ASSERT_EQ(bitArr.to_string(), "1010101011111111");
+}
+
+TEST(BitArrayTests, ClearTest){
+    BitArray bitArr(16, 170);
+    bitArr.clear();
+    ASSERT_EQ(bitArr.size(),0);
+    ASSERT_EQ(bitArr.to_string(),"");
+}
+
+TEST(BitArrayTests, PushBackTest){
+    BitArray bitArr(16, 170);
+    bitArr.push_back(1);
+    ASSERT_EQ(bitArr.to_string(), "00000000101010101");
 }

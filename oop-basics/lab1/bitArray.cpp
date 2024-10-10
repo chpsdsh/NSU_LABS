@@ -44,7 +44,7 @@ void BitArray::resize(int num_bits, bool value)
   }
   std::size_t newSize = (num_bits + BYTE_SIZE - 1) / BYTE_SIZE;
   numBits = num_bits;
-  array.resize(newSize, value ? 1 : 0);
+  array.resize(newSize, value ? 255 : 0);
 }
 
 void BitArray::clear()
@@ -55,8 +55,10 @@ void BitArray::clear()
 
 void BitArray::push_back(bool bit)
 {
-  array.resize(numBits + 1);
-  array[numBits] = bit;
+  std::cout << numBits << " ";
+  (*this).resize(numBits + 1);
+  std::cout << numBits << " ";
+  array[numBits / BYTE_SIZE] |= 0x80 >> ((numBits - 1) % BYTE_SIZE);
 }
 
 BitArray &BitArray::operator&=(const BitArray &b)
@@ -284,9 +286,9 @@ bool BitArray::operator[](int i) const
   {
     throw std::out_of_range("Index out of range");
   }
-  int byteIndex = i / BYTE_SIZE;                  
-  int bitIndex = i % BYTE_SIZE;                   
-  return (array[byteIndex] & (0x80 >> bitIndex)); 
+  int byteIndex = i / BYTE_SIZE;
+  int bitIndex = i % BYTE_SIZE;
+  return (array[byteIndex] & (0x80 >> bitIndex));
 }
 
 int BitArray::size() const
@@ -303,9 +305,9 @@ std::string BitArray::to_string() const
   std::string res;
   for (std::size_t i = 0; i < numBits; ++i)
   {
-    res.push_back((*this)[i] ? '1': '0');
+    res.push_back((*this)[i] ? '1' : '0');
   }
-  
+
   return res;
 }
 
