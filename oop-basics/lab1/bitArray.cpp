@@ -99,8 +99,6 @@ BitArray &BitArray::operator|=(const BitArray &b)
 
 BitArray &BitArray::operator^=(const BitArray &b)
 {
-  if (&b == this)
-    return *this;
 
   if (numBits != b.numBits)
   {
@@ -120,6 +118,7 @@ BitArray &BitArray::operator<<=(int n)
   int shiftBytes = n / BYTE_SIZE;
   int shiftBits = n % BYTE_SIZE;
   int numBytes = (numBits + BYTE_SIZE - 1) / BYTE_SIZE;
+  std::cout << numBytes;
   if (n >= numBits)
   {
     reset();
@@ -136,17 +135,12 @@ BitArray &BitArray::operator<<=(int n)
     std::move(array.begin() + shiftBytes, array.end(), array.begin());
     std::fill(array.end() - shiftBytes, array.end(), 0);
     char overflow = 0;
-    for (std::size_t i = 0; i < numBytes; ++i)
+    for (int i = numBytes - 1; i >= 0; i--)
     {
       char current = array[i];
       array[i] = (current << shiftBits) | overflow;
-      overflow = (current >> (BYTE_SIZE - shiftBits));
+      overflow = (current >> (BYTE_SIZE - shiftBits)) & (255 >> (BYTE_SIZE - shiftBits));
     }
-  }
-  if (numBits % BYTE_SIZE != 0)
-  {
-    char mask = (1 << (numBits % BYTE_SIZE)) - 1;
-    array[numBytes - 1] &= mask;
   }
   return *this;
 }
@@ -165,16 +159,16 @@ BitArray &BitArray::operator>>=(int n)
 
   if (shiftBits == 0)
   {
-    std::move(array.begin() + shiftBytes, array.end(), array.begin());
-    std::fill(array.end() - shiftBytes, array.end(), 0);
+    std::move(array.begin(), array.end() - shiftBytes, array.begin() + shiftBytes);
+    std::fill(array.begin(), array.begin() + shiftBytes, 0);
   }
   else
   {
-    std::move(array.begin() + shiftBytes, array.end(), array.begin());
-    std::fill(array.end() - shiftBytes, array.end(), 0);
+    std::move(array.begin(), array.end() - shiftBytes, array.begin() + shiftBytes);
+    std::fill(array.begin(), array.begin() + shiftBytes, 0);
 
     char overflow = 0;
-    for (int i = numBytes - 1; i >= 0; --i)
+    for (int i = 0; i < numBytes; ++i)
     {
       char current = array[i];
       array[i] = (current >> shiftBits) | overflow;
@@ -182,14 +176,9 @@ BitArray &BitArray::operator>>=(int n)
     }
   }
 
-  if (numBits % BYTE_SIZE != 0)
-  {
-    char mask = (1 << (numBits % BYTE_SIZE)) - 1;
-    array[numBytes - 1] &= mask;
-  }
-
   return *this;
 }
+
 
 BitArray BitArray::operator<<(int n) const
 {

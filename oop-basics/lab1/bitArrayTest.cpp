@@ -66,23 +66,93 @@ TEST(BitArrayTests, OperatorEQ)
 
 TEST(BitArrayTests, ResizeTest)
 {
-    BitArray bitArray; 
+    BitArray bitArray;
     ASSERT_THROW(bitArray.resize(-5, false), std::invalid_argument);
-    BitArray bitArr(8, 170);  
-    bitArr.resize(16, true);  
+    BitArray bitArr(8, 170);
+    bitArr.resize(16, true);
     ASSERT_EQ(bitArr.size(), 16);
     ASSERT_EQ(bitArr.to_string(), "1010101011111111");
 }
 
-TEST(BitArrayTests, ClearTest){
+TEST(BitArrayTests, ClearTest)
+{
     BitArray bitArr(16, 170);
     bitArr.clear();
-    ASSERT_EQ(bitArr.size(),0);
-    ASSERT_EQ(bitArr.to_string(),"");
+    ASSERT_EQ(bitArr.size(), 0);
+    ASSERT_EQ(bitArr.to_string(), "");
 }
 
-TEST(BitArrayTests, PushBackTest){
+TEST(BitArrayTests, PushBackTest)
+{
     BitArray bitArr(16, 170);
     bitArr.push_back(1);
     ASSERT_EQ(bitArr.to_string(), "00000000101010101");
+}
+
+TEST(BitArrayTests, OperatorConEquelTest)
+{
+    BitArray bitArr(8, 170);
+    bitArr &= bitArr;
+    ASSERT_EQ(bitArr.to_string(), "10101010");
+    BitArray bitArr1(8, 170);
+    BitArray bitArr2(16, 170);
+    ASSERT_THROW(bitArr1 &= bitArr2, std::invalid_argument);
+    BitArray bitArr3(8, 170);
+    BitArray bitArr4(8, 15);
+    bitArr3 &= bitArr4;
+    ASSERT_EQ(bitArr3.to_string(), "00001010");
+}
+
+TEST(BitArrayTests, OperatorDisEquelTest)
+{
+    BitArray bitArr(8, 170);
+    bitArr |= bitArr;
+    ASSERT_EQ(bitArr.to_string(), "10101010");
+    BitArray bitArr1(8, 170);
+    BitArray bitArr2(16, 170);
+    ASSERT_THROW(bitArr1 |= bitArr2, std::invalid_argument);
+    BitArray bitArr3(8, 170);
+    BitArray bitArr4(8, 85);
+    bitArr3 |= bitArr4;
+    ASSERT_EQ(bitArr3.to_string(), "11111111");
+}
+
+TEST(BitArrayTests, OperatorXORTest)
+{
+    BitArray bitArr1(8, 170);
+    BitArray bitArr2(16, 170);
+    ASSERT_THROW(bitArr1 ^= bitArr2, std::invalid_argument);
+    BitArray bitArr3(8, 170);
+    BitArray bitArr4(8, 85);
+    bitArr3 ^= bitArr4;
+    ASSERT_EQ(bitArr3.to_string(), "11111111");
+}
+
+TEST(BitArrayTests, OperatorLShiftEqTest)
+{
+    BitArray bitArr1(8, 5);
+    bitArr1<<=9;
+    ASSERT_EQ(bitArr1.to_string(), "00000000");
+
+    BitArray bitArr2(16, 170);
+    bitArr2<<=8;
+    ASSERT_EQ(bitArr2.to_string(), "1010101000000000");
+     BitArray bitArr3(16, 170);
+    bitArr3<<=3;
+    ASSERT_EQ(bitArr3.to_string(), "0000010101010000");
+}
+
+TEST(BitArrayTests, OperatorRShiftEqTest)
+{
+    BitArray bitArr1(8, 5);
+    bitArr1>>=9;
+    ASSERT_EQ(bitArr1.to_string(), "00000000");
+
+    BitArray bitArr2(16, 43520);
+    ASSERT_EQ(bitArr2.to_string(), "1010101000000000");
+    bitArr2>>=8;
+    ASSERT_EQ(bitArr2.to_string(), "0000000010101010");
+    // BitArray bitArr3(16, 43520);
+    //bitArr3>>=3;
+    //ASSERT_EQ(bitArr3.to_string(), "0001010101000000");
 }
