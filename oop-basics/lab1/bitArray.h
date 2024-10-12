@@ -76,6 +76,27 @@ public:
 
     // Возвращает строковое представление массива.
     std::string to_string() const;
+
+    class Iterator
+    {
+    private:
+        int index;
+        const BitArray *bitArr;
+
+    public:
+    Iterator(const BitArray *bArr, int idx);
+    ~Iterator();
+
+    bool operator*() const;
+
+    Iterator& operator++();
+    
+    bool operator!=(const Iterator &iterator)const;
+
+    bool operator==(const Iterator &iterator)const;
+    };
+    Iterator begin();
+    Iterator end();
 };
 
 bool operator==(const BitArray &a, const BitArray &b);

@@ -151,7 +151,7 @@ BitArray &BitArray::operator>>=(int n)
   int shiftBytes = n / BYTE_SIZE;
   int shiftBits = n % BYTE_SIZE;
   int numBytes = (numBits + BYTE_SIZE - 1) / BYTE_SIZE;
-  std::cout<<numBytes<<std::endl;
+  std::cout << numBytes << std::endl;
 
   if (n >= numBits)
   {
@@ -172,11 +172,10 @@ BitArray &BitArray::operator>>=(int n)
     char overflow = 0;
     for (int i = 0; i < numBytes; i++)
     {
-      std::cout<<i<<(int)overflow<<std::endl;
+      std::cout << i << (int)overflow << std::endl;
       char current = array[i];
-      array[i] = ((current >> shiftBits) & (255 >> (shiftBits)) | overflow) ;
+      array[i] = ((current >> shiftBits) & (255 >> (shiftBits)) | overflow);
       overflow = (current << (BYTE_SIZE - shiftBits));
-      
     }
   }
 
@@ -308,12 +307,12 @@ bool operator==(const BitArray &a, const BitArray &b)
 {
   if (a.size() != b.size())
   {
-      throw std::invalid_argument("Array sizes do not match");
+    throw std::invalid_argument("Array sizes do not match");
   }
 
   for (std::size_t i = 0; i < a.size(); ++i)
   {
-    if (a[i]!= b[i])
+    if (a[i] != b[i])
     {
       return false;
     }
@@ -355,3 +354,37 @@ BitArray operator^(const BitArray &b1, const BitArray &b2)
   BitArray result = b1;
   return result.operator^=(b2);
 }
+
+BitArray::Iterator::Iterator(const BitArray *bArr, int idx) : bitArr(bArr), index(idx) {}
+
+BitArray::Iterator::~Iterator() = default;
+
+bool BitArray::Iterator::operator*() const
+{
+  if (index < 0 || index > (*bitArr).size())
+  {
+    throw std::out_of_range("Out of range");
+  }
+
+  return (*bitArr)[index];
+}
+
+BitArray::Iterator &BitArray::Iterator::operator++()
+{
+  index++;
+  return *this;
+}
+
+bool BitArray::Iterator::operator==(const Iterator &iterator) const
+{
+  return index == iterator.index;
+}
+
+bool BitArray::Iterator::operator!=(const Iterator &iterator) const
+{
+  return index != iterator.index;
+}
+
+BitArray::Iterator BitArray::begin(){return Iterator(this,0);}
+
+BitArray::Iterator BitArray::end(){return Iterator(this,numBits);};

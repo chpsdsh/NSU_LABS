@@ -9,7 +9,6 @@ TEST(BitArrayTests, BasicConstructor)
     ASSERT_TRUE(bitArr.empty());
 }
 
-
 TEST(BitArrayTests, ConstructorWithValues)
 {
     BitArray bitArr(16, 170);
@@ -132,49 +131,49 @@ TEST(BitArrayTests, OperatorXORTest)
 TEST(BitArrayTests, OperatorLShiftEqTest)
 {
     BitArray bitArr1(8, 5);
-    bitArr1<<=9;
+    bitArr1 <<= 9;
     ASSERT_EQ(bitArr1.to_string(), "00000000");
 
     BitArray bitArr2(16, 170);
-    bitArr2<<=8;
+    bitArr2 <<= 8;
     ASSERT_EQ(bitArr2.to_string(), "1010101000000000");
-     BitArray bitArr3(16, 170);
-    bitArr3<<=3;
+    BitArray bitArr3(16, 170);
+    bitArr3 <<= 3;
     ASSERT_EQ(bitArr3.to_string(), "0000010101010000");
 }
 
 TEST(BitArrayTests, OperatorRShiftEqTest)
 {
     BitArray bitArr1(8, 5);
-    bitArr1>>=9;
+    bitArr1 >>= 9;
     ASSERT_EQ(bitArr1.to_string(), "00000000");
 
     BitArray bitArr2(16, 43520);
     ASSERT_EQ(bitArr2.to_string(), "1010101000000000");
-    bitArr2>>=8;
+    bitArr2 >>= 8;
     ASSERT_EQ(bitArr2.to_string(), "0000000010101010");
     BitArray bitArr3(16, 43520);
-    bitArr3>>=3;
+    bitArr3 >>= 3;
     ASSERT_EQ(bitArr3.to_string(), "0001010101000000");
 }
 
 TEST(BitArrayTests, OperatorLShiftTest)
 {
     BitArray bitArr(16, 170);
-    ASSERT_EQ((bitArr<<8).to_string(), "1010101000000000");
+    ASSERT_EQ((bitArr << 8).to_string(), "1010101000000000");
 }
 
 TEST(BitArrayTests, OperatorRShiftTest)
 {
     BitArray bitArr(16, 43520);
-    ASSERT_EQ((bitArr>>8).to_string(), "0000000010101010");
+    ASSERT_EQ((bitArr >> 8).to_string(), "0000000010101010");
 }
 
 TEST(BitArrayTests, SetWithValuesTest)
 {
     BitArray bitArr(16, 170);
-    ASSERT_EQ((bitArr.set(0,true)).to_string(), "1000000010101010");
-    ASSERT_EQ((bitArr.set(8,false)).to_string(), "1000000000101010");
+    ASSERT_EQ((bitArr.set(0, true)).to_string(), "1000000010101010");
+    ASSERT_EQ((bitArr.set(8, false)).to_string(), "1000000000101010");
 }
 
 TEST(BitArrayTests, SetTest)
@@ -182,8 +181,6 @@ TEST(BitArrayTests, SetTest)
     BitArray bitArr(16, 170);
     ASSERT_EQ(bitArr.set().to_string(), "1111111111111111");
 }
-
-
 
 TEST(BitArrayTests, ResetWithValuesTest)
 {
@@ -225,7 +222,8 @@ TEST(BitArrayTests, CountTest)
     ASSERT_EQ(bitArr.count(), 4);
 }
 
-TEST(BitArrayTests, OperatorIndexer){
+TEST(BitArrayTests, OperatorIndexer)
+{
     BitArray bitArr(8, 170);
     ASSERT_THROW(bitArr[8], std::out_of_range);
     ASSERT_EQ(bitArr[0], 1);
@@ -238,56 +236,86 @@ TEST(BitArrayTests, OperatorIndexer){
     ASSERT_EQ(bitArr[7], 0);
 }
 
-TEST(BitArrayTests, SizeIndexer){
+TEST(BitArrayTests, SizeIndexer)
+{
     BitArray bitArr(8, 170);
-    ASSERT_EQ(bitArr.size(),8);
+    ASSERT_EQ(bitArr.size(), 8);
 }
 
-TEST(BitArrayTests, EmptyIndexer){
+TEST(BitArrayTests, EmptyIndexer)
+{
     BitArray bitArr;
-    ASSERT_EQ(bitArr.empty(),true);
+    ASSERT_EQ(bitArr.empty(), true);
 }
 
-TEST(BitArrayTests, OperatorDoubleEqual){
-    BitArray bitArr1(16,170);
-    BitArray bitArr2(8,170);
-    ASSERT_THROW(bitArr1==bitArr2, std::invalid_argument);
-    BitArray bitArr3(16,170);
-    BitArray bitArr4(16,171);
-    ASSERT_EQ(bitArr1==bitArr4,false);
-    ASSERT_EQ(bitArr1==bitArr3,true);
+TEST(BitArrayTests, OperatorDoubleEqual)
+{
+    BitArray bitArr1(16, 170);
+    BitArray bitArr2(8, 170);
+    ASSERT_THROW(bitArr1 == bitArr2, std::invalid_argument);
+    BitArray bitArr3(16, 170);
+    BitArray bitArr4(16, 171);
+    ASSERT_EQ(bitArr1 == bitArr4, false);
+    ASSERT_EQ(bitArr1 == bitArr3, true);
 }
 
-TEST(BitArrayTests, OperatorNotEqual){
-    BitArray bitArr1(16,170);
-    BitArray bitArr2(8,170);
-    ASSERT_THROW(bitArr1!=bitArr2, std::invalid_argument);
-    BitArray bitArr3(16,170);
-    BitArray bitArr4(16,171);
-    ASSERT_EQ(bitArr1!=bitArr4,true);
-    ASSERT_EQ(bitArr1!=bitArr3,false);
+TEST(BitArrayTests, OperatorNotEqual)
+{
+    BitArray bitArr1(16, 170);
+    BitArray bitArr2(8, 170);
+    ASSERT_THROW(bitArr1 != bitArr2, std::invalid_argument);
+    BitArray bitArr3(16, 170);
+    BitArray bitArr4(16, 171);
+    ASSERT_EQ(bitArr1 != bitArr4, true);
+    ASSERT_EQ(bitArr1 != bitArr3, false);
 }
 
-TEST(BitArrayTests, OperatorConuction){
-    BitArray bitArr1(16,170);
-    BitArray bitArr2(8,170);
-    ASSERT_THROW(bitArr1&bitArr2, std::invalid_argument);
-    BitArray bitArr3(16,85);
-    ASSERT_EQ((bitArr1&bitArr3).to_string(),"0000000000000000");
+TEST(BitArrayTests, OperatorConuction)
+{
+    BitArray bitArr1(16, 170);
+    BitArray bitArr2(8, 170);
+    ASSERT_THROW(bitArr1 & bitArr2, std::invalid_argument);
+    BitArray bitArr3(16, 85);
+    ASSERT_EQ((bitArr1 & bitArr3).to_string(), "0000000000000000");
 }
 
-TEST(BitArrayTests, OperatorDizuction){
-    BitArray bitArr1(16,170);
-    BitArray bitArr2(8,170);
-    ASSERT_THROW(bitArr1|bitArr2, std::invalid_argument);
-    BitArray bitArr3(16,85);
-    ASSERT_EQ((bitArr1|bitArr3).to_string(),"0000000011111111");
+TEST(BitArrayTests, OperatorDizuction)
+{
+    BitArray bitArr1(16, 170);
+    BitArray bitArr2(8, 170);
+    ASSERT_THROW(bitArr1 | bitArr2, std::invalid_argument);
+    BitArray bitArr3(16, 85);
+    ASSERT_EQ((bitArr1 | bitArr3).to_string(), "0000000011111111");
 }
 
-TEST(BitArrayTests, OperatorXOR){
-    BitArray bitArr1(16,170);
-    BitArray bitArr2(8,170);
-    ASSERT_THROW(bitArr1^bitArr2, std::invalid_argument);
-    BitArray bitArr3(16,85);
-    ASSERT_EQ((bitArr1^bitArr3).to_string(),"0000000011111111");
+TEST(BitArrayTests, OperatorXOR)
+{
+    BitArray bitArr1(16, 170);
+    BitArray bitArr2(8, 170);
+    ASSERT_THROW(bitArr1 ^ bitArr2, std::invalid_argument);
+    BitArray bitArr3(16, 85);
+    ASSERT_EQ((bitArr1 ^ bitArr3).to_string(), "0000000011111111");
+}
+
+TEST(BitArrayIteratorTests, ConstructorWithValues)
+{
+    BitArray bitArr1(16, 170);
+    BitArray::Iterator iter(&bitArr1,8);
+    ASSERT_TRUE(*iter);
+    BitArray::Iterator iter2(&bitArr1,-1);
+    ASSERT_THROW(*iter2,std::out_of_range);
+    BitArray::Iterator iter3(&bitArr1,17);
+    ASSERT_THROW(*iter3,std::out_of_range);
+}
+
+TEST(BitArrayIteratorTests, OperatorIncremention)
+{
+    BitArray bitArr1(3, 8);
+    BitArray::Iterator iterationBegin = bitArr1.begin();
+    BitArray::Iterator iterationEnd = bitArr1.end();
+    ++iterationBegin;
+    ++iterationBegin;
+    ASSERT_EQ(iterationBegin!=iterationEnd,true);
+    ++iterationBegin;
+    ASSERT_EQ(iterationBegin==iterationEnd,true);
 }
