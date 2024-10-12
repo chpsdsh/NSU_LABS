@@ -375,6 +375,12 @@ BitArray::Iterator &BitArray::Iterator::operator++()
   return *this;
 }
 
+BitArray::Iterator &BitArray::Iterator::operator--()
+{
+  index--;
+  return *this;
+}
+
 bool BitArray::Iterator::operator==(const Iterator &iterator) const
 {
   return index == iterator.index;
@@ -385,6 +391,6 @@ bool BitArray::Iterator::operator!=(const Iterator &iterator) const
   return index != iterator.index;
 }
 
-BitArray::Iterator BitArray::begin(){return Iterator(this,0);}
+BitArray::Iterator BitArray::begin() { return Iterator(this, 0); }
 
-BitArray::Iterator BitArray::end(){return Iterator(this,numBits);};
+BitArray::Iterator BitArray::end() { return Iterator(this, numBits); };

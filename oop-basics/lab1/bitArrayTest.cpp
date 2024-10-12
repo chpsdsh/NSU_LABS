@@ -300,12 +300,12 @@ TEST(BitArrayTests, OperatorXOR)
 TEST(BitArrayIteratorTests, ConstructorWithValues)
 {
     BitArray bitArr1(16, 170);
-    BitArray::Iterator iter(&bitArr1,8);
+    BitArray::Iterator iter(&bitArr1, 8);
     ASSERT_TRUE(*iter);
-    BitArray::Iterator iter2(&bitArr1,-1);
-    ASSERT_THROW(*iter2,std::out_of_range);
-    BitArray::Iterator iter3(&bitArr1,17);
-    ASSERT_THROW(*iter3,std::out_of_range);
+    BitArray::Iterator iter2(&bitArr1, -1);
+    ASSERT_THROW(*iter2, std::out_of_range);
+    BitArray::Iterator iter3(&bitArr1, 17);
+    ASSERT_THROW(*iter3, std::out_of_range);
 }
 
 TEST(BitArrayIteratorTests, OperatorIncremention)
@@ -315,7 +315,19 @@ TEST(BitArrayIteratorTests, OperatorIncremention)
     BitArray::Iterator iterationEnd = bitArr1.end();
     ++iterationBegin;
     ++iterationBegin;
-    ASSERT_EQ(iterationBegin!=iterationEnd,true);
+    ASSERT_EQ(iterationBegin != iterationEnd, true);
     ++iterationBegin;
-    ASSERT_EQ(iterationBegin==iterationEnd,true);
+    ASSERT_EQ(iterationBegin == iterationEnd, true);
+}
+
+TEST(BitArrayIteratorTests, OperatorDecremention)
+{
+    BitArray bitArr1(3, 5);
+    BitArray::Iterator iterationBegin = bitArr1.begin();
+    BitArray::Iterator iterationEnd = bitArr1.end();
+    --iterationEnd;
+    --iterationEnd;
+    ASSERT_EQ(iterationBegin != iterationEnd, true);
+    --iterationEnd;
+    ASSERT_EQ(iterationBegin == iterationEnd, true);
 }
