@@ -151,6 +151,7 @@ BitArray &BitArray::operator>>=(int n)
   int shiftBytes = n / BYTE_SIZE;
   int shiftBits = n % BYTE_SIZE;
   int numBytes = (numBits + BYTE_SIZE - 1) / BYTE_SIZE;
+  std::cout<<numBytes<<std::endl;
 
   if (n >= numBits)
   {
@@ -169,11 +170,13 @@ BitArray &BitArray::operator>>=(int n)
     std::fill(array.begin(), array.begin() + shiftBytes, 0);
 
     char overflow = 0;
-    for (int i = 0; i < numBytes; ++i)
+    for (int i = 0; i < numBytes; i++)
     {
+      std::cout<<i<<(int)overflow<<std::endl;
       char current = array[i];
-      array[i] = (current >> shiftBits) | overflow;
+      array[i] = ((current >> shiftBits) & (255 >> (shiftBits)) | overflow) ;
       overflow = (current << (BYTE_SIZE - shiftBits));
+      
     }
   }
 
@@ -183,13 +186,13 @@ BitArray &BitArray::operator>>=(int n)
 BitArray BitArray::operator<<(int n) const
 {
   BitArray res = (*this);
-  return res << n;
+  return res <<= n;
 }
 
 BitArray BitArray::operator>>(int n) const
 {
   BitArray res = (*this);
-  return res >> n;
+  return res >>= n;
 }
 
 BitArray &BitArray::set(int n, bool val)
@@ -198,18 +201,18 @@ BitArray &BitArray::set(int n, bool val)
   int bitIndex = n % BYTE_SIZE;
   if (val)
   {
-    array[byteIndex] = (1 << bitIndex);
+    array[byteIndex] |= (0x80 >> bitIndex);
   }
   else
   {
-    array[byteIndex] = ~(1 << bitIndex);
+    array[byteIndex] &= ~(0x80 >> bitIndex);
   }
   return *this;
 }
 
 BitArray &BitArray::set()
 {
-  std::fill(array.begin(), array.end(), 1);
+  std::fill(array.begin(), array.end(), 255);
   return *this;
 }
 
@@ -217,7 +220,7 @@ BitArray &BitArray::reset(int n)
 {
   int byteIndex = n / BYTE_SIZE;
   int bitIndex = n % BYTE_SIZE;
-  array[byteIndex] = (0 << bitIndex);
+  array[byteIndex] &= ~(0x80 >> bitIndex);
   return *this;
 }
 
@@ -289,6 +292,7 @@ bool BitArray::empty() const
 {
   return numBits == 0;
 }
+
 std::string BitArray::to_string() const
 {
   std::string res;
@@ -304,12 +308,12 @@ bool operator==(const BitArray &a, const BitArray &b)
 {
   if (a.size() != b.size())
   {
-    return false;
+      throw std::invalid_argument("Array sizes do not match");
   }
 
   for (std::size_t i = 0; i < a.size(); ++i)
   {
-    if (a.operator[](i) != b.operator[](i))
+    if (a[i]!= b[i])
     {
       return false;
     }
@@ -324,7 +328,7 @@ bool operator!=(const BitArray &a, const BitArray &b)
 
 BitArray operator&(const BitArray &b1, const BitArray &b2)
 {
-  if (b1.size() != b1.size())
+  if (b1.size() != b2.size())
   {
     throw std::invalid_argument("Array sizes do not match");
   }

@@ -8,5 +8,7 @@ enable_testing()
 
 find_package(GTest REQUIRED)
 add_executable(tests bitArrayTest.cpp bitArray.cpp)
+target_compile_options(tests PRIVATE -fprofile-abs-path --coverage)
+target_link_options(tests PRIVATE -lgcov --coverage)
 target_link_libraries(tests GTest::GTest GTest::Main pthread)
 target_link_libraries(lab1)
