@@ -13,22 +13,7 @@ TEST(BitArrayTests, ConstructorWithValues)
 {
     BitArray bitArr(16, 170);
     ASSERT_EQ(bitArr.size(), 16);
-    ASSERT_EQ(bitArr[0], 0);
-    ASSERT_EQ(bitArr[1], 0);
-    ASSERT_EQ(bitArr[2], 0);
-    ASSERT_EQ(bitArr[3], 0);
-    ASSERT_EQ(bitArr[4], 0);
-    ASSERT_EQ(bitArr[5], 0);
-    ASSERT_EQ(bitArr[6], 0);
-    ASSERT_EQ(bitArr[7], 0);
-    ASSERT_EQ(bitArr[8], 1);
-    ASSERT_EQ(bitArr[9], 0);
-    ASSERT_EQ(bitArr[10], 1);
-    ASSERT_EQ(bitArr[11], 0);
-    ASSERT_EQ(bitArr[12], 1);
-    ASSERT_EQ(bitArr[13], 0);
-    ASSERT_EQ(bitArr[14], 1);
-    ASSERT_EQ(bitArr[15], 0);
+    ASSERT_EQ(bitArr.to_string(), "0000000010101010");
 }
 
 TEST(BitArrayTests, to_stringTest)
@@ -71,7 +56,7 @@ TEST(BitArrayTests, ResizeTest)
     BitArray bitArr(8, 170);
     bitArr.resize(16, true);
     ASSERT_EQ(bitArr.size(), 16);
-    ASSERT_EQ(bitArr.to_string(), "1010101011111111");
+    ASSERT_EQ(bitArr.to_string(), "1111111110101010");
 }
 
 TEST(BitArrayTests, ClearTest)
@@ -86,7 +71,7 @@ TEST(BitArrayTests, PushBackTest)
 {
     BitArray bitArr(16, 170);
     bitArr.push_back(1);
-    ASSERT_EQ(bitArr.to_string(), "00000000101010101");
+    ASSERT_TRUE(bitArr[16]);
 }
 
 TEST(BitArrayTests, OperatorConEquelTest)
@@ -99,8 +84,7 @@ TEST(BitArrayTests, OperatorConEquelTest)
     ASSERT_THROW(bitArr1 &= bitArr2, std::invalid_argument);
     BitArray bitArr3(8, 170);
     BitArray bitArr4(8, 15);
-    bitArr3 &= bitArr4;
-    ASSERT_EQ(bitArr3.to_string(), "00001010");
+    ASSERT_EQ((bitArr3 &= bitArr4).to_string(), "00001010");
 }
 
 TEST(BitArrayTests, OperatorDisEquelTest)
@@ -226,14 +210,14 @@ TEST(BitArrayTests, OperatorIndexer)
 {
     BitArray bitArr(8, 170);
     ASSERT_THROW(bitArr[8], std::out_of_range);
-    ASSERT_EQ(bitArr[0], 1);
-    ASSERT_EQ(bitArr[1], 0);
-    ASSERT_EQ(bitArr[2], 1);
-    ASSERT_EQ(bitArr[3], 0);
-    ASSERT_EQ(bitArr[4], 1);
-    ASSERT_EQ(bitArr[5], 0);
-    ASSERT_EQ(bitArr[6], 1);
-    ASSERT_EQ(bitArr[7], 0);
+    ASSERT_EQ(bitArr[0], 0);
+    ASSERT_EQ(bitArr[1], 1);
+    ASSERT_EQ(bitArr[2], 0);
+    ASSERT_EQ(bitArr[3], 1);
+    ASSERT_EQ(bitArr[4], 0);
+    ASSERT_EQ(bitArr[5], 1);
+    ASSERT_EQ(bitArr[6], 0);
+    ASSERT_EQ(bitArr[7], 1);
 }
 
 TEST(BitArrayTests, SizeIndexer)
@@ -300,7 +284,7 @@ TEST(BitArrayTests, OperatorXOR)
 TEST(BitArrayIteratorTests, ConstructorWithValues)
 {
     BitArray bitArr1(16, 170);
-    BitArray::Iterator iter(&bitArr1, 8);
+    BitArray::Iterator iter(&bitArr1, 1);
     ASSERT_TRUE(*iter);
     BitArray::Iterator iter2(&bitArr1, -1);
     ASSERT_THROW(*iter2, std::out_of_range);

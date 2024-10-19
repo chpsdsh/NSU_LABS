@@ -11,9 +11,9 @@ BitArray::BitArray(int num_bits, unsigned long value) : numBits(num_bits)
 
   for (int i = 0; i < num_bits && i < sizeof(value) * 8; ++i)
   {
-    if (value & (1UL << i))
+    if (value & (1 << i))
     {
-      int byteIndex = size - 1 - (i / BYTE_SIZE);
+      int byteIndex = i / BYTE_SIZE;
       int bitIndex = i % BYTE_SIZE;
       array[byteIndex] |= (1 << bitIndex);
     }
@@ -56,10 +56,12 @@ void BitArray::clear()
 
 void BitArray::push_back(bool bit)
 {
-  std::cout << numBits << " ";
+
   (*this).resize(numBits + 1);
-  std::cout << numBits << " ";
-  array[numBits / BYTE_SIZE] |= 0x80 >> ((numBits - 1) % BYTE_SIZE);
+  if(bit)
+    array[(numBits-1) / BYTE_SIZE] |= 1 <<((numBits-1) % BYTE_SIZE);
+  else
+    array[(numBits-1) / BYTE_SIZE] &= ~(1 <<((numBits-1) % BYTE_SIZE));
 }
 
 BitArray &BitArray::operator&=(const BitArray &b)
@@ -71,8 +73,9 @@ BitArray &BitArray::operator&=(const BitArray &b)
   {
     throw std::invalid_argument("Array sizes do not match");
   }
+  int size = (numBits + BYTE_SIZE - 1) / BYTE_SIZE;
 
-  for (std::size_t i = 0; i < numBits; ++i)
+  for (int i = 0; i < size; ++i)
   {
     array[i] &= b.array[i];
   }
@@ -89,8 +92,9 @@ BitArray &BitArray::operator|=(const BitArray &b)
   {
     throw std::invalid_argument("Array sizes do not match");
   }
+  int size = (numBits + BYTE_SIZE - 1) / BYTE_SIZE;
 
-  for (std::size_t i = 0; i < numBits; ++i)
+  for (std::size_t i = 0; i < size; ++i)
   {
     array[i] |= b.array[i];
   }
@@ -105,8 +109,9 @@ BitArray &BitArray::operator^=(const BitArray &b)
   {
     throw std::invalid_argument("Array sizes do not match");
   }
+  int size = (numBits + BYTE_SIZE - 1) / BYTE_SIZE;
 
-  for (std::size_t i = 0; i < numBits; ++i)
+  for (std::size_t i = 0; i < size; ++i)
   {
     array[i] ^= b.array[i];
   }
@@ -127,16 +132,16 @@ BitArray &BitArray::operator<<=(int n)
   }
   if (shiftBits == 0)
   {
-    std::move(array.begin() + shiftBytes, array.end(), array.begin());
-    std::fill(array.end() - shiftBytes, array.end(), 0);
+    std::move(array.begin(), array.end() - shiftBytes, array.begin() + shiftBytes);
+    std::fill(array.begin(), array.begin() + shiftBytes, 0);
   }
   else
   {
 
-    std::move(array.begin() + shiftBytes, array.end(), array.begin());
-    std::fill(array.end() - shiftBytes, array.end(), 0);
+    std::move(array.begin(), array.end() - shiftBytes, array.begin() + shiftBytes);
+    std::fill(array.begin(), array.begin() + shiftBytes, 0);
     char overflow = 0;
-    for (int i = numBytes - 1; i >= 0; i--)
+    for (int i = 0; i < numBytes; i++)
     {
       char current = array[i];
       array[i] = (current << shiftBits) | overflow;
@@ -161,16 +166,16 @@ BitArray &BitArray::operator>>=(int n)
 
   if (shiftBits == 0)
   {
-    std::move(array.begin(), array.end() - shiftBytes, array.begin() + shiftBytes);
-    std::fill(array.begin(), array.begin() + shiftBytes, 0);
+    std::move(array.begin() + shiftBytes, array.end(), array.begin());
+    std::fill(array.end() - shiftBytes, array.end(), 0);
   }
   else
   {
-    std::move(array.begin(), array.end() - shiftBytes, array.begin() + shiftBytes);
-    std::fill(array.begin(), array.begin() + shiftBytes, 0);
+    std::move(array.begin() + shiftBytes, array.end(), array.begin());
+    std::fill(array.end() - shiftBytes, array.end(), 0);
 
     char overflow = 0;
-    for (int i = 0; i < numBytes; i++)
+    for (int i = numBytes - 1; i >= 0; i--)
     {
       std::cout << i << (int)overflow << std::endl;
       char current = array[i];
@@ -196,15 +201,16 @@ BitArray BitArray::operator>>(int n) const
 
 BitArray &BitArray::set(int n, bool val)
 {
+  int size = (numBits + BYTE_SIZE - 1) / BYTE_SIZE;
   int byteIndex = n / BYTE_SIZE;
   int bitIndex = n % BYTE_SIZE;
   if (val)
   {
-    array[byteIndex] |= (0x80 >> bitIndex);
+    array[size - byteIndex-1] |= (1 << (BYTE_SIZE-bitIndex-1));
   }
   else
   {
-    array[byteIndex] &= ~(0x80 >> bitIndex);
+    array[size - byteIndex-1] &= ~(1 << (BYTE_SIZE-bitIndex-1));
   }
   return *this;
 }
@@ -217,10 +223,7 @@ BitArray &BitArray::set()
 
 BitArray &BitArray::reset(int n)
 {
-  int byteIndex = n / BYTE_SIZE;
-  int bitIndex = n % BYTE_SIZE;
-  array[byteIndex] &= ~(0x80 >> bitIndex);
-  return *this;
+  return set(n,false);
 }
 
 BitArray &BitArray::reset()
@@ -249,9 +252,9 @@ bool BitArray::none() const
 BitArray BitArray::operator~() const
 {
   BitArray res = *this;
-  for (char &byte : res.array)
+  for (char &elem : res.array)
   {
-    byte = ~byte;
+    elem = ~elem;
   }
   return res;
 }
@@ -279,7 +282,7 @@ bool BitArray::operator[](int i) const
   }
   int byteIndex = i / BYTE_SIZE;
   int bitIndex = i % BYTE_SIZE;
-  return (array[byteIndex] & (0x80 >> bitIndex));
+  return (array[byteIndex] & (1 << bitIndex));
 }
 
 int BitArray::size() const
@@ -297,7 +300,7 @@ std::string BitArray::to_string() const
   std::string res;
   for (std::size_t i = 0; i < numBits; ++i)
   {
-    res.push_back((*this)[i] ? '1' : '0');
+    res = ((*this)[i] ? '1' : '0') + res;
   }
 
   return res;
