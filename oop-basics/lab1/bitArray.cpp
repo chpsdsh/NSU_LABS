@@ -3,6 +3,12 @@
 BitArray::BitArray() : numBits(0) {};
 BitArray::~BitArray() = default;
 BitArray::BitArray(const BitArray &b) : array(b.array), numBits(b.numBits) {}
+BitArray::BitReference::BitReference(const char &reference, int bitPosition) : reference(const_cast<char &>(reference)), bitPosition(bitPosition) {}
+BitArray::BitReference::operator bool() const
+{
+  return reference & (1 << bitPosition);
+}
+
 
 BitArray::BitArray(int num_bits, unsigned long value) : numBits(num_bits)
 {
@@ -58,10 +64,10 @@ void BitArray::push_back(bool bit)
 {
 
   (*this).resize(numBits + 1);
-  if(bit)
-    array[(numBits-1) / BYTE_SIZE] |= 1 <<((numBits-1) % BYTE_SIZE);
+  if (bit)
+    array[(numBits - 1) / BYTE_SIZE] |= 1 << ((numBits - 1) % BYTE_SIZE);
   else
-    array[(numBits-1) / BYTE_SIZE] &= ~(1 <<((numBits-1) % BYTE_SIZE));
+    array[(numBits - 1) / BYTE_SIZE] &= ~(1 << ((numBits - 1) % BYTE_SIZE));
 }
 
 BitArray &BitArray::operator&=(const BitArray &b)
@@ -206,11 +212,11 @@ BitArray &BitArray::set(int n, bool val)
   int bitIndex = n % BYTE_SIZE;
   if (val)
   {
-    array[size - byteIndex-1] |= (1 << (BYTE_SIZE-bitIndex-1));
+    array[size - byteIndex - 1] |= (1 << (BYTE_SIZE - bitIndex - 1));
   }
   else
   {
-    array[size - byteIndex-1] &= ~(1 << (BYTE_SIZE-bitIndex-1));
+    array[size - byteIndex - 1] &= ~(1 << (BYTE_SIZE - bitIndex - 1));
   }
   return *this;
 }
@@ -223,7 +229,7 @@ BitArray &BitArray::set()
 
 BitArray &BitArray::reset(int n)
 {
-  return set(n,false);
+  return set(n, false);
 }
 
 BitArray &BitArray::reset()
@@ -272,6 +278,14 @@ int BitArray::count() const
     }
   }
   return countOneBits;
+}
+
+BitArray::BitReference BitArray::operator[](int i){
+   if (i < 0 || i >= numBits)
+  {
+    throw std::out_of_range("Index out of range");
+  }
+  return BitReference(array[i/BYTE_SIZE],i%BYTE_SIZE);
 }
 
 bool BitArray::operator[](int i) const
@@ -362,14 +376,23 @@ BitArray::Iterator::Iterator(const BitArray *bArr, int idx) : bitArr(bArr), inde
 
 BitArray::Iterator::~Iterator() = default;
 
-bool BitArray::Iterator::operator*() const
+BitArray::BitReference BitArray::Iterator::operator*() const
 {
   if (index < 0 || index > (*bitArr).size())
   {
     throw std::out_of_range("Out of range");
   }
+  return BitReference(bitArr->array[index / BYTE_SIZE],index%BYTE_SIZE);
+}
 
-  return (*bitArr)[index];
+BitArray::BitReference& BitArray::BitReference::operator=(bool value){
+  if(value){
+    reference |= (1<<bitPosition);
+  }
+  else{
+    reference &= ~(1<<bitPosition);
+  }
+  return *this;
 }
 
 BitArray::Iterator &BitArray::Iterator::operator++()

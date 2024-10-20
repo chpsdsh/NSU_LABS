@@ -315,3 +315,11 @@ TEST(BitArrayIteratorTests, OperatorDecremention)
     --iterationEnd;
     ASSERT_EQ(iterationBegin == iterationEnd, true);
 }
+
+TEST(BitArrayIteratorTest, AutoTest)
+{
+    BitArray bitArr(8, 255);
+    for (int i = 0; i < bitArr.size(); i++)
+        bitArr[i] = false;
+    EXPECT_TRUE(bitArr.none());
+}

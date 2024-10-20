@@ -6,169 +6,379 @@
 
 const int BYTE_SIZE = 8;
 
+/**
+ * A class representing a dynamic array of bits.
+ */
 class BitArray
 {
 private:
-    std::vector<char> array;
-    int numBits;
+    std::vector<char> array; // Vector to hold the bits (each char represents a byte).
+    int numBits; // Total number of bits in the BitArray.
 
 public:
-    // Default constructor.
-    // Constructs an empty BitArray.
+    /**
+     * A class representing a reference to a specific bit in the BitArray.
+     */
+    class BitReference
+    {
+    private:
+        int bitPosition; // The position of the bit in the BitArray.
+        char &reference; // Reference to the byte that contains the bit.
+
+    public:
+        /**
+         * Constructor for creating a BitReference.
+         * 
+         * @param reference Reference to the byte containing the bit.
+         * @param bitPosition Position of the bit within the byte.
+         */
+        BitReference(const char &reference, int bitPosition);
+
+        /**
+         * Assignment operator to set the bit value.
+         * 
+         * @param value The boolean value to set the bit to.
+         * @return Reference to the current BitReference object.
+         */
+        BitReference &operator=(bool value);
+
+        /**
+         * Conversion operator to get the boolean value of the referenced bit.
+         * 
+         * @return The boolean value of the bit.
+         */
+        operator bool() const;
+    };
+
+    /**
+     * Indexing operator to access a bit at a specific position.
+     * 
+     * @param i The index of the bit to access.
+     * @return A BitReference object for the specified bit.
+     */
+    BitReference operator[](int i);
+
+    /**
+     * Default constructor initializing an empty BitArray.
+     */
     BitArray();
 
-    // Destructor.
-    // Cleans up any resources used by the BitArray.
+    /**
+     * Destructor to clean up the BitArray.
+     */
     ~BitArray();
 
-    // Constructs a BitArray capable of holding 'num_bits' bits.
-    // If 'value' is provided, the first 'sizeof(long)' bits of the array
-    // are initialized using the binary representation of 'value'.
+    /**
+     * Constructor that initializes a BitArray with a specified number of bits.
+     * 
+     * @param num_bits The number of bits to initialize.
+     * @param value The initial value to set for the bits (default is 0).
+     */
     explicit BitArray(int num_bits, unsigned long value = 0);
 
-    // Copy constructor.
-    // Creates a copy of the given BitArray 'b'.
+    /**
+     * Copy constructor to create a BitArray from another BitArray.
+     * 
+     * @param b The BitArray to copy from.
+     */
     BitArray(const BitArray &b);
 
-    // Swaps the contents of this BitArray with another BitArray 'b'.
+    /**
+     * Swap the contents of this BitArray with another BitArray.
+     * 
+     * @param b The BitArray to swap with.
+     */
     void swap(BitArray &b);
 
-    // Assignment operator.
-    // Assigns the contents of another BitArray 'b' to this BitArray.
+    /**
+     * Assignment operator to assign one BitArray to another.
+     * 
+     * @param b The BitArray to assign from.
+     * @return Reference to this BitArray.
+     */
     BitArray &operator=(const BitArray &b);
 
-    // Resizes the BitArray to hold 'num_bits' bits.
-    // If the size is increased, new bits are initialized to 'value' (false by default).
+    /**
+     * Resize the BitArray to a new size and optionally initialize the new bits.
+     * 
+     * @param num_bits The new size for the BitArray.
+     * @param value The value to initialize new bits (default is false).
+     */
     void resize(int num_bits, bool value = false);
 
-    // Clears all the bits in the BitArray, making it empty.
+    /**
+     * Clear all bits in the BitArray, setting them to false.
+     */
     void clear();
 
-    // Adds a new bit at the end of the BitArray.
-    // The array is resized if necessary.
+    /**
+     * Append a new bit to the end of the BitArray.
+     * 
+     * @param bit The bit value to append (true or false).
+     */
     void push_back(bool bit);
 
-    // Bitwise AND operation with another BitArray 'b'.
-    // Both arrays must have the same size.
-    // Throws an exception if the sizes do not match.
+    /**
+     * Bitwise AND assignment operator.
+     * 
+     * @param b The BitArray to AND with.
+     * @return Reference to this BitArray.
+     */
     BitArray &operator&=(const BitArray &b);
 
-    // Bitwise OR operation with another BitArray 'b'.
-    // Both arrays must have the same size.
-    // Throws an exception if the sizes do not match.
+    /**
+     * Bitwise OR assignment operator.
+     * 
+     * @param b The BitArray to OR with.
+     * @return Reference to this BitArray.
+     */
     BitArray &operator|=(const BitArray &b);
 
-    // Bitwise XOR operation with another BitArray 'b'.
-    // Both arrays must have the same size.
-    // Throws an exception if the sizes do not match.
+    /**
+     * Bitwise XOR assignment operator.
+     * 
+     * @param b The BitArray to XOR with.
+     * @return Reference to this BitArray.
+     */
     BitArray &operator^=(const BitArray &b);
 
-    // Left shift operation by 'n' positions.
-    // Bits shifted out are replaced with 0s.
+    /**
+     * Left shift assignment operator.
+     * 
+     * @param n The number of positions to shift left.
+     * @return Reference to this BitArray.
+     */
     BitArray &operator<<=(int n);
 
-    // Right shift operation by 'n' positions.
-    // Bits shifted out are replaced with 0s.
+    /**
+     * Right shift assignment operator.
+     * 
+     * @param n The number of positions to shift right.
+     * @return Reference to this BitArray.
+     */
     BitArray &operator>>=(int n);
 
-    // Returns a copy of the BitArray, shifted left by 'n' positions.
+    /**
+     * Left shift operator that returns a new BitArray.
+     * 
+     * @param n The number of positions to shift left.
+     * @return A new BitArray that is the result of the left shift.
+     */
     BitArray operator<<(int n) const;
 
-    // Returns a copy of the BitArray, shifted right by 'n' positions.
+    /**
+     * Right shift operator that returns a new BitArray.
+     * 
+     * @param n The number of positions to shift right.
+     * @return A new BitArray that is the result of the right shift.
+     */
     BitArray operator>>(int n) const;
 
-    // Sets the bit at index 'n' to 'val' (true by default).
-    // Throws an exception if 'n' is out of bounds.
+    /**
+     * Set the value of a specific bit.
+     * 
+     * @param n The position of the bit to set.
+     * @param val The value to set the bit to (default is true).
+     * @return Reference to this BitArray.
+     */
     BitArray &set(int n, bool val = true);
 
-    // Sets all bits in the BitArray to true.
+    /**
+     * Set all bits in the BitArray to true.
+     * 
+     * @return Reference to this BitArray.
+     */
     BitArray &set();
 
-    // Resets the bit at index 'n' to false.
-    // Throws an exception if 'n' is out of bounds.
+    /**
+     * Reset (clear) a specific bit.
+     * 
+     * @param n The position of the bit to reset.
+     * @return Reference to this BitArray.
+     */
     BitArray &reset(int n);
 
-    // Resets all bits in the BitArray to false.
+    /**
+     * Reset (clear) all bits in the BitArray.
+     * 
+     * @return Reference to this BitArray.
+     */
     BitArray &reset();
 
-    // Returns true if at least one bit in the BitArray is true.
+    /**
+     * Check if any bits in the BitArray are set to true.
+     * 
+     * @return True if any bits are set, false otherwise.
+     */
     bool any() const;
 
-    // Returns true if all bits in the BitArray are false.
+    /**
+     * Check if none of the bits in the BitArray are set to true.
+     * 
+     * @return True if no bits are set, false otherwise.
+     */
     bool none() const;
 
-    // Bitwise NOT operation.
-    // Returns a new BitArray where each bit is inverted.
+    /**
+     * Bitwise NOT operator, returning a new BitArray with all bits inverted.
+     * 
+     * @return A new BitArray with inverted bit values.
+     */
     BitArray operator~() const;
 
-    // Counts the number of bits that are set to true.
+    /**
+     * Count the number of bits set to true.
+     * 
+     * @return The number of true bits in the BitArray.
+     */
     int count() const;
 
-    // Returns the value of the bit at index 'i'.
-    // Throws an exception if 'i' is out of bounds.
+    /**
+     * Access a specific bit in the BitArray as a constant.
+     * 
+     * @param i The index of the bit to access.
+     * @return The boolean value of the specified bit.
+     */
     bool operator[](int i) const;
 
-    // Returns the number of bits in the BitArray.
+    /**
+     * Get the size of the BitArray.
+     * 
+     * @return The number of bits in the BitArray.
+     */
     int size() const;
 
-    // Returns true if the BitArray contains no bits.
+    /**
+     * Check if the BitArray is empty.
+     * 
+     * @return True if the BitArray has no bits, false otherwise.
+     */
     bool empty() const;
 
-    // Returns a string representation of the BitArray, where each bit
-    // is represented by '1' or '0'.
+    /**
+     * Convert the BitArray to a string representation.
+     * 
+     * @return A string representing the bit values (e.g., "10101").
+     */
     std::string to_string() const;
 
-    // Iterator class for iterating through the bits of the BitArray.
+    /**
+     * An iterator class for iterating over the bits in the BitArray.
+     */
     class Iterator
     {
     private:
-        int index;
-        const BitArray *bitArr;
+        int index; // Current index in the BitArray.
+        const BitArray *bitArr; // Pointer to the BitArray being iterated.
+
     public:
-        // Constructs an iterator for the BitArray starting at index 'idx'.
+        /**
+         * Constructor for creating an Iterator.
+         * 
+         * @param bArr Pointer to the BitArray to iterate over.
+         * @param idx The starting index for the iterator.
+         */
         Iterator(const BitArray *bArr, int idx);
 
-        // Destructor.
+        /**
+         * Destructor for the Iterator.
+         */
         ~Iterator();
 
-        // Dereferences the iterator to access the value of the current bit.
-        bool operator*() const;
+        /**
+         * Dereference operator to access the current bit.
+         * 
+         * @return A BitReference for the current bit.
+         */
+        BitReference operator*() const;
 
-        // Pre-increment operator. Moves the iterator to the next bit.
+        /**
+         * Prefix increment operator to move to the next bit.
+         * 
+         * @return Reference to the updated Iterator.
+         */
         Iterator &operator++();
 
-        // Pre-decremention operator. Moves the iterator to the next bit.
+        /**
+         * Prefix decrement operator to move to the previous bit.
+         * 
+         * @return Reference to the updated Iterator.
+         */
         Iterator &operator--();
 
-        // Compares two iterators for inequality.
+        /**
+         * Inequality operator to compare two Iterators.
+         * 
+         * @param iterator The Iterator to compare against.
+         * @return True if the Iterators are not equal, false otherwise.
+         */
         bool operator!=(const Iterator &iterator) const;
 
-        // Compares two iterators for equality.
+        /**
+         * Equality operator to compare two Iterators.
+         * 
+         * @param iterator The Iterator to compare against.
+         * @return True if the Iterators are equal, false otherwise.
+         */
         bool operator==(const Iterator &iterator) const;
     };
 
-    // Returns an iterator to the beginning of the BitArray.
+    /**
+     * Get an iterator pointing to the first bit in the BitArray.
+     * 
+     * @return An Iterator set to the beginning of the BitArray.
+     */
     Iterator begin();
 
-    // Returns an iterator to the end of the BitArray (one past the last element).
+    /**
+     * Get an iterator pointing to the end of the BitArray (one past the last bit).
+     * 
+     * @return An Iterator set to the end of the BitArray.
+     */
     Iterator end();
 };
 
-// Compares two BitArrays for equality. Returns true if they have the same size
-// and all corresponding bits are equal.
+/**
+ * Equality operator to compare two BitArray objects.
+ * 
+ * @param a The first BitArray to compare.
+ * @param b The second BitArray to compare.
+ * @return True if both BitArray objects are equal, false otherwise.
+ */
 bool operator==(const BitArray &a, const BitArray &b);
 
-// Compares two BitArrays for inequality. Returns true if they are not equal.
+/**
+ * Inequality operator to compare two BitArray objects.
+ * 
+ * @param a The first BitArray to compare.
+ * @param b The second BitArray to compare.
+ * @return True if both BitArray objects are not equal, false otherwise.
+ */
 bool operator!=(const BitArray &a, const BitArray &b);
 
-// Performs a bitwise AND operation between two BitArrays and returns the result.
-// Throws an exception if the sizes do not match.
+/**
+ * Bitwise AND operator for two BitArray objects.
+ * 
+ * @param b1 The first BitArray to AND.
+ * @param b2 The second BitArray to AND.
+ * @return A new BitArray that is the result of the bitwise AND operation.
+ */
 BitArray operator&(const BitArray &b1, const BitArray &b2);
 
-// Performs a bitwise OR operation between two BitArrays and returns the result.
-// Throws an exception if the sizes do not match.
+/**
+ * Bitwise OR operator for two BitArray objects.
+ * 
+ * @param b1 The first BitArray to OR.
+ * @param b2 The second BitArray to OR.
+ * @return A new BitArray that is the result of the bitwise OR operation.
+ */
 BitArray operator|(const BitArray &b1, const BitArray &b2);
 
-// Performs a bitwise XOR operation between two BitArrays and returns the result.
-// Throws an exception if the sizes do not match.
+/**
+ * Bitwise XOR operator for two BitArray objects.
+ * 
+ * @param b1 The first BitArray to XOR.
+ * @param b2 The second BitArray to XOR.
+ * @return A new BitArray that is the result of the bitwise XOR operation.
+ */
 BitArray operator^(const BitArray &b1, const BitArray &b2);
