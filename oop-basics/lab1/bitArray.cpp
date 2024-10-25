@@ -9,7 +9,6 @@ BitArray::BitReference::operator bool() const
   return reference & (1 << bitPosition);
 }
 
-
 BitArray::BitArray(int num_bits, unsigned long value) : numBits(num_bits)
 {
   int size = (num_bits + BYTE_SIZE - 1) / BYTE_SIZE;
@@ -280,12 +279,13 @@ int BitArray::count() const
   return countOneBits;
 }
 
-BitArray::BitReference BitArray::operator[](int i){
-   if (i < 0 || i >= numBits)
+BitArray::BitReference BitArray::operator[](int i)
+{
+  if (i < 0 || i >= numBits)
   {
     throw std::out_of_range("Index out of range");
   }
-  return BitReference(array[i/BYTE_SIZE],i%BYTE_SIZE);
+  return BitReference(array[i / BYTE_SIZE], i % BYTE_SIZE);
 }
 
 bool BitArray::operator[](int i) const
@@ -382,15 +382,18 @@ BitArray::BitReference BitArray::Iterator::operator*() const
   {
     throw std::out_of_range("Out of range");
   }
-  return BitReference(bitArr->array[index / BYTE_SIZE],index%BYTE_SIZE);
+  return BitReference(bitArr->array[index / BYTE_SIZE], index % BYTE_SIZE);
 }
 
-BitArray::BitReference& BitArray::BitReference::operator=(bool value){
-  if(value){
-    reference |= (1<<bitPosition);
+BitArray::BitReference &BitArray::BitReference::operator=(bool value)
+{
+  if (value)
+  {
+    reference |= (1 << bitPosition);
   }
-  else{
-    reference &= ~(1<<bitPosition);
+  else
+  {
+    reference &= ~(1 << bitPosition);
   }
   return *this;
 }
