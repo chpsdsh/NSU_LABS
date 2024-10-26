@@ -121,9 +121,9 @@ TEST(BitArrayTests, OperatorLShiftEqTest)
     BitArray bitArr2(16, 170);
     bitArr2 <<= 8;
     ASSERT_EQ(bitArr2.to_string(), "1010101000000000");
-    BitArray bitArr3(16, 170);
-    bitArr3 <<= 3;
-    ASSERT_EQ(bitArr3.to_string(), "0000010101010000");
+    BitArray bitArr3(17, 65535);
+    bitArr3 <<= 1;
+    ASSERT_EQ(bitArr3.to_string(), "11111111111111110");
 }
 
 TEST(BitArrayTests, OperatorRShiftEqTest)
@@ -322,4 +322,11 @@ TEST(BitArrayIteratorTest, AutoTest)
     for (int i = 0; i < bitArr.size(); i++)
         bitArr[i] = false;
     EXPECT_TRUE(bitArr.none());
+}
+
+TEST(BitArrayIteratorTest, AutoTes)
+{
+    BitArray bitArr(8, 255);
+    for (auto v: bitArr)   
+        EXPECT_TRUE(v);
 }

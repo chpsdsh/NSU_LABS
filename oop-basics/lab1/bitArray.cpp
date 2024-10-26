@@ -3,7 +3,7 @@
 BitArray::BitArray() : numBits(0) {};
 BitArray::~BitArray() = default;
 BitArray::BitArray(const BitArray &b) : array(b.array), numBits(b.numBits) {}
-BitArray::BitReference::BitReference(const char &reference, int bitPosition) : reference(const_cast<char &>(reference)), bitPosition(bitPosition) {}
+BitArray::BitReference::BitReference(const char &reference, size_t bitPosition) : reference(const_cast<char &>(reference)), bitPosition(bitPosition) {}
 BitArray::BitReference::operator bool() const
 {
   return reference & (1 << bitPosition);
@@ -279,7 +279,7 @@ int BitArray::count() const
   return countOneBits;
 }
 
-BitArray::BitReference BitArray::operator[](int i)
+BitArray::BitReference BitArray::operator[](size_t i)
 {
   if (i < 0 || i >= numBits)
   {
@@ -288,7 +288,7 @@ BitArray::BitReference BitArray::operator[](int i)
   return BitReference(array[i / BYTE_SIZE], i % BYTE_SIZE);
 }
 
-bool BitArray::operator[](int i) const
+bool BitArray::operator[](size_t i) const
 {
   if (i < 0 || i >= numBits)
   {

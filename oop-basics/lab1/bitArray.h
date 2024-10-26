@@ -22,7 +22,7 @@ public:
     class BitReference
     {
     private:
-        int bitPosition; // The position of the bit in the BitArray.
+        size_t bitPosition; // The position of the bit in the BitArray.
         char &reference; // Reference to the byte that contains the bit.
 
     public:
@@ -32,7 +32,7 @@ public:
          * @param reference Reference to the byte containing the bit.
          * @param bitPosition Position of the bit within the byte.
          */
-        BitReference(const char &reference, int bitPosition);
+        BitReference(const char &reference, size_t bitPosition);
 
         /**
          * Assignment operator to set the bit value.
@@ -56,7 +56,7 @@ public:
      * @param i The index of the bit to access.
      * @return A BitReference object for the specified bit.
      */
-    BitReference operator[](int i);
+    BitReference operator[](size_t i);
 
     /**
      * Default constructor initializing an empty BitArray.
@@ -239,7 +239,7 @@ public:
      * @param i The index of the bit to access.
      * @return The boolean value of the specified bit.
      */
-    bool operator[](int i) const;
+    bool operator[](size_t i) const;
 
     /**
      * Get the size of the BitArray.
