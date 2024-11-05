@@ -1,0 +1,1 @@
+/usr/bin/c++ -lgcov --coverage CMakeFiles/tests.dir/bitArrayTest.cpp.o CMakeFiles/tests.dir/bitArray.cpp.o -o tests  -lpthread /usr/lib64/libgtest_main.so.1.14.0 /usr/lib64/libgtest.so.1.14.0 
