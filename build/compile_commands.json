@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/lab2.dir/main.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/main.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/main.cpp",
+  "output": "CMakeFiles/lab2.dir/main.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/lab2.dir/game.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp",
+  "output": "CMakeFiles/lab2.dir/game.cpp.o"
+}
+]

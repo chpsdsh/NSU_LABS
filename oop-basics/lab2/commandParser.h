@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <string>
 #include <cstring>
+#include <fstream>
+
 
 class CommandParser
 {
@@ -18,7 +20,9 @@ public:
     bool parseCommand(int argc, char *argv[]) {}
     static void requestHelp();
     bool helpRequested() const;
+    bool offlineMode() const;
     [[nodiscard]] std::string getInputFile() const;
     [[nodiscard]] std::string getOutputFile() const;
     [[nodiscard]] size_t getIterationsNumber() const;
+    
 };

@@ -5,6 +5,7 @@ bool CommandParser::helpRequested() const { return helpUsed; }
 std::string CommandParser::getInputFile() const { return inputFile; }
 std::string CommandParser::getOutputFile() const { return outputFile; }
 size_t CommandParser::getIterationsNumber() const { return iterationsNumber; }
+bool CommandParser::offlineMode() const { return mode; }
 
 void CommandParser::requestHelp()
 {
