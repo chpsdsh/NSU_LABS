@@ -1,7 +1,8 @@
-CMakeFiles/lab2.dir/main.cpp.o: \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/14/iostream \
- /usr/include/c++/14/bits/requires_hosted.h \
+CMakeFiles/lab2.dir/commandParser.cpp.o: \
+ /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp \
+ /usr/include/stdc-predef.h \
+ /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.h \
+ /usr/include/c++/14/iostream /usr/include/c++/14/bits/requires_hosted.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/os_defines.h \
@@ -128,9 +129,8 @@ CMakeFiles/lab2.dir/main.cpp.o: \
  /usr/include/c++/14/bits/locale_facets.tcc \
  /usr/include/c++/14/bits/basic_ios.tcc \
  /usr/include/c++/14/bits/ostream.tcc /usr/include/c++/14/istream \
- /usr/include/c++/14/bits/istream.tcc \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.h \
- /usr/include/c++/14/vector /usr/include/c++/14/bits/stl_uninitialized.h \
+ /usr/include/c++/14/bits/istream.tcc /usr/include/c++/14/vector \
+ /usr/include/c++/14/bits/stl_uninitialized.h \
  /usr/include/c++/14/bits/stl_vector.h \
  /usr/include/c++/14/bits/stl_bvector.h \
  /usr/include/c++/14/bits/vector.tcc /usr/include/c++/14/algorithm \
@@ -145,13 +145,4 @@ CMakeFiles/lab2.dir/main.cpp.o: \
  /usr/include/c++/14/bits/codecvt.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++io.h \
- /usr/include/c++/14/bits/fstream.tcc \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.h \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.h \
- /usr/include/c++/14/sstream /usr/include/c++/14/bits/sstream.tcc \
- /usr/include/c++/14/set /usr/include/c++/14/bits/stl_tree.h \
- /usr/include/c++/14/ext/aligned_buffer.h \
- /usr/include/c++/14/bits/node_handle.h \
- /usr/include/c++/14/bits/stl_set.h \
- /usr/include/c++/14/bits/stl_multiset.h \
- /usr/include/c++/14/bits/erase_if.h
+ /usr/include/c++/14/bits/fstream.tcc

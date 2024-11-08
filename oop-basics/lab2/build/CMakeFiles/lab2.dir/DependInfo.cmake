@@ -8,6 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp" "CMakeFiles/lab2.dir/cell.cpp.o" "gcc" "CMakeFiles/lab2.dir/cell.cpp.o.d"
+  "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp" "CMakeFiles/lab2.dir/commandParser.cpp.o" "gcc" "CMakeFiles/lab2.dir/commandParser.cpp.o.d"
   "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp" "CMakeFiles/lab2.dir/game.cpp.o" "gcc" "CMakeFiles/lab2.dir/game.cpp.o.d"
   "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/main.cpp" "CMakeFiles/lab2.dir/main.cpp.o" "gcc" "CMakeFiles/lab2.dir/main.cpp.o.d"
   )

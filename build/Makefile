@@ -503,6 +503,54 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/build
 .PHONY : ContinuousSubmit/fast
 
+cell.o: cell.cpp.o
+.PHONY : cell.o
+
+# target to build an object file
+cell.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/cell.cpp.o
+.PHONY : cell.cpp.o
+
+cell.i: cell.cpp.i
+.PHONY : cell.i
+
+# target to preprocess a source file
+cell.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/cell.cpp.i
+.PHONY : cell.cpp.i
+
+cell.s: cell.cpp.s
+.PHONY : cell.s
+
+# target to generate assembly for a file
+cell.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/cell.cpp.s
+.PHONY : cell.cpp.s
+
+commandParser.o: commandParser.cpp.o
+.PHONY : commandParser.o
+
+# target to build an object file
+commandParser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/commandParser.cpp.o
+.PHONY : commandParser.cpp.o
+
+commandParser.i: commandParser.cpp.i
+.PHONY : commandParser.i
+
+# target to preprocess a source file
+commandParser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/commandParser.cpp.i
+.PHONY : commandParser.cpp.i
+
+commandParser.s: commandParser.cpp.s
+.PHONY : commandParser.s
+
+# target to generate assembly for a file
+commandParser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/commandParser.cpp.s
+.PHONY : commandParser.cpp.s
+
 game.o: game.cpp.o
 .PHONY : game.o
 
@@ -589,6 +637,12 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... lab2"
+	@echo "... cell.o"
+	@echo "... cell.i"
+	@echo "... cell.s"
+	@echo "... commandParser.o"
+	@echo "... commandParser.i"
+	@echo "... commandParser.s"
 	@echo "... game.o"
 	@echo "... game.i"
 	@echo "... game.s"

@@ -7,8 +7,20 @@
 },
 {
   "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/lab2.dir/commandParser.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp",
+  "output": "CMakeFiles/lab2.dir/commandParser.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
   "command": "/usr/bin/c++   -g -o CMakeFiles/lab2.dir/game.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp",
   "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp",
   "output": "CMakeFiles/lab2.dir/game.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/lab2.dir/cell.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp",
+  "output": "CMakeFiles/lab2.dir/cell.cpp.o"
 }
 ]

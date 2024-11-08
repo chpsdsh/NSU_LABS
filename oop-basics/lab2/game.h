@@ -8,20 +8,27 @@
 #include <sstream>
 #include <set>
 
-class Game{
-    private:
-        int fieldSize;
-        int iteration;
-        std::string universeName;
-        std::string rule;
-        std::vector<std::vector<Cell>> gameField;
-        friend std::istream& operator>>(std::istream& is, Game& game);
-        friend std::ostream& operator<<(std::ostream& os, Game& game);
-    public:
-           Game(int fieldSize);
-           ~Game();
-           void randomUniverse();
-           bool isCorrectRule(const std::string& rule);
-           bool gamePreparation(const CommandParser& parser);
-           void run();
-}; 
+class Game
+{
+private:
+    size_t fieldSize;
+    size_t iteration;
+    std::string universeName;
+    std::string rule;
+    std::vector<std::vector<Cell>> gameField;
+    friend std::istream &operator>>(std::istream &is, Game &game);
+    friend std::ostream &operator<<(std::ostream &os, Game &game);
+
+public:
+    Game(int fieldSize);
+    ~Game();
+    void randomUniverse();
+    bool isCorrectRule(const std::string &rule);
+    bool gamePreparation(const CommandParser &parser);
+    bool checkInput(const CommandParser &parser);
+    int aliveNeighbours(int x, int y);
+    void iterate(const size_t iterations);
+    void run();
+    void visualize() const;
+    bool commandProcessing(const std::string& command);
+};

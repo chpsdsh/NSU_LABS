@@ -83,10 +83,24 @@ CMakeFiles/lab2.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab2.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/main.cpp -o CMakeFiles/lab2.dir/main.cpp.s
 
+CMakeFiles/lab2.dir/commandParser.cpp.o: CMakeFiles/lab2.dir/flags.make
+CMakeFiles/lab2.dir/commandParser.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp
+CMakeFiles/lab2.dir/commandParser.cpp.o: CMakeFiles/lab2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab2.dir/commandParser.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab2.dir/commandParser.cpp.o -MF CMakeFiles/lab2.dir/commandParser.cpp.o.d -o CMakeFiles/lab2.dir/commandParser.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp
+
+CMakeFiles/lab2.dir/commandParser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab2.dir/commandParser.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp > CMakeFiles/lab2.dir/commandParser.cpp.i
+
+CMakeFiles/lab2.dir/commandParser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab2.dir/commandParser.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp -o CMakeFiles/lab2.dir/commandParser.cpp.s
+
 CMakeFiles/lab2.dir/game.cpp.o: CMakeFiles/lab2.dir/flags.make
 CMakeFiles/lab2.dir/game.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp
 CMakeFiles/lab2.dir/game.cpp.o: CMakeFiles/lab2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab2.dir/game.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab2.dir/game.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab2.dir/game.cpp.o -MF CMakeFiles/lab2.dir/game.cpp.o.d -o CMakeFiles/lab2.dir/game.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp
 
 CMakeFiles/lab2.dir/game.cpp.i: cmake_force
@@ -97,19 +111,37 @@ CMakeFiles/lab2.dir/game.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab2.dir/game.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp -o CMakeFiles/lab2.dir/game.cpp.s
 
+CMakeFiles/lab2.dir/cell.cpp.o: CMakeFiles/lab2.dir/flags.make
+CMakeFiles/lab2.dir/cell.cpp.o: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp
+CMakeFiles/lab2.dir/cell.cpp.o: CMakeFiles/lab2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/lab2.dir/cell.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab2.dir/cell.cpp.o -MF CMakeFiles/lab2.dir/cell.cpp.o.d -o CMakeFiles/lab2.dir/cell.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp
+
+CMakeFiles/lab2.dir/cell.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab2.dir/cell.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp > CMakeFiles/lab2.dir/cell.cpp.i
+
+CMakeFiles/lab2.dir/cell.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab2.dir/cell.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp -o CMakeFiles/lab2.dir/cell.cpp.s
+
 # Object files for target lab2
 lab2_OBJECTS = \
 "CMakeFiles/lab2.dir/main.cpp.o" \
-"CMakeFiles/lab2.dir/game.cpp.o"
+"CMakeFiles/lab2.dir/commandParser.cpp.o" \
+"CMakeFiles/lab2.dir/game.cpp.o" \
+"CMakeFiles/lab2.dir/cell.cpp.o"
 
 # External object files for target lab2
 lab2_EXTERNAL_OBJECTS =
 
 lab2: CMakeFiles/lab2.dir/main.cpp.o
+lab2: CMakeFiles/lab2.dir/commandParser.cpp.o
 lab2: CMakeFiles/lab2.dir/game.cpp.o
+lab2: CMakeFiles/lab2.dir/cell.cpp.o
 lab2: CMakeFiles/lab2.dir/build.make
 lab2: CMakeFiles/lab2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable lab2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable lab2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lab2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

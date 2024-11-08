@@ -44,26 +44,194 @@ bool Game::isCorrectRule(const std::string &rule)
 
     return true;
 }
+bool Game::checkInput(const CommandParser &parser)
+{
+    if (parser.getInputFile() == "none")
+    {
+        std::cout << "No input file. Generating random universe." << std::endl;
+        randomUniverse();
+    }
+    else
+    {
+        std::ifstream inputFile(parser.getInputFile());
+        if (!inputFile.is_open())
+        {
+            std::cerr << "Could not open input file" << std::endl;
+            return false;
+        }
+        inputFile >> *this;
+        if (!inputFile)
+        {
+            std::cerr << "Failed while loading universe from file" << std::endl;
+            return false;
+        }
+    }
+    return true;
+}
 
 bool Game::gamePreparation(const CommandParser &parser)
 {
-    if (parser.offlineMode())
+    if (parser.getIterationsNumber() >= 0)
     {
-        if (parser.getInputFile() == "none")
+        if (parser.offlineMode())
         {
-            std::cout << "No input file. Generating random universe." << std::endl;
-            randomUniverse();
+            if (!(*this).checkInput(parser))
+            {
+                return false;
+            }
+            if (parser.getOutputFile() == "none")
+            {
+                std::cerr << "No output file" << std::endl;
+                return false;
+            }
         }
-        else{
-            std::ifstream inputFile(parser.getInputFile());
-            if(!inputFile.is_open()){
-                std::cerr<<"Could not open input file"<<std::endl;
+        else
+        {
+            if (!(*this).checkInput(parser))
+            {
                 return false;
             }
         }
     }
+    else
+    {
+        std::cerr << "Number of iterations mast be >= 0" << std::endl;
+        return false;
+    }
+    std::cout << "Universe: " << universeName << std::endl;
+    std::cout << "Rule: " << rule << std::endl;
+    std::cout << "Game prepared successfully!" << std::endl;
+    return true;
 }
 
+int Game::aliveNeighbours(int x, int y)
+{
+    int aliveNeighbours = 0;
+    for (int cx = -1; cx < 2; ++cx)
+    {
+        for (int cy = -1; cy < 2; ++cy)
+        {
+            if (cx == 0 && cy == 0)
+                continue;
+            int neighbourX = (x + cx + fieldSize) % fieldSize;
+            int neighbourY = (y + cy + fieldSize) % fieldSize;
+            if (gameField[neighbourX][neighbourY].isAlive())
+            {
+                aliveNeighbours++;
+            }
+        }
+    }
+    return aliveNeighbours;
+}
+
+void Game::iterate(const size_t iterations)
+{
+    for (int i = 0; i < iterations; ++i)
+    {
+        std::vector<std::vector<Cell>> nextGameField(fieldSize, std::vector<Cell>(fieldSize));
+        for (int x = 0; x < fieldSize; ++x)
+        {
+            for (int y = 0; y < fieldSize; ++y)
+            {
+                int aliveNeighbours = (*this).aliveNeighbours(x, y);
+                bool nextState;
+                if (gameField[x][y].isAlive())
+                {
+                    nextState = (aliveNeighbours == 2 || aliveNeighbours == 3);
+                }
+                else
+                {
+                    nextState = (aliveNeighbours == 3);
+                }
+                nextGameField[x][y].setState(nextState);
+            }
+        }
+        gameField = nextGameField;
+    }
+}
+
+void Game::visualize() const
+{
+    for (size_t x = 0; x < fieldSize; ++x)
+    {
+        for (size_t y = 0; y < fieldSize; ++y)
+        {
+            std::cout << (gameField[x][y].isAlive() ? '0' : '.');
+        }
+        std::cout << '\n';
+    }
+}
+
+void Game::run()
+{
+    std::string command;
+    while (true)
+    {
+        std::cout << "Enter command (tick, dump, exit, help): ";
+        std::getline(std::cin, command);
+        if (!commandProcessing(command))
+        {
+            break;
+        }
+    }
+}
+
+bool Game::commandProcessing(const std::string &command)
+{
+    std::istringstream iss(command);
+    std::string com;
+    iss >> com;
+    if (com == "tick" || com == "t")
+    {
+        int iterations = 1;
+        if (iss >> iterations)
+        {
+            iterate(iterations);
+        }
+        else
+        {
+            iterate(1);
+        }
+        visualize();
+    }
+    else if (com == "dump")
+    {
+        std::string fileName;
+        if (iss >> fileName)
+        {
+            std::ofstream outputFile(fileName);
+            if (!outputFile.is_open())
+            {
+                std::cerr << "Can not open file" << std::endl;
+            }
+            else
+            {
+                outputFile << *this;
+            }
+        }
+        else
+        {
+            std::cerr << "Filename not provided" << std::endl;
+        }
+    }
+    else if (com == "exit")
+    {
+        return false;
+    }
+    else if (com == "help")
+    {
+        std::cout << "Available commands:\n"
+                  << "  tick <n=1> - Perform n iterations (default is 1)\n"
+                  << "  dump <filename> - Save the current state to a file\n"
+                  << "  exit - End the game\n"
+                  << "  help - Show this help message\n";
+    }
+    else
+    {
+        std::cerr << "No such command" << std::endl;
+    }
+    return true;
+}
 std::ostream &operator<<(std::ostream &os, Game &game)
 {
     os << "#Life 1.06\n";

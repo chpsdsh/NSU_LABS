@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/lab2.dir/cell.cpp.o"
+  "CMakeFiles/lab2.dir/cell.cpp.o.d"
+  "CMakeFiles/lab2.dir/commandParser.cpp.o"
+  "CMakeFiles/lab2.dir/commandParser.cpp.o.d"
   "CMakeFiles/lab2.dir/game.cpp.o"
   "CMakeFiles/lab2.dir/game.cpp.o.d"
   "CMakeFiles/lab2.dir/main.cpp.o"

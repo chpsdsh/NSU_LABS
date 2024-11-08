@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <stdexcept>
@@ -17,12 +18,12 @@ private:
     bool mode;
 public:
     CommandParser();
-    bool parseCommand(int argc, char *argv[]) {}
+    bool parseCommand(int argc, char *argv[]);
     static void requestHelp();
     bool helpRequested() const;
     bool offlineMode() const;
-    [[nodiscard]] std::string getInputFile() const;
-    [[nodiscard]] std::string getOutputFile() const;
-    [[nodiscard]] size_t getIterationsNumber() const;
+     std::string getInputFile() const;
+    std::string getOutputFile() const;
+     size_t getIterationsNumber() const;
     
 };

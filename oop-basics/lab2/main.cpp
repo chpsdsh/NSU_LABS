@@ -6,8 +6,9 @@
 int main(int argc, char *argv[])
 {
     CommandParser parser;
-    if (parser.parseCommand(argc, argv) == 0)
+    if (!parser.parseCommand(argc, argv) )
     {
+        
         if (parser.helpRequested())
         {
             return 0;
@@ -18,8 +19,34 @@ int main(int argc, char *argv[])
             return 0;
         }
     }
-    Game(25);
-
     
+    Game game(20);
+    if (!game.gamePreparation(parser))
+    {
+        std::cerr << "Failed preparing game" << std::endl;
+        return 1;
+    }
+    
+    if (parser.offlineMode())
+    {
+        std::cout<< parser.getIterationsNumber()<<std::endl;
+        game.iterate(parser.getIterationsNumber());
+        std::ofstream outputFile(parser.getOutputFile());
+        
+        if (!outputFile.is_open())
+        {
+            std::cerr << "Could not open output file" << std::endl;
+            return 1;
+        }
+        else
+        {
+            outputFile << game;
+            std::cout << "Offline mode completed. Data was saved to " << parser.getOutputFile() << std::endl;
+        }
+    }
+    else
+    {
+        game.run();
+    }
     return 0;
 }
