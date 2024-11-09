@@ -170,6 +170,8 @@ void Game::iterate(const size_t iterations)
             }
         }
         gameField = nextGameField;
+        visualize();
+        std::cout<<"\n";
     }
 }
 
