@@ -503,12 +503,26 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/build
 .PHONY : ContinuousSubmit/fast
 
+#=============================================================================
+# Target rules for targets named tests
+
+# Build rule for target.
+tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests
+.PHONY : tests
+
+# fast build rule for target.
+tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
+.PHONY : tests/fast
+
 cell.o: cell.cpp.o
 .PHONY : cell.o
 
 # target to build an object file
 cell.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/cell.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/cell.cpp.o
 .PHONY : cell.cpp.o
 
 cell.i: cell.cpp.i
@@ -517,6 +531,7 @@ cell.i: cell.cpp.i
 # target to preprocess a source file
 cell.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/cell.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/cell.cpp.i
 .PHONY : cell.cpp.i
 
 cell.s: cell.cpp.s
@@ -525,6 +540,7 @@ cell.s: cell.cpp.s
 # target to generate assembly for a file
 cell.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/cell.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/cell.cpp.s
 .PHONY : cell.cpp.s
 
 commandParser.o: commandParser.cpp.o
@@ -533,6 +549,7 @@ commandParser.o: commandParser.cpp.o
 # target to build an object file
 commandParser.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/commandParser.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/commandParser.cpp.o
 .PHONY : commandParser.cpp.o
 
 commandParser.i: commandParser.cpp.i
@@ -541,6 +558,7 @@ commandParser.i: commandParser.cpp.i
 # target to preprocess a source file
 commandParser.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/commandParser.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/commandParser.cpp.i
 .PHONY : commandParser.cpp.i
 
 commandParser.s: commandParser.cpp.s
@@ -549,6 +567,7 @@ commandParser.s: commandParser.cpp.s
 # target to generate assembly for a file
 commandParser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/commandParser.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/commandParser.cpp.s
 .PHONY : commandParser.cpp.s
 
 game.o: game.cpp.o
@@ -557,6 +576,7 @@ game.o: game.cpp.o
 # target to build an object file
 game.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/game.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/game.cpp.o
 .PHONY : game.cpp.o
 
 game.i: game.cpp.i
@@ -565,6 +585,7 @@ game.i: game.cpp.i
 # target to preprocess a source file
 game.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/game.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/game.cpp.i
 .PHONY : game.cpp.i
 
 game.s: game.cpp.s
@@ -573,7 +594,32 @@ game.s: game.cpp.s
 # target to generate assembly for a file
 game.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/game.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/game.cpp.s
 .PHONY : game.cpp.s
+
+gameTests.o: gameTests.cpp.o
+.PHONY : gameTests.o
+
+# target to build an object file
+gameTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/gameTests.cpp.o
+.PHONY : gameTests.cpp.o
+
+gameTests.i: gameTests.cpp.i
+.PHONY : gameTests.i
+
+# target to preprocess a source file
+gameTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/gameTests.cpp.i
+.PHONY : gameTests.cpp.i
+
+gameTests.s: gameTests.cpp.s
+.PHONY : gameTests.s
+
+# target to generate assembly for a file
+gameTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/gameTests.cpp.s
+.PHONY : gameTests.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -637,6 +683,7 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... lab2"
+	@echo "... tests"
 	@echo "... cell.o"
 	@echo "... cell.i"
 	@echo "... cell.s"
@@ -646,6 +693,9 @@ help:
 	@echo "... game.o"
 	@echo "... game.i"
 	@echo "... game.s"
+	@echo "... gameTests.o"
+	@echo "... gameTests.i"
+	@echo "... gameTests.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

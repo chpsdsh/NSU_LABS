@@ -491,3 +491,43 @@ events:
       
       
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/usr/share/cmake/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/usr/share/cmake/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/usr/lib64/cmake/GTest/GTestConfig.cmake:39 (find_dependency)"
+      - "/usr/share/cmake/Modules/FindGTest.cmake:194 (find_package)"
+      - "CMakeLists.txt:9 (find_package)"
+    directories:
+      source: "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles/CMakeScratch/TryCompile-Epxdll"
+      binary: "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles/CMakeScratch/TryCompile-Epxdll"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles/CMakeScratch/TryCompile-Epxdll'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d441b/fast
+        gmake[1]: Entering directory '/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles/CMakeScratch/TryCompile-Epxdll'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_d441b.dir/build.make CMakeFiles/cmTC_d441b.dir/build
+        gmake[2]: Entering directory '/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles/CMakeScratch/TryCompile-Epxdll'
+        Building C object CMakeFiles/cmTC_d441b.dir/src.c.o
+        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_d441b.dir/src.c.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles/CMakeScratch/TryCompile-Epxdll/src.c
+        Linking C executable cmTC_d441b
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d441b.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_d441b.dir/src.c.o -o cmTC_d441b 
+        gmake[2]: Leaving directory '/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles/CMakeScratch/TryCompile-Epxdll'
+        gmake[1]: Leaving directory '/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/build/CMakeFiles/CMakeScratch/TryCompile-Epxdll'
+        
+      exitCode: 0
+...

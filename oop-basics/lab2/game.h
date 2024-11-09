@@ -26,9 +26,13 @@ public:
     bool isCorrectRule(const std::string &rule);
     bool gamePreparation(const CommandParser &parser);
     bool checkInput(const CommandParser &parser);
-    int aliveNeighbours(int x, int y);
+    [[nodiscard]] int aliveNeighbours(int x, int y);
     void iterate(const size_t iterations);
     void run();
     void visualize() const;
-    bool commandProcessing(const std::string& command);
+    bool commandProcessing(const std::string &command);
+    [[nodiscard]] std::vector<std::vector<Cell>>& getGameField();
+    [[nodiscard]] std::string getRule() const;
+    [[nodiscard]] std::string getUnverseName() const;
+    [[nodiscard]] size_t getFieldSize() const;
 };

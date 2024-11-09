@@ -27,6 +27,7 @@
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/ContinuousCoverage.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/ContinuousMemCheck.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/ContinuousSubmit.dir
+/home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/tests.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/test.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/edit_cache.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/rebuild_cache.dir

@@ -638,6 +638,18 @@
 			"value" : ""
 		},
 		{
+			"name" : "CMAKE_HAVE_LIBC_PTHREAD",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Test CMAKE_HAVE_LIBC_PTHREAD"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
 			"name" : "CMAKE_HOME_DIRECTORY",
 			"properties" : 
 			[
@@ -1362,6 +1374,18 @@
 			"value" : "1500"
 		},
 		{
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_GTest",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Details about finding GTest"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "[/usr/lib64/cmake/GTest/GTestConfig.cmake][c ][v1.14.0()]"
+		},
+		{
 			"name" : "GITCOMMAND",
 			"properties" : 
 			[
@@ -1376,6 +1400,18 @@
 			],
 			"type" : "UNINITIALIZED",
 			"value" : ""
+		},
+		{
+			"name" : "GTest_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for GTest."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/usr/lib64/cmake/GTest"
 		},
 		{
 			"name" : "HGCOMMAND",

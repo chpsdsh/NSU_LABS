@@ -43,7 +43,8 @@
 						25,
 						26,
 						27,
-						28
+						28,
+						29
 					]
 				}
 			],
@@ -86,7 +87,8 @@
 						25,
 						26,
 						27,
-						28
+						28,
+						29
 					]
 				}
 			],
@@ -293,6 +295,13 @@
 					"id" : "lab2::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-lab2-Debug-20a670214f1bc8e17b8a.json",
 					"name" : "lab2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-tests-Debug-e7bc8efc5c727f0a15b1.json",
+					"name" : "tests",
 					"projectIndex" : 0
 				}
 			]

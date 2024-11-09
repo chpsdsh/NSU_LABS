@@ -22,8 +22,8 @@ public:
     static void requestHelp();
     bool helpRequested() const;
     bool offlineMode() const;
-     std::string getInputFile() const;
-    std::string getOutputFile() const;
-     size_t getIterationsNumber() const;
+    [[nodiscard]] std::string getInputFile() const;
+    [[nodiscard]] std::string getOutputFile() const;
+    [[nodiscard]] size_t getIterationsNumber() const;
     
 };

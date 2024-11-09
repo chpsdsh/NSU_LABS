@@ -22,5 +22,29 @@
   "command": "/usr/bin/c++   -g -o CMakeFiles/lab2.dir/cell.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp",
   "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp",
   "output": "CMakeFiles/lab2.dir/cell.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1  -g -o CMakeFiles/tests.dir/gameTests.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/gameTests.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/gameTests.cpp",
+  "output": "CMakeFiles/tests.dir/gameTests.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1  -g -o CMakeFiles/tests.dir/commandParser.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp",
+  "output": "CMakeFiles/tests.dir/commandParser.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1  -g -o CMakeFiles/tests.dir/game.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp",
+  "output": "CMakeFiles/tests.dir/game.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1  -g -o CMakeFiles/tests.dir/cell.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp",
+  "output": "CMakeFiles/tests.dir/cell.cpp.o"
 }
 ]

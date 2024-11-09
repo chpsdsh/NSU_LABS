@@ -3,6 +3,11 @@
 Game::Game(int fieldSize) : fieldSize(fieldSize), iteration(0), gameField(fieldSize, std::vector<Cell>(fieldSize)) {}
 Game::~Game() = default;
 
+std::vector<std::vector<Cell>>& Game::getGameField() { return gameField; }
+std::string Game::getRule() const { return rule; }
+std::string Game::getUnverseName() const { return universeName; }
+size_t Game::getFieldSize() const { return fieldSize; }
+
 void Game::randomUniverse()
 {
     for (size_t x = 0; x < fieldSize; ++x)
@@ -16,11 +21,11 @@ void Game::randomUniverse()
 
 bool Game::isCorrectRule(const std::string &rule)
 {
-    if (rule[0] != 'B' || rule.find('/S') == std::string::npos)
+    if (rule[0] != 'B' || rule.find('/') == std::string::npos)
     {
         return false;
     }
-    size_t slashPos = rule.find("/S");
+    size_t slashPos = rule.find('/');
     std::string birthPart = rule.substr(1, slashPos - 1);
     std::string survivalPart = rule.substr(slashPos + 2);
 
@@ -44,6 +49,7 @@ bool Game::isCorrectRule(const std::string &rule)
 
     return true;
 }
+
 bool Game::checkInput(const CommandParser &parser)
 {
     if (parser.getInputFile() == "none")
@@ -107,9 +113,9 @@ bool Game::gamePreparation(const CommandParser &parser)
 int Game::aliveNeighbours(int x, int y)
 {
     int aliveNeighbours = 0;
-    for (int cx = -1; cx < 2; ++cx)
+    for (int cx = -1; cx <= 1; ++cx)
     {
-        for (int cy = -1; cy < 2; ++cy)
+        for (int cy = -1; cy <= 1; ++cy)
         {
             if (cx == 0 && cy == 0)
                 continue;
@@ -117,7 +123,7 @@ int Game::aliveNeighbours(int x, int y)
             int neighbourY = (y + cy + fieldSize) % fieldSize;
             if (gameField[neighbourX][neighbourY].isAlive())
             {
-                aliveNeighbours++;
+                ++aliveNeighbours;
             }
         }
     }
@@ -156,7 +162,7 @@ void Game::visualize() const
     {
         for (size_t y = 0; y < fieldSize; ++y)
         {
-            std::cout << (gameField[x][y].isAlive() ? '0' : '.');
+            std::cout << (gameField[x][y].isAlive() ? '*' : '.');
         }
         std::cout << '\n';
     }
