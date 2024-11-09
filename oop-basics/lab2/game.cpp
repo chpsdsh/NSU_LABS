@@ -3,7 +3,7 @@
 Game::Game(int fieldSize) : fieldSize(fieldSize), iteration(0), gameField(fieldSize, std::vector<Cell>(fieldSize)) {}
 Game::~Game() = default;
 
-std::vector<std::vector<Cell>>& Game::getGameField() { return gameField; }
+std::vector<std::vector<Cell>> &Game::getGameField() { return gameField; }
 std::string Game::getRule() const { return rule; }
 std::string Game::getUnverseName() const { return universeName; }
 size_t Game::getFieldSize() const { return fieldSize; }
@@ -132,6 +132,21 @@ int Game::aliveNeighbours(int x, int y)
 
 void Game::iterate(const size_t iterations)
 {
+    size_t slashPos = rule.find('/');
+    std::string birthPart = rule.substr(1, slashPos - 1);
+    std::string survivalPart = rule.substr(slashPos + 2);
+
+    std::set<int> birthDigits;
+    std::set<int> survivalDigits;
+    for (char ch : birthPart)
+    {
+        birthDigits.insert(ch - '0');
+    }
+    for (char ch : survivalPart)
+    {
+        survivalDigits.insert(ch - '0');
+    }
+
     for (int i = 0; i < iterations; ++i)
     {
         std::vector<std::vector<Cell>> nextGameField(fieldSize, std::vector<Cell>(fieldSize));
@@ -140,15 +155,17 @@ void Game::iterate(const size_t iterations)
             for (int y = 0; y < fieldSize; ++y)
             {
                 int aliveNeighbours = (*this).aliveNeighbours(x, y);
-                bool nextState;
+                bool nextState = false;
+
                 if (gameField[x][y].isAlive())
                 {
-                    nextState = (aliveNeighbours == 2 || aliveNeighbours == 3);
+                    nextState = (survivalDigits.count(aliveNeighbours) > 0);
                 }
                 else
                 {
-                    nextState = (aliveNeighbours == 3);
+                    nextState = (birthDigits.count(aliveNeighbours) > 0);
                 }
+
                 nextGameField[x][y].setState(nextState);
             }
         }
@@ -171,10 +188,12 @@ void Game::visualize() const
 void Game::run()
 {
     std::string command;
+    visualize();
     while (true)
     {
         std::cout << "Enter command (tick, dump, exit, help): ";
         std::getline(std::cin, command);
+
         if (!commandProcessing(command))
         {
             break;
@@ -238,6 +257,7 @@ bool Game::commandProcessing(const std::string &command)
     }
     return true;
 }
+
 std::ostream &operator<<(std::ostream &os, Game &game)
 {
     os << "#Life 1.06\n";

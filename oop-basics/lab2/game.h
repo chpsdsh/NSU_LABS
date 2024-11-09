@@ -14,7 +14,7 @@ private:
     size_t fieldSize;
     size_t iteration;
     std::string universeName;
-    std::string rule;
+    std::string rule;   
     std::vector<std::vector<Cell>> gameField;
     friend std::istream &operator>>(std::istream &is, Game &game);
     friend std::ostream &operator<<(std::ostream &os, Game &game);

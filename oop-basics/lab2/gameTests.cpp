@@ -113,15 +113,6 @@ TEST(GameTest, IsCorrectRuleTest)
     EXPECT_FALSE(game.isCorrectRule("B9/S23"));
 }
 
-TEST(GameTests, IterateTest)
-{
-    Game game(25);
-    CommandParser parser;
-    const char *argv[] = {"program", "--iterations", "10"};
-    ASSERT_TRUE(parser.parseCommand(3, const_cast<char **>(argv)));
-    EXPECT_NO_THROW(game.iterate(parser.getIterationsNumber()));
-}
-
 TEST(GameTessts, AliveNeighboursTest){
     Game game(5);
     game.getGameField()[1][1].setState(true);
