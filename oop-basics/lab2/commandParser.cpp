@@ -91,9 +91,6 @@ bool CommandParser::parseCommand(int argc, char *argv[])
             requestHelp();
         }
     }
-    if (!mode && iterationsNumber == 0)
-    {
-        iterationsNumber = 1;
-    }
+    
     return true;
 }
