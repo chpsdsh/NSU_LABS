@@ -52,7 +52,7 @@ bool CommandParser::parseCommand(int argc, char *argv[])
         {
             if (i + 1 < argc)
             {
-                iterationsNumber = std::stoul(argv[++i]);
+                iterationsNumber = atoi(argv[++i]);
             }
             else
             {
