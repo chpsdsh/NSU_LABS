@@ -171,7 +171,7 @@ void Game::iterate(const size_t iterations)
         }
         gameField = nextGameField;
         visualize();
-        std::cout<<"\n";
+        std::cout << "\n";
     }
 }
 
@@ -219,7 +219,6 @@ bool Game::commandProcessing(const std::string &command)
         {
             iterate(1);
         }
-        visualize();
     }
     else if (com == "dump")
     {

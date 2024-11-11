@@ -7,15 +7,8 @@
 #include <cstring>
 #include <fstream>
 
-
 class CommandParser
 {
-private:
-    size_t iterationsNumber;
-    std::string inputFile;
-    std::string outputFile;
-    bool helpUsed = false;
-    bool mode;
 public:
     CommandParser();
     bool parseCommand(int argc, char *argv[]);
@@ -25,5 +18,11 @@ public:
     [[nodiscard]] std::string getInputFile() const;
     [[nodiscard]] std::string getOutputFile() const;
     [[nodiscard]] size_t getIterationsNumber() const;
-    
+
+private:
+    size_t iterationsNumber;
+    std::string inputFile;
+    std::string outputFile;
+    bool helpUsed = false;
+    bool mode;
 };

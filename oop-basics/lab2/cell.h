@@ -1,10 +1,12 @@
 #pragma once
 
-class Cell{
-    private:
-        bool state;
-    public:
+class Cell
+{
+public:
     Cell();
     bool isAlive() const;
     void setState(bool state);
+
+private:
+    bool state;
 };

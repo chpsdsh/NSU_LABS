@@ -10,15 +10,6 @@
 
 class Game
 {
-private:
-    size_t fieldSize;
-    size_t iteration;
-    std::string universeName;
-    std::string rule;   
-    std::vector<std::vector<Cell>> gameField;
-    friend std::istream &operator>>(std::istream &is, Game &game);
-    friend std::ostream &operator<<(std::ostream &os, Game &game);
-
 public:
     Game(int fieldSize);
     ~Game();
@@ -31,8 +22,17 @@ public:
     void run();
     void visualize() const;
     bool commandProcessing(const std::string &command);
-    [[nodiscard]] std::vector<std::vector<Cell>>& getGameField();
+    [[nodiscard]] std::vector<std::vector<Cell>> &getGameField();
     [[nodiscard]] std::string getRule() const;
     [[nodiscard]] std::string getUnverseName() const;
     [[nodiscard]] size_t getFieldSize() const;
+
+private:
+    size_t fieldSize;
+    size_t iteration;
+    std::string universeName;
+    std::string rule;
+    std::vector<std::vector<Cell>> gameField;
+    friend std::istream &operator>>(std::istream &is, Game &game);
+    friend std::ostream &operator<<(std::ostream &os, Game &game);
 };
