@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2
+CMAKE_SOURCE_DIR = /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/chopisdish/Programming/NSU_LABS/build
@@ -82,6 +82,6 @@ CMakeFiles/Nightly.dir/clean:
 .PHONY : CMakeFiles/Nightly.dir/clean
 
 CMakeFiles/Nightly.dir/depend:
-	cd /home/chopisdish/Programming/NSU_LABS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2 /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2 /home/chopisdish/Programming/NSU_LABS/build /home/chopisdish/Programming/NSU_LABS/build /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/Nightly.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/chopisdish/Programming/NSU_LABS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3 /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3 /home/chopisdish/Programming/NSU_LABS/build /home/chopisdish/Programming/NSU_LABS/build /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/Nightly.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/Nightly.dir/depend
 

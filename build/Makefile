@@ -57,7 +57,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2
+CMAKE_SOURCE_DIR = /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/chopisdish/Programming/NSU_LABS/build
@@ -127,17 +127,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lab2
+# Target rules for targets named lab3
 
 # Build rule for target.
-lab2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab2
-.PHONY : lab2
+lab3: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab3
+.PHONY : lab3
 
 # fast build rule for target.
-lab2/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/build
-.PHONY : lab2/fast
+lab3/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/build
+.PHONY : lab3/fast
 
 #=============================================================================
 # Target rules for targets named Experimental
@@ -503,130 +503,84 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/build
 .PHONY : ContinuousSubmit/fast
 
-#=============================================================================
-# Target rules for targets named tests
-
-# Build rule for target.
-tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests
-.PHONY : tests
-
-# fast build rule for target.
-tests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
-.PHONY : tests/fast
-
-cell.o: cell.cpp.o
-.PHONY : cell.o
+Converters.o: Converters.cpp.o
+.PHONY : Converters.o
 
 # target to build an object file
-cell.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/cell.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/cell.cpp.o
-.PHONY : cell.cpp.o
+Converters.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Converters.cpp.o
+.PHONY : Converters.cpp.o
 
-cell.i: cell.cpp.i
-.PHONY : cell.i
+Converters.i: Converters.cpp.i
+.PHONY : Converters.i
 
 # target to preprocess a source file
-cell.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/cell.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/cell.cpp.i
-.PHONY : cell.cpp.i
+Converters.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Converters.cpp.i
+.PHONY : Converters.cpp.i
 
-cell.s: cell.cpp.s
-.PHONY : cell.s
+Converters.s: Converters.cpp.s
+.PHONY : Converters.s
 
 # target to generate assembly for a file
-cell.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/cell.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/cell.cpp.s
-.PHONY : cell.cpp.s
+Converters.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Converters.cpp.s
+.PHONY : Converters.cpp.s
 
-commandParser.o: commandParser.cpp.o
-.PHONY : commandParser.o
+Parser.o: Parser.cpp.o
+.PHONY : Parser.o
 
 # target to build an object file
-commandParser.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/commandParser.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/commandParser.cpp.o
-.PHONY : commandParser.cpp.o
+Parser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Parser.cpp.o
+.PHONY : Parser.cpp.o
 
-commandParser.i: commandParser.cpp.i
-.PHONY : commandParser.i
+Parser.i: Parser.cpp.i
+.PHONY : Parser.i
 
 # target to preprocess a source file
-commandParser.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/commandParser.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/commandParser.cpp.i
-.PHONY : commandParser.cpp.i
+Parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Parser.cpp.i
+.PHONY : Parser.cpp.i
 
-commandParser.s: commandParser.cpp.s
-.PHONY : commandParser.s
+Parser.s: Parser.cpp.s
+.PHONY : Parser.s
 
 # target to generate assembly for a file
-commandParser.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/commandParser.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/commandParser.cpp.s
-.PHONY : commandParser.cpp.s
+Parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Parser.cpp.s
+.PHONY : Parser.cpp.s
 
-game.o: game.cpp.o
-.PHONY : game.o
+WavHandler.o: WavHandler.cpp.o
+.PHONY : WavHandler.o
 
 # target to build an object file
-game.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/game.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/game.cpp.o
-.PHONY : game.cpp.o
+WavHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/WavHandler.cpp.o
+.PHONY : WavHandler.cpp.o
 
-game.i: game.cpp.i
-.PHONY : game.i
-
-# target to preprocess a source file
-game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/game.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/game.cpp.i
-.PHONY : game.cpp.i
-
-game.s: game.cpp.s
-.PHONY : game.s
-
-# target to generate assembly for a file
-game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/game.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/game.cpp.s
-.PHONY : game.cpp.s
-
-gameTests.o: gameTests.cpp.o
-.PHONY : gameTests.o
-
-# target to build an object file
-gameTests.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/gameTests.cpp.o
-.PHONY : gameTests.cpp.o
-
-gameTests.i: gameTests.cpp.i
-.PHONY : gameTests.i
+WavHandler.i: WavHandler.cpp.i
+.PHONY : WavHandler.i
 
 # target to preprocess a source file
-gameTests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/gameTests.cpp.i
-.PHONY : gameTests.cpp.i
+WavHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/WavHandler.cpp.i
+.PHONY : WavHandler.cpp.i
 
-gameTests.s: gameTests.cpp.s
-.PHONY : gameTests.s
+WavHandler.s: WavHandler.cpp.s
+.PHONY : WavHandler.s
 
 # target to generate assembly for a file
-gameTests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/gameTests.cpp.s
-.PHONY : gameTests.cpp.s
+WavHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/WavHandler.cpp.s
+.PHONY : WavHandler.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -634,7 +588,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -642,7 +596,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab2.dir/build.make CMakeFiles/lab2.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -682,20 +636,16 @@ help:
 	@echo "... NightlySubmit"
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
-	@echo "... lab2"
-	@echo "... tests"
-	@echo "... cell.o"
-	@echo "... cell.i"
-	@echo "... cell.s"
-	@echo "... commandParser.o"
-	@echo "... commandParser.i"
-	@echo "... commandParser.s"
-	@echo "... game.o"
-	@echo "... game.i"
-	@echo "... game.s"
-	@echo "... gameTests.o"
-	@echo "... gameTests.i"
-	@echo "... gameTests.s"
+	@echo "... lab3"
+	@echo "... Converters.o"
+	@echo "... Converters.i"
+	@echo "... Converters.s"
+	@echo "... Parser.o"
+	@echo "... Parser.i"
+	@echo "... Parser.s"
+	@echo "... WavHandler.o"
+	@echo "... WavHandler.i"
+	@echo "... WavHandler.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

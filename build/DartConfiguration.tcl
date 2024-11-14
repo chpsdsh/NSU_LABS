@@ -4,7 +4,7 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2
+SourceDirectory: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3
 BuildDirectory: /home/chopisdish/Programming/NSU_LABS/build
 
 # Where to place the cost data store
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2"
+ConfigureCommand: "/usr/bin/cmake" "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab3"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 

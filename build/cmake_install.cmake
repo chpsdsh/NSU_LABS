@@ -1,4 +1,4 @@
-# Install script for directory: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2
+# Install script for directory: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

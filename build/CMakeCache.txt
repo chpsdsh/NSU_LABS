@@ -248,9 +248,6 @@ CTEST_SUBMIT_RETRY_DELAY:STRING=5
 //Maximum time allowed before CTest will kill the test.
 DART_TESTING_TIMEOUT:STRING=1500
 
-//The directory containing a CMake configuration file for GTest.
-GTest_DIR:PATH=/usr/lib64/cmake/GTest
-
 //Command to build the project
 MAKECOMMAND:STRING=/usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 
@@ -270,7 +267,7 @@ lab0a_BINARY_DIR:STATIC=/home/chopisdish/Programming/NSU_LABS/build
 lab0a_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-lab0a_SOURCE_DIR:STATIC=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2
+lab0a_SOURCE_DIR:STATIC=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab3
 
 
 ########################
@@ -357,11 +354,9 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
-//Test CMAKE_HAVE_LIBC_PTHREAD
-CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/chopisdish/Programming/NSU_LABS/oop-basics/lab3
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=0
 //ADVANCED property for variable: CMAKE_LINKER
@@ -436,8 +431,6 @@ CTEST_SUBMIT_RETRY_COUNT-ADVANCED:INTERNAL=1
 CTEST_SUBMIT_RETRY_DELAY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DART_TESTING_TIMEOUT
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
-//Details about finding GTest
-FIND_PACKAGE_MESSAGE_DETAILS_GTest:INTERNAL=[/usr/lib64/cmake/GTest/GTestConfig.cmake][c ][v1.14.0()]
 //ADVANCED property for variable: MAKECOMMAND
 MAKECOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MEMORYCHECK_COMMAND

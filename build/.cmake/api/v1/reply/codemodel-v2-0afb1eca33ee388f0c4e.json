@@ -43,8 +43,7 @@
 						25,
 						26,
 						27,
-						28,
-						29
+						28
 					]
 				}
 			],
@@ -87,8 +86,7 @@
 						25,
 						26,
 						27,
-						28,
-						29
+						28
 					]
 				}
 			],
@@ -292,16 +290,9 @@
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "lab2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-lab2-Debug-20a670214f1bc8e17b8a.json",
-					"name" : "lab2",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 0,
-					"id" : "tests::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-tests-Debug-e7bc8efc5c727f0a15b1.json",
-					"name" : "tests",
+					"id" : "lab3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lab3-Debug-4526d88ea316dcdec967.json",
+					"name" : "lab3",
 					"projectIndex" : 0
 				}
 			]
@@ -311,7 +302,7 @@
 	"paths" : 
 	{
 		"build" : "/home/chopisdish/Programming/NSU_LABS/build",
-		"source" : "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2"
+		"source" : "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab3"
 	},
 	"version" : 
 	{
