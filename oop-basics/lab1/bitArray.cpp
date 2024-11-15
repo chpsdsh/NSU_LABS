@@ -354,7 +354,7 @@ BitArray operator&(const BitArray &b1, const BitArray &b2)
 
 BitArray operator|(const BitArray &b1, const BitArray &b2)
 {
-  if (b1.size() != b1.size())
+  if (b1.size() != b2.size())
   {
     throw std::invalid_argument("Array sizes do not match");
   }
@@ -364,7 +364,7 @@ BitArray operator|(const BitArray &b1, const BitArray &b2)
 
 BitArray operator^(const BitArray &b1, const BitArray &b2)
 {
-  if (b1.size() != b1.size())
+  if (b1.size() != b2.size())
   {
     throw std::invalid_argument("Array sizes do not match");
   }

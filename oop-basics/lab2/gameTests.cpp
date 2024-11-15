@@ -113,7 +113,7 @@ TEST(GameTest, IsCorrectRuleTest)
     EXPECT_FALSE(game.isCorrectRule("B9/S23"));
 }
 
-TEST(GameTessts, AliveNeighboursTest){
+TEST(GameTest, AliveNeighboursTest){
     Game game(5);
     game.getGameField()[1][1].setState(true);
     game.getGameField()[1][2].setState(true);
