@@ -8,7 +8,7 @@
 
 struct Command
 {
-    std::string name;
+    std::string name;   
     std::vector<std::string> parameters;
 };
 
