@@ -1,14 +1,21 @@
 #include "game.h"
 
-Game::Game(int fieldSize) : fieldSize(fieldSize), iteration(0), gameField(fieldSize, std::vector<Cell>(fieldSize)) {}
+Game::Game(Universe& universe) :  iteration(0), universe(universe){}
 Game::~Game() = default;
+Universe::Universe(size_t fieldSize) : fieldSize(fieldSize),  gameField(fieldSize, std::vector<Cell>(fieldSize)) {}
+Universe::~Universe() = default;
 
-std::vector<std::vector<Cell>> &Game::getGameField() { return gameField; }
-std::string Game::getRule() const { return rule; }
-std::string Game::getUnverseName() const { return universeName; }
-size_t Game::getFieldSize() const { return fieldSize; }
+std::vector<std::vector<Cell>> &Universe::getGameField() { return gameField; }
+std::string Universe::getRule() const { return rule; }
+std::string Universe::getUnverseName() const { return universeName; }
+size_t Universe::getFieldSize() const { return fieldSize; }
 
-void Game::randomUniverse()
+void Universe::changeGameField(std::vector<std::vector<Cell>> newGameFied){
+    gameField = newGameFied;
+}
+
+
+void Universe::randomUniverse()
 {
     for (size_t x = 0; x < fieldSize; ++x)
     {
@@ -19,7 +26,7 @@ void Game::randomUniverse()
     }
 }
 
-bool Game::isCorrectRule(const std::string &rule)
+bool Universe::isCorrectRule(const std::string &rule)
 {
     if (rule[0] != 'B' || rule.find('/') == std::string::npos)
     {
@@ -55,7 +62,7 @@ bool Game::checkInput(const CommandParser &parser)
     if (parser.getInputFile() == "none")
     {
         std::cout << "No input file. Generating random universe." << std::endl;
-        randomUniverse();
+        universe.randomUniverse();
     }
     else
     {
@@ -65,7 +72,7 @@ bool Game::checkInput(const CommandParser &parser)
             std::cerr << "Could not open input file" << std::endl;
             return false;
         }
-        inputFile >> *this;
+        inputFile >> universe;
         if (!inputFile)
         {
             std::cerr << "Failed while loading universe from file" << std::endl;
@@ -104,13 +111,13 @@ bool Game::gamePreparation(const CommandParser &parser)
         std::cerr << "Number of iterations mast be >= 0" << std::endl;
         return false;
     }
-    std::cout << "Universe: " << universeName << std::endl;
-    std::cout << "Rule: " << rule << std::endl;
+    std::cout << "Universe: " << universe.getUnverseName() << std::endl;
+    std::cout << "Rule: " <<  universe.getRule() << std::endl;
     std::cout << "Game prepared successfully!" << std::endl;
     return true;
 }
 
-int Game::aliveNeighbours(int x, int y)
+int Universe::aliveNeighbours(int x, int y)
 {
     int aliveNeighbours = 0;
     for (int cx = -1; cx <= 1; ++cx)
@@ -132,9 +139,9 @@ int Game::aliveNeighbours(int x, int y)
 
 void Game::iterate(const size_t iterations)
 {
-    size_t slashPos = rule.find('/');
-    std::string birthPart = rule.substr(1, slashPos - 1);
-    std::string survivalPart = rule.substr(slashPos + 2);
+    size_t slashPos = universe.getRule().find('/');
+    std::string birthPart = universe.getRule().substr(1, slashPos - 1);
+    std::string survivalPart = universe.getRule().substr(slashPos + 2);
 
     std::set<int> birthDigits;
     std::set<int> survivalDigits;
@@ -149,15 +156,15 @@ void Game::iterate(const size_t iterations)
 
     for (int i = 0; i < iterations; ++i)
     {
-        std::vector<std::vector<Cell>> nextGameField(fieldSize, std::vector<Cell>(fieldSize));
-        for (int x = 0; x < fieldSize; ++x)
+        std::vector<std::vector<Cell>> nextGameField(universe.getFieldSize(), std::vector<Cell>(universe.getFieldSize()));
+        for (int x = 0; x < universe.getFieldSize(); ++x)
         {
-            for (int y = 0; y < fieldSize; ++y)
+            for (int y = 0; y < universe.getFieldSize(); ++y)
             {
-                int aliveNeighbours = (*this).aliveNeighbours(x, y);
+                int aliveNeighbours = universe.aliveNeighbours(x, y);
                 bool nextState = false;
 
-                if (gameField[x][y].isAlive())
+                if (universe.getGameField()[x][y].isAlive())
                 {
                     nextState = (survivalDigits.count(aliveNeighbours) > 0);
                 }
@@ -169,19 +176,19 @@ void Game::iterate(const size_t iterations)
                 nextGameField[x][y].setState(nextState);
             }
         }
-        gameField = nextGameField;
+        universe.changeGameField(nextGameField);
         visualize();
         std::cout << "\n";
     }
 }
 
-void Game::visualize() const
+void Game::visualize() 
 {
-    for (size_t x = 0; x < fieldSize; ++x)
+    for (size_t x = 0; x < universe.getFieldSize(); ++x)
     {
-        for (size_t y = 0; y < fieldSize; ++y)
+        for (size_t y = 0; y < universe.getFieldSize(); ++y)
         {
-            std::cout << (gameField[x][y].isAlive() ? '*' : '.');
+            std::cout << (universe.getGameField()[x][y].isAlive() ? '*' : '.');
         }
         std::cout << '\n';
     }
@@ -232,7 +239,7 @@ bool Game::commandProcessing(const std::string &command)
             }
             else
             {
-                outputFile << *this;
+                outputFile << universe;
             }
         }
         else
@@ -259,16 +266,16 @@ bool Game::commandProcessing(const std::string &command)
     return true;
 }
 
-std::ostream &operator<<(std::ostream &os, Game &game)
+std::ostream &operator<<(std::ostream &os, Universe& universe)
 {
     os << "#Life 1.06\n";
-    os << "#N " << game.universeName << "\n";
-    os << "#R " << game.rule << "\n";
-    for (size_t y = 0; y < game.fieldSize; ++y)
+    os << "#N " << universe.universeName << "\n";
+    os << "#R " << universe.rule << "\n";
+    for (size_t y = 0; y < universe.fieldSize; ++y)
     {
-        for (size_t x = 0; x < game.fieldSize; ++x)
+        for (size_t x = 0; x < universe.fieldSize; ++x)
         {
-            if (game.gameField[y][x].isAlive())
+            if (universe.gameField[y][x].isAlive())
             {
                 os << x << " " << y << "\n";
             }
@@ -276,7 +283,7 @@ std::ostream &operator<<(std::ostream &os, Game &game)
     }
     return os;
 }
-std::istream &operator>>(std::istream &is, Game &game)
+std::istream &operator>>(std::istream &is, Universe& universe)
 {
     std::string line;
     bool firstline = false;
@@ -295,12 +302,12 @@ std::istream &operator>>(std::istream &is, Game &game)
 
             if (line.rfind("#N ", 0) == 0)
             {
-                game.universeName = line.substr(3);
+                universe.universeName = line.substr(3);
             }
             else if (line.rfind("#R ", 0) == 0)
             {
-                game.rule = line.substr(3);
-                if (!game.isCorrectRule(game.rule))
+                universe.rule = line.substr(3);
+                if (!universe.isCorrectRule(universe.rule))
                 {
                     is.setstate(std::ios::failbit);
                     return is;
@@ -313,9 +320,9 @@ std::istream &operator>>(std::istream &is, Game &game)
             int x, y;
             if (coordStream >> x >> y)
             {
-                if (x >= 0 && x < game.fieldSize && y >= 0 && y < game.fieldSize)
+                if (x >= 0 && x < universe.fieldSize && y >= 0 && y < universe.fieldSize)
                 {
-                    game.gameField[x][y].setState(true);
+                    universe.gameField[x][y].setState(true);
                 }
                 else
                 {
@@ -329,13 +336,13 @@ std::istream &operator>>(std::istream &is, Game &game)
             }
         }
     }
-    if (game.universeName.empty())
+    if (universe.universeName.empty())
     {
-        game.universeName = "Unnamed";
+        universe.universeName = "Unnamed";
     }
-    if (game.rule.empty())
+    if (universe.rule.empty())
     {
-        game.rule = "B3/S23";
+        universe.rule = "B3/S23";
     }
     is.clear();
     return is;

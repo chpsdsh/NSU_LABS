@@ -19,8 +19,9 @@ int main(int argc, char *argv[])
             return 0;
         }
     }
-
-    Game game(20);
+    Universe universe(20);
+    Game game(universe);
+    
     if (!game.gamePreparation(parser))
     {
         std::cerr << "Failed preparing game" << std::endl;
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            outputFile << game;
+            outputFile << universe;
             std::cout << "Offline mode completed. Data was saved to " << parser.getOutputFile() << std::endl;
         }
     }
