@@ -2,8 +2,13 @@
 
 InputParser::InputParser(int argc, char **argv) : argc(argc), argv(argv) {};
 std::string InputParser::getConfigFileName() const { return configFileName; }
+std::string InputParser::getOutputFileName() const { return outputFileName; }
 std::vector<std::string> InputParser::getInputFileNames() const { return inputFileNames; }
 ConfigParser::ConfigParser(const InputParser &inputParser) : inputParser(inputParser) {};
+//std::vector<std::unique_ptr<Converter>> ConfigParser::getAudioConverters() const {return audioConverters;}
+std::vector<std::unique_ptr<Converter>> ConfigParser::getAudioConverters(){
+    return std::move(audioConverters);
+}
 
 bool InputParser::parse()
 {
@@ -31,6 +36,7 @@ bool InputParser::parse()
                 {
                     inputFileNames.push_back(argv[j]);
                 }
+                //std::cout<<configFileName<<inputFileNames[0]<<outputFileName<<std::endl;
                 return true;
             }
             else
@@ -63,21 +69,22 @@ bool ConfigParser::parse()
             continue;
         }
         std::istringstream iss(line);
+        
 
         Command command;
         iss >> command.name;
-
+        std::cout<<command.name<<std::endl;
         std::string arg;
         while (iss >> arg)
         {
             command.argv.push_back(arg);
         }
-
         processCommand(command);
 
-        config.close();
-        return true;
+        
     }
+    config.close();
+    return true;
 }
 
 void ConfigParser::processCommand(Command &command)

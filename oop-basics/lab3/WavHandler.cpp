@@ -1,26 +1,61 @@
 #include "WavHandler.h"
 
 WavHandler::WavHandler(std::string &fileName) : fileName(fileName) {};
-WavHandler::~WavHandler() = default;
+WavHandler::WavHandler(const std::string& filename,  std::vector<short int>& samples,int sampleRate):
+fileName(fileName), samples(samples), sampleRate(sampleRate){};
+int WavHandler::getSampleRate() const{return sampleRate;}
+
+
 std::vector<short int> WavHandler::getSamples() const { return samples; }
+
 
 void WavHandler::wavLoad()
 {
     std::ifstream file(fileName, std::ios::binary);
     if (!file.is_open())
     {
-        throw std::runtime_error("Error: Unsupported WAV format in file " + fileName);
+        throw std::runtime_error("Error: Could not open WAV file " + fileName);
     }
+
+    // Заголовок WAV файла (44 байта)
     std::vector<uint8_t> header(44);
     file.read(reinterpret_cast<char *>(header.data()), header.size());
-    if (!validateHeader(header))
+    
+    if (file.gcount() != 44)
     {
-        throw std::runtime_error("Error: Unsupported WAV format in file " + fileName);
+        throw std::runtime_error("Error: WAV file has incorrect header size.");
     }
-    int dataSize = *reinterpret_cast<int32_t *>(&header[40]);
-    samples.resize(dataSize / (bitsPerSample / 8));
 
+    // Проверяем "RIFF" и "WAVE" в заголовке
+    if (std::strncmp(reinterpret_cast<char*>(header.data()), "RIFF", 4) != 0 || 
+        std::strncmp(reinterpret_cast<char*>(&header[8]), "WAVE", 4) != 0)
+    {
+        throw std::runtime_error("Error: Invalid WAV file format.");
+    }
+
+    // Извлекаем параметры
+    int dataSize = *reinterpret_cast<int32_t*>(&header[40]);  // Размер данных
+    sampleRate = *reinterpret_cast<int32_t*>(&header[24]);    // Частота дискретизации
+    numChannels = *reinterpret_cast<int16_t*>(&header[22]);   // Количество каналов
+    bitsPerSample = *reinterpret_cast<int16_t*>(&header[34]);  // Битность сэмпла (обычно 16)
+
+    // Проверка, что файл PCM моно 16 бит 44,100 Гц
+    if (numChannels != 1 || bitsPerSample != 16 || sampleRate != 44100)
+    {
+        throw std::runtime_error("Error: Unsupported WAV format. Only mono 16-bit 44.1kHz PCM is supported.");
+    }
+
+    // Читаем данные (сэмплы)
+    int numSamples = dataSize / (bitsPerSample / 8);  // Рассчитываем количество сэмплов (на основе dataSize)
+
+    samples.resize(numSamples);
     file.read(reinterpret_cast<char *>(samples.data()), dataSize);
+    
+    if (file.gcount() != dataSize)
+    {
+        throw std::runtime_error("Error: Failed to read all data from WAV file.");
+    }
+
     file.close();
 }
 

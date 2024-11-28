@@ -9,10 +9,11 @@ class WavHandler
 {
 public:
     WavHandler(std::string &fileName);
-    ~WavHandler();
+    WavHandler(const std::string& fileName, std::vector<short int>& samples, int sampleRate);
     void wavLoad();
     void wavSave(const std::string &outputFileName);
     std::vector<short int> getSamples() const;
+    int getSampleRate() const;
 private:
     std::string fileName;
     int sampleRate;

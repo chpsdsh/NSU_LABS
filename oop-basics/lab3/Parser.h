@@ -14,6 +14,7 @@ public:
     InputParser(int argc, char **argv);
     bool parse();
     std::string getConfigFileName() const;
+    std::string getOutputFileName() const;
     std::vector<std::string> getInputFileNames() const;
 private:
     int argc;
@@ -30,6 +31,7 @@ public:
     ConfigParser(const InputParser &inputParser);
     bool parse();
     void processCommand(Command& command);
+    std::vector<std::unique_ptr<Converter>> getAudioConverters();
 private:
     const InputParser &inputParser;
     std::vector<std::unique_ptr<Converter>> audioConverters;

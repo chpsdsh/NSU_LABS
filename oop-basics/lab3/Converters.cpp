@@ -7,9 +7,9 @@ DistortionConverter::DistortionConverter(short int threshold, int startSec, int 
 
 void MuteConverter::apply(std::vector<short int> &samples)
 {
-    int startIndex = startSec * 44100 / 1000;
-    int endIndex = endSec * 44100 / 1000;
-
+    int startIndex = startSec * 44100/1000;
+    int endIndex = endSec * 44100/1000;
+    std::cout<<startIndex<<" "<<endIndex<<" "<<samples.size()<<std::endl;
     for (int i = startIndex; i < endIndex && i < samples.size(); ++i)
     {
         samples[i] = 0;
@@ -20,6 +20,7 @@ void MixConverter::apply(std::vector<short int> &samples)
 {
     int startIndex = startSec * 44100 / 1000;
     WavHandler fileToMix(fileToMix);
+    fileToMix.wavLoad();
     std::vector<short int> samplesToMix = fileToMix.getSamples();
     for (int i = 0; i < samplesToMix.size() && (startIndex + i) < samples.size(); ++i)
     {
@@ -29,8 +30,8 @@ void MixConverter::apply(std::vector<short int> &samples)
 
 void DistortionConverter::apply(std::vector<short int> &samples)
 {
-    int startIndex = startSec * 44100 / 1000;
-    int endIndex = endSec * 44100 / 1000;
+    int startIndex = startSec * 44100;
+    int endIndex = endSec * 44100;
     for (int i = startIndex; i < endIndex; ++i)
     {
         if (samples[i] > threshold)
