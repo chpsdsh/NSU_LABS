@@ -2,7 +2,8 @@
 
 InputParser::InputParser(int argc, char **argv) : argc(argc), argv(argv) {};
 std::string InputParser::getConfigFileName() const { return configFileName; }
-ConfigParser::ConfigParser(const std::string& confgFileName): configFileName(confgFileName){};
+std::vector<std::string> InputParser::getInputFileNames() const { return inputFileNames; }
+ConfigParser::ConfigParser(const InputParser &inputParser) : inputParser(inputParser) {};
 
 bool InputParser::parse()
 {
@@ -46,28 +47,65 @@ bool InputParser::parse()
     return false;
 }
 
-std::vector<Command> ConfigParser::Parse(){
-    std::vector<Command> Commands;
-    std::ifstream config(configFileName);
-    if(!config.is_open()){
-        std::cerr << "Error: Could not open config file " << configFileName << ".\n";
-        return Commands;
+bool ConfigParser::parse()
+{
+    std::ifstream config(inputParser.getConfigFileName());
+    if (!config.is_open())
+    {
+        std::cerr << "Error: Could not open config file " << inputParser.getConfigFileName() << ".\n";
+        return false;
     }
     std::string line;
-    while(std::getline(config, line)){
-        if(line.empty()||line[0] == '#'){
+    while (std::getline(config, line))
+    {
+        if (line.empty() || line[0] == '#')
+        {
             continue;
         }
         std::istringstream iss(line);
+
         Command command;
         iss >> command.name;
-        std::string param;
-        while(iss >> param){
-            command.parameters.push_back(param);
+
+        std::string arg;
+        while (iss >> arg)
+        {
+            command.argv.push_back(arg);
         }
-        Commands.push_back(command);
+
+        processCommand(command);
+
+        config.close();
+        return true;
     }
-    config.close();
-    return Commands;
 }
 
+void ConfigParser::processCommand(Command &command)
+{
+    if (command.name == "mute")
+    {
+        auto converter = ConverterFactory::createConverter(command);  // Больше не требуется шаблон
+        audioConverters.push_back(std::move(converter));
+        std::cout << "Mute Converter added" << std::endl;
+    }
+    else if (command.name == "mix" && command.argv[0][0] == '$')
+    {
+        // Заменяем аргумент с номером на путь к файлу
+        std::string numberStr = command.argv[0].substr(1); // Убираем символ $
+        std::string fileToMix = inputParser.getInputFileNames()[std::stoi(numberStr)];
+        command.argv[0] = fileToMix;  // Обновляем аргумент на путь к файлу
+        auto converter = ConverterFactory::createConverter(command);  // Больше не требуется шаблон
+        audioConverters.push_back(std::move(converter));
+        std::cout << "Mix Converter added" << std::endl;
+    }
+    else if (command.name == "distortion")
+    {
+        auto converter = ConverterFactory::createConverter(command);  // Больше не требуется шаблон
+        audioConverters.push_back(std::move(converter));
+        std::cout << "Distortion Converter added" << std::endl;
+    }
+    else
+    {
+        throw std::invalid_argument("Unknown converter");
+    }
+}

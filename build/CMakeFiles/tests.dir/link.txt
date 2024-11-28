@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/tests.dir/gameTests.cpp.o CMakeFiles/tests.dir/commandParser.cpp.o CMakeFiles/tests.dir/game.cpp.o CMakeFiles/tests.dir/cell.cpp.o -o tests  -lpthread /usr/lib64/libgtest_main.so.1.14.0 /usr/lib64/libgtest.so.1.14.0 
+/usr/bin/c++ -g CMakeFiles/tests.dir/gameTests.cpp.o CMakeFiles/tests.dir/commandParser.cpp.o CMakeFiles/tests.dir/game.cpp.o CMakeFiles/tests.dir/cell.cpp.o -o tests  -lpthread /usr/lib64/libgtest_main.so.1.14.0 /usr/lib64/libgtest.so.1.14.0

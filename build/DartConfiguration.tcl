@@ -4,7 +4,7 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3
+SourceDirectory: /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2
 BuildDirectory: /home/chopisdish/Programming/NSU_LABS/build
 
 # Where to place the cost data store
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab3"
+ConfigureCommand: "/usr/bin/cmake" "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
@@ -94,6 +94,9 @@ TimeOut: 1500
 # During parallel testing CTest will not start a new test if doing
 # so would cause the system load to exceed this value.
 TestLoad: 
+
+TLSVerify: 
+TLSVersion: 
 
 UseLaunchers: 
 CurlOptions: 

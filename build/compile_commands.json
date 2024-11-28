@@ -1,26 +1,50 @@
 [
 {
   "directory": "/home/chopisdish/Programming/NSU_LABS/build",
-  "command": "/usr/bin/c++   -g -o CMakeFiles/lab3.dir/main.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/main.cpp",
-  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/main.cpp",
-  "output": "CMakeFiles/lab3.dir/main.cpp.o"
+  "command": "/usr/bin/c++   -g -o CMakeFiles/lab2.dir/main.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/main.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/main.cpp",
+  "output": "CMakeFiles/lab2.dir/main.cpp.o"
 },
 {
   "directory": "/home/chopisdish/Programming/NSU_LABS/build",
-  "command": "/usr/bin/c++   -g -o CMakeFiles/lab3.dir/Parser.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/Parser.cpp",
-  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/Parser.cpp",
-  "output": "CMakeFiles/lab3.dir/Parser.cpp.o"
+  "command": "/usr/bin/c++   -g -o CMakeFiles/lab2.dir/commandParser.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp",
+  "output": "CMakeFiles/lab2.dir/commandParser.cpp.o"
 },
 {
   "directory": "/home/chopisdish/Programming/NSU_LABS/build",
-  "command": "/usr/bin/c++   -g -o CMakeFiles/lab3.dir/Converters.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/Converters.cpp",
-  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/Converters.cpp",
-  "output": "CMakeFiles/lab3.dir/Converters.cpp.o"
+  "command": "/usr/bin/c++   -g -o CMakeFiles/lab2.dir/game.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp",
+  "output": "CMakeFiles/lab2.dir/game.cpp.o"
 },
 {
   "directory": "/home/chopisdish/Programming/NSU_LABS/build",
-  "command": "/usr/bin/c++   -g -o CMakeFiles/lab3.dir/WavHandler.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/WavHandler.cpp",
-  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/WavHandler.cpp",
-  "output": "CMakeFiles/lab3.dir/WavHandler.cpp.o"
+  "command": "/usr/bin/c++   -g -o CMakeFiles/lab2.dir/cell.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp",
+  "output": "CMakeFiles/lab2.dir/cell.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1  -g -o CMakeFiles/tests.dir/gameTests.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/gameTests.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/gameTests.cpp",
+  "output": "CMakeFiles/tests.dir/gameTests.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1  -g -o CMakeFiles/tests.dir/commandParser.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/commandParser.cpp",
+  "output": "CMakeFiles/tests.dir/commandParser.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1  -g -o CMakeFiles/tests.dir/game.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/game.cpp",
+  "output": "CMakeFiles/tests.dir/game.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1  -g -o CMakeFiles/tests.dir/cell.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab2/cell.cpp",
+  "output": "CMakeFiles/tests.dir/cell.cpp.o"
 }
 ]

@@ -1,4 +1,4 @@
-/home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/lab3.dir
+/home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/lab2.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/Experimental.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/Nightly.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/Continuous.dir
@@ -27,6 +27,7 @@
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/ContinuousCoverage.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/ContinuousMemCheck.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/ContinuousSubmit.dir
+/home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/tests.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/test.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/edit_cache.dir
 /home/chopisdish/Programming/NSU_LABS/build/CMakeFiles/rebuild_cache.dir

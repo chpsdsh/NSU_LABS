@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
@@ -5,20 +6,26 @@
 #include <memory>
 #include <stdexcept>
 #include <cstdint>
+#include "WavHandler.h"
 
+struct Command
+{
+    std::string name;
+    std::vector<std::string> argv;
+};
 
 class Converter
 {
 public:
     virtual ~Converter() = default;
-    virtual void apply(std::vector<int16_t> &samples) = 0;
+    virtual void apply(std::vector<short int> &samples) = 0;
 };
 
 class MuteConverter : public Converter
 {
 public:
     MuteConverter(int startSec, int endSec);
-    void apply(std::vector<int16_t> &samples) override;
+    void apply(std::vector<short int> &samples) override;
 
 private:
     int startSec;
@@ -28,28 +35,28 @@ private:
 class MixConverter : public Converter
 {
 public:
-    MixConverter(std::vector<int16_t> &samplesToMix, int startSec);
-    void apply(std::vector<int16_t> &samples) override;
+    MixConverter(const std::string &fileToMix, int startSec);
+    void apply(std::vector<short int> &samples) override;
 
 private:
-    std::vector<int16_t> samplesToMix;
+    std::string fileToMix;
     int startSec;
 };
 
 class DistortionConverter : public Converter
 {
 public:
-    DistortionConverter(int16_t threshold, int startSec, int endSec);
-    void apply(std::vector<int16_t> &samples) override;
+    DistortionConverter(short int threshold, int startSec, int endSec);
+    void apply(std::vector<short int> &samples) override;
 
 private:
-    int16_t threshold;
+    short int threshold;
     int startSec;
     int endSec;
 };
 
 class ConverterFactory
 {
-    static std::unique_ptr<Converter> createConverter(const std::string &name, const std::vector<std::string> &parameters);
-    static void convertersInfo();
+public:
+    static std::unique_ptr<Converter> createConverter(Command& command);
 };

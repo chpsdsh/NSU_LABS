@@ -12,12 +12,12 @@ public:
     ~WavHandler();
     void wavLoad();
     void wavSave(const std::string &outputFileName);
-
+    std::vector<short int> getSamples() const;
 private:
     std::string fileName;
     int sampleRate;
     int numChannels;
     int bitsPerSample;
-    std::vector<int16_t> samples;
+    std::vector<short int> samples;
     bool validateHeader(std::vector<uint8_t> header);
 };

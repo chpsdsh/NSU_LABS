@@ -2,7 +2,7 @@
 
 WavHandler::WavHandler(std::string &fileName) : fileName(fileName) {};
 WavHandler::~WavHandler() = default;
-
+std::vector<short int> WavHandler::getSamples() const { return samples; }
 
 void WavHandler::wavLoad()
 {
@@ -23,7 +23,6 @@ void WavHandler::wavLoad()
     file.read(reinterpret_cast<char *>(samples.data()), dataSize);
     file.close();
 }
-
 
 void WavHandler::wavSave(const std::string &outputFileName)
 {
@@ -66,7 +65,6 @@ void WavHandler::wavSave(const std::string &outputFileName)
     file.write(reinterpret_cast<const char *>(samples.data()), dataChunkSize);
     file.close();
 }
-
 
 bool WavHandler::validateHeader(std::vector<uint8_t> header)
 {

@@ -1,40 +1,36 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
 #include <cstring>
 #include <fstream>
 #include <sstream>
+#include <memory> 
+#include "Converters.h"
 
-
-struct Command
+class InputParser
 {
-    std::string name;   
-    std::vector<std::string> parameters;
-};
-
-class InputParser{
-    public:
-        InputParser(int argc, char **argv);
-        bool parse();
-        std::string getConfigFileName() const;
-
-    private:
-        int argc;
-        char ** argv;
-        std::string configFileName;
-        std::string outputFileName;
-        std::vector<std::string> inputFileNames;
-        bool helpShown = false;
-        
+public:
+    InputParser(int argc, char **argv);
+    bool parse();
+    std::string getConfigFileName() const;
+    std::vector<std::string> getInputFileNames() const;
+private:
+    int argc;
+    char **argv;
+    std::string configFileName;
+    std::string outputFileName;
+    std::vector<std::string> inputFileNames;
+    bool helpShown = false;
 };
 
 class ConfigParser
 {
 public:
-    ConfigParser(const std::string& configFileName);
-    std::vector<Command> Parse();
-
+    ConfigParser(const InputParser &inputParser);
+    bool parse();
+    void processCommand(Command& command);
 private:
-    std::string configFileName;
+    const InputParser &inputParser;
+    std::vector<std::unique_ptr<Converter>> audioConverters;
 };
-
