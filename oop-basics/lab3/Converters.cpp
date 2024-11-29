@@ -1,16 +1,16 @@
 #include "Converters.h"
 
 MuteConverter::MuteConverter(int startSec, int endSec) : startSec(startSec), endSec(endSec) {};
-MixConverter::MixConverter(const std::string& fileToMix, int startSec) : fileToMix(fileToMix), startSec(startSec) {};
+MixConverter::MixConverter(const std::string &fileToMix, int startSec) : fileToMix(fileToMix), startSec(startSec) {};
 DistortionConverter::DistortionConverter(short int threshold, int startSec, int endSec) : threshold(threshold),
                                                                                           startSec(startSec), endSec(endSec) {};
 
 void MuteConverter::apply(std::vector<short int> &samples)
 {
-    int startIndex = startSec * 44100/1000;
-    int endIndex = endSec * 44100/1000;
-    std::cout<<startIndex<<" "<<endIndex<<" "<<samples.size()<<std::endl;
-    for (int i = startIndex; i < endIndex && i < samples.size(); ++i)
+    int startIndex = startSec * 44100;
+    int endIndex = endSec * 44100;
+    std::cout << startIndex << " " << endIndex << " " << samples.size() << std::endl;
+    for (size_t i = startIndex; i < endIndex && i < samples.size(); ++i)
     {
         samples[i] = 0;
     }
@@ -18,10 +18,13 @@ void MuteConverter::apply(std::vector<short int> &samples)
 
 void MixConverter::apply(std::vector<short int> &samples)
 {
-    int startIndex = startSec * 44100 / 1000;
-    WavHandler fileToMix(fileToMix);
-    fileToMix.wavLoad();
-    std::vector<short int> samplesToMix = fileToMix.getSamples();
+    int startIndex = startSec * 44100;
+    std::cout<<fileToMix<<std::endl;
+    WavHandler fileMix(fileToMix);
+    fileMix.wavLoad();
+    
+    std::vector<short int> samplesToMix = fileMix.getSamples();
+    std::cout<<samples.size()<<" "<<samplesToMix.size()<<std::endl;
     for (int i = 0; i < samplesToMix.size() && (startIndex + i) < samples.size(); ++i)
     {
         samples[startIndex + i] = (samples[startIndex + i] + samplesToMix[i]) / 2;
@@ -32,7 +35,7 @@ void DistortionConverter::apply(std::vector<short int> &samples)
 {
     int startIndex = startSec * 44100;
     int endIndex = endSec * 44100;
-    for (int i = startIndex; i < endIndex; ++i)
+    for (int i = startIndex; i < endIndex && i < samples.size(); ++i)
     {
         if (samples[i] > threshold)
         {
@@ -45,7 +48,7 @@ void DistortionConverter::apply(std::vector<short int> &samples)
     }
 }
 
-std::unique_ptr<Converter> ConverterFactory::createConverter(Command& command)
+std::unique_ptr<Converter> ConverterFactory::createConverter(Command &command)
 {
     if (command.name == "mute" && command.argv.size() == 2)
     {
@@ -55,15 +58,15 @@ std::unique_ptr<Converter> ConverterFactory::createConverter(Command& command)
     }
     else if (command.name == "mix" && command.argv.size() == 2)
     {
-        const std::string& fileToMix = command.argv[0]; // Путь к файлу для смешивания
-        int startSec = std::stoi(command.argv[1]);     // Время начала в секундах
+        const std::string &fileToMix = command.argv[0]; 
+        int startSec = std::stoi(command.argv[1]);      
         return std::make_unique<MixConverter>(fileToMix, startSec);
     }
     else if (command.name == "distortion" && command.argv.size() == 3)
     {
-        short int threshold = std::stoi(command.argv[0]); // Порог для искажения
-        int startSec = std::stoi(command.argv[1]);         // Время начала в секундах
-        int endSec = std::stoi(command.argv[2]);           // Время конца в секундах
+        short int threshold = std::stoi(command.argv[0]); 
+        int startSec = std::stoi(command.argv[1]);        
+        int endSec = std::stoi(command.argv[2]);          
         return std::make_unique<DistortionConverter>(threshold, startSec, endSec);
     }
     else

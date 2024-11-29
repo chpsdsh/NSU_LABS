@@ -1,112 +1,175 @@
 #include "WavHandler.h"
 
-WavHandler::WavHandler(std::string &fileName) : fileName(fileName) {};
-WavHandler::WavHandler(const std::string& filename,  std::vector<short int>& samples,int sampleRate):
+WavHandler::WavHandler(const std::string &fileName) : fileName(fileName) {};
+WavHandler::WavHandler(const std::string& fileName, std::vector<short int>& samples,int sampleRate):
 fileName(fileName), samples(samples), sampleRate(sampleRate){};
-int WavHandler::getSampleRate() const{return sampleRate;}
 
 
-std::vector<short int> WavHandler::getSamples() const { return samples; }
 
-
-void WavHandler::wavLoad()
+bool WavHandler::wavLoad()
 {
     std::ifstream file(fileName, std::ios::binary);
     if (!file.is_open())
     {
-        throw std::runtime_error("Error: Could not open WAV file " + fileName);
+        std::cerr << "Error! Could not open file: " << fileName << std::endl;
+        return false;
     }
 
-    // Заголовок WAV файла (44 байта)
-    std::vector<uint8_t> header(44);
-    file.read(reinterpret_cast<char *>(header.data()), header.size());
-    
-    if (file.gcount() != 44)
+    if (!readHeader(file))
+        return false;
+
+    short int sample;
+    while (file.read(reinterpret_cast<char*>(&sample), sizeof(sample)))
+        samples.push_back(sample);
+
+    if (!file.eof() && file.fail())
     {
-        throw std::runtime_error("Error: WAV file has incorrect header size.");
+        std::cerr << "Error! Unexpected end of file or read error: " << fileName << std::endl;
+        return false;
     }
 
-    // Проверяем "RIFF" и "WAVE" в заголовке
-    if (std::strncmp(reinterpret_cast<char*>(header.data()), "RIFF", 4) != 0 || 
-        std::strncmp(reinterpret_cast<char*>(&header[8]), "WAVE", 4) != 0)
-    {
-        throw std::runtime_error("Error: Invalid WAV file format.");
-    }
-
-    // Извлекаем параметры
-    int dataSize = *reinterpret_cast<int32_t*>(&header[40]);  // Размер данных
-    sampleRate = *reinterpret_cast<int32_t*>(&header[24]);    // Частота дискретизации
-    numChannels = *reinterpret_cast<int16_t*>(&header[22]);   // Количество каналов
-    bitsPerSample = *reinterpret_cast<int16_t*>(&header[34]);  // Битность сэмпла (обычно 16)
-
-    // Проверка, что файл PCM моно 16 бит 44,100 Гц
-    if (numChannels != 1 || bitsPerSample != 16 || sampleRate != 44100)
-    {
-        throw std::runtime_error("Error: Unsupported WAV format. Only mono 16-bit 44.1kHz PCM is supported.");
-    }
-
-    // Читаем данные (сэмплы)
-    int numSamples = dataSize / (bitsPerSample / 8);  // Рассчитываем количество сэмплов (на основе dataSize)
-
-    samples.resize(numSamples);
-    file.read(reinterpret_cast<char *>(samples.data()), dataSize);
-    
-    if (file.gcount() != dataSize)
-    {
-        throw std::runtime_error("Error: Failed to read all data from WAV file.");
-    }
-
-    file.close();
+    return true;
 }
 
-void WavHandler::wavSave(const std::string &outputFileName)
+bool WavHandler::wavSave()
 {
-    std::ofstream file(outputFileName, std::ios::binary);
+    std::ofstream file(fileName, std::ios::binary);
     if (!file.is_open())
     {
-        throw std::runtime_error("Error: Could not open output file " + outputFileName);
+        std::cerr << "Error! Could not open file for writing: " << fileName << std::endl;
+        return false;
     }
 
-    // Заголовок WAV-файла
-    std::vector<uint8_t> header(44, 0);
+    if (!writeHeader(file))
+        return false;
 
-    // RIFF заголовок
-    std::memcpy(header.data(), "RIFF", 4);
-    int32_t fileSize = 36 + samples.size() * (bitsPerSample / 8);
-    std::memcpy(&header[4], &fileSize, 4);
-    std::memcpy(&header[8], "WAVE", 4);
+    for (const auto& sample : samples)
+        file.write(reinterpret_cast<const char*>(&sample), sizeof(sample));
 
-    // fmt подзаголовок
-    std::memcpy(&header[12], "fmt ", 4);
-    int32_t fmtChunkSize = 16;
-    std::memcpy(&header[16], &fmtChunkSize, 4);
-    int16_t audioFormat = 1; // PCM
-    std::memcpy(&header[20], &audioFormat, 2);
-    std::memcpy(&header[22], &numChannels, 2);
-    std::memcpy(&header[24], &sampleRate, 4);
-    int32_t byteRate = sampleRate * numChannels * (bitsPerSample / 8);
-    std::memcpy(&header[28], &byteRate, 4);
-    int16_t blockAlign = numChannels * (bitsPerSample / 8);
-    std::memcpy(&header[32], &blockAlign, 2);
-    std::memcpy(&header[34], &bitsPerSample, 2);
+    if (!file)
+    {
+        std::cerr << "Error! Write operation failed for file: " << fileName << std::endl;
+        return false;
+    }
 
-    // data подзаголовок
-    std::memcpy(&header[36], "data", 4);
-    int32_t dataChunkSize = samples.size() * (bitsPerSample / 8);
-    std::memcpy(&header[40], &dataChunkSize, 4);
-
-    // Запись заголовка и данных
-    file.write(reinterpret_cast<const char *>(header.data()), header.size());
-    file.write(reinterpret_cast<const char *>(samples.data()), dataChunkSize);
-    file.close();
+    return true;
 }
 
-bool WavHandler::validateHeader(std::vector<uint8_t> header)
+bool WavHandler::readHeader(std::ifstream& file)
 {
-    int16_t audioFormat = *reinterpret_cast<const int16_t *>(&header[20]);
-    numChannels = *reinterpret_cast<const int16_t *>(&header[22]);
-    sampleRate = *reinterpret_cast<const int32_t *>(&header[24]);
-    bitsPerSample = *reinterpret_cast<const int16_t *>(&header[34]);
+    char chunk_id[4];
+    file.read(chunk_id, 4);
+    if (std::string(chunk_id, 4) != "RIFF")
+    {
+        std::cerr << "Error! Not a valid WAV file (missing RIFF header)." << std::endl;
+        validFormat = false;
+        return false;
+    }
 
-    return audioFormat == 1 && numChannels == 1 && sampleRate == 44100 && bitsPerSample == 16;
+    uint32_t chunk_size;
+    file.read(reinterpret_cast<char*>(&chunk_size), 4);
+
+    char format[4];
+    file.read(format, 4);
+    if (std::string(format, 4) != "WAVE")
+    {
+        std::cerr << "Error! Not a valid WAV file (missing WAVE header)." << std::endl;
+        validFormat = false;
+        return false;
+    }
+
+    while (file.read(chunk_id, 4))
+    {
+        uint32_t subchunk_size;
+        file.read(reinterpret_cast<char*>(&subchunk_size), 4);
+
+        if (std::string(chunk_id, 4) == "fmt ")
+        {
+            uint16_t audio_format;
+            file.read(reinterpret_cast<char*>(&audio_format), 2);
+            if (audio_format != 1)
+            {
+                std::cerr << "Error! Unsupported audio format (only PCM is supported)." << std::endl;
+                validFormat = false;
+                return false;
+            }
+
+            file.read(reinterpret_cast<char*>(&numChannels), 2);
+            if (numChannels != 1)
+            {
+                std::cerr << "Error! Only mono WAV files are supported." << std::endl;
+                validFormat = false;
+                return false;
+            }
+
+            file.read(reinterpret_cast<char*>(&sampleRate), 4);
+            if (sampleRate != 44100)
+            {
+                std::cerr << "Error! Only 44100 Hz sample rate is supported." << std::endl;
+                validFormat = false;
+                return false;
+            }
+
+            file.ignore(6); // skip byte_rate + block_align (2 + 4)
+
+            uint16_t bits_per_sample;
+            file.read(reinterpret_cast<char*>(&bits_per_sample), 2);
+            if (bits_per_sample != 16)
+            {
+                std::cerr << "Error! Only 16-bit WAV files are supported." << std::endl;
+                validFormat = false;
+                return false;
+            }
+            bitsPerSample = bits_per_sample;
+        }
+
+        else if (std::string(chunk_id, 4) == "data")
+        {
+            file.read(reinterpret_cast<char*>(&subchunk_size), 4);
+            validFormat = true;
+            return true;
+        }
+        else
+        {
+            file.seekg(subchunk_size, std::ios::cur);
+        }
+    }
+
+    std::cerr << "Error! Missing data header in WAV file." << std::endl;
+    validFormat = false;
+    return false;
+}
+
+bool WavHandler::writeHeader(std::ofstream& file)
+{
+    uint32_t chunk_size = 36 + samples.size() * sizeof(short int);
+    uint32_t byte_rate = sampleRate * 1 * 16 / 8;
+    uint16_t block_align = 1 * 16 / 8;
+    uint32_t subchunk2_size = samples.size() * sizeof(short int);
+
+    file.write("RIFF", 4);
+    file.write(reinterpret_cast<const char*>(&chunk_size), 4);
+    file.write("WAVE", 4);
+    if (!file) return false;
+
+    file.write("fmt ", 4);
+    uint32_t subchunk1_size = 16;
+    uint16_t audio_format = 1;
+    uint16_t num_channels = 1;
+    uint16_t bits_per_sample = 16;
+
+    file.write(reinterpret_cast<const char*>(&subchunk1_size), 4);
+    file.write(reinterpret_cast<const char*>(&audio_format), 2);
+    file.write(reinterpret_cast<const char*>(&num_channels), 2);
+    file.write(reinterpret_cast<const char*>(&sampleRate), 4);
+    file.write(reinterpret_cast<const char*>(&byte_rate), 4);
+    file.write(reinterpret_cast<const char*>(&block_align), 2);
+    file.write(reinterpret_cast<const char*>(&bits_per_sample), 2);
+    if (!file) return false;
+
+    file.write("data", 4);
+    file.write(reinterpret_cast<const char*>(&subchunk2_size), 4);
+    if (!file) return false;
+
+    return true;
 }

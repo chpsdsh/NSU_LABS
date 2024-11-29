@@ -8,17 +8,26 @@
 class WavHandler
 {
 public:
-    WavHandler(std::string &fileName);
+    WavHandler(const std::string &fileName);
     WavHandler(const std::string& fileName, std::vector<short int>& samples, int sampleRate);
-    void wavLoad();
-    void wavSave(const std::string &outputFileName);
-    std::vector<short int> getSamples() const;
-    int getSampleRate() const;
+    ~WavHandler() = default;
+
+    bool wavSave();
+    bool wavLoad();
+    std::vector<short int>& getSamples()  { return samples; }
+    int getSampleRate() const { return sampleRate; }
+    void setSamples(std::vector<short int>& samples) { samples = samples;}
+    void setSampleRate(int sampleRate) { sampleRate = sampleRate;}
+
+
 private:
+    bool readHeader(std::ifstream& file);
+    bool writeHeader(std::ofstream& file);
+
     std::string fileName;
     int sampleRate;
     int numChannels;
     int bitsPerSample;
+    bool validFormat = false;
     std::vector<short int> samples;
-    bool validateHeader(std::vector<uint8_t> header);
 };

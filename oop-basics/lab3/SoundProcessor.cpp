@@ -9,28 +9,43 @@ bool SoundProcessor::run()
         std::cerr << "No input files";
         return false;
     }
-    
+
     WavHandler inputFile(inputParser.getInputFileNames()[0]);
-    inputFile.wavLoad();
+    std::cout << inputParser.getInputFileNames()[0] << std::endl;
+    if (!inputFile.wavLoad())
+    {
+        std::cerr << "No input files";
+        return false;
+    }
     ConfigParser configParser(inputParser);
-    if(!configParser.parse()){
+    if (!configParser.parse())
+    {
         std::cerr << "No input files";
         return false;
     }
     std::vector<short int> samples = inputFile.getSamples();
     for (const auto &converter : configParser.getAudioConverters())
     {
-        std::cout<<"Applying converter"<<std::endl;
+        std::cout << "Applying converter" << std::endl;
         converter->apply(samples);
     }
-    
-    //for(int i = 10; i < samples.size()-1; ++i){
-    //    std::cout<<samples[i]<<std::endl;
-    //}
-    //std::cout<<inputParser.getOutputFileName()<<samples.size()<< inputFile.getSampleRate()<<std::endl;
-    WavHandler outputFile(inputParser.getOutputFileName(),samples,inputFile.getSampleRate());
-    std::cout<<"penis"<<std::endl;
+    // std::cout<<samples.size()<<std::endl;
+    // for(int i = 1000; i < 1400; i++){
+    //     std::cout<<samples[i]<<" "<<i<<std::endl;
+    // }
+    std::cout << samples.size() << std::endl;
 
-    //outputFile.wavLoad();
+    WavHandler outputFile(inputParser.getOutputFileName(), samples, inputFile.getSampleRate());
+
+    std::cout << "hueta" << samples.size() << outputFile.getSamples().size() << std::endl;
+    if (!outputFile.wavSave())
+    {
+        std::cerr << "No input files";
+        return false;
+    }
+    else
+    {
+        std::cout << "WAV file saved successfully" << std::endl;
+    }
     return true;
 }
