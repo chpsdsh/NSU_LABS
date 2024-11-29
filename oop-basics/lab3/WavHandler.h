@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <stdexcept>
 #include <cstring>
+#include "Exceptions.h"
 
 class WavHandler
 {
@@ -14,10 +15,10 @@ public:
 
     bool wavSave();
     bool wavLoad();
-    std::vector<short int>& getSamples()  { return samples; }
-    int getSampleRate() const { return sampleRate; }
-    void setSamples(std::vector<short int>& samples) { samples = samples;}
-    void setSampleRate(int sampleRate) { sampleRate = sampleRate;}
+    std::vector<short int>& getSamples();
+    int getSampleRate() const ;
+    void setSamples(std::vector<short int>& samples);
+    void setSampleRate(int sampleRate);
 
 
 private:

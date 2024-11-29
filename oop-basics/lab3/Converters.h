@@ -58,5 +58,5 @@ private:
 class ConverterFactory
 {
 public:
-    static std::unique_ptr<Converter> createConverter(Command& command);
+    static std::unique_ptr<Converter> createConverter(Command &command);
 };

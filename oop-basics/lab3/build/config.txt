@@ -1,2 +1,2 @@
 # заглушить первые 30 секунд input1
-distortion 2000 1 30
+distortion 2000 10 30

@@ -5,7 +5,7 @@
 #include <cstring>
 #include <fstream>
 #include <sstream>
-#include <memory> 
+#include <memory>
 #include "Converters.h"
 
 class InputParser
@@ -16,6 +16,7 @@ public:
     std::string getConfigFileName() const;
     std::string getOutputFileName() const;
     std::vector<std::string> getInputFileNames() const;
+
 private:
     int argc;
     char **argv;
@@ -30,8 +31,9 @@ class ConfigParser
 public:
     ConfigParser(const InputParser &inputParser);
     bool parse();
-    void processCommand(Command& command);
+    void processCommand(Command &command);
     std::vector<std::unique_ptr<Converter>> getAudioConverters();
+
 private:
     const InputParser &inputParser;
     std::vector<std::unique_ptr<Converter>> audioConverters;

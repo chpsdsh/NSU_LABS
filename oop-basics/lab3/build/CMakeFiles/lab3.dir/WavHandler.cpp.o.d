@@ -141,4 +141,5 @@ CMakeFiles/lab3.dir/WavHandler.cpp.o: \
  /usr/lib/gcc/x86_64-redhat-linux/14/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
  /usr/include/bits/stdint-least.h /usr/include/c++/14/cstring \
- /usr/include/string.h /usr/include/strings.h
+ /usr/include/string.h /usr/include/strings.h \
+ /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/Exceptions.h

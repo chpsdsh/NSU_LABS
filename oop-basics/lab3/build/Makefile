@@ -503,12 +503,26 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/build
 .PHONY : ContinuousSubmit/fast
 
+#=============================================================================
+# Target rules for targets named tests
+
+# Build rule for target.
+tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests
+.PHONY : tests
+
+# fast build rule for target.
+tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
+.PHONY : tests/fast
+
 Converters.o: Converters.cpp.o
 .PHONY : Converters.o
 
 # target to build an object file
 Converters.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Converters.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Converters.cpp.o
 .PHONY : Converters.cpp.o
 
 Converters.i: Converters.cpp.i
@@ -517,6 +531,7 @@ Converters.i: Converters.cpp.i
 # target to preprocess a source file
 Converters.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Converters.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Converters.cpp.i
 .PHONY : Converters.cpp.i
 
 Converters.s: Converters.cpp.s
@@ -525,6 +540,7 @@ Converters.s: Converters.cpp.s
 # target to generate assembly for a file
 Converters.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Converters.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Converters.cpp.s
 .PHONY : Converters.cpp.s
 
 Parser.o: Parser.cpp.o
@@ -533,6 +549,7 @@ Parser.o: Parser.cpp.o
 # target to build an object file
 Parser.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Parser.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Parser.cpp.o
 .PHONY : Parser.cpp.o
 
 Parser.i: Parser.cpp.i
@@ -541,6 +558,7 @@ Parser.i: Parser.cpp.i
 # target to preprocess a source file
 Parser.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Parser.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Parser.cpp.i
 .PHONY : Parser.cpp.i
 
 Parser.s: Parser.cpp.s
@@ -549,6 +567,7 @@ Parser.s: Parser.cpp.s
 # target to generate assembly for a file
 Parser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/Parser.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/Parser.cpp.s
 .PHONY : Parser.cpp.s
 
 SoundProcessor.o: SoundProcessor.cpp.o
@@ -557,6 +576,7 @@ SoundProcessor.o: SoundProcessor.cpp.o
 # target to build an object file
 SoundProcessor.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/SoundProcessor.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/SoundProcessor.cpp.o
 .PHONY : SoundProcessor.cpp.o
 
 SoundProcessor.i: SoundProcessor.cpp.i
@@ -565,6 +585,7 @@ SoundProcessor.i: SoundProcessor.cpp.i
 # target to preprocess a source file
 SoundProcessor.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/SoundProcessor.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/SoundProcessor.cpp.i
 .PHONY : SoundProcessor.cpp.i
 
 SoundProcessor.s: SoundProcessor.cpp.s
@@ -573,6 +594,7 @@ SoundProcessor.s: SoundProcessor.cpp.s
 # target to generate assembly for a file
 SoundProcessor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/SoundProcessor.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/SoundProcessor.cpp.s
 .PHONY : SoundProcessor.cpp.s
 
 WavHandler.o: WavHandler.cpp.o
@@ -581,6 +603,7 @@ WavHandler.o: WavHandler.cpp.o
 # target to build an object file
 WavHandler.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/WavHandler.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/WavHandler.cpp.o
 .PHONY : WavHandler.cpp.o
 
 WavHandler.i: WavHandler.cpp.i
@@ -589,6 +612,7 @@ WavHandler.i: WavHandler.cpp.i
 # target to preprocess a source file
 WavHandler.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/WavHandler.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/WavHandler.cpp.i
 .PHONY : WavHandler.cpp.i
 
 WavHandler.s: WavHandler.cpp.s
@@ -597,6 +621,7 @@ WavHandler.s: WavHandler.cpp.s
 # target to generate assembly for a file
 WavHandler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/WavHandler.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/WavHandler.cpp.s
 .PHONY : WavHandler.cpp.s
 
 main.o: main.cpp.o
@@ -622,6 +647,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab3.dir/build.make CMakeFiles/lab3.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+processorTests.o: processorTests.cpp.o
+.PHONY : processorTests.o
+
+# target to build an object file
+processorTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/processorTests.cpp.o
+.PHONY : processorTests.cpp.o
+
+processorTests.i: processorTests.cpp.i
+.PHONY : processorTests.i
+
+# target to preprocess a source file
+processorTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/processorTests.cpp.i
+.PHONY : processorTests.cpp.i
+
+processorTests.s: processorTests.cpp.s
+.PHONY : processorTests.s
+
+# target to generate assembly for a file
+processorTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/processorTests.cpp.s
+.PHONY : processorTests.cpp.s
 
 # Help Target
 help:
@@ -661,6 +710,7 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... lab3"
+	@echo "... tests"
 	@echo "... Converters.o"
 	@echo "... Converters.i"
 	@echo "... Converters.s"
@@ -676,6 +726,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... processorTests.o"
+	@echo "... processorTests.i"
+	@echo "... processorTests.s"
 .PHONY : help
 
 

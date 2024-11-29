@@ -162,4 +162,5 @@ CMakeFiles/lab3.dir/Converters.cpp.o: \
  /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++io.h \
  /usr/include/c++/14/bits/fstream.tcc /usr/include/c++/14/cstring \
- /usr/include/string.h /usr/include/strings.h
+ /usr/include/string.h /usr/include/strings.h \
+ /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/Exceptions.h

@@ -1,7 +1,7 @@
-CMakeFiles/lab3.dir/SoundProcessor.cpp.o: \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/SoundProcessor.cpp \
+CMakeFiles/tests.dir/Parser.cpp.o: \
+ /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/Parser.cpp \
  /usr/include/stdc-predef.h \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/SoundProcessor.h \
+ /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/Parser.h \
  /usr/include/c++/14/iostream /usr/include/c++/14/bits/requires_hosted.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
@@ -133,10 +133,9 @@ CMakeFiles/lab3.dir/SoundProcessor.cpp.o: \
  /usr/include/c++/14/bits/stl_uninitialized.h \
  /usr/include/c++/14/bits/stl_vector.h \
  /usr/include/c++/14/bits/stl_bvector.h \
- /usr/include/c++/14/bits/vector.tcc \
- /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/Parser.h \
- /usr/include/c++/14/cstring /usr/include/string.h /usr/include/strings.h \
- /usr/include/c++/14/fstream /usr/include/c++/14/bits/codecvt.h \
+ /usr/include/c++/14/bits/vector.tcc /usr/include/c++/14/cstring \
+ /usr/include/string.h /usr/include/strings.h /usr/include/c++/14/fstream \
+ /usr/include/c++/14/bits/codecvt.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++io.h \
  /usr/include/c++/14/bits/fstream.tcc /usr/include/c++/14/sstream \

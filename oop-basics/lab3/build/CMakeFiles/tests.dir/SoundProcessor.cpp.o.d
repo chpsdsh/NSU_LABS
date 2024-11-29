@@ -1,4 +1,4 @@
-CMakeFiles/lab3.dir/SoundProcessor.cpp.o: \
+CMakeFiles/tests.dir/SoundProcessor.cpp.o: \
  /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/SoundProcessor.cpp \
  /usr/include/stdc-predef.h \
  /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/SoundProcessor.h \

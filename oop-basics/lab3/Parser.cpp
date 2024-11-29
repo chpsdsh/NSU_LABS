@@ -57,8 +57,7 @@ bool ConfigParser::parse()
     std::ifstream config(inputParser.getConfigFileName());
     if (!config.is_open())
     {
-        std::cerr << "Error: Could not open config file " << inputParser.getConfigFileName() << ".\n";
-        return false;
+        throw ConfigParserError("Can't open config file");
     }
     std::string line;
     while (std::getline(config, line))
@@ -71,7 +70,6 @@ bool ConfigParser::parse()
 
         Command command;
         iss >> command.name;
-        std::cout << command.name << std::endl;
         std::string arg;
         while (iss >> arg)
         {
@@ -85,31 +83,36 @@ bool ConfigParser::parse()
 
 void ConfigParser::processCommand(Command &command)
 {
-    if (command.name == "mute")
+    try
     {
-        auto converter = ConverterFactory::createConverter(command);
-        audioConverters.push_back(std::move(converter));
-        std::cout << "Mute Converter added" << std::endl;
+        if (command.name == "mute")
+        {
+            auto converter = ConverterFactory::createConverter(command);
+            audioConverters.push_back(std::move(converter));
+            std::cout << "Mute Converter added" << std::endl;
+        }
+        else if (command.name == "mix" && command.argv[0][0] == '$')
+        {
+            std::string numberStr = command.argv[0].substr(1);
+            std::string fileToMix = inputParser.getInputFileNames()[std::stoi(numberStr) - 1];
+            command.argv[0] = fileToMix;
+            auto converter = ConverterFactory::createConverter(command);
+            audioConverters.push_back(std::move(converter));
+            std::cout << "Mix Converter added" << std::endl;
+        }
+        else if (command.name == "distortion")
+        {
+            auto converter = ConverterFactory::createConverter(command);
+            audioConverters.push_back(std::move(converter));
+            std::cout << "Distortion Converter added" << std::endl;
+        }
+        else
+        {
+            throw InvalidCommandError("Unknown converter");
+        }
     }
-    else if (command.name == "mix" && command.argv[0][0] == '$')
+    catch (const std::exception &e)
     {
-        
-        std::string numberStr = command.argv[0].substr(1); 
-        std::string fileToMix = inputParser.getInputFileNames()[std::stoi(numberStr) - 1];
-        command.argv[0] = fileToMix;  
-        std::cout<<"Mixfile "<<fileToMix<<std::endl;                               
-        auto converter = ConverterFactory::createConverter(command); 
-        audioConverters.push_back(std::move(converter));
-        std::cout << "Mix Converter added" << std::endl;
-    }
-    else if (command.name == "distortion")
-    {
-        auto converter = ConverterFactory::createConverter(command); 
-        audioConverters.push_back(std::move(converter));
-        std::cout << "Distortion Converter added" << std::endl;
-    }
-    else
-    {
-        throw std::invalid_argument("Unknown converter");
+        std::cerr << "Error processing command: " << e.what() << std::endl;
     }
 }

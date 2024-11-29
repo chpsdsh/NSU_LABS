@@ -166,4 +166,5 @@ CMakeFiles/lab3.dir/main.cpp.o: \
  /usr/include/c++/14/bits/node_handle.h \
  /usr/include/c++/14/bits/erase_if.h /usr/include/c++/14/cstdint \
  /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/WavHandler.h \
+ /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/Exceptions.h \
  /home/chopisdish/Programming/NSU_LABS/oop-basics/lab3/SoundProcessor.h
