@@ -9,7 +9,6 @@ void MuteConverter::apply(std::vector<short int> &samples)
 {
     int startIndex = startSec * 44100;
     int endIndex = endSec * 44100;
-    std::cout << startIndex << " " << endIndex << " " << samples.size() << std::endl;
     for (size_t i = startIndex; i < endIndex && i < samples.size(); ++i)
     {
         samples[i] = 0;
@@ -24,7 +23,6 @@ void MixConverter::apply(std::vector<short int> &samples)
     fileMix.wavLoad();
 
     std::vector<short int> samplesToMix = fileMix.getSamples();
-    std::cout << samples.size() << " " << samplesToMix.size() << std::endl;
     for (int i = 0; i < samplesToMix.size() && (startIndex + i) < samples.size(); ++i)
     {
         samples[startIndex + i] = (samples[startIndex + i] + samplesToMix[i]) / 2;

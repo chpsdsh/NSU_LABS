@@ -5,6 +5,8 @@ std::string InputParser::getConfigFileName() const { return configFileName; }
 std::string InputParser::getOutputFileName() const { return outputFileName; }
 std::vector<std::string> InputParser::getInputFileNames() const { return inputFileNames; }
 ConfigParser::ConfigParser(const InputParser &inputParser) : inputParser(inputParser) {};
+bool InputParser::getHelp() const {return helpShown;}
+
 std::vector<std::unique_ptr<Converter>> ConfigParser::getAudioConverters()
 {
     return std::move(audioConverters);

@@ -16,6 +16,7 @@ public:
     std::string getConfigFileName() const;
     std::string getOutputFileName() const;
     std::vector<std::string> getInputFileNames() const;
+    bool getHelp() const;
 
 private:
     int argc;
