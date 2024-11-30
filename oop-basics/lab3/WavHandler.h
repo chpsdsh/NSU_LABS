@@ -17,9 +17,9 @@ public:
     bool wavLoad();
     std::vector<short int>& getSamples();
     int getSampleRate() const ;
-    void setSamples(std::vector<short int>& samples);
-    void setSampleRate(int sampleRate);
-
+    int getNumChannels() const;
+    int getBitsPerSample() const;
+    bool getValidFormat() const;
 
 private:
     bool readHeader(std::ifstream& file);

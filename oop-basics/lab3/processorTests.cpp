@@ -92,7 +92,15 @@ TEST(RunConvertersTests, RunTest)
     EXPECT_NO_THROW(proc.run());
 }
 
-
+TEST(WavFileTests, District_fourTest) 
+{
+    WavHandler wav("district_four.wav");
+    EXPECT_TRUE(wav.wavLoad());
+    EXPECT_EQ(wav.getSampleRate(), 44100);
+    EXPECT_EQ(wav.getSamples().size(),10947454);
+    EXPECT_EQ(wav.getNumChannels(), 1);
+    EXPECT_TRUE(wav.getValidFormat());
+}
 
 
 
