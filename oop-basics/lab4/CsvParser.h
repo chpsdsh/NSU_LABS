@@ -80,7 +80,7 @@ public:
             _currentPosition = _parser._file.tellg();
             std::string processedLine = processEscaping(currentLine);
             std::istringstream lineParser(processedLine);
-            lineParser.imbue(std::locale(std::locale::classic(), new OwnCType(_parser._separator, _parser._escapeChar)));
+            lineParser.imbue(std::locale(std::locale::classic(), new OwnCType(_parser._separator)));
             _currentTuple = TupleReader<char, std::char_traits<char>, Args...>::read(lineParser, _lineNumber);
             ++_lineNumber;
         }

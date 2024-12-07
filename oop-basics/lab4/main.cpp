@@ -13,7 +13,7 @@ int main() {
 	}
 
 	CSVParser<size_t, std::string, int, std::string, double> parser(file, 1 );
-	try {
+	try { 
 		for (auto tuple : parser) {
 			std::cout << tuple << std::endl;
 		}
