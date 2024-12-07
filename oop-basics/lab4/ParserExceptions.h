@@ -5,7 +5,7 @@
 
 class ErrorHandler : public std::exception
 {
-protected:
+private:
     std::string _text;
 
 public:

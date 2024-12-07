@@ -42,12 +42,12 @@ public:
 
         std::tuple<Args...> operator*() const
         {
-            return _tupleItr;
+            return _currentTuple;
         }
 
     private:
         CSVParser &_parser;
-        std::tuple<Args...> _tupleItr;
+        std::tuple<Args...> _currentTuple;
         bool _isEnd;
         size_t _lineNumber;
         std::streampos _currentPosition;
@@ -81,7 +81,7 @@ public:
             std::string processedLine = processEscaping(currentLine);
             std::istringstream lineParser(processedLine);
             lineParser.imbue(std::locale(std::locale::classic(), new OwnCType(_parser._separator, _parser._escapeChar)));
-            _tupleItr = TupleReader<char, std::char_traits<char>, Args...>::read(lineParser, _lineNumber);
+            _currentTuple = TupleReader<char, std::char_traits<char>, Args...>::read(lineParser, _lineNumber);
             ++_lineNumber;
         }
         std::string processEscaping(const std::string &input)
