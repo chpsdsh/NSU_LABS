@@ -1,4 +1,4 @@
-CMakeFiles/lab4.dir/main.cpp.o: \
+CMakeFiles/tests.dir/main.cpp.o: \
  /home/chopisdish/Programming/NSU_LABS/oop-basics/lab4/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/14/iostream \
  /usr/include/c++/14/bits/requires_hosted.h \

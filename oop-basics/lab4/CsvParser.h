@@ -1,94 +1,153 @@
 #pragma once
-#include <iostream>
-#include <fstream>
+
 #include <sstream>
+#include <algorithm>
 #include "TupleReader.h"
+#include "ParserExceptions.h"
 
 template <typename... Args>
-class CsvParser
+class CSVParser
 {
 public:
-    CsvParser(std::ifstream &file, size_t linesToSkip = 0, char separator = ',') 
-        : _file(file), _linesToSkip(linesToSkip), _separator(separator)
+    CSVParser(std::ifstream &file, size_t linesToSkip = 0, char separator = ';', char escapeChar = '"') : _file(file), _linesToSkip(linesToSkip), _separator(separator), _escapeChar(escapeChar)
     {
         skipLines();
-        _startingPosition = file.tellg();
+        _startingPosition = _file.tellg();
     }
 
     class Iterator
     {
     public:
-        Iterator(CsvParser &parser, bool isEnd) 
-            : _parser(parser), _isEnd(isEnd), _lineNumber(parser._linesToSkip), _currentPosition(parser._startingPosition)
+        Iterator(CSVParser &parser, bool isEnd) : _parser(parser), _isEnd(isEnd), _lineNumber(parser._linesToSkip + 1), _currentPosition(parser._startingPosition)
         {
-            if (!isEnd)
+            if (isEnd)
             {
-                readTuple();
+                return;
             }
+            readTuple();
         }
 
-        std::tuple<Args...> operator*()
+        ~Iterator() = default;
+
+        bool operator!=(const Iterator &other) const
         {
-            return _currentTuple;
+            return _isEnd != other._isEnd;
         }
 
-        Iterator& operator++()
+        Iterator &operator++()
         {
             readTuple();
             return *this;
         }
 
-        bool operator!=(const Iterator& other) const
+        std::tuple<Args...> operator*() const
         {
-            return _isEnd != other._isEnd;
+            return _tupleItr;
         }
 
     private:
-        CsvParser& _parser;
+        CSVParser &_parser;
+        std::tuple<Args...> _tupleItr;
         bool _isEnd;
         size_t _lineNumber;
         std::streampos _currentPosition;
-        std::tuple<Args...> _currentTuple;
 
-        void readTuple() {
-    if (_parser._file.eof()) {
-        _isEnd = true;
-        return;
-    }
-    _parser._file.seekg(_currentPosition);
-    std::string line;
-    std::getline(_parser._file, line);
-    _currentPosition = _parser._file.tellg();
+        class OwnCType : public std::ctype<char>
+        {
+        private:
+            mask _table[table_size];
 
-    std::istringstream parsedLine(line);  
+        public:
+            explicit OwnCType(char separator, size_t refs = 0) : std::ctype<char>{&_table[0], false, refs}
+            {
+                std::copy_n(classic_table(), table_size, _table);
+                _table[' '] = lower;
+                _table[separator] = space;
+            }
+        };
 
-    _currentTuple = TupleReader<char, std::char_traits<char>, Args...>::read(parsedLine, _lineNumber);
-    _lineNumber++;
-}
+        void readTuple()
+        {
+            if (_parser._file.eof())
+            {
+                _isEnd = true;
+                return;
+            }
+            _parser._file.clear();
+            _parser._file.seekg(_currentPosition);
+            std::string currentLine;
+            std::getline(_parser._file, currentLine);
+            _currentPosition = _parser._file.tellg();
+            std::string processedLine = processEscaping(currentLine);
+            std::istringstream lineParser(processedLine);
+            lineParser.imbue(std::locale(std::locale::classic(), new OwnCType(_parser._separator, _parser._escapeChar)));
+            _tupleItr = TupleReader<char, std::char_traits<char>, Args...>::read(lineParser, _lineNumber);
+            ++_lineNumber;
+        }
+        std::string processEscaping(const std::string &input)
+        {
+            std::string result;
+            std::string buffer;
+            bool inEscapeMode = false;
+            for (size_t i = 0; i < input.size(); ++i)
+            {
+
+                char c = input[i];
+                if (c == _parser._escapeChar)
+                {
+                    if (inEscapeMode)
+                    {
+                        result += buffer;
+                        inEscapeMode = false;
+                    }
+                    else
+                    {
+                        inEscapeMode = true;
+                    }
+                }
+                else if (c != _parser._escapeChar && inEscapeMode)
+                {
+                    buffer += c;
+                }
+                else
+                {
+                    result += c;
+                    inEscapeMode = false;
+                }
+            }
+            if (inEscapeMode)
+            {
+                result += _parser._escapeChar + buffer;
+            }
+            return result;
+        }
     };
 
     Iterator begin()
     {
+        _file.clear();
+        _file.seekg(_startingPosition);
         return Iterator(*this, false);
     }
 
     Iterator end()
     {
-        return Iterator(*this, true);  
+        return Iterator(*this, true);
     }
 
 private:
     size_t _linesToSkip;
-    std::ifstream& _file;
+    std::ifstream &_file;
     char _separator;
+    char _escapeChar;
     std::streampos _startingPosition;
 
     void skipLines()
     {
         for (size_t i = 0; i < _linesToSkip; ++i)
         {
-            std::string skippedline;
-            std::getline(_file, skippedline); 
+            std::string skippedLine;
+            std::getline(_file, skippedLine);
         }
     }
 };

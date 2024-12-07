@@ -503,6 +503,43 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/build
 .PHONY : ContinuousSubmit/fast
 
+#=============================================================================
+# Target rules for targets named tests
+
+# Build rule for target.
+tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests
+.PHONY : tests
+
+# fast build rule for target.
+tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
+.PHONY : tests/fast
+
+CsvParserTests.o: CsvParserTests.cpp.o
+.PHONY : CsvParserTests.o
+
+# target to build an object file
+CsvParserTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/CsvParserTests.cpp.o
+.PHONY : CsvParserTests.cpp.o
+
+CsvParserTests.i: CsvParserTests.cpp.i
+.PHONY : CsvParserTests.i
+
+# target to preprocess a source file
+CsvParserTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/CsvParserTests.cpp.i
+.PHONY : CsvParserTests.cpp.i
+
+CsvParserTests.s: CsvParserTests.cpp.s
+.PHONY : CsvParserTests.s
+
+# target to generate assembly for a file
+CsvParserTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/CsvParserTests.cpp.s
+.PHONY : CsvParserTests.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -565,6 +602,10 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... lab4"
+	@echo "... tests"
+	@echo "... CsvParserTests.o"
+	@echo "... CsvParserTests.i"
+	@echo "... CsvParserTests.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

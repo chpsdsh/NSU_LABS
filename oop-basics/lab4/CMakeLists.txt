@@ -5,9 +5,8 @@ add_executable(lab4 main.cpp CsvParser.h TuplePrinter.h TupleReader.h)
 
 include(CTest)
 enable_testing()
-#
-#find_package(GTest REQUIRED)
-#add_executable(tests CsvParserTests.cpp,)
 
-#target_link_libraries(tests GTest::GTest GTest::Main pthread)
+find_package(GTest REQUIRED)
+add_executable(tests CsvParserTests.cpp CsvParser.h TuplePrinter.h TupleReader.h)
+target_link_libraries(tests GTest::GTest GTest::Main pthread)
 target_link_libraries(lab4)
