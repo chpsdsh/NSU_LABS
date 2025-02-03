@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/lab4.dir/main.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab4/main.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab4/main.cpp",
+  "output": "CMakeFiles/lab4.dir/main.cpp.o"
+},
+{
+  "directory": "/home/chopisdish/Programming/NSU_LABS/build",
+  "command": "/usr/bin/c++ -DGTEST_LINKED_AS_SHARED_LIBRARY=1  -g -o CMakeFiles/tests.dir/CsvParserTests.cpp.o -c /home/chopisdish/Programming/NSU_LABS/oop-basics/lab4/CsvParserTests.cpp",
+  "file": "/home/chopisdish/Programming/NSU_LABS/oop-basics/lab4/CsvParserTests.cpp",
+  "output": "CMakeFiles/tests.dir/CsvParserTests.cpp.o"
+}
+]
