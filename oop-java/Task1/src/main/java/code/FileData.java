@@ -53,7 +53,7 @@ public class FileData {
                     }
                 }
             }
-            if (word.length() > 0) {
+            if (!word.isEmpty()) {
                 wordCount++;
                 String key = word.toString();
                 wordMap.put(key, wordMap.getOrDefault(key, 0) + 1);
