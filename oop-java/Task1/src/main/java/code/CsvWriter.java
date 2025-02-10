@@ -5,8 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
-public class CsvWriter {
-    public static void inputDataToCsv(String outputFileName, FileData data) {
+public final class CsvWriter {
+    public void inputDataToCsv(String outputFileName, FileData data) {
         int wordCount = data.getWordCount();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
             writer.write("Word,Frequency,Frequency(%)");

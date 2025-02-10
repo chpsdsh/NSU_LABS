@@ -11,6 +11,7 @@ public class Main {
         FileData data = new FileData();
         data.createMap(inputFileName);
         data.sortMap();
-        CsvWriter.inputDataToCsv(outPutFileName, data);
+        CsvWriter csvWriter = new CsvWriter();
+        csvWriter.inputDataToCsv(outPutFileName, data);
     }
 }

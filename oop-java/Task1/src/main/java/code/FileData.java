@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-public class FileData {
+public final class FileData {
     private int wordCount = 0;
     private Map<String, Integer> wordMap = new HashMap<>();
 
