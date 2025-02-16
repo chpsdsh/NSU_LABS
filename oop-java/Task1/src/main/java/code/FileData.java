@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public final class FileData {
     private int wordCount = 0;
-    private Map<String, Integer> wordMap = new HashMap<>();
+    private Map<String, Integer> wordMap = new TreeMap<>();
 
     public int getWordCount() {
         return wordCount;
