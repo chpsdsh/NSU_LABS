@@ -18,21 +18,14 @@ public final class FileData {
     }
 
     public void createMap(String inputFileName) {
-        Reader reader = null;
-        try {
-            reader = new InputStreamReader(new FileInputStream(inputFileName));
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(inputFileName);
+             Reader reader = new InputStreamReader(inputStream)) {
+            if (inputStream == null) {
+                throw new IOException("Resource file not found: " + inputFileName);
+            }
             readData(reader);
         } catch (IOException e) {
-            System.err.println("Error while reading file:"
-                    + e.getLocalizedMessage());
-        } finally {
-            if (null != reader) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace(System.err);
-                }
-            }
+            System.err.println("Error while reading resource file: " + e.getLocalizedMessage());
         }
     }
 
@@ -48,7 +41,7 @@ public final class FileData {
                     if (!word.isEmpty()) {
                         wordCount++;
                         String key = word.toString();
-                        wordMap.merge(key,1,Integer::sum);
+                        wordMap.merge(key, 1, Integer::sum);
                         word.setLength(0);
                     }
                 }
@@ -56,7 +49,7 @@ public final class FileData {
             if (!word.isEmpty()) {
                 wordCount++;
                 String key = word.toString();
-                wordMap.merge(key,1,Integer::sum);
+                wordMap.merge(key, 1, Integer::sum);
             }
         } catch (IOException e) {
             e.printStackTrace();
