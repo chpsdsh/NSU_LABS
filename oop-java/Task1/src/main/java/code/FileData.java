@@ -48,7 +48,7 @@ public final class FileData {
                     if (!word.isEmpty()) {
                         wordCount++;
                         String key = word.toString();
-                        wordMap.put(key, wordMap.getOrDefault(key, 0) + 1);
+                        wordMap.merge(key,1,Integer::sum);
                         word.setLength(0);
                     }
                 }
@@ -56,7 +56,7 @@ public final class FileData {
             if (!word.isEmpty()) {
                 wordCount++;
                 String key = word.toString();
-                wordMap.put(key, wordMap.getOrDefault(key, 0) + 1);
+                wordMap.merge(key,1,Integer::sum);
             }
         } catch (IOException e) {
             e.printStackTrace();

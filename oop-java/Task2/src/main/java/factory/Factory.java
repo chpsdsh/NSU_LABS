@@ -1,11 +1,13 @@
 package factory;
 
 import commands.Command;
+import configuration.ConfigParser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -23,6 +25,9 @@ public final class Factory {
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
                 String[] parts = line.split("=", 2);
+                if (parts.length != 2) {
+                    throw new IOException("Invalid config file format");
+                }
                 commandMap.put(parts[0], parts[1]);
             }
         } catch (IOException e) {
@@ -30,13 +35,13 @@ public final class Factory {
         }
     }
 
-    public Command createCommand(String commandName, String[] args) throws Exception{
+    public Command createCommand(String commandName, String[] args) throws Exception {
         String className = commandMap.get(commandName);
-        if(className == null){
-            throw new Exception("Command not found"+ commandName);
+        if (className == null) {
+            throw new Exception("Command not found" + commandName);
         }
         Class<?> commandClass = Class.forName(className);
-
+        return (Command) commandClass.getDeclaredConstructor(String[].class).newInstance((Object) args);
 
     }
 }
