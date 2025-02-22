@@ -1,6 +1,5 @@
 package exceptions;
 
-import exceptions.CommandExceptions;
 
 public class InvalidCommandException extends CommandExceptions {
     public InvalidCommandException(String message) {

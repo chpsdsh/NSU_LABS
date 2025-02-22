@@ -7,12 +7,12 @@ import exceptions.InvalidParameterException;
 public class Push extends Command {
     private final String parameter;
 
-    public Push(String parameter) {
-        this.parameter = parameter;
+    public Push(String[] args) {
+        this.parameter = args[0];
     }
 
     @Override
-    void apply(Context context) throws CommandExceptions {
+    public void apply(Context context) throws CommandExceptions {
         double value;
         if (context.getVariables().containsKey(parameter)) {
             value = context.getVariables().get(parameter);

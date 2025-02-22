@@ -1,15 +1,13 @@
 package factory;
 
 import commands.Command;
-import configuration.ConfigParser;
+import exceptions.InvalidCommandException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
 
 public final class Factory {
     private final Map<String, String> commandMap = new HashMap<>();
@@ -20,7 +18,7 @@ public final class Factory {
 
     private void loadClassMap(String factoryConfigurationFileName) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-                getClass().getResourceAsStream(factoryConfigurationFileName)))) {
+                getClass().getClassLoader().getResourceAsStream(factoryConfigurationFileName)))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
@@ -38,10 +36,13 @@ public final class Factory {
     public Command createCommand(String commandName, String[] args) throws Exception {
         String className = commandMap.get(commandName);
         if (className == null) {
-            throw new Exception("Command not found" + commandName);
+            throw new InvalidCommandException("Command not found " + commandName);
         }
         Class<?> commandClass = Class.forName(className);
-        return (Command) commandClass.getDeclaredConstructor(String[].class).newInstance((Object) args);
-
+        if (args == null || args.length == 0) {
+            return (Command) commandClass.getDeclaredConstructor().newInstance();
+        } else {
+            return (Command) commandClass.getDeclaredConstructor(String[].class).newInstance((Object) args);
+        }
     }
 }

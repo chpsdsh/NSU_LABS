@@ -4,10 +4,10 @@ import context.Context;
 import exceptions.CommandExceptions;
 import exceptions.StackException;
 
-public class Addition extends Command{
+public final class Addition extends Command {
     @Override
-    void apply(Context context) throws CommandExceptions {
-        if(context.getStack().size() < 2){
+    public void apply(Context context) throws CommandExceptions {
+        if (context.getStack().size() < 2) {
             throw new StackException("Not enough elements in stack");
         }
         double operand2 = context.getStack().pop();

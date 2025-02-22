@@ -6,3 +6,4 @@ SUB=commands.Subtraction
 MUL=commands.Multiplication
 DIV=commands.Division
 SQRT=commands.Sqrt
+DEFINE=commands.Definition

@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("application") // Добавляем поддержку запуска JAR
 }
 
 group = "org.example"
@@ -16,4 +17,15 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+application {
+    mainClass.set("Main") // Укажи свой главный класс
+}
+
+
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = application.mainClass.get()
+    }
 }

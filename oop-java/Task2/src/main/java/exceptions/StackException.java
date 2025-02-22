@@ -1,6 +1,6 @@
 package exceptions;
 
-import exceptions.CommandExceptions;
+
 
 public class StackException extends CommandExceptions {
     public StackException(String message) {
