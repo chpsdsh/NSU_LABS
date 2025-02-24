@@ -15,15 +15,19 @@ public final class ConfigParser {
         String line;
         String[] commandParts;
         if (configFileName != null) {
-            try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(configFileName);
-                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(configFileName);
+            if (inputStream == null) {
+                throw new IOException("Configuration file not found" + configFileName);
+            }
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
                 while ((line = reader.readLine()) != null) {
                     commandParts = parseLine(line);
-                    commandProcessor.accept(commandParts[0], Arrays.copyOfRange(commandParts, 1, commandParts.length));
+                    if (commandParts != null) {
+                        commandProcessor.accept(commandParts[0], Arrays.copyOfRange(commandParts, 1, commandParts.length));
+                    }
                 }
-            } catch (IOException e) {
-                throw new IOException("No such configuration file" + configFileName);
+            } catch (Exception e) {
+                throw new IOException("Error reading console", e);
             }
         } else {
             System.out.println("Console mode write EXIT to finish");
@@ -39,7 +43,6 @@ public final class ConfigParser {
                 throw new IOException("Error reading console", e);
             }
         }
-
     }
 
     private String[] parseLine(String line) {
