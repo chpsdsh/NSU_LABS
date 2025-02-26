@@ -4,7 +4,13 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.function.BiConsumer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public final class ConfigParser {
+
+    private static final Logger logger = LogManager.getLogger(ConfigParser.class);
+
     private final String configFileName;
 
     public ConfigParser(String configFileName) {
@@ -12,11 +18,13 @@ public final class ConfigParser {
     }
 
     public void ParseAndExecute(BiConsumer<String, String[]> commandProcessor) throws IOException {
+        logger.info("Config parsing is started {}", configFileName);
         String line;
         String[] commandParts;
         if (configFileName != null) {
             InputStream inputStream = getClass().getClassLoader().getResourceAsStream(configFileName);
             if (inputStream == null) {
+                logger.error("Can not create inputStream from {}", configFileName);
                 throw new IOException("Configuration file not found" + configFileName);
             }
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
@@ -27,9 +35,11 @@ public final class ConfigParser {
                     }
                 }
             } catch (Exception e) {
+                logger.error("Can not create BufferedReader from {}", configFileName);
                 throw new IOException("Error reading console", e);
             }
         } else {
+            logger.info("Switching to console mode");
             System.out.println("Console mode write EXIT to finish");
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
                 while ((line = reader.readLine()) != null) {
@@ -40,6 +50,7 @@ public final class ConfigParser {
                     }
                 }
             } catch (Exception e) {
+                logger.error("Error reading console");
                 throw new IOException("Error reading console", e);
             }
         }
