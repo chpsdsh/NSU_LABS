@@ -19,6 +19,5 @@ public class Print extends Command {
         }
         System.out.println(context.getStack().pop());
         logger.info("Applying PRINT command ended");
-
     }
 }

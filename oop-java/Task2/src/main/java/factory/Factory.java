@@ -22,7 +22,7 @@ public final class Factory {
     }
 
     private void loadClassMap(String factoryConfigurationFileName) throws IOException {
-        logger.info("Config parsing is started {}", factoryConfigurationFileName);
+        logger.info("Factory config parsing is started {}", factoryConfigurationFileName);
 
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream(factoryConfigurationFileName);
         if (inputStream == null) {

@@ -12,6 +12,14 @@ public class Definition extends Command {
 
     private static final Logger logger = LogManager.getLogger(Definition.class);
 
+    public double getValue() {
+        return value;
+    }
+
+    public String getVariable() {
+        return variable;
+    }
+
     public Definition(String[] args) throws CommandExceptions {
         if (args.length < 2) {
             logger.error("Not enough arguments");
@@ -22,7 +30,7 @@ public class Definition extends Command {
             this.value = Double.parseDouble(args[1]);
         } catch (NumberFormatException e) {
             logger.info("Invalid value for DEFINE");
-            throw new InvalidParameterException("Invalid value for DEFINE" + args[1]);
+            throw new InvalidParameterException("Invalid value for DEFINE " + args[1]);
         }
     }
 
@@ -31,7 +39,7 @@ public class Definition extends Command {
         logger.info("Applying DEFINE command started");
         if (context.getVariables().containsKey(variable)) {
             logger.error("Variable {} already exists", variable);
-            throw new InvalidParameterException("Variable" + variable + "already exists");
+            throw new InvalidParameterException("Variable " + variable + " already exists");
         } else {
             context.getVariables().put(variable, value);
         }

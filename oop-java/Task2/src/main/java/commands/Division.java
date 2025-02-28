@@ -18,7 +18,7 @@ public class Division extends Command {
         }
         double operand2 = context.getStack().pop();
         double operand1 = context.getStack().pop();
-        if (operand2 == 0) {
+        if (operand2 == 0.0) {
             logger.error("Division by zero");
             throw new CommandExceptions("Division by zero");
         }

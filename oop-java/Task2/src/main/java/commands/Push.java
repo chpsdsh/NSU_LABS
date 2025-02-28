@@ -9,9 +9,16 @@ import org.apache.logging.log4j.Logger;
 public class Push extends Command {
     private final String parameter;
 
+    public String getParameter() {
+        return parameter;
+    }
+
     private static final Logger logger = LogManager.getLogger(Push.class);
 
-    public Push(String[] args) {
+    public Push(String[] args) throws CommandExceptions {
+        if (args.length > 1) {
+            throw new InvalidParameterException("More then one parameter in args");
+        }
         this.parameter = args[0];
     }
 
@@ -26,7 +33,7 @@ public class Push extends Command {
                 value = Double.parseDouble(parameter);
             } catch (NumberFormatException e) {
                 logger.error("Invalid parameter for PUSH {}", parameter);
-                throw new InvalidParameterException("Invalid parameter for PUSH: " + parameter, e);
+                throw new InvalidParameterException("Invalid parameter for PUSH " + parameter, e);
             }
         }
         context.getStack().push(value);

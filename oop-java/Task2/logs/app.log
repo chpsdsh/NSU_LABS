@@ -68,3 +68,868 @@
 2025-02-26 23:23:46 [main] INFO  commands.Print - Applying PRINT command started
 2025-02-26 23:23:46 [main] INFO  commands.Print - Applying PRINT command ended
 2025-02-26 23:23:46 [main] INFO  Main - Program finished
+2025-02-27 13:12:47 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:12:47 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 13:12:57 [main] INFO  Main - Program started
+2025-02-27 13:12:57 [main] INFO  factory.Factory - Config parsing is started factoryConfiguration.txt
+2025-02-27 13:12:57 [main] INFO  configuration.ConfigParser - Config parsing is started config.txt
+2025-02-27 13:12:57 [main] INFO  factory.Factory - Command creation is started DEFINE
+2025-02-27 13:12:57 [main] INFO  commands.Definition - Applying DEFINE command started
+2025-02-27 13:12:57 [main] INFO  commands.Definition - Applying addition command finished
+2025-02-27 13:12:57 [main] INFO  factory.Factory - Command creation is started PUSH
+2025-02-27 13:12:57 [main] INFO  commands.Push - Applying PUSH command started
+2025-02-27 13:12:57 [main] INFO  commands.Push - Applying PUSH command started
+2025-02-27 13:12:57 [main] INFO  factory.Factory - Command creation is started SQRT
+2025-02-27 13:12:57 [main] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 13:12:57 [main] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-27 13:12:57 [main] INFO  factory.Factory - Command creation is started PRINT
+2025-02-27 13:12:57 [main] INFO  commands.Print - Applying PRINT command started
+2025-02-27 13:12:57 [main] INFO  commands.Print - Applying PRINT command ended
+2025-02-27 13:12:57 [main] INFO  Main - Program finished
+2025-02-27 13:21:40 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:21:40 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 13:21:40 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:21:40 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 13:45:58 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:45:58 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 13:45:59 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:45:59 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 13:45:59 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 13:45:59 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 13:45:59 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 13:45:59 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 13:46:36 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:46:36 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 13:46:36 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:46:36 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 13:46:36 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 13:46:36 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 13:46:36 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 13:46:36 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 13:47:00 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:47:00 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 13:47:00 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:47:00 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 13:47:00 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 13:47:00 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 13:47:00 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 13:47:00 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 13:47:22 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:47:22 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 13:47:22 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:47:22 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 13:47:22 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 13:47:22 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 13:47:22 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 13:47:22 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 13:55:17 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:55:17 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 13:55:17 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 13:55:17 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 13:55:17 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 13:55:17 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-27 13:55:17 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 13:55:17 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-27 13:55:17 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 13:55:17 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 13:55:17 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 13:55:17 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 14:13:31 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:13:31 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 14:13:31 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:13:31 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 14:13:31 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:13:31 [Test worker] ERROR commands.Division - Division by zero
+2025-02-27 14:13:31 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:13:31 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-27 14:13:31 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:13:31 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-27 14:13:31 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:13:31 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-27 14:13:31 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:13:31 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-27 14:13:31 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:13:31 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 14:13:31 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:13:31 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 14:13:53 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:13:53 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 14:13:53 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:13:53 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 14:13:53 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:13:53 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-27 14:13:53 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:13:53 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-27 14:13:53 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:13:53 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-27 14:13:53 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:13:53 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-27 14:13:53 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:13:53 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-27 14:13:53 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:13:53 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 14:13:53 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:13:53 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 14:15:01 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:15:01 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 14:15:01 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:15:01 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 14:15:01 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:15:01 [Test worker] ERROR commands.Division - Division by zero
+2025-02-27 14:15:01 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:15:01 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-27 14:15:01 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:15:01 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-27 14:15:01 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:15:01 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-27 14:15:01 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:15:01 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-27 14:15:01 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:15:01 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 14:15:01 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:15:01 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 14:16:52 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:16:52 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 14:16:52 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:16:52 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 14:16:52 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:16:52 [Test worker] ERROR commands.Division - Division by zero
+2025-02-27 14:16:52 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:16:52 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-27 14:16:52 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:16:52 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-27 14:16:52 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:16:52 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-27 14:16:52 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:16:52 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-27 14:16:52 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:16:52 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 14:16:52 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:16:52 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 14:44:01 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:44:01 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 14:44:01 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:44:01 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 14:44:01 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:44:01 [Test worker] ERROR commands.Division - Division by zero
+2025-02-27 14:44:01 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:44:01 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-27 14:44:01 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:44:01 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-27 14:44:01 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:44:01 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-27 14:44:01 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:44:01 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-27 14:44:01 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:44:01 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-27 14:44:01 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:44:01 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-27 14:44:01 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:44:01 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-27 14:44:01 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:44:01 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 14:44:01 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:44:01 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 14:44:29 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:44:29 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 14:44:29 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:44:29 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 14:44:29 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:44:29 [Test worker] ERROR commands.Division - Division by zero
+2025-02-27 14:44:29 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:44:29 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-27 14:44:29 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:44:29 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-27 14:44:29 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:44:29 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-27 14:44:29 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:44:29 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-27 14:44:29 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:44:29 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:44:29 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-27 14:44:29 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:44:29 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-27 14:44:29 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:44:29 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 14:44:29 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:44:29 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 14:45:53 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:45:53 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 14:45:53 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:45:53 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 14:45:53 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:45:53 [Test worker] ERROR commands.Division - Division by zero
+2025-02-27 14:45:53 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:45:53 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-27 14:45:53 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:45:53 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-27 14:45:53 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:45:53 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-27 14:45:53 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:45:53 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-27 14:45:53 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:45:53 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:45:53 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-27 14:45:53 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:45:53 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-27 14:45:53 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:45:53 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 14:45:53 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:45:53 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 14:46:06 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:46:06 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 14:46:06 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:46:06 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 14:46:06 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:46:06 [Test worker] ERROR commands.Division - Division by zero
+2025-02-27 14:46:06 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:46:06 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-27 14:46:06 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:46:06 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-27 14:46:06 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:46:06 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-27 14:46:06 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:46:06 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-27 14:46:06 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:46:06 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:46:06 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-27 14:46:06 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:46:06 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-27 14:46:06 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:46:06 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 14:46:06 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:46:06 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 14:49:56 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:49:56 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 14:49:56 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:49:56 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 14:49:56 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:49:56 [Test worker] ERROR commands.Division - Division by zero
+2025-02-27 14:49:56 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:49:56 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-27 14:49:56 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:49:56 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-27 14:49:56 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:49:56 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-27 14:49:56 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:49:56 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-27 14:49:56 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:49:56 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-27 14:49:56 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:49:56 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-27 14:49:56 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:49:56 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-27 14:49:56 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:49:56 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 14:49:56 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:49:56 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-27 14:52:11 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:52:11 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-27 14:52:11 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-27 14:52:11 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-27 14:52:11 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:52:11 [Test worker] ERROR commands.Division - Division by zero
+2025-02-27 14:52:11 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:52:11 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-27 14:52:11 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-27 14:52:11 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-27 14:52:11 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:52:11 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-27 14:52:11 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-27 14:52:11 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-27 14:52:11 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:52:11 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-27 14:52:11 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:52:11 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-27 14:52:11 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-27 14:52:11 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-27 14:52:11 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:52:11 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-27 14:52:11 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-27 14:52:11 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 13:23:03 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:23:03 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 13:23:03 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:23:03 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 13:23:03 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 13:23:03 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:23:03 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 13:23:03 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:23:03 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 13:23:03 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:23:03 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 13:23:03 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:23:03 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 13:23:03 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:23:03 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 13:23:03 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:23:03 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 13:23:03 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:23:03 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 13:23:03 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:23:03 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 13:23:03 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:23:03 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 13:23:03 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:23:03 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 13:29:46 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:29:46 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 13:29:46 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:29:46 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 13:29:46 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 13:29:46 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:29:46 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 13:29:46 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:29:46 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 13:29:46 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:29:46 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 13:29:46 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:29:46 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 13:29:46 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:29:46 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 13:29:46 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:29:46 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 13:29:46 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:29:46 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 13:29:46 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:29:46 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 13:29:46 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:29:46 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 13:29:46 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:29:46 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 13:33:40 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:33:40 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 13:33:40 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:33:40 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 13:33:40 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 13:33:40 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 13:33:40 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:33:40 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 13:33:40 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:33:40 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 13:33:40 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:33:40 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 13:33:40 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:33:40 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 13:33:40 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:33:40 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 13:33:40 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:33:40 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 13:33:40 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:33:40 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 13:33:40 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:33:40 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 13:33:40 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:33:40 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 13:33:40 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:33:40 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 13:34:23 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:34:23 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 13:34:23 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:34:23 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 13:34:23 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 13:34:23 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 13:34:23 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:34:23 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 13:34:23 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:34:23 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 13:34:23 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:34:23 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 13:34:23 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:34:23 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 13:34:23 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:34:23 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 13:34:23 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:34:23 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 13:34:23 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:34:23 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 13:34:23 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:34:23 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 13:34:23 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:34:23 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 13:34:23 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:34:23 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 13:41:20 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:41:20 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 13:41:20 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:41:20 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 13:41:20 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 13:41:20 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 13:41:20 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:41:20 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 13:41:20 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:41:20 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 13:41:20 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:41:20 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 13:41:20 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:41:20 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 13:41:20 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:41:21 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 13:41:21 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:41:21 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 13:41:21 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:41:21 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 13:41:21 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:41:21 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 13:41:21 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:41:21 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 13:41:21 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:41:21 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 13:42:36 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:42:36 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 13:42:36 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:42:36 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 13:42:36 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 13:42:36 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 13:42:36 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:42:36 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 13:42:36 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:42:36 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 13:42:36 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:42:36 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 13:42:36 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:42:36 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 13:42:36 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:42:36 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 13:42:36 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:42:36 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 13:42:36 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:42:36 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 13:42:36 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:42:36 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 13:42:36 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:42:36 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 13:42:36 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:42:36 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 13:55:18 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:55:18 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 13:55:18 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:55:18 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 13:55:18 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 13:55:18 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 13:55:18 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:55:18 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 13:55:18 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:55:18 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 13:55:18 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:55:18 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 13:55:19 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:55:19 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 13:55:19 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:55:19 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 13:55:19 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:55:19 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 13:55:19 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:55:19 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 13:55:19 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:55:19 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 13:55:19 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:55:19 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 13:55:19 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:55:19 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 13:56:08 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:56:08 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 13:56:08 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 13:56:08 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 13:56:08 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 13:56:08 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 13:56:08 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:56:08 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 13:56:08 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:56:08 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 13:56:08 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 13:56:08 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 13:56:08 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:56:08 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 13:56:08 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 13:56:08 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 13:56:08 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:56:08 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 13:56:08 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:56:08 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 13:56:08 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 13:56:08 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 13:56:08 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:56:08 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 13:56:08 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 13:56:08 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 14:00:43 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 14:00:43 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 14:00:43 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 14:00:43 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 14:00:43 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 14:00:43 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 14:00:43 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:00:43 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 14:00:43 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:00:43 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 14:00:43 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:00:43 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 14:00:43 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 14:00:43 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 14:00:43 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 14:00:43 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 14:00:43 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:00:43 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 14:00:43 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:00:43 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 14:00:43 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:00:43 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 14:00:43 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 14:00:43 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 14:00:43 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 14:00:43 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 14:03:07 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 14:03:07 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 14:03:07 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 14:03:07 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 14:03:07 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 14:03:07 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 14:03:07 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 14:03:07 [Test worker] ERROR commands.Definition - Variable a already exists
+2025-02-28 14:03:07 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:03:07 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 14:03:07 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:03:07 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 14:03:07 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:03:07 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 14:03:07 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 14:03:07 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 14:03:07 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 14:03:07 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 14:03:07 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:03:07 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 14:03:07 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:03:07 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 14:03:07 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:03:07 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 14:03:07 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 14:03:07 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 14:03:07 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 14:03:07 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 14:04:39 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 14:04:39 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 14:04:39 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 14:04:39 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 14:04:39 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 14:04:39 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 14:04:39 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 14:04:39 [Test worker] ERROR commands.Definition - Variable a already exists
+2025-02-28 14:04:39 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 14:04:39 [Test worker] INFO  commands.Definition - Applying addition command finished
+2025-02-28 14:04:39 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:04:39 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 14:04:39 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:04:39 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 14:04:39 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:04:39 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 14:04:39 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 14:04:39 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 14:04:39 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 14:04:39 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 14:04:39 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:04:39 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 14:04:39 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:04:39 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 14:04:39 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:04:39 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 14:04:40 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 14:04:40 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 14:04:40 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 14:04:40 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 14:12:59 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 14:12:59 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 14:12:59 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 14:12:59 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 14:12:59 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 14:12:59 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 14:12:59 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 14:12:59 [Test worker] ERROR commands.Definition - Variable a already exists
+2025-02-28 14:12:59 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 14:12:59 [Test worker] INFO  commands.Definition - Applying addition command finished
+2025-02-28 14:12:59 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:12:59 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 14:12:59 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:12:59 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 14:12:59 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:12:59 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 14:12:59 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 14:12:59 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 14:12:59 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 14:12:59 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 14:12:59 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 14:12:59 [Test worker] ERROR commands.Pop - Not enough elements in stack
+2025-02-28 14:12:59 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 14:12:59 [Test worker] INFO  commands.Pop - Applying POP command ended
+2025-02-28 14:12:59 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:12:59 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 14:12:59 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:12:59 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 14:12:59 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:12:59 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 14:12:59 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 14:12:59 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 14:12:59 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 14:12:59 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 14:15:06 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 14:15:06 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 14:15:06 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 14:15:06 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 14:15:06 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 14:15:06 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 14:15:06 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 14:15:06 [Test worker] ERROR commands.Definition - Variable a already exists
+2025-02-28 14:15:06 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 14:15:06 [Test worker] INFO  commands.Definition - Applying addition command finished
+2025-02-28 14:15:06 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:15:06 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 14:15:06 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:15:06 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 14:15:06 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 14:15:06 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 14:15:06 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 14:15:06 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 14:15:06 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 14:15:06 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 14:15:06 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 14:15:06 [Test worker] ERROR commands.Pop - Not enough elements in stack
+2025-02-28 14:15:06 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 14:15:06 [Test worker] INFO  commands.Pop - Applying POP command ended
+2025-02-28 14:15:06 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:15:06 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 14:15:06 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:15:06 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 14:15:06 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 14:15:06 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 14:15:06 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 14:15:06 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 14:15:06 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 14:15:06 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 21:38:59 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 21:38:59 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 21:38:59 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 21:38:59 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 21:38:59 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 21:38:59 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 21:38:59 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 21:38:59 [Test worker] ERROR commands.Definition - Variable a already exists
+2025-02-28 21:38:59 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 21:38:59 [Test worker] INFO  commands.Definition - Applying addition command finished
+2025-02-28 21:38:59 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 21:38:59 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 21:38:59 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 21:38:59 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 21:38:59 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 21:38:59 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 21:38:59 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 21:38:59 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 21:38:59 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 21:38:59 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 21:38:59 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 21:38:59 [Test worker] ERROR commands.Pop - Not enough elements in stack
+2025-02-28 21:38:59 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 21:38:59 [Test worker] INFO  commands.Pop - Applying POP command ended
+2025-02-28 21:38:59 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 21:38:59 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 21:38:59 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 21:38:59 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 21:38:59 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 21:38:59 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 21:38:59 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 21:38:59 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 21:38:59 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 21:38:59 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 22:05:40 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 22:05:40 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 22:05:40 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 22:05:40 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 22:05:40 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 22:05:40 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 22:05:40 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 22:05:40 [Test worker] ERROR commands.Definition - Variable a already exists
+2025-02-28 22:05:40 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 22:05:40 [Test worker] INFO  commands.Definition - Applying addition command finished
+2025-02-28 22:05:40 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:05:40 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 22:05:40 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:05:40 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 22:05:40 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:05:40 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 22:05:40 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 22:05:40 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 22:05:40 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 22:05:40 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 22:05:40 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 22:05:40 [Test worker] ERROR commands.Pop - Not enough elements in stack
+2025-02-28 22:05:40 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 22:05:40 [Test worker] INFO  commands.Pop - Applying POP command ended
+2025-02-28 22:05:40 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:05:40 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:05:40 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:05:40 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 22:05:40 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:05:40 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 22:05:40 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:05:40 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 22:05:40 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 22:05:40 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 22:05:40 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 22:05:40 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 22:07:57 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 22:07:57 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 22:07:57 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 22:07:57 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 22:07:57 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 22:07:57 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 22:07:57 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 22:07:57 [Test worker] ERROR commands.Definition - Variable a already exists
+2025-02-28 22:07:57 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 22:07:57 [Test worker] INFO  commands.Definition - Applying addition command finished
+2025-02-28 22:07:57 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:07:57 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 22:07:57 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:07:57 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 22:07:57 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:07:57 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 22:07:57 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 22:07:57 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 22:07:57 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 22:07:57 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 22:07:57 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 22:07:57 [Test worker] ERROR commands.Pop - Not enough elements in stack
+2025-02-28 22:07:57 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 22:07:57 [Test worker] INFO  commands.Pop - Applying POP command ended
+2025-02-28 22:07:57 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:07:57 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:07:57 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:07:57 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 22:07:57 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:07:57 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 22:07:57 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:07:57 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 22:07:57 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 22:07:57 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 22:07:57 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 22:07:57 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 22:11:53 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 22:11:53 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 22:11:53 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 22:11:53 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 22:11:53 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 22:11:53 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 22:11:53 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 22:11:53 [Test worker] ERROR commands.Definition - Variable a already exists
+2025-02-28 22:11:53 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 22:11:53 [Test worker] INFO  commands.Definition - Applying addition command finished
+2025-02-28 22:11:53 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:11:53 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 22:11:53 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:11:53 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 22:11:53 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:11:53 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 22:11:53 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 22:11:53 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 22:11:53 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 22:11:53 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 22:11:53 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 22:11:53 [Test worker] ERROR commands.Pop - Not enough elements in stack
+2025-02-28 22:11:53 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 22:11:53 [Test worker] INFO  commands.Pop - Applying POP command ended
+2025-02-28 22:11:53 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:11:53 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:11:53 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:11:53 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:11:53 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:11:53 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 22:11:53 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:11:53 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 22:11:53 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:11:53 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 22:11:53 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 22:11:53 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 22:11:53 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 22:11:53 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 22:16:01 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 22:16:01 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 22:16:01 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 22:16:01 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 22:16:01 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 22:16:01 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 22:16:01 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 22:16:01 [Test worker] ERROR commands.Definition - Variable a already exists
+2025-02-28 22:16:01 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 22:16:01 [Test worker] INFO  commands.Definition - Applying addition command finished
+2025-02-28 22:16:01 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:16:01 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 22:16:01 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:16:01 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 22:16:01 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:16:01 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 22:16:01 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 22:16:01 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 22:16:01 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 22:16:01 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 22:16:01 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 22:16:01 [Test worker] ERROR commands.Pop - Not enough elements in stack
+2025-02-28 22:16:01 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 22:16:01 [Test worker] INFO  commands.Pop - Applying POP command ended
+2025-02-28 22:16:01 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:16:01 [Test worker] ERROR commands.Push - Invalid parameter for PUSH b
+2025-02-28 22:16:01 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:16:01 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:16:01 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:16:01 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:16:01 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:16:01 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 22:16:01 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:16:01 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 22:16:01 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:16:01 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 22:16:01 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 22:16:01 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 22:16:01 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 22:16:01 [Test worker] ERROR commands.Subtraction - Not enough elements in stack
+2025-02-28 22:57:49 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Addition - Applying addition command finished
+2025-02-28 22:57:49 [Test worker] INFO  commands.Addition - Applying ADD command started
+2025-02-28 22:57:49 [Test worker] ERROR commands.Addition - Not enough elements in stack
+2025-02-28 22:57:49 [Test worker] ERROR commands.Definition - Not enough arguments
+2025-02-28 22:57:49 [Test worker] INFO  commands.Definition - Invalid value for DEFINE
+2025-02-28 22:57:49 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 22:57:49 [Test worker] ERROR commands.Definition - Variable a already exists
+2025-02-28 22:57:49 [Test worker] INFO  commands.Definition - Applying DEFINE command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Definition - Applying addition command finished
+2025-02-28 22:57:49 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:57:49 [Test worker] ERROR commands.Division - Division by zero
+2025-02-28 22:57:49 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:57:49 [Test worker] ERROR commands.Division - Not enough elements in stack
+2025-02-28 22:57:49 [Test worker] INFO  commands.Division - Applying DIV command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Division - Applying DIV command ended
+2025-02-28 22:57:49 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 22:57:49 [Test worker] ERROR commands.Multiplication - Not enough elements in stack
+2025-02-28 22:57:49 [Test worker] INFO  commands.Multiplication - Applying MUL command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Multiplication - Applying MUL command ended
+2025-02-28 22:57:49 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 22:57:49 [Test worker] ERROR commands.Pop - Not enough elements in stack
+2025-02-28 22:57:49 [Test worker] INFO  commands.Pop - Applying POP command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Pop - Applying POP command ended
+2025-02-28 22:57:49 [Test worker] INFO  commands.Print - Applying PRINT command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Print - Applying PRINT command ended
+2025-02-28 22:57:49 [Test worker] INFO  commands.Print - Applying PRINT command started
+2025-02-28 22:57:49 [Test worker] ERROR commands.Print - Not enough elements in stack
+2025-02-28 22:57:49 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:57:49 [Test worker] ERROR commands.Push - Invalid parameter for PUSH b
+2025-02-28 22:57:49 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Push - Applying PUSH command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Sqrt - Applying SQRT command ended
+2025-02-28 22:57:49 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:57:49 [Test worker] ERROR commands.Sqrt - Trying to get a SQRT of a negative value -10.0
+2025-02-28 22:57:49 [Test worker] INFO  commands.Sqrt - Applying SQRT command started
+2025-02-28 22:57:49 [Test worker] ERROR commands.Sqrt - Not enough elements in stack
+2025-02-28 22:57:49 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 22:57:49 [Test worker] INFO  commands.Subtraction - Applying SUB command ended
+2025-02-28 22:57:49 [Test worker] INFO  commands.Subtraction - Applying SUB command started
+2025-02-28 22:57:49 [Test worker] ERROR commands.Subtraction - Not enough elements in stack

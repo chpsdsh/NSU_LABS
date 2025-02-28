@@ -8,28 +8,28 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AdditionTests {
-    private Addition addition;
+public class SubtractionTests {
+    private Subtraction subtraction;
     private Context context;
 
     @BeforeEach
     void setUp() {
         context = new Context();
-        addition = new Addition();
+        subtraction = new Subtraction();
     }
 
     @Test
-    void addExceptionTest() {
+    void subExceptionTest() {
         context.getStack().push(5.0);
-        Exception exception = assertThrows(StackException.class, () -> addition.apply(context));
+        Exception exception = assertThrows(StackException.class, () -> subtraction.apply(context));
         assertEquals("Not enough elements in stack", exception.getMessage());
     }
 
     @Test
-    void addTest() throws CommandExceptions {
+    void subTest() throws CommandExceptions {
         context.getStack().push(5.0);
         context.getStack().push(8.0);
-        addition.apply(context);
-        assertEquals(13.0, context.getStack().pop());
+        subtraction.apply(context);
+        assertEquals(-3.0, context.getStack().pop());
     }
 }

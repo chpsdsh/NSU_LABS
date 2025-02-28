@@ -14,9 +14,14 @@ public class Sqrt extends Command {
         logger.info("Applying SQRT command started");
         if (context.getStack().empty()) {
             logger.error("Not enough elements in stack");
-            throw new StackException("Empty stack nothing to print");
+            throw new StackException("Not enough elements in stack");
         }
-        double res = Math.sqrt(context.getStack().pop());
+        double operand = context.getStack().pop();
+        if (operand < 0) {
+            logger.error("Trying to get a SQRT of a negative value {}", operand);
+            throw new RuntimeException("Trying to get a SQRT of a negative value " + operand);
+        }
+        double res = Math.sqrt(operand);
         context.getStack().push(res);
         logger.info("Applying SQRT command ended");
     }
