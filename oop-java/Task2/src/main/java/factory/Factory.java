@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,19 +22,20 @@ public final class Factory {
         loadClassMap(factoryConfigurationFileName);
     }
 
-    private void loadClassMap(String factoryConfigurationFileName) throws IOException {
+    public void loadClassMap(String factoryConfigurationFileName) throws IOException {
         logger.info("Factory config parsing is started {}", factoryConfigurationFileName);
 
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream(factoryConfigurationFileName);
         if (inputStream == null) {
-            logger.error("Can not create inputStream from {}", factoryConfigurationFileName);
-            throw new IOException("Could not open factory configuration file" + factoryConfigurationFileName);
+            logger.error("Could not create inputStream from {}", factoryConfigurationFileName);
+            throw new IOException("Could not open factory configuration file " + factoryConfigurationFileName);
         }
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+
             String line;
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
-                String[] parts = line.split("=", 2);
+                String[] parts = line.split("=");
                 if (parts.length != 2) {
                     logger.error("Invalid config format");
                     throw new IOException("Invalid config file format");
@@ -47,18 +49,32 @@ public final class Factory {
     }
 
     public Command createCommand(String commandName, String[] args) throws Exception {
-        logger.info("Command creation is started {}",commandName);
+        logger.info("Command creation is started {}", commandName);
 
         String className = commandMap.get(commandName);
         if (className == null) {
             logger.error("Invalid command name");
             throw new InvalidCommandException("Command not found " + commandName);
         }
-        Class<?> commandClass = Class.forName(className);
-        if (args == null || args.length == 0) {
-            return (Command) commandClass.getDeclaredConstructor().newInstance();
-        } else {
-            return (Command) commandClass.getDeclaredConstructor(String[].class).newInstance((Object) args);
+        try {
+            Class<?> commandClass = Class.forName(className);
+            if (args == null || args.length == 0) {
+                return (Command) commandClass.getDeclaredConstructor().newInstance();
+            } else {
+                return (Command) commandClass.getDeclaredConstructor(String[].class).newInstance((Object) args);
+            }
+        } catch (ClassNotFoundException e) {
+            logger.error("Class not found: {}", className);
+            throw new ClassNotFoundException("Class not found " + className);
+        } catch (NoSuchMethodException e) {
+            logger.error("No suitable constructor for class: {}", className);
+            throw new InvalidCommandException("No valid constructor for command: " + className, e);
+        } catch (InstantiationException | IllegalAccessException e) {
+            logger.error("Cannot instantiate class: {}", className);
+            throw new InvalidCommandException("Cannot instantiate command: " + className, e);
+        } catch (InvocationTargetException e) {
+            logger.error("Constructor threw an exception for class: {}", className);
+            throw new InvalidCommandException("Command constructor failed: " + className, e);
         }
     }
 }

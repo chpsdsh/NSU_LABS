@@ -1,0 +1,9 @@
+PUSH=commands.Push
+POP=commands.Pop
+PRINT=commands.Print
+ADD=commands.Addition
+SUB=commands.Subtraction
+MUL=commands.Multiplication
+DIV=commands.Division
+SQRT=commands.Sqrt
+DEFINE=commands.Definition
