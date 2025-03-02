@@ -1,7 +1,6 @@
 package exceptions;
 
 
-
 public class InvalidParameterException extends CommandExceptions {
     public InvalidParameterException(String message) {
         super(message);

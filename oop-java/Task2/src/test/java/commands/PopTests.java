@@ -29,6 +29,6 @@ public class PopTests {
         context.getStack().push(5.0);
         int size = context.getStack().size();
         pop.apply(context);
-        assertEquals(size-1,context.getStack().size());
+        assertEquals(size - 1, context.getStack().size());
     }
 }

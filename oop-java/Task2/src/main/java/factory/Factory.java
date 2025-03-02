@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,25 +55,13 @@ public final class Factory {
             logger.error("Invalid command name");
             throw new InvalidCommandException("Command not found " + commandName);
         }
-        try {
-            Class<?> commandClass = Class.forName(className);
-            if (args == null || args.length == 0) {
-                return (Command) commandClass.getDeclaredConstructor().newInstance();
-            } else {
-                return (Command) commandClass.getDeclaredConstructor(String[].class).newInstance((Object) args);
-            }
-        } catch (ClassNotFoundException e) {
-            logger.error("Class not found: {}", className);
-            throw new ClassNotFoundException("Class not found " + className);
-        } catch (NoSuchMethodException e) {
-            logger.error("No suitable constructor for class: {}", className);
-            throw new InvalidCommandException("No valid constructor for command: " + className, e);
-        } catch (InstantiationException | IllegalAccessException e) {
-            logger.error("Cannot instantiate class: {}", className);
-            throw new InvalidCommandException("Cannot instantiate command: " + className, e);
-        } catch (InvocationTargetException e) {
-            logger.error("Constructor threw an exception for class: {}", className);
-            throw new InvalidCommandException("Command constructor failed: " + className, e);
+
+        Class<?> commandClass = Class.forName(className);
+        if (args.length == 0) {
+            return (Command) commandClass.getDeclaredConstructor().newInstance();
+        } else {
+            return (Command) commandClass.getDeclaredConstructor(String[].class).newInstance((Object) args);
         }
+
     }
 }

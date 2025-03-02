@@ -14,9 +14,10 @@ public class Main {
     public static void main(String[] args) throws Exception {
         logger.info("Program started");
         String configFileName = null;
-        if (args.length > 0) {
+        if (args != null) {
             configFileName = args[0];
         }
+
         Factory factory = new Factory("factoryConfiguration.txt");
         Context context = new Context();
         BiConsumer<String, String[]> commandProcessor = (commandName, arguments) -> {

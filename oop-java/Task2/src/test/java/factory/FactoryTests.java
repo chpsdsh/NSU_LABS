@@ -2,7 +2,7 @@ package factory;
 
 import commands.Command;
 import commands.Definition;
-import commands.Print;
+import commands.Sqrt;
 import exceptions.InvalidCommandException;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
@@ -38,10 +38,11 @@ public class FactoryTests {
         assertNotNull(command);
         assertInstanceOf(Definition.class, command);
 
-        String commandWithoutArgsName = "PRINT";
-        command = factory.createCommand(commandWithoutArgsName, null);
+        String commandWithoutArgsName = "SQRT";
+        String[] argsEmpty = {};
+        command = factory.createCommand(commandWithoutArgsName, argsEmpty);
         assertNotNull(command);
-        assertInstanceOf(Print.class, command);
+        assertInstanceOf(Sqrt.class, command);
     }
 
 
