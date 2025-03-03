@@ -19,5 +19,5 @@
 4. **Запуск приложения**:
     - Чтобы запустить приложение с конфигом, используйте команду:
       ```bash
-      java -jar build/libs/Task2.jar context.txt
+      java -jar build/libs/Task2.jar config.txt
       ```
