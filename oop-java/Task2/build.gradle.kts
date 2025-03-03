@@ -50,11 +50,18 @@ tasks.jar {
     }
 }
 
+
+
+
 // Конфигурация shadowJar (fat JAR)
 tasks.shadowJar {
     archiveBaseName.set("Task2")
     archiveClassifier.set("")
     archiveVersion.set("")
+}
+
+tasks.build {
+    dependsOn(tasks.shadowJar) // shadowJar запускается вместе с build
 }
 
 // Указываем главный класс приложения
