@@ -50,9 +50,6 @@ tasks.jar {
     }
 }
 
-
-
-
 // Конфигурация shadowJar (fat JAR)
 tasks.shadowJar {
     archiveBaseName.set("Task2")
@@ -67,4 +64,9 @@ tasks.build {
 // Указываем главный класс приложения
 application {
     mainClass.set("Main") // Укажи свой главный класс
+}
+
+// Настройка run, чтобы работал System.in
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
 }

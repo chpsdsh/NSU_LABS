@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         logger.info("Program started");
         String configFileName = null;
-        if (args != null) {
+        if (args.length == 1) {
             configFileName = args[0];
         }
 

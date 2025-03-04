@@ -42,8 +42,8 @@ public class MainTests {
             new FileWriter(logFile, false).close();
         }
 
-
-        Main.main(null);
+        String[] args ={};
+        Main.main(args);
 
         StringBuilder logContent = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(logFile))) {
