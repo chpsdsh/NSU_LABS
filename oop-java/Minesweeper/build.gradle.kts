@@ -17,3 +17,8 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.register<JavaExec>("run") {
+    mainClass.set("minesweeper.main.Main") // Указываем основной класс для запуска
+    classpath = sourceSets["main"].runtimeClasspath // Указываем classpath для запуска
+}
