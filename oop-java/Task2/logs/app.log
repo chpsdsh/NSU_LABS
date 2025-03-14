@@ -97,3 +97,40 @@
 2025-03-04 22:29:40 [main] INFO  commands.Print - Applying PRINT command started
 2025-03-04 22:29:40 [main] INFO  commands.Print - Applying PRINT command ended
 2025-03-04 22:29:40 [main] INFO  Main - Program finished
+2025-03-04 22:35:32 [main] INFO  Main - Program started
+2025-03-04 22:35:32 [main] INFO  factory.Factory - Factory config parsing is started factoryConfiguration.txt
+2025-03-04 22:35:32 [main] INFO  configuration.ConfigParser - Config parsing is started config.txt
+2025-03-04 22:35:32 [main] INFO  factory.Factory - Command creation is started DEFINE
+2025-03-04 22:35:32 [main] INFO  commands.Definition - Applying DEFINE command started
+2025-03-04 22:35:32 [main] INFO  commands.Definition - Applying addition command finished
+2025-03-04 22:35:32 [main] INFO  factory.Factory - Command creation is started PUSH
+2025-03-04 22:35:32 [main] INFO  commands.Push - Applying PUSH command started
+2025-03-04 22:35:32 [main] INFO  commands.Push - Applying PUSH command started
+2025-03-04 22:35:32 [main] INFO  factory.Factory - Command creation is started SQRT
+2025-03-04 22:35:32 [main] INFO  commands.Sqrt - Applying SQRT command started
+2025-03-04 22:35:32 [main] INFO  commands.Sqrt - Applying SQRT command ended
+2025-03-04 22:35:32 [main] INFO  factory.Factory - Command creation is started PRINT
+2025-03-04 22:35:32 [main] INFO  commands.Print - Applying PRINT command started
+2025-03-04 22:35:32 [main] INFO  commands.Print - Applying PRINT command ended
+2025-03-04 22:35:32 [main] INFO  Main - Program finished
+2025-03-04 22:48:10 [main] INFO  Main - Program started
+2025-03-04 22:48:10 [main] INFO  factory.Factory - Factory config parsing is started factoryConfiguration.txt
+2025-03-04 22:48:10 [main] INFO  configuration.ConfigParser - Config parsing is started config.txt
+2025-03-04 22:48:10 [main] INFO  factory.Factory - Command creation is started DEFINE
+2025-03-04 22:48:10 [main] INFO  commands.Definition - Applying DEFINE command started
+2025-03-04 22:48:10 [main] INFO  commands.Definition - Applying addition command finished
+2025-03-04 22:48:10 [main] INFO  factory.Factory - Command creation is started PUSH
+2025-03-04 22:48:10 [main] INFO  commands.Push - Applying PUSH command started
+2025-03-04 22:48:10 [main] INFO  commands.Push - Applying PUSH command started
+2025-03-04 22:48:10 [main] INFO  factory.Factory - Command creation is started SQRT
+2025-03-04 22:48:10 [main] INFO  commands.Sqrt - Applying SQRT command started
+2025-03-04 22:48:10 [main] INFO  commands.Sqrt - Applying SQRT command ended
+2025-03-04 22:48:10 [main] INFO  factory.Factory - Command creation is started PRINT
+2025-03-04 22:48:10 [main] INFO  commands.Print - Applying PRINT command started
+2025-03-04 22:48:10 [main] INFO  commands.Print - Applying PRINT command ended
+2025-03-04 22:48:10 [main] INFO  Main - Program finished
+2025-03-04 22:48:15 [main] INFO  Main - Program started
+2025-03-04 22:48:15 [main] INFO  factory.Factory - Factory config parsing is started factoryConfiguration.txt
+2025-03-04 22:48:15 [main] INFO  configuration.ConfigParser - Config parsing is started null
+2025-03-04 22:48:15 [main] INFO  configuration.ConfigParser - Switching to console mode
+2025-03-05 00:22:27 [main] INFO  Main - Program finished

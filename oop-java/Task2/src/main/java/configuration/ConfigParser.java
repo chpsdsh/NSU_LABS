@@ -20,7 +20,7 @@ public class ConfigParser {
     }
 
     public ConfigParser(String configFileName, InputStream customInputStream) {
-        this.configFileName = configFileName;
+        this.configFileName = configFileName;   
         this.customInputStream = customInputStream;
     }
 
