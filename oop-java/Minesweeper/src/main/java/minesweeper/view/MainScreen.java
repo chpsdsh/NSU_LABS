@@ -1,9 +1,14 @@
 package minesweeper.view;
 
+import minesweeper.controller.Controller;
+
 import java.awt.*;
 import javax.swing.*;
 
 public class MainScreen extends JFrame {
+
+    private Controller controller;
+
 
     public MainScreen() {
         super("Minesweeper");
@@ -12,35 +17,37 @@ public class MainScreen extends JFrame {
 
     private void createGUI() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
+
+        JPanel menuPanel = new JPanel();
+        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
+        menuPanel.setBorder(BorderFactory.createEmptyBorder(300, 50, 50, 50));
 
         JLabel name = new JLabel("MINESWEEPER", JLabel.CENTER);
-        name.setSize(300, 100);
-        name.setLocation(50, 200);
         name.setFont(new Font("Arial", Font.BOLD, 28));
-        add(name);
+        name.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton newGameButton = new JButton("New game");
-        newGameButton.setSize(100, 50);
-        newGameButton.setLocation(150, 300);
-        add(newGameButton);
-
         JButton highScoreButton = new JButton("High score");
-        highScoreButton.setSize(100, 50);
-        highScoreButton.setLocation(150, 360);
-        add(highScoreButton);
-
         JButton aboutButton = new JButton("About");
-        aboutButton.setSize(100, 50);
-        aboutButton.setLocation(150, 420);
-        add(aboutButton);
-
         JButton exitButton = new JButton("Exit");
-        exitButton.setSize(100, 50);
-        exitButton.setLocation(150, 480);
-        add(exitButton);
 
-        setSize(400, 800);
+        newGameButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        highScoreButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        aboutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        menuPanel.add(name);
+        menuPanel.add(Box.createVerticalStrut(10));
+        menuPanel.add(newGameButton);
+        menuPanel.add(Box.createVerticalStrut(10));
+        menuPanel.add(highScoreButton);
+        menuPanel.add(Box.createVerticalStrut(10));
+        menuPanel.add(aboutButton);
+        menuPanel.add(Box.createVerticalStrut(10));
+        menuPanel.add(exitButton);
+
+        this.add(menuPanel);
+        this.setSize(400, 800);
         setLocationRelativeTo(null);
     }
 
