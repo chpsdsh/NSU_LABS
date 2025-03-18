@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public final class MainMenuController {
-    private MainMenuView mainMenuView;
+    private final MainMenuView mainMenuView;
     private final GameModel model;
 
     public MainMenuController(MainMenuView mainMenuView, GameModel model) {
@@ -19,7 +19,9 @@ public final class MainMenuController {
         mainMenuView.setAboutActionListener(new AboutListener());
         mainMenuView.setExitActionListener(new ExitListener());
         mainMenuView.setAboutExitActionListener(new AboutExitListener());
+        model.setMainMenuController(this);
     }
+
 
     class NewGameListener implements ActionListener {
         @Override
@@ -53,6 +55,13 @@ public final class MainMenuController {
         @Override
         public void actionPerformed(ActionEvent e) {
             model.showMenu();
+        }
+    }
+
+    public class StartGameListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            model.createNewGame();
         }
     }
 }
