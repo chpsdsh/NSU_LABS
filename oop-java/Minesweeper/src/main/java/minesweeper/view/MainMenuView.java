@@ -1,11 +1,9 @@
 package minesweeper.view;
-
-
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class MainMenuView extends JFrame {
+public final class MainMenuView extends JFrame {
 
     private JButton newGameButton;
     private JButton highScoreButton;
@@ -17,12 +15,15 @@ public class MainMenuView extends JFrame {
 
     public MainMenuView() {
         super("Minesweeper");
-        createGUI();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        createMenu();
+        createAbout();
+        this.setSize(400, 800);
+        setLocationRelativeTo(null);
+        this.showMenu();
     }
 
-    private void createGUI() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+    private void createMenu() {
         menuPanel = new JPanel();
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setBorder(BorderFactory.createEmptyBorder(300, 50, 50, 50));
@@ -35,15 +36,11 @@ public class MainMenuView extends JFrame {
         highScoreButton = new JButton("High score");
         aboutButton = new JButton("About");
         exitButton = new JButton("Exit");
-        aboutExitButton = new JButton("Exit");
-
 
         newGameButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         highScoreButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         aboutButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        aboutExitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
 
         menuPanel.add(name);
         menuPanel.add(Box.createVerticalStrut(10));
@@ -55,14 +52,13 @@ public class MainMenuView extends JFrame {
         menuPanel.add(Box.createVerticalStrut(10));
         menuPanel.add(exitButton);
 
-        this.add(menuPanel);
-        this.setSize(400, 800);
-        setLocationRelativeTo(null);
     }
 
-    public void showAbout() {
-        menuPanel.setVisible(false);
+    private void createAbout() {
         aboutPanel = new JPanel();
+
+        aboutExitButton = new JButton("Exit");
+        aboutExitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         aboutPanel.setLayout(new BoxLayout(aboutPanel, BoxLayout.Y_AXIS));
         aboutPanel.setBorder(BorderFactory.createEmptyBorder(200, 50, 50, 50));
@@ -85,14 +81,20 @@ public class MainMenuView extends JFrame {
         aboutPanel.add(text);
         aboutPanel.add(Box.createVerticalStrut(10));
         aboutPanel.add(aboutExitButton);
-        this.add(aboutPanel);
+    }
 
+    public void showAbout() {
+        getContentPane().removeAll();
+        this.add(aboutPanel);
+        revalidate();
+        repaint();
     }
 
     public void showMenu() {
-        aboutPanel.setVisible(false);
-
-        menuPanel.setVisible(true);
+        getContentPane().removeAll();
+        getContentPane().add(menuPanel);
+        revalidate();
+        repaint();
     }
 
     public void setNewGameActionListener(ActionListener listener) {
