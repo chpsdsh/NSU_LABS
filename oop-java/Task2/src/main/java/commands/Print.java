@@ -1,7 +1,7 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
+import exceptions.OperationException;
 import exceptions.StackException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +10,7 @@ public class Print extends Command {
     private static final Logger logger = LogManager.getLogger(Print.class);
 
     @Override
-    public void apply(Context context) throws CommandExceptions {
+    public void apply(Context context) throws OperationException {
         logger.info("Applying PRINT command started");
 
         if (context.getStack().empty()) {

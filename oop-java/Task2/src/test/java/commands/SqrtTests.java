@@ -1,7 +1,6 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
 import exceptions.StackException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,7 +31,7 @@ public class SqrtTests {
     }
 
     @Test
-    void sqrtTest() throws CommandExceptions {
+    void sqrtTest() throws ArithmeticException {
         context.getStack().push(16.0);
         sqrt.apply(context);
         assertEquals(4, context.getStack().pop());

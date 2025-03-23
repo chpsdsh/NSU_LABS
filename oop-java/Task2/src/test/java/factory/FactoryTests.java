@@ -3,9 +3,11 @@ package factory;
 import commands.Command;
 import commands.Definition;
 import commands.Sqrt;
-import exceptions.InvalidCommandException;
+import exceptions.ClassNotFoundException;
+import exceptions.FactoryConfigFormatException;
+import exceptions.FactoryConfigLoadException;
 import org.junit.jupiter.api.Test;
-import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FactoryTests {
@@ -15,22 +17,22 @@ public class FactoryTests {
 
     @Test
     void loadInvalidFactoryConfig() {
-        Exception exception = assertThrows(IOException.class, () -> new Factory("invalid.txt"));
+        Exception exception = assertThrows(FactoryConfigLoadException.class, () -> new Factory("invalid.txt"));
         assertTrue(exception.getMessage().contains("Could not open factory configuration file"));
     }
 
     @Test
     void testInvalidConfigFormat() {
-        Exception exception = assertThrows(IOException.class, () -> new Factory("invalidConfig.txt"));
-        assertTrue(exception.getMessage().contains("Error while reading file"));
+        Exception exception = assertThrows(FactoryConfigFormatException.class, () -> new Factory("invalidConfig.txt"));
+        assertTrue(exception.getMessage().contains("Invalid config file format"));
     }
 
     @Test
     void createCommandTest() throws Exception {
         factory = new Factory("factoryConfiguration.txt");
         String InvalidCommand = "GET";
-        Exception exception = assertThrows(InvalidCommandException.class, () -> command = factory.createCommand(InvalidCommand, null));
-        assertTrue(exception.getMessage().contains("Command not found"));
+        Exception exception = assertThrows(ClassNotFoundException.class, () -> command = factory.createCommand(InvalidCommand, null));
+        assertTrue(exception.getMessage().contains("Unknown command:"));
 
         String commandWithArgsName = "DEFINE";
         String[] args = {"a", "4.0"};

@@ -1,7 +1,6 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
 import exceptions.StackException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +25,7 @@ public class MultiplicationTests {
     }
 
     @Test
-    void mulTest() throws CommandExceptions {
+    void mulTest() throws ArithmeticException {
         context.getStack().push(5.0);
         context.getStack().push(8.0);
         multiplication.apply(context);

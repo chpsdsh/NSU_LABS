@@ -1,3 +1,4 @@
+import exceptions.CalculatorException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,8 +32,8 @@ public class MainTests {
     @Test
     void BiConsumerException() {
         String[] args = {"invalidConfig.txt"};
-        Exception exception = assertThrows(RuntimeException.class, () -> Main.main(args));
-        assertTrue(exception.getMessage().contains("Exception creating command"));
+        Exception exception = assertThrows(CalculatorException.class, () -> Main.main(args));
+        assertTrue(exception.getMessage().contains("Exception creating command "));
     }
 
     @Test

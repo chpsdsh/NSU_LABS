@@ -1,7 +1,6 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
 import exceptions.InvalidParameterException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,7 @@ public class DefinitionTests {
     }
 
     @Test
-    void definitionConstructorTests() throws CommandExceptions {
+    void definitionConstructorTests() throws ArithmeticException {
         String[] notEnough = {"a"};
         Exception exception = assertThrows(InvalidParameterException.class, () -> new Definition(notEnough));
         assertEquals("Not enough arguments", exception.getMessage());
@@ -32,7 +31,7 @@ public class DefinitionTests {
     }
 
     @Test
-    void definitionTest() throws CommandExceptions {
+    void definitionTest() throws ArithmeticException {
         context.getVariables().put("a", 2.0);
         String[] exceptionArgs = {"a", "10.0"};
         definition = new Definition(exceptionArgs);

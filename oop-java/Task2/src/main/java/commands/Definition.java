@@ -1,8 +1,8 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
 import exceptions.InvalidParameterException;
+import exceptions.OperationException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +20,7 @@ public class Definition extends Command {
         return variable;
     }
 
-    public Definition(String[] args) throws CommandExceptions {
+    public Definition(String[] args) throws OperationException {
         if (args.length < 2) {
             logger.error("Not enough arguments");
             throw new InvalidParameterException("Not enough arguments");
@@ -35,7 +35,7 @@ public class Definition extends Command {
     }
 
     @Override
-    public void apply(Context context) throws CommandExceptions {
+    public void apply(Context context) throws OperationException {
         logger.info("Applying DEFINE command started");
         if (context.getVariables().containsKey(variable)) {
             logger.error("Variable {} already exists", variable);

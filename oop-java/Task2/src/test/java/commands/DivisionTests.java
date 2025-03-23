@@ -1,7 +1,7 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
+import exceptions.DivisionByZeroException;
 import exceptions.StackException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,12 +29,12 @@ public class DivisionTests {
     void divByZeroTest() {
         context.getStack().push(5.0);
         context.getStack().push(0.0);
-        Exception exception = assertThrows(CommandExceptions.class, () -> division.apply(context));
+        Exception exception = assertThrows(DivisionByZeroException.class, () -> division.apply(context));
         assertEquals("Division by zero", exception.getMessage());
     }
 
     @Test
-    void divTest() throws CommandExceptions {
+    void divTest() throws ArithmeticException {
         context.getStack().push(40.0);
         context.getStack().push(8.0);
         division.apply(context);

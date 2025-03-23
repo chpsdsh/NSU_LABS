@@ -1,8 +1,8 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
+import exceptions.OperationException;
 
 abstract public class Command {
-    abstract public void apply(Context context) throws CommandExceptions;
+    abstract public void apply(Context context) throws OperationException;
 }

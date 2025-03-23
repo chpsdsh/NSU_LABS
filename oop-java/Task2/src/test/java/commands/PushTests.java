@@ -1,7 +1,6 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
 import exceptions.InvalidParameterException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,7 @@ public class PushTests {
     }
 
     @Test
-    void pushConstructorTest() throws CommandExceptions {
+    void pushConstructorTest() throws ArithmeticException {
         String[] invArgs = {"a", "b"};
         Exception exception = assertThrows(InvalidParameterException.class, () -> new Push(invArgs));
         assertEquals("More then one parameter in args", exception.getMessage());
@@ -28,7 +27,7 @@ public class PushTests {
     }
 
     @Test
-    void pushTest() throws CommandExceptions {
+    void pushTest() throws ArithmeticException {
         context.getVariables().put("a", 10.0);
         String[] invArgs = {"b"};
         push = new Push(invArgs);

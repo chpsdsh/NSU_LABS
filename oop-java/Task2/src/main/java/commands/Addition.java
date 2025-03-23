@@ -1,7 +1,7 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
+import exceptions.OperationException;
 import exceptions.StackException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +10,7 @@ public final class Addition extends Command {
     private static final Logger logger = LogManager.getLogger(Addition.class);
 
     @Override
-    public void apply(Context context) throws CommandExceptions {
+    public void apply(Context context) throws OperationException {
         logger.info("Applying ADD command started");
 
         if (context.getStack().size() < 2) {

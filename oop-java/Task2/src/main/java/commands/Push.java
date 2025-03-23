@@ -1,8 +1,8 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
 import exceptions.InvalidParameterException;
+import exceptions.OperationException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,7 +15,7 @@ public class Push extends Command {
 
     private static final Logger logger = LogManager.getLogger(Push.class);
 
-    public Push(String[] args) throws CommandExceptions {
+    public Push(String[] args) throws OperationException {
         if (args.length > 1) {
             throw new InvalidParameterException("More then one parameter in args");
         }
@@ -23,7 +23,7 @@ public class Push extends Command {
     }
 
     @Override
-    public void apply(Context context) throws CommandExceptions {
+    public void apply(Context context) throws OperationException {
         logger.info("Applying PUSH command started");
         double value;
         if (context.getVariables().containsKey(parameter)) {

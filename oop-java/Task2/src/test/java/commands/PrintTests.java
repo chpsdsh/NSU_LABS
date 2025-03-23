@@ -1,7 +1,7 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
+import exceptions.OperationException;
 import exceptions.StackException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ public class PrintTests {
     void setUp() {
         context = new Context();
         print = new Print();
-        System.setOut(new PrintStream(outputStream)); // Перенаправляем System.out
+        System.setOut(new PrintStream(outputStream));
 
     }
 
@@ -32,7 +32,7 @@ public class PrintTests {
     }
 
     @Test
-    void printTest() throws CommandExceptions {
+    void printTest() throws OperationException {
         context.getStack().push(5.0);
         print.apply(context);
         assertEquals("5.0" + System.lineSeparator(), outputStream.toString());

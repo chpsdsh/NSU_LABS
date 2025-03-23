@@ -1,7 +1,6 @@
 package commands;
 
 import context.Context;
-import exceptions.CommandExceptions;
 import exceptions.StackException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +24,7 @@ public class PopTests {
     }
 
     @Test
-    void popTest() throws CommandExceptions {
+    void popTest() throws ArithmeticException {
         context.getStack().push(5.0);
         int size = context.getStack().size();
         pop.apply(context);
