@@ -20,9 +20,6 @@ public final class FileData {
     public void createMap(String inputFileName) {
         try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(inputFileName);
              Reader reader = new InputStreamReader(inputStream)) {
-            if (inputStream == null) {
-                throw new IOException("Resource file not found: " + inputFileName);
-            }
             readData(reader);
         } catch (IOException e) {
             System.err.println("Error while reading resource file: " + e.getLocalizedMessage());

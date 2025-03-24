@@ -18,7 +18,12 @@ public final class MainMenuView extends JFrame {
     private JTextField fieldSize;
     private JTextField numberOfMines;
 
-
+    public JTextField getFieldSize(){
+        return fieldSize;
+    }
+    public JTextField getNumberOfMines(){
+        return numberOfMines;
+    }
     public MainMenuView() {
         super("Minesweeper");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

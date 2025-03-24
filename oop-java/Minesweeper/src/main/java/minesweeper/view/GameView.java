@@ -1,25 +1,31 @@
 package minesweeper.view;
 
+import minesweeper.model.GameModel;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class GameView extends JFrame {
     private JPanel gamePanel;
+    private GameModel model;
+    private JButton[][] buttons;
 
-    public GameView() {
+    public GameView(GameModel model) {
         super("MINESWEEPER");
+        this.model = model;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.setSize(800, 800);
         this.setLocationRelativeTo(null);
         createGame();
-        //showGame();
-        //this.setVisible(true);
+        showGame();
+        this.setVisible(true);
     }
 
     private void createGame() {
         gamePanel = new JPanel();
-        gamePanel.setLayout(new BoxLayout(gamePanel, BoxLayout.Y_AXIS));
+        gamePanel.setLayout(new GridLayout(model.getFieldSize(), model.getFieldSize()));
+        buttons = new JButton[model.getFieldSize()][model.getFieldSize()];
         gamePanel.setBorder(BorderFactory.createEmptyBorder(300, 50, 50, 50));
 
         JLabel name = new JLabel("MINESWEEPER", JLabel.CENTER);
@@ -28,12 +34,17 @@ public class GameView extends JFrame {
         gamePanel.add(name);
     }
 
+    private void initializeButtons(){
+        for(int i = 0; i <)
+    }
+
     public void showGame() {
         getContentPane().removeAll();
         getContentPane().add(gamePanel);
         revalidate();
         repaint();
     }
+
 
 
 }
