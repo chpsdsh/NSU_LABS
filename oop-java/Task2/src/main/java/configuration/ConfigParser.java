@@ -65,7 +65,7 @@ public class ConfigParser {
                     }
                 }
             } catch (IOException e) {
-                throw new ParserException("Error parsing Console input");
+                throw new ParserException("Error parsing Console input", e);
             }
         }
     }
