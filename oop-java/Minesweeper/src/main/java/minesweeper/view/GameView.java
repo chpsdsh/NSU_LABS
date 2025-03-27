@@ -1,42 +1,49 @@
 package minesweeper.view;
 
-import minesweeper.model.GameModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 
 public class GameView extends JFrame {
     private JPanel gamePanel;
-    private GameModel model;
     private JButton[][] buttons;
+    private ImageIcon notOpened;
+    private ImageIcon bomb;
+    private ImageIcon flag;
 
-    public GameView(GameModel model) {
+    public GameView( int fieldSize) {
         super("MINESWEEPER");
-        this.model = model;
+        notOpened = new ImageIcon("src/main/resources/grass.png");
+        bomb = new ImageIcon("src/main/resources/bomb.png");
+        flag = new ImageIcon("src/main/resources/flag.png");
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.setSize(800, 800);
+        this.setSize(50 * fieldSize + 100, 50 * fieldSize + 100);
         this.setLocationRelativeTo(null);
-        createGame();
+        createGame(fieldSize);
         showGame();
         this.setVisible(true);
     }
 
-    private void createGame() {
+    private void createGame(int fieldSize) {
         gamePanel = new JPanel();
-        gamePanel.setLayout(new GridLayout(model.getFieldSize(), model.getFieldSize()));
-        buttons = new JButton[model.getFieldSize()][model.getFieldSize()];
-        gamePanel.setBorder(BorderFactory.createEmptyBorder(300, 50, 50, 50));
-
-        JLabel name = new JLabel("MINESWEEPER", JLabel.CENTER);
-        name.setFont(new Font("Arial", Font.BOLD, 28));
-        name.setAlignmentX(Component.CENTER_ALIGNMENT);
-        gamePanel.add(name);
+        gamePanel.setLayout(new GridLayout(fieldSize, fieldSize));
+        buttons = new JButton[fieldSize][fieldSize];
+        gamePanel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
+        initializeButtons(fieldSize);
     }
 
-    private void initializeButtons(){
-        for(int i = 0; i <)
+    public void initializeButtons(int fieldSize) {
+        for (int i = 0; i < fieldSize; i++) {
+            for (int j = 0; j < fieldSize; j++) {
+                buttons[i][j] = new JButton(notOpened);
+                gamePanel.add(buttons[i][j]);
+            }
+        }
     }
+
 
     public void showGame() {
         getContentPane().removeAll();
@@ -44,6 +51,24 @@ public class GameView extends JFrame {
         revalidate();
         repaint();
     }
+
+    public void drawFlag(int row, int col, boolean condition){
+        if(condition) {
+            buttons[row][col].setIcon(flag);
+        }
+        else{
+            buttons[row][col].setIcon(notOpened);
+        }
+        buttons[row][col].revalidate();
+        buttons[row][col].repaint();
+    }
+
+    public void setNewGameMouseListener(MouseAdapter listener, int row, int col) {
+        buttons[row][col].addMouseListener(listener);
+    }
+//     public JButton getButton(int row, int col){
+//        return buttons[row][col];
+//     }
 
 
 
