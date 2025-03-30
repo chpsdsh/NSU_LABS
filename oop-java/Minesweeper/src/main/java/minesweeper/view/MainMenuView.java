@@ -24,6 +24,7 @@ public final class MainMenuView extends JFrame {
     public JTextField getNumberOfMines(){
         return numberOfMines;
     }
+
     public MainMenuView() {
         super("Minesweeper");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -127,10 +128,12 @@ public final class MainMenuView extends JFrame {
         numberOfMines = new JTextField();
         numberOfMines.setFont(new Font("Arial", Font.PLAIN, 20));
         numberOfMines.setAlignmentX(Component.CENTER_ALIGNMENT);
+        numberOfMines.setHorizontalAlignment(SwingConstants.CENTER);
         numberOfMines.setMaximumSize(new Dimension(40, 25));
         fieldSize = new JTextField();
         fieldSize.setFont(new Font("Arial", Font.PLAIN, 20));
         fieldSize.setAlignmentX(Component.CENTER_ALIGNMENT);
+        fieldSize.setHorizontalAlignment(SwingConstants.CENTER);
         fieldSize.setMaximumSize(new Dimension(40, 25));
 
         startGameButton = new JButton("Start game");

@@ -3,6 +3,8 @@ package minesweeper.controller;
 import minesweeper.model.GameModel;
 import minesweeper.view.GameView;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -37,4 +39,29 @@ public class GameController {
             }
         };
     }
+
+    public class RestartDialogListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            switch (e.getActionCommand()) {
+                case "Exit":
+                    System.out.println("IDI NAXUY");
+                    System.exit(0);
+                    break;
+                case "Restart":
+                    model.restartGame();
+                    break;
+
+            }
+        }
+    }
+
+    public class WinningDialogListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            model.confirmWinner();
+        }
+    }
 }
+
+
