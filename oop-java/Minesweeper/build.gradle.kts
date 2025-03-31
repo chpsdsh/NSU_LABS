@@ -12,13 +12,16 @@ repositories {
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1")
 }
 
 tasks.test {
     useJUnitPlatform()
 }
 
+
 tasks.register<JavaExec>("run") {
-    mainClass.set("minesweeper.main.Main") // Указываем основной класс для запуска
-    classpath = sourceSets["main"].runtimeClasspath // Указываем classpath для запуска
+    standardInput = System.`in`
+    mainClass.set("minesweeper.main.Main")
+    classpath = sourceSets["main"].runtimeClasspath
 }

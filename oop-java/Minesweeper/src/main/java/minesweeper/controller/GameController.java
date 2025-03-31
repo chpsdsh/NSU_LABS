@@ -45,8 +45,7 @@ public class GameController {
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()) {
                 case "Exit":
-                    System.out.println("IDI NAXUY");
-                    System.exit(0);
+                    model.exitGame();
                     break;
                 case "Restart":
                     model.restartGame();

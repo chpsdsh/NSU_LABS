@@ -14,42 +14,58 @@ public final class MainMenuController {
         this.mainMenuView = mainMenuView;
         this.model = model;
 
-        mainMenuView.setNewGameActionListener(new NewGameListener());
-        mainMenuView.setHighScoreActionListener(new HighScoreListener());
-        mainMenuView.setAboutActionListener(new AboutListener());
-        mainMenuView.setExitActionListener(new ExitListener());
+        mainMenuView.setMainMenuActionListener(new MainMenuListener());
         mainMenuView.setAboutExitActionListener(new AboutExitListener());
         model.setMainMenuController(this);
     }
 
 
-    class NewGameListener implements ActionListener {
+    class MainMenuListener implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
-            model.startGame();
+        public void actionPerformed(ActionEvent e){
+            switch (e.getActionCommand()){
+                case "New game":
+                    model.startGame();
+                    break;
+                case "High score":
+                    model.showHighScore();
+                    break;
+                case "About":
+                    model.showAbout();
+                    break;
+                case "Exit":
+                    model.exitGame();
+            }
         }
     }
 
-    class HighScoreListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            model.showHighScore();
-        }
-    }
-
-    class AboutListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            model.showAbout();
-        }
-    }
-
-    class ExitListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            model.exitGame();
-        }
-    }
+//    class NewGameListener implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            model.startGame();
+//        }
+//    }
+//
+//    class HighScoreListener implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            model.showHighScore();
+//        }
+//    }
+//
+//    class AboutListener implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            model.showAbout();
+//        }
+//    }
+//
+//    class ExitListener implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            model.exitGame();
+//        }
+//    }
 
     class AboutExitListener implements ActionListener {
         @Override
@@ -61,7 +77,7 @@ public final class MainMenuController {
     public class StartGameListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            model.createNewGame();
+            model.createNewGameGUI();
         }
     }
 }

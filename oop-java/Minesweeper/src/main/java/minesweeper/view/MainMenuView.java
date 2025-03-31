@@ -46,9 +46,13 @@ public final class MainMenuView extends JFrame {
         name.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         newGameButton = new JButton("New game");
+        newGameButton.setActionCommand("New game");
         highScoreButton = new JButton("High score");
+        highScoreButton.setActionCommand("High score");
         aboutButton = new JButton("About");
+        aboutButton.setActionCommand("About");
         exitButton = new JButton("Exit");
+        exitButton.setActionCommand("Exit");
 
         newGameButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         highScoreButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -160,21 +164,11 @@ public final class MainMenuView extends JFrame {
         settingsDialog.setVisible(true);
     }
 
-    public void setNewGameActionListener(ActionListener listener) {
+    public void setMainMenuActionListener(ActionListener listener) {
         newGameButton.addActionListener(listener);
-    }
-
-    public void setHighScoreActionListener(ActionListener listener) {
         highScoreButton.addActionListener(listener);
-    }
-
-    public void setAboutActionListener(ActionListener listener) {
         aboutButton.addActionListener(listener);
-    }
-
-    public void setExitActionListener(ActionListener listener) {
-        exitButton.addActionListener(listener);
-    }
+        exitButton.addActionListener(listener);    }
 
     public void setAboutExitActionListener(ActionListener listener) {
         aboutExitButton.addActionListener(listener);
