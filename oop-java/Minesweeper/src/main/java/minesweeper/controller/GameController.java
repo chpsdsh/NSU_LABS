@@ -1,6 +1,5 @@
 package minesweeper.controller;
 
-import minesweeper.model.GameModel;
 import minesweeper.view.GameView;
 
 import java.awt.event.ActionEvent;
@@ -9,15 +8,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class GameController {
-
     private final GameView gameView;
-    private final GameModel model;
 
-    public GameController(GameModel model, GameView gameView) {
-        this.model = model;
+    public GameController(GameView gameView) {
         this.gameView = gameView;
-        for (int i = 0; i < model.getFieldSize(); i++) {
-            for (int j = 0; j < model.getFieldSize(); j++) {
+        for (int i = 0; i < gameView.getModel().getFieldSize(); i++) {
+            for (int j = 0; j < gameView.getModel().getFieldSize(); j++) {
                 gameView.setNewGameMouseListener(gameMouseAdapter(i, j), i, j);
             }
         }
@@ -28,12 +24,11 @@ public class GameController {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (MouseEvent.BUTTON1 == e.getButton()) {
-                    System.out.println("LKM");
-                    model.openCells(row, col);
+                    gameView.openCells(row, col);
 
                 } else if (MouseEvent.BUTTON3 == e.getButton()) {
                     System.out.println("RKM");
-                    model.putFlag(row, col);
+                    gameView.putFlag(row, col);
 
                 }
             }
@@ -45,22 +40,21 @@ public class GameController {
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()) {
                 case "Exit":
-                    model.exitGame();
+                    gameView.exitGame();
                     break;
                 case "Restart":
-                    model.restartGame();
+//                    gameView.restartGame();
                     break;
-
             }
         }
     }
 
-    public class WinningDialogListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            model.confirmWinner();
-        }
-    }
+//    public class WinningDialogListener implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            gameView.confirmWinner(null);
+//        }
+//    }
 }
 
 

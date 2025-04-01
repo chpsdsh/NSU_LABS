@@ -1,38 +1,45 @@
 package minesweeper.view;
 
+import minesweeper.controller.GameController;
+import minesweeper.model.GameModel;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public final class MainMenuView extends JFrame {
-
+    private GameModel model;
     private JButton newGameButton;
     private JButton highScoreButton;
     private JButton aboutButton;
     private JButton exitButton;
     private JButton aboutExitButton;
+    private JButton highScoreExitButton;
     private JButton startGameButton;
     private JPanel menuPanel;
     private JPanel aboutPanel;
+    private JPanel highScorePanel;
     private JDialog settingsDialog;
     private JTextField fieldSize;
     private JTextField numberOfMines;
 
-    public JTextField getFieldSize(){
+    public JTextField getFieldSize() {
         return fieldSize;
     }
-    public JTextField getNumberOfMines(){
+
+    public JTextField getNumberOfMines() {
         return numberOfMines;
     }
 
-    public MainMenuView() {
+    public MainMenuView(GameModel model) {
         super("Minesweeper");
+        this.model = model;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         createMenu();
         createAbout();
+        createHighScore();
         this.setSize(400, 800);
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
         this.showMenu();
     }
 
@@ -71,9 +78,21 @@ public final class MainMenuView extends JFrame {
 
     }
 
+    private void createHighScore() {
+        highScorePanel = new JPanel();
+        highScoreExitButton = new JButton("Exit");
+
+        highScoreExitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        highScorePanel.setLayout(new BoxLayout(highScorePanel, BoxLayout.Y_AXIS));
+        highScorePanel.setBorder(BorderFactory.createEmptyBorder(200, 50, 50, 50));
+
+        highScorePanel.add(Box.createVerticalStrut(10));
+        highScorePanel.add(highScoreExitButton);
+
+    }
+
     private void createAbout() {
         aboutPanel = new JPanel();
-
         aboutExitButton = new JButton("Exit");
         aboutExitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -100,6 +119,14 @@ public final class MainMenuView extends JFrame {
         aboutPanel.add(aboutExitButton);
     }
 
+    public void showMenu() {
+        getContentPane().removeAll();
+        getContentPane().add(menuPanel);
+        this.setVisible(true);
+        revalidate();
+        repaint();
+    }
+
     public void showAbout() {
         getContentPane().removeAll();
         this.add(aboutPanel);
@@ -107,11 +134,23 @@ public final class MainMenuView extends JFrame {
         repaint();
     }
 
-    public void showMenu() {
+    public void showHighScore() {
         getContentPane().removeAll();
-        getContentPane().add(menuPanel);
+        this.add(highScorePanel);
         revalidate();
         repaint();
+    }
+    public void startGame(ActionListener listener){
+        createGameSettings();
+        startGameButton.addActionListener(listener);
+        showGameSettings();
+    }
+
+    public void createNewGame(){
+        model.createNewGame(fieldSize.getText(),numberOfMines.getText());
+        this.dispose();
+        GameView gameView = new GameView(model);
+        GameController gameController = new GameController(gameView);
     }
 
     public void createGameSettings() {
@@ -164,14 +203,20 @@ public final class MainMenuView extends JFrame {
         settingsDialog.setVisible(true);
     }
 
+    public void exitGame() {
+        model.exitGame();
+    }
+
     public void setMainMenuActionListener(ActionListener listener) {
         newGameButton.addActionListener(listener);
         highScoreButton.addActionListener(listener);
         aboutButton.addActionListener(listener);
-        exitButton.addActionListener(listener);    }
+        exitButton.addActionListener(listener);
+    }
 
-    public void setAboutExitActionListener(ActionListener listener) {
+    public void setExitToMenuActionListener(ActionListener listener) {
         aboutExitButton.addActionListener(listener);
+        highScoreExitButton.addActionListener(listener);
     }
 
     public void setStartGameActionListener(ActionListener listener) {

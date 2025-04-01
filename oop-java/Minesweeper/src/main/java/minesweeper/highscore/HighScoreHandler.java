@@ -1,4 +1,4 @@
-package minesweeper.HighScoreHandler;
+package minesweeper.highscore;
 
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -40,7 +40,7 @@ public class HighScoreHandler {
 
     public void addScores(HighScore score) {
         scores.add(score);
-        scores.sort((a, b) -> Integer.compare(b.getTime(), a.getTime()));
+        scores.sort((b, a) -> Integer.compare(b.getTime(), a.getTime()));
         saveScores();
     }
 

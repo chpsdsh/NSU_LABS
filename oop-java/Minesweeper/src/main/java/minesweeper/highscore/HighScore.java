@@ -1,4 +1,4 @@
-package minesweeper.HighScoreHandler;
+package minesweeper.highscore;
 
 public class HighScore {
     private String name;

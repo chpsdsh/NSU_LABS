@@ -7,32 +7,30 @@ import minesweeper.view.ConsoleView;
 import java.io.*;
 
 public class ConsoleController {
-    private GameModel gameModel;;
     private ConsoleView consoleView;
 
-    public ConsoleController(GameModel gameModel, ConsoleView consoleView){
+    public ConsoleController(ConsoleView consoleView){
         this.consoleView = consoleView;
-        this.gameModel = gameModel;
-        gameModel.setConsoleController(this);
+//        gameModel.setConsoleController(this);
         initializeGameParameters();
     }
 
     public void initializeGameParameters(){
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String parametersLine = reader.readLine();
-            gameModel.createNewGameConsole(parametersLine);
+//            gameModel.createNewGameConsole(parametersLine);
         }catch (IOException e){
             throw new ReadingGameParametersException("Bad game parameters",e);
         }
     }
 
-    public void inputCells() {
+    public void inputCells( boolean gameOver) {
         String coordinateLine;
         consoleView.printInputInfo();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            while ((coordinateLine = reader.readLine()) != null) {
+            while ((coordinateLine = reader.readLine()) != null && !gameOver) {
                 consoleView.printInputInfo();
-                gameModel.executeConsoleInput(coordinateLine);
+//                gameModel.executeConsoleInput(coordinateLine);
             }
         }catch (IOException e){
             throw new CoordinateException("Bad coordinate input",e);
@@ -42,7 +40,7 @@ public class ConsoleController {
     public void restartOrExit(){
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String parametersLine = reader.readLine();
-            gameModel.restartOrExit(parametersLine);
+//            gameModel.restartOrExit(parametersLine);
         }catch (IOException e){
             throw new ReadingGameParametersException("Bad game parameters",e);
         }
@@ -51,7 +49,7 @@ public class ConsoleController {
     public void writeWinnerName(){
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String winnerName = reader.readLine();
-            gameModel.restartOrExit(parametersLine);
+//                gameModel.confirmWinner(winnerName);
         }catch (IOException e){
             throw new ReadingGameParametersException("Bad game parameters",e);
         }

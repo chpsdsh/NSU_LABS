@@ -1,10 +1,16 @@
 package minesweeper.view;
 
+import minesweeper.highscore.HighScore;
+import minesweeper.model.GameModel;
+
+import java.util.ArrayList;
+
 public class ConsoleView {
     private char[][] field;
+    private GameModel model;
     private String flagNumber;
 
-    public ConsoleView() {
+    public ConsoleView(GameModel model) {
         printInitializeParameters();
     }
 
@@ -89,6 +95,12 @@ public class ConsoleView {
             field[row][col] = '@';
         }
         System.out.println("Flags remaining: "+ numberOfFlags);
+    }
+
+    public void showHighScores(ArrayList<HighScore> scores){
+        for (HighScore score : scores){
+            System.out.println(score.getName()+" "+ score.getTime()+" "+score.getFieldSize());
+        }
     }
 }
 
