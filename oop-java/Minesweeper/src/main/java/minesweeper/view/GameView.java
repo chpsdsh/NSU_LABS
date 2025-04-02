@@ -2,6 +2,8 @@ package minesweeper.view;
 
 
 import minesweeper.model.GameModel;
+import minesweeper.view.gamedialogs.RestartDialog;
+import minesweeper.view.gamedialogs.WinningDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,36 +11,29 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 public class GameView extends JFrame {
-    private GameModel model;
+    private final GameModel model;
     private JPanel gamePanel;
     private JPanel mainPanel;
     private JPanel gameInfoPanel;
     private JLabel flagsNumberText;
     private JLabel gameTimerText;
     private JButton[][] buttons;
-    private JButton restartButton;
-    private JButton exitButton;
-    private JDialog restartDialog;
-    private JDialog winningDialog;
-    private JTextField winnerName;
-    private JButton winnerConfirmButton;
-    private ImageIcon notOpened;
-    private ImageIcon bomb;
-    private ImageIcon flag;
-    private ImageIcon ground;
-    private ImageIcon one;
-    private ImageIcon two;
-    private ImageIcon three;
-    private ImageIcon four;
-    private ImageIcon five;
-    private ImageIcon six;
-    private ImageIcon seven;
-    private ImageIcon eight;
-    private ImageIcon clock;
+    private RestartDialog restartDialog;
+    private WinningDialog winningDialog;
 
-    public JTextField getWinnerName() {
-        return winnerName;
-    }
+    private final ImageIcon notOpened;
+    private final ImageIcon bomb;
+    private final ImageIcon flag;
+    private final ImageIcon ground;
+    private final ImageIcon one;
+    private final ImageIcon two;
+    private final ImageIcon three;
+    private final ImageIcon four;
+    private final ImageIcon five;
+    private final ImageIcon six;
+    private final ImageIcon seven;
+    private final ImageIcon eight;
+    private final ImageIcon clock;
 
 
     public GameView(GameModel model) {
@@ -105,7 +100,6 @@ public class GameView extends JFrame {
 
     public void openCells(int row, int col) {
         model.openCells(row, col);
-//        showTimer();
         if(!model.isGameOver()){
             drawField();
         }
@@ -137,7 +131,6 @@ public class GameView extends JFrame {
 
     public void showGame() {
         getContentPane().removeAll();
-
         getContentPane().add(mainPanel);
         revalidate();
         repaint();
@@ -206,85 +199,12 @@ public class GameView extends JFrame {
     }
 
 
-    public void createRestartDialog() {
-        restartDialog = new JDialog(this, "GAME OVER", true);
-        restartDialog.setLocationRelativeTo(null);
-
-        JPanel restartPanel = new JPanel();
-        restartPanel.setLayout(new BoxLayout(restartPanel, BoxLayout.Y_AXIS));
-
-        JLabel gameOverText = new JLabel("GAME OVER", JLabel.CENTER);
-        gameOverText.setFont(new Font("Arial", Font.BOLD, 20));
-        gameOverText.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        restartButton = new JButton("Restart");
-        restartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        exitButton = new JButton("Exit");
-        exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        restartButton.setActionCommand("Restart");
-        exitButton.setActionCommand("Exit");
-
-        restartPanel.add(gameOverText);
-        restartPanel.add(Box.createVerticalStrut(50));
-        restartPanel.add(restartButton);
-        restartPanel.add(Box.createVerticalStrut(10));
-        restartPanel.add(exitButton);
-
-        restartPanel.setPreferredSize(new Dimension(25, 20));
-
-        restartDialog.add(restartPanel);
-
-        restartDialog.setSize(300, 300);
+    public GameModel getModel() {
+        return model;
     }
 
     public void showRestartDialog() {
         restartDialog.setVisible(true);
-    }
-
-    public void createWinningDialog() {
-        winningDialog = new JDialog(this, "YOU WON", true);
-        winningDialog.setLocationRelativeTo(null);
-
-        JPanel winningPanel = new JPanel();
-        winningPanel.setLayout(new BoxLayout(winningPanel, BoxLayout.Y_AXIS));
-
-        JLabel gameWinText = new JLabel("YOU WON!!!", JLabel.CENTER);
-        gameWinText.setFont(new Font("Arial", Font.BOLD, 20));
-        gameWinText.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        winnerConfirmButton = new JButton("Confirm");
-        winnerConfirmButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        winnerConfirmButton.setActionCommand("Confirm");
-
-        JLabel nameText = new JLabel("Write your name", JLabel.CENTER);
-        nameText.setFont(new Font("Arial", Font.BOLD, 16));
-        nameText.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        winnerName = new JTextField();
-        winnerName.setFont(new Font("Arial", Font.PLAIN, 20));
-        winnerName.setAlignmentX(Component.CENTER_ALIGNMENT);
-        winnerName.setHorizontalAlignment(SwingConstants.CENTER);
-        winnerName.setMaximumSize(new Dimension(150, 25));
-
-        winningPanel.add(gameWinText);
-        winningPanel.add(Box.createVerticalStrut(50));
-        winningPanel.add(nameText);
-        winningPanel.add(Box.createVerticalStrut(10));
-        winningPanel.add(winnerName);
-        winningPanel.add(Box.createVerticalStrut(10));
-        winningPanel.add(winnerConfirmButton);
-
-        winningPanel.setPreferredSize(new Dimension(25, 20));
-
-        winningDialog.add(winningPanel);
-
-        winningDialog.setSize(300, 300);
-    }
-
-    public GameModel getModel() {
-        return model;
     }
 
     public void showWinningDialog() {
@@ -296,11 +216,10 @@ public class GameView extends JFrame {
     }
 
     public void setRestartDialogListener(ActionListener listener) {
-        restartButton.addActionListener(listener);
-        exitButton.addActionListener(listener);
+        restartDialog.setRestartDialogListener(listener);
     }
 
     public void setWinningDialogListener(ActionListener listener) {
-        winnerConfirmButton.addActionListener(listener);
+        winningDialog.setWinningDialogListener(listener);
     }
 }

@@ -13,6 +13,7 @@ public final class MainMenuController {
         this.mainMenuView = mainMenuView;
         mainMenuView.setMainMenuActionListener(new MainMenuListener());
         mainMenuView.setExitToMenuActionListener(new ExitToMenuListener());
+        mainMenuView.setStartGameActionListener(new StartGameListener());
     }
 
 
@@ -21,7 +22,7 @@ public final class MainMenuController {
         public void actionPerformed(ActionEvent e){
             switch (e.getActionCommand()){
                 case "New game":
-                    mainMenuView.startGame(new StartGameListener());
+                    mainMenuView.showGameSettings();
                     break;
                 case "High score":
                     mainMenuView.showHighScore();
@@ -35,7 +36,6 @@ public final class MainMenuController {
         }
     }
 
-
     class ExitToMenuListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -46,8 +46,7 @@ public final class MainMenuController {
     public class StartGameListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("YA EBAL ROT ARCHITECTURY BLYA");
-            mainMenuView.createNewGame();
+            mainMenuView.startGame();
         }
     }
 }

@@ -13,6 +13,7 @@ public final class GameModel {
     private int numberOfMines;
     private int numberOfFlags;
     private boolean gameOver;
+    private boolean gameWin;
     private Timer gameTimer;
 
     public class Timer extends Thread {
@@ -56,6 +57,7 @@ public final class GameModel {
             throw new NegativeFieldSizeException("Number of fields must be positive");
         }
         gameOver = false;
+        gameWin = false;
         openedCells = 0;
         numberOfFlags = this.numberOfMines;
         cells = new Cell[this.fieldSize][this.fieldSize];
@@ -64,51 +66,6 @@ public final class GameModel {
     }
 
 
-
-//    public void createNewGameConsole(String parametersLine) {
-//        try {
-//            String[] parameters = splitLine(parametersLine);
-//            fieldSize = Integer.parseInt(parameters[0]);
-//            numberOfMines = Integer.parseInt(parameters[1]);
-//        } catch (NumberFormatException e) {
-//            throw new ReadingGameParametersException("Parameters must be integer ", e);
-//        } catch (NullPointerException e) {
-//            throw new ReadingGameParametersException("Must be two parameters Field size and Number off mines \n SPLITTED WITH SPACE");
-//        }
-//        if (numberOfMines >= fieldSize * fieldSize) {
-//            throw new MinesOverflowException("To many mines provided: " + numberOfMines);
-//        } else if (numberOfMines < 0) {
-//            throw new NegativeMinesNumberException("Number of mines must be positive value");
-//        } else if (fieldSize < 0) {
-//            throw new NegativeFieldSizeException("Number of fields must be positive");
-//        }
-//        gameOver = false;
-//        openedCells = 0;
-//        numberOfFlags = numberOfMines;
-//        cells = new Cell[fieldSize][fieldSize];
-////        consoleView.createField(fieldSize);
-////        consoleController.inputCells(gameOver);
-//    }
-
-//    public void executeConsoleInput(String coordinateLine) {
-//        System.out.println(coordinateLine);
-//        try {
-//
-//            String[] coordinates = splitLine(coordinateLine);
-//            int row = Integer.parseInt(coordinates[0]) - 1;
-//            int col = Integer.parseInt(coordinates[1]) - 1;
-//            if (coordinates.length == 2) {
-//                openCells(row, col);
-//            } else if (coordinates.length == 3 && coordinates[2].equals("F")) {
-//                putFlag(row, col);
-//            }
-////            consoleView.drawField(fieldSize);
-//        } catch (NumberFormatException e) {
-//            throw new CoordinateException("Coordinates must be integer", e);
-//        } catch (NullPointerException e) {
-//            throw new CoordinateException("Must be two coordinates row and column \n SPLITTED WITH SPACE");
-//        }
-//    }
 
     public void openCells(int row, int col) {
         if (openedCells == 0) {
@@ -251,7 +208,7 @@ public final class GameModel {
         while (minesPlanted < numberOfMines) {
             x = random.nextInt(fieldSize);
             y = random.nextInt(fieldSize);
-            if (x == row && y == col && cells[x][y].isBomb()) {
+            if (x == row && y == col || cells[x][y].isBomb()) {
                 continue;
             } else {
                 cells[x][y].setBomb(true);
