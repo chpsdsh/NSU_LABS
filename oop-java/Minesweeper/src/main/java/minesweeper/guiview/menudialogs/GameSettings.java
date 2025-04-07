@@ -1,4 +1,4 @@
-package minesweeper.view.menudialogs;
+package minesweeper.guiview.menudialogs;
 
 import javax.swing.*;
 import java.awt.*;
@@ -65,6 +65,11 @@ public class GameSettings extends JDialog {
         add(dialogPanel);
 
         setSize(300, 300);
+    }
+
+    public void clear(){
+        numberOfMines.setText("");
+        fieldSize.setText("");
     }
 
     public void setStartGameActionListener(ActionListener listener) {

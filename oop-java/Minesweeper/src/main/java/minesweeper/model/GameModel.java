@@ -1,9 +1,7 @@
 package minesweeper.model;
-
 import minesweeper.cells.Cell;
 import minesweeper.exceptions.*;
-
-
+import minesweeper.highscore.*;
 import java.util.Random;
 
 public final class GameModel {
@@ -75,12 +73,12 @@ public final class GameModel {
         } else if (cells[row][col].isBomb() && !gameOver) {
             revealAllBombs();
             gameOver = true;
-//            gameOver();
         } else if (!gameOver) {
             revealCells(row, col);
         }
         if (openedCells == fieldSize * fieldSize) {
-//            gameWin();
+           gameWin = true;
+           gameOver = true;
         }
     }
 
@@ -114,49 +112,6 @@ public final class GameModel {
             }
         }
     }
-
-//    public void gameOver() {
-//        if (gameMode.equals("GUI")) {
-//            gameView.createRestartDialog();
-//            gameView.setRestartDialogListener(gameController.new RestartDialogListener());
-//            gameView.showRestartDialog();
-//        } else if (gameMode.equals("CONSOLE")) {
-//            consoleView.printGameOver();
-//            consoleController.restartOrExit();
-//        }
-//    }
-
-//    public void gameWin() {
-//        if (gameMode.equals("GUI")) {
-//            gameOver = true;
-//            gameView.createWinningDialog();
-//            gameView.setWinningDialogListener(gameController.new WinningDialogListener());
-//            gameView.showWinningDialog();
-//        } else if (gameMode.equals("CONSOLE")) {
-//            consoleView.printWin();
-//            consoleController.writeWinnerName();
-//
-//        }
-//    }
-
-//    public void restartOrExit(String parametersLine) {
-//        if (parametersLine.equals("EXIT")) {
-//            exitGame();
-//        } else if (parametersLine.equals("RESTART")) {
-//            restartGame();
-//        }
-//    }
-
-//    public void restartGame() {
-//        if (gameMode.equals("GUI")) {
-//            gameView.dispose();
-//            startGame();
-//        } else if (gameMode.equals("CONSOLE")) {
-//            consoleView.printInitializeParameters();
-//            consoleController.initializeGameParameters();
-//        }
-
-//}
 
     public int countBombsNear(int row, int col) {
             int bombCount = 0;
@@ -193,7 +148,8 @@ public final class GameModel {
             }
         }
         if (openedCells == fieldSize * fieldSize) {
-//            gameWin();
+            gameWin = true;
+            gameOver = true;
         }
     }
 
@@ -217,19 +173,10 @@ public final class GameModel {
         }
     }
 
-//    public void confirmWinner(String winnerName) {
-//        HighScoreHandler highScoreHandler = new HighScoreHandler("src/main/resources/Results.json");
-//        if (gameMode.equals("GUI")) {
-//            winnerName = gameView.getWinnerName().getText();
-//            gameView.dispose();
-//            highScoreHandler.addScores(new HighScore(winnerName, gameTimer.seconds, fieldSize));
-//            showMenu();
-//        }
-//        else if(gameMode.equals("CONSOLE")){
-//            highScoreHandler.addScores(new HighScore(winnerName, gameTimer.seconds, fieldSize));
-//            consoleView.showHighScores(highScoreHandler.getScores());
-//        }
-//        }
+    public void confirmWinner(String winnerName) {
+        HighScoreHandler highScoreHandler = new HighScoreHandler("src/main/resources/Results.json");
+        highScoreHandler.addScores(new HighScore(winnerName, gameTimer.seconds, fieldSize));
+    }
 
     public int getFieldSize() {
         return fieldSize;
@@ -258,6 +205,8 @@ public final class GameModel {
     public boolean isGameOver() {
         return gameOver;
     }
+
+    public boolean isGameWin(){return gameWin;}
 
     public Timer getGameTimer() {
         return gameTimer;

@@ -1,4 +1,4 @@
-package minesweeper.view;
+package minesweeper.guiview;
 
 import minesweeper.highscore.HighScore;
 import minesweeper.model.GameModel;

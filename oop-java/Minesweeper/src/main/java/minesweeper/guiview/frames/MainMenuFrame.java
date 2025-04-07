@@ -1,18 +1,17 @@
-package minesweeper.view;
+package minesweeper.guiview.frames;
 
-import minesweeper.controller.GameController;
 import minesweeper.model.GameModel;
-import minesweeper.view.menupanels.AboutPanel;
-import minesweeper.view.menudialogs.GameSettings;
-import minesweeper.view.menupanels.HighScorePanel;
-import minesweeper.view.menupanels.MainMenuPanel;
+import minesweeper.guiview.menupanels.AboutPanel;
+import minesweeper.guiview.menudialogs.GameSettings;
+import minesweeper.guiview.menupanels.HighScorePanel;
+import minesweeper.guiview.menupanels.MainMenuPanel;
 
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public final class MainMenuView extends JFrame {
-    private GameModel model;
-    private MainMenuPanel menuPanel;
+public final class MainMenuFrame extends JFrame {
+    private final GameModel model;
+    private final MainMenuPanel menuPanel;
     private final AboutPanel aboutPanel;
     private final HighScorePanel highScorePanel;
     private final GameSettings settingsDialog;
@@ -30,7 +29,7 @@ public final class MainMenuView extends JFrame {
         settingsDialog.setStartGameActionListener(listener);
     }
 
-    public MainMenuView(GameModel model) {
+    public MainMenuFrame(GameModel model) {
         super("Minesweeper");
         this.model = model;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,41 +37,40 @@ public final class MainMenuView extends JFrame {
         aboutPanel = new AboutPanel();
         highScorePanel = new HighScorePanel();
         settingsDialog = new GameSettings(this);
-        this.setSize(400, 800);
-        this.setLocationRelativeTo(null);
-        this.showMenu();
+        setSize(400, 800);
+        setLocationRelativeTo(null);
+
     }
 
     public void showMenu() {
         getContentPane().removeAll();
         getContentPane().add(menuPanel);
-        this.setVisible(true);
+        setVisible(true);
         revalidate();
         repaint();
     }
 
     public void showAbout() {
         getContentPane().removeAll();
-        this.add(aboutPanel);
+        add(aboutPanel);
         revalidate();
         repaint();
     }
 
     public void showHighScore() {
         getContentPane().removeAll();
-        this.add(highScorePanel);
+        add(highScorePanel);
         revalidate();
         repaint();
     }
 
     public void startGame(){
         model.createNewGame(settingsDialog.getFieldSize().getText(),settingsDialog.getNumberOfMines().getText());
-        this.dispose();
-        GameView gameView = new GameView(model);
-        GameController gameController = new GameController(gameView);
+        dispose();
     }
 
     public void showGameSettings() {
+        settingsDialog.clear();
         settingsDialog.setVisible(true);
     }
 

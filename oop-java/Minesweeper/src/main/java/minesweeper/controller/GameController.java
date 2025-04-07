@@ -1,6 +1,7 @@
 package minesweeper.controller;
 
-import minesweeper.view.GameView;
+import minesweeper.guiview.GUIView;
+import minesweeper.guiview.frames.GameFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,15 +9,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class GameController {
-    private final GameView gameView;
+    private final GameFrame gameFrame;
+    private final GUIView guiView;
 
-    public GameController(GameView gameView) {
-        this.gameView = gameView;
-        for (int i = 0; i < gameView.getModel().getFieldSize(); i++) {
-            for (int j = 0; j < gameView.getModel().getFieldSize(); j++) {
-                gameView.setNewGameMouseListener(gameMouseAdapter(i, j), i, j);
+    public GameController(GameFrame gameFrame, GUIView guiView) {
+        this.gameFrame = gameFrame;
+        this.guiView = guiView;
+        for (int i = 0; i < gameFrame.getModel().getFieldSize(); i++) {
+            for (int j = 0; j < gameFrame.getModel().getFieldSize(); j++) {
+                gameFrame.setNewGameMouseListener(gameMouseAdapter(i, j), i, j);
             }
         }
+        gameFrame.setRestartDialogListener(new RestartDialogListener());
+        gameFrame.setWinningDialogListener(new WinningDialogListener());
     }
 
     public MouseAdapter gameMouseAdapter(int row, int col) {
@@ -24,12 +29,10 @@ public class GameController {
             @Override
             public void mousePressed(MouseEvent e) {
                 if (MouseEvent.BUTTON1 == e.getButton()) {
-                    gameView.openCells(row, col);
+                    gameFrame.openCells(row, col);
 
                 } else if (MouseEvent.BUTTON3 == e.getButton()) {
-                    System.out.println("RKM");
-                    gameView.putFlag(row, col);
-
+                    gameFrame.putFlag(row, col);
                 }
             }
         };
@@ -40,21 +43,22 @@ public class GameController {
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()) {
                 case "Exit":
-                    gameView.exitGame();
+                    gameFrame.exitGame();
                     break;
                 case "Restart":
-//                    gameView.restartGame();
+                    guiView.restartGame();
                     break;
             }
         }
     }
 
-//    public class WinningDialogListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            gameView.confirmWinner(null);
-//        }
-//    }
+    public class WinningDialogListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            gameFrame.confirmWinner();
+            guiView.initializeGuiView();
+        }
+    }
 }
 
 

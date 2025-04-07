@@ -1,19 +1,22 @@
 package minesweeper.controller;
 
-import minesweeper.view.MainMenuView;
+import minesweeper.guiview.GUIView;
+import minesweeper.guiview.frames.MainMenuFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public final class MainMenuController {
-    private final MainMenuView mainMenuView;
+    private final MainMenuFrame mainMenuFrame;
+    private final GUIView guiView;
 
 
-    public MainMenuController(MainMenuView mainMenuView) {
-        this.mainMenuView = mainMenuView;
-        mainMenuView.setMainMenuActionListener(new MainMenuListener());
-        mainMenuView.setExitToMenuActionListener(new ExitToMenuListener());
-        mainMenuView.setStartGameActionListener(new StartGameListener());
+    public MainMenuController(MainMenuFrame mainMenuFrame, GUIView guiView) {
+        this.mainMenuFrame = mainMenuFrame;
+        this.guiView = guiView;
+        mainMenuFrame.setMainMenuActionListener(new MainMenuListener());
+        mainMenuFrame.setExitToMenuActionListener(new ExitToMenuListener());
+        mainMenuFrame.setStartGameActionListener(new StartGameListener());
     }
 
 
@@ -22,16 +25,16 @@ public final class MainMenuController {
         public void actionPerformed(ActionEvent e){
             switch (e.getActionCommand()){
                 case "New game":
-                    mainMenuView.showGameSettings();
+                    mainMenuFrame.showGameSettings();
                     break;
                 case "High score":
-                    mainMenuView.showHighScore();
+                    mainMenuFrame.showHighScore();
                     break;
                 case "About":
-                    mainMenuView.showAbout();
+                    mainMenuFrame.showAbout();
                     break;
                 case "Exit":
-                    mainMenuView.exitGame();
+                    mainMenuFrame.exitGame();
             }
         }
     }
@@ -39,14 +42,14 @@ public final class MainMenuController {
     class ExitToMenuListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            mainMenuView.showMenu();
+            mainMenuFrame.showMenu();
         }
     }
 
     public class StartGameListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            mainMenuView.startGame();
+           guiView.startGame();
         }
     }
 }

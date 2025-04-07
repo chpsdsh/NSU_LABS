@@ -2,8 +2,7 @@ package minesweeper.controller;
 
 import minesweeper.exceptions.CoordinateException;
 import minesweeper.exceptions.ReadingGameParametersException;
-import minesweeper.model.GameModel;
-import minesweeper.view.ConsoleView;
+import minesweeper.guiview.ConsoleView;
 import java.io.*;
 
 public class ConsoleController {
