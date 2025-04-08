@@ -1,4 +1,4 @@
-package minesweeper.guiview.gamedialogs;
+package minesweeper.gui.view.gamedialogs;
 
 import javax.swing.*;
 import java.awt.*;

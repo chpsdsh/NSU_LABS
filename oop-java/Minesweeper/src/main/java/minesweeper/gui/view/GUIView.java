@@ -1,9 +1,9 @@
-package minesweeper.guiview;
+package minesweeper.gui.view;
 
-import minesweeper.controller.GameController;
-import minesweeper.controller.MainMenuController;
-import minesweeper.guiview.frames.GameFrame;
-import minesweeper.guiview.frames.MainMenuFrame;
+import minesweeper.gui.controller.GameController;
+import minesweeper.gui.controller.MainMenuController;
+import minesweeper.gui.view.frames.GameFrame;
+import minesweeper.gui.view.frames.MainMenuFrame;
 import minesweeper.model.GameModel;
 
 import javax.swing.*;
@@ -24,6 +24,10 @@ public class GUIView {
                 mainMenuFrame.dispose();
                 mainMenuFrame = null;
             }
+            if (gameFrame != null) {
+                gameFrame.dispose();
+                gameFrame = null;
+            }
             mainMenuFrame = new MainMenuFrame(model);
             new MainMenuController(mainMenuFrame, this);
             mainMenuFrame.showMenu();
@@ -32,10 +36,6 @@ public class GUIView {
 
     public void startGame() {
         SwingUtilities.invokeLater(() -> {
-            if (gameFrame != null) {
-                gameFrame.dispose();
-                gameFrame = null;
-            }
             mainMenuFrame.startGame();
             gameFrame = new GameFrame(model);
             new GameController(gameFrame, this);

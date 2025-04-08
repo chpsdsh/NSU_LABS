@@ -1,4 +1,4 @@
-package minesweeper.guiview.gamepanels;
+package minesweeper.gui.view.gamepanels;
 
 import javax.swing.*;
 import java.awt.*;

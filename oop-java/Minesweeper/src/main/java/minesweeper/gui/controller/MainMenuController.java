@@ -1,7 +1,7 @@
-package minesweeper.controller;
+package minesweeper.gui.controller;
 
-import minesweeper.guiview.GUIView;
-import minesweeper.guiview.frames.MainMenuFrame;
+import minesweeper.gui.view.GUIView;
+import minesweeper.gui.view.frames.MainMenuFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

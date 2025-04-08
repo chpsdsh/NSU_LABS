@@ -1,10 +1,10 @@
-package minesweeper.guiview.frames;
+package minesweeper.gui.view.frames;
 
 
+import minesweeper.gui.view.gamedialogs.RestartDialog;
+import minesweeper.gui.view.gamedialogs.WinningDialog;
+import minesweeper.gui.view.gamepanels.GamePanel;
 import minesweeper.model.GameModel;
-import minesweeper.guiview.gamedialogs.RestartDialog;
-import minesweeper.guiview.gamedialogs.WinningDialog;
-import minesweeper.guiview.gamepanels.GamePanel;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

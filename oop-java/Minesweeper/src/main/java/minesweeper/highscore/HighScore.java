@@ -4,14 +4,16 @@ public class HighScore {
     private String name;
     private int time;
     private int fieldSize;
+    private int numberOfMines;
 
     public HighScore(){
     }
 
-    public HighScore(String name, int time, int fieldSize){
+    public HighScore(String name, int time, int fieldSize, int numberOfMines){
         this.name = name;
         this.time = time;
         this.fieldSize = fieldSize;
+        this.numberOfMines = numberOfMines;
     }
 
     public int getFieldSize() {
@@ -24,6 +26,10 @@ public class HighScore {
 
     public String getName() {
         return name;
+    }
+
+    public int getNumberOfMines() {
+        return numberOfMines;
     }
 
     public void setFieldSize(int fieldSize) {

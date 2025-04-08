@@ -1,9 +1,12 @@
-package minesweeper.controller;
+package minesweeper.console.controler;
 
 import minesweeper.exceptions.CoordinateException;
 import minesweeper.exceptions.ReadingGameParametersException;
-import minesweeper.guiview.ConsoleView;
-import java.io.*;
+import minesweeper.console.view.ConsoleView;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class ConsoleController {
     private ConsoleView consoleView;

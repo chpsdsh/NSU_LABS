@@ -30,18 +30,18 @@ public class HighScoreHandler {
         }
     }
 
+    public void addScores(HighScore score) {
+        scores.add(score);
+        scores.sort((b, a) -> Integer.compare(b.getTime(), a.getTime()));
+        saveScores();
+    }
+
     public void saveScores() {
         try {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, scores);
         } catch (IOException e) {
             throw new HighScoreHandlingException("Error saving scores ", e);
         }
-    }
-
-    public void addScores(HighScore score) {
-        scores.add(score);
-        scores.sort((b, a) -> Integer.compare(b.getTime(), a.getTime()));
-        saveScores();
     }
 
     public ArrayList<HighScore> getScores() {

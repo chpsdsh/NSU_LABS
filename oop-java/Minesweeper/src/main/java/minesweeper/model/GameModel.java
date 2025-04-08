@@ -175,16 +175,13 @@ public final class GameModel {
 
     public void confirmWinner(String winnerName) {
         HighScoreHandler highScoreHandler = new HighScoreHandler("src/main/resources/Results.json");
-        highScoreHandler.addScores(new HighScore(winnerName, gameTimer.seconds, fieldSize));
+        highScoreHandler.addScores(new HighScore(winnerName, gameTimer.seconds, fieldSize, numberOfMines));
     }
 
     public int getFieldSize() {
         return fieldSize;
     }
 
-    public int getNumberOfMines() {
-        return numberOfMines;
-    }
 
     public int getNumberOfFlags() {
         return numberOfFlags;

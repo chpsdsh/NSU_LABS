@@ -1,13 +1,13 @@
-package minesweeper.guiview.frames;
+package minesweeper.gui.view.frames;
 
+import minesweeper.gui.view.menudialogs.GameSettings;
+import minesweeper.gui.view.menupanels.AboutPanel;
+import minesweeper.gui.view.menupanels.HighScorePanel;
+import minesweeper.gui.view.menupanels.MainMenuPanel;
 import minesweeper.model.GameModel;
-import minesweeper.guiview.menupanels.AboutPanel;
-import minesweeper.guiview.menudialogs.GameSettings;
-import minesweeper.guiview.menupanels.HighScorePanel;
-import minesweeper.guiview.menupanels.MainMenuPanel;
 
-import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public final class MainMenuFrame extends JFrame {
     private final GameModel model;

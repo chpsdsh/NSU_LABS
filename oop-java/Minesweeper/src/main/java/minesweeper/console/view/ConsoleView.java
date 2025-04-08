@@ -1,9 +1,6 @@
-package minesweeper.guiview;
+package minesweeper.console.view;
 
-import minesweeper.highscore.HighScore;
 import minesweeper.model.GameModel;
-
-import java.util.ArrayList;
 
 public class ConsoleView {
     private char[][] field;
@@ -97,10 +94,10 @@ public class ConsoleView {
         System.out.println("Flags remaining: "+ numberOfFlags);
     }
 
-    public void showHighScores(ArrayList<HighScore> scores){
-        for (HighScore score : scores){
-            System.out.println(score.getName()+" "+ score.getTime()+" "+score.getFieldSize());
-        }
-    }
+//    public void showHighScores(ArrayList<HighScore> scores){
+//        for (HighScore score : scores){
+//            System.out.println(score.getName()+" "+ score.getTime()+" "+score.getFieldSize());
+//        }
+//    }
 }
 
