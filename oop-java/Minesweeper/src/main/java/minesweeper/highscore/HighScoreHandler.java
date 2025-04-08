@@ -1,10 +1,8 @@
 package minesweeper.highscore;
 
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import minesweeper.exceptions.HighScoreHandlingException;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,7 +10,7 @@ import java.util.ArrayList;
 public class HighScoreHandler {
     private final File file;
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private ArrayList<HighScore> scores;
+    private final ArrayList<HighScore> scores;
 
 
     public HighScoreHandler(String path) {

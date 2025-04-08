@@ -1,5 +1,7 @@
 package minesweeper.gui.view.gamepanels;
 
+import minesweeper.timerlistener.TimerListener;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -19,12 +21,21 @@ public class GamePanel extends JPanel {
     private final ImageIcon eight;
     private final ImageIcon clock;
     private JPanel gamePanel;
-    private JPanel gameInfoPanel;
+
     private JLabel flagsNumberText;
     private JLabel gameTimerText;
     private JButton[][] buttons;
+    private TimerListener timerListener;
 
-    public GamePanel(int fieldSize, int numberOfFlags){
+    public TimerListener getTimerListener() {
+        return timerListener;
+    }
+
+    public void setNewGameMouseListener(MouseAdapter listener, int row, int col) {
+        buttons[row][col].addMouseListener(listener);
+    }
+
+    public GamePanel(int fieldSize, int numberOfFlags) {
         super();
         notOpened = new ImageIcon("src/main/resources/grass.png");
         bomb = new ImageIcon("src/main/resources/bomb.png");
@@ -39,32 +50,40 @@ public class GamePanel extends JPanel {
         seven = new ImageIcon("src/main/resources/7.png");
         eight = new ImageIcon("src/main/resources/8.png");
         clock = new ImageIcon("src/main/resources/clock.png");
-        createGame(fieldSize,numberOfFlags);
+        createGame(fieldSize, numberOfFlags);
     }
 
     private void createGame(Integer fieldSize, Integer numberOfFlags) {
-
         setLayout(new BorderLayout());
         gamePanel = new JPanel();
         gamePanel.setLayout(new GridLayout(fieldSize, fieldSize));
         buttons = new JButton[fieldSize][fieldSize];
         gamePanel.setBorder(BorderFactory.createEmptyBorder(0, 50, 50, 50));
         initializeButtons(fieldSize);
-
-        gameInfoPanel = new JPanel();
+        JPanel gameInfoPanel = new JPanel();
         gameInfoPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         JLabel clockLabel = new JLabel(clock);
+
         gameTimerText = new JLabel("0");
+        timerListener = seconds -> {
+            gameTimerText.setText(seconds.toString());
+            revalidate();
+            repaint();
+        };
         gameTimerText.setFont(new Font("Arial", Font.BOLD, 20));
         gameTimerText.setPreferredSize(new Dimension(50, 30));
+
         JLabel flagLabel = new JLabel(flag);
+
         flagsNumberText = new JLabel(numberOfFlags.toString());
         flagsNumberText.setFont(new Font("Arial", Font.BOLD, 20));
+
         gameInfoPanel.add(clockLabel);
         gameInfoPanel.add(Box.createHorizontalStrut(10));
         gameInfoPanel.add(gameTimerText);
         gameInfoPanel.add(flagLabel);
         gameInfoPanel.add(flagsNumberText);
+
         add(gameInfoPanel, BorderLayout.NORTH);
         add(gamePanel, BorderLayout.CENTER);
     }
@@ -112,7 +131,7 @@ public class GamePanel extends JPanel {
         repaint();
     }
 
-    public void drawBomb(int row, int col){
+    public void drawBomb(int row, int col) {
         buttons[row][col].setIcon(bomb);
     }
 
@@ -120,21 +139,11 @@ public class GamePanel extends JPanel {
         if (isFlag) {
             buttons[row][col].setIcon(flag);
             flagsNumberText.setText(numberOfFlags.toString());
-        } else if(!isOpened) {
+        } else if (!isOpened) {
             buttons[row][col].setIcon(notOpened);
             flagsNumberText.setText(numberOfFlags.toString());
         }
         revalidate();
         repaint();
     }
-
-    public void setNewGameMouseListener(MouseAdapter listener, int row, int col) {
-        buttons[row][col].addMouseListener(listener);
-    }
-
-//        public void showTimer() {
-//        gameTimerText.setText(model.getGameTimer().getSeconds().toString());
-//        revalidate();
-//        repaint();
-//    }
 }

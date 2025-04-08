@@ -13,7 +13,11 @@ public class HighScorePanel extends JPanel {
     private JButton highScoreExitButton;
     DefaultTableModel tableModel;
 
-    public HighScorePanel(){
+    public void setExitActionListener(ActionListener listener) {
+        highScoreExitButton.addActionListener(listener);
+    }
+
+    public HighScorePanel() {
         super();
         createHighScore();
     }
@@ -47,15 +51,11 @@ public class HighScorePanel extends JPanel {
         add(highScoreExitButton);
     }
 
-    private void createTableModel(ArrayList<HighScore> scores){
+    private void createTableModel(ArrayList<HighScore> scores) {
         int index = 1;
         for (HighScore score : scores) {
             Object[] row = {index++, score.getName(), score.getTime(), score.getFieldSize(), score.getNumberOfMines()};
             tableModel.addRow(row);
         }
-    }
-
-    public void setExitActionListener(ActionListener listener) {
-        highScoreExitButton.addActionListener(listener);
     }
 }

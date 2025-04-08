@@ -52,6 +52,4 @@ public class GUIView {
             mainMenuFrame.startGame();
         });
     }
-
-
 }

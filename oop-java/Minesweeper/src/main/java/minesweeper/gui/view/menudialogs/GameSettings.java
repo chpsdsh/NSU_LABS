@@ -17,6 +17,10 @@ public class GameSettings extends JDialog {
         return numberOfMines;
     }
 
+    public void setStartGameActionListener(ActionListener listener) {
+        startGameButton.addActionListener(listener);
+    }
+
     public GameSettings(JFrame frame){
         super(frame, "Game settings", true);
         createGameSettings();
@@ -70,9 +74,5 @@ public class GameSettings extends JDialog {
     public void clear(){
         numberOfMines.setText("");
         fieldSize.setText("");
-    }
-
-    public void setStartGameActionListener(ActionListener listener) {
-        startGameButton.addActionListener(listener);
     }
 }

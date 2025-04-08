@@ -1,7 +1,10 @@
 package minesweeper.model;
+
 import minesweeper.cells.Cell;
 import minesweeper.exceptions.*;
 import minesweeper.highscore.*;
+import minesweeper.timerlistener.TimerListener;
+
 import java.util.Random;
 
 public final class GameModel {
@@ -13,9 +16,39 @@ public final class GameModel {
     private boolean gameOver;
     private boolean gameWin;
     private Timer gameTimer;
+    private TimerListener listener;
+
+    public int getFieldSize() {
+        return fieldSize;
+    }
+
+    public int getNumberOfFlags() {
+        return numberOfFlags;
+    }
+
+    public boolean isFlag(int row, int col) {
+        return cells[row][col].isFlag();
+    }
+
+    public boolean isOpened(int row, int col) {
+        return cells[row][col].isOpened();
+    }
+
+    public boolean isBomb(int row, int col) {
+        return cells[row][col].isBomb();
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public boolean isGameWin() {
+        return gameWin;
+    }
 
     public class Timer extends Thread {
         private Integer seconds = 0;
+
         @Override
         public void run() {
             synchronized (this) {
@@ -23,6 +56,7 @@ public final class GameModel {
                     while (!gameOver) {
                         this.wait(1000);
                         seconds++;
+                        notifyListener();
                     }
                 } catch (InterruptedException e) {
                     throw new TimerException("Timer Exception", e);
@@ -30,11 +64,14 @@ public final class GameModel {
             }
         }
 
-        public  Integer getSeconds() {
-            return seconds;
+        private void notifyListener() {
+            listener.onTimeChange(seconds);
         }
     }
 
+    public void setTimerListener(TimerListener listener) {
+        this.listener = listener;
+    }
 
     public void exitGame() {
         System.exit(0);
@@ -63,8 +100,6 @@ public final class GameModel {
         gameTimer.start();
     }
 
-
-
     public void openCells(int row, int col) {
         if (openedCells == 0) {
             createField(row, col);
@@ -77,8 +112,8 @@ public final class GameModel {
             revealCells(row, col);
         }
         if (openedCells == fieldSize * fieldSize) {
-           gameWin = true;
-           gameOver = true;
+            gameWin = true;
+            gameOver = true;
         }
     }
 
@@ -107,30 +142,29 @@ public final class GameModel {
         for (int i = 0; i < fieldSize; i++) {
             for (int j = 0; j < fieldSize; j++) {
                 if (cells[i][j].isBomb()) {
-                   cells[i][j].setOpened(true);
+                    cells[i][j].setOpened(true);
                 }
             }
         }
     }
 
     public int countBombsNear(int row, int col) {
-            int bombCount = 0;
+        int bombCount = 0;
 
-            for (int i = row - 1; i <= row + 1; i++) {
-                for (int j = col - 1; j <= col + 1; j++) {
-                    if(i ==row && j == col){
-                        continue;
-                    }
-                    if (i >= 0 && i < fieldSize && j >= 0 && j < fieldSize) {
-                        if (cells[i][j].isBomb()) {
-                            bombCount++;
-                        }
+        for (int i = row - 1; i <= row + 1; i++) {
+            for (int j = col - 1; j <= col + 1; j++) {
+                if (i == row && j == col) {
+                    continue;
+                }
+                if (i >= 0 && i < fieldSize && j >= 0 && j < fieldSize) {
+                    if (cells[i][j].isBomb()) {
+                        bombCount++;
                     }
                 }
             }
-            return bombCount;
+        }
+        return bombCount;
     }
-
 
     public void putFlag(int row, int col) {
         if (openedCells != 0 && !gameOver) {
@@ -177,53 +211,4 @@ public final class GameModel {
         HighScoreHandler highScoreHandler = new HighScoreHandler("src/main/resources/Results.json");
         highScoreHandler.addScores(new HighScore(winnerName, gameTimer.seconds, fieldSize, numberOfMines));
     }
-
-    public int getFieldSize() {
-        return fieldSize;
-    }
-
-
-    public int getNumberOfFlags() {
-        return numberOfFlags;
-    }
-
-    public boolean isFlag(int row, int col){
-        return cells[row][col].isFlag();
-    }
-
-    public boolean isOpened(int row, int col){
-        return cells[row][col].isOpened();
-    }
-
-    public boolean isBomb(int row, int col){
-        return cells[row][col].isBomb();
-    }
-
-    public boolean isGameOver() {
-        return gameOver;
-    }
-
-    public boolean isGameWin(){return gameWin;}
-
-    public Timer getGameTimer() {
-        return gameTimer;
-    }
-
-    //    public void setMainMenuController(MainMenuController mainMenuController) {
-//        this.mainMenuController = mainMenuController;
-//    }
-
-//    public void setConsoleController(ConsoleController consoleController) {
-//        this.consoleController = consoleController;
-//    }
-
-    private String[] splitLine(String line) {
-        line = line.trim();
-        if (line.isEmpty() || line.startsWith("#")) {
-            return null;
-        }
-        return line.split(" ");
-    }
-
-
 }

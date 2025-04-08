@@ -12,6 +12,10 @@ public class WinningDialog extends JDialog {
         return winnerName;
     }
 
+    public void setWinningDialogListener(ActionListener listener) {
+        winnerConfirmButton.addActionListener(listener);
+    }
+
     public WinningDialog(JFrame frame){
         super(frame, "YOU WON", true);
         createWinningDialog();
@@ -54,8 +58,5 @@ public class WinningDialog extends JDialog {
         add(winningPanel);
 
         setSize(300, 300);
-    }
-    public void setWinningDialogListener(ActionListener listener) {
-        winnerConfirmButton.addActionListener(listener);
     }
 }

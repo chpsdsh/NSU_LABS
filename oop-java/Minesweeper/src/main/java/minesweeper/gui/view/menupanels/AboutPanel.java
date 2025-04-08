@@ -6,12 +6,17 @@ import java.awt.event.ActionListener;
 
 public class AboutPanel extends JPanel {
     private JButton aboutExitButton;
-    public AboutPanel(){
+
+    public void setExitActionListener(ActionListener listener) {
+        aboutExitButton.addActionListener(listener);
+    }
+
+    public AboutPanel() {
         super();
         createAbout();
     }
 
-    private void createAbout(){
+    private void createAbout() {
         aboutExitButton = new JButton("Exit");
         aboutExitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -31,13 +36,9 @@ public class AboutPanel extends JPanel {
         text.setFont(new Font("Arial", Font.BOLD, 14));
         text.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-
         add(name);
         add(text);
         add(Box.createVerticalStrut(10));
         add(aboutExitButton);
-    }
-    public void setExitActionListener(ActionListener listener) {
-        aboutExitButton.addActionListener(listener);
     }
 }

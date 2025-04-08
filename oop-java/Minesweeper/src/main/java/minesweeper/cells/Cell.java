@@ -5,12 +5,6 @@ public class Cell  {
     private boolean isOpened;
     private boolean isFlag;
 
-    public Cell(boolean isBomb, boolean isOpened,boolean isFlag){
-        this.isBomb = isBomb;
-        this.isOpened = isOpened;
-        this.isFlag = isFlag;
-    }
-
     public boolean isBomb() {
         return isBomb;
     }
@@ -33,5 +27,11 @@ public class Cell  {
 
     public void setFlag(boolean flag) {
         isFlag = flag;
+    }
+
+    public Cell(boolean isBomb, boolean isOpened,boolean isFlag){
+        this.isBomb = isBomb;
+        this.isOpened = isOpened;
+        this.isFlag = isFlag;
     }
 }

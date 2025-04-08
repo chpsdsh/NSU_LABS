@@ -8,10 +8,16 @@ public class RestartDialog extends JDialog {
     private JButton restartButton;
     private JButton exitButton;
 
+    public void setRestartDialogListener(ActionListener listener) {
+        restartButton.addActionListener(listener);
+        exitButton.addActionListener(listener);
+    }
+
     public RestartDialog(JFrame frame){
         super(frame, "GAME OVER", true);
         createRestartDialog();
     }
+
     private void createRestartDialog() {
         setLocationRelativeTo(null);
 
@@ -42,12 +48,5 @@ public class RestartDialog extends JDialog {
         add(restartPanel);
 
         setSize(300, 300);
-    }
-
-
-
-    public void setRestartDialogListener(ActionListener listener) {
-        restartButton.addActionListener(listener);
-        exitButton.addActionListener(listener);
     }
 }

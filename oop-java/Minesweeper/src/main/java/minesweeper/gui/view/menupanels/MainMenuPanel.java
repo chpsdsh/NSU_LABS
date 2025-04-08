@@ -10,6 +10,13 @@ public class MainMenuPanel extends JPanel {
     private JButton aboutButton;
     private JButton exitButton;
 
+    public void setMainMenuActionListener(ActionListener listener) {
+        newGameButton.addActionListener(listener);
+        highScoreButton.addActionListener(listener);
+        aboutButton.addActionListener(listener);
+        exitButton.addActionListener(listener);
+    }
+
     public MainMenuPanel(){
         super();
         createMenu();
@@ -46,12 +53,5 @@ public class MainMenuPanel extends JPanel {
         add(aboutButton);
         add(Box.createVerticalStrut(10));
         add(exitButton);
-    }
-
-    public void setMainMenuActionListener(ActionListener listener) {
-        newGameButton.addActionListener(listener);
-        highScoreButton.addActionListener(listener);
-        aboutButton.addActionListener(listener);
-        exitButton.addActionListener(listener);
     }
 }

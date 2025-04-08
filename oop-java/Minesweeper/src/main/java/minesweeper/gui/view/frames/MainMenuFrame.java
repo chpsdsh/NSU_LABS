@@ -39,7 +39,6 @@ public final class MainMenuFrame extends JFrame {
         settingsDialog = new GameSettings(this);
         setSize(400, 800);
         setLocationRelativeTo(null);
-
     }
 
     public void showMenu() {

@@ -1,6 +1,5 @@
 package minesweeper.gui.view.frames;
 
-
 import minesweeper.gui.view.gamedialogs.RestartDialog;
 import minesweeper.gui.view.gamedialogs.WinningDialog;
 import minesweeper.gui.view.gamepanels.GamePanel;
@@ -24,13 +23,13 @@ public class GameFrame extends JFrame {
         this.setSize(50 * model.getFieldSize() + 100, 50 * model.getFieldSize() + 100);
         this.setLocationRelativeTo(null);
         gamePanel = new GamePanel(model.getFieldSize(),model.getNumberOfFlags());
+        this.model.setTimerListener(gamePanel.getTimerListener());
         restartDialog = new RestartDialog(this);
         winningDialog = new WinningDialog(this);
         gamePanel.setVisible(true);
         showGame();
         this.setVisible(true);
     }
-
 
     public void openCells(int row, int col) {
         model.openCells(row, col);
@@ -46,7 +45,6 @@ public class GameFrame extends JFrame {
             drawField();
         }
     }
-
 
     public void drawField() {
         for (int i = 0; i < model.getFieldSize(); i++) {

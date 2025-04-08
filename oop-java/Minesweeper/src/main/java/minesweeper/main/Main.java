@@ -3,8 +3,6 @@ package minesweeper.main;
 import minesweeper.gui.view.*;
 import minesweeper.model.GameModel;
 
-
-
 public class Main {
     public static void main(String[] args) {
         if (args[0].equals("gui")) {
