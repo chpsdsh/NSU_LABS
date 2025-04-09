@@ -19,7 +19,6 @@ public class GUIView {
     }
 
     public void initializeGuiView() {
-        SwingUtilities.invokeLater(() -> {
             if (mainMenuFrame != null) {
                 mainMenuFrame.dispose();
                 mainMenuFrame = null;
@@ -31,25 +30,20 @@ public class GUIView {
             mainMenuFrame = new MainMenuFrame(model);
             new MainMenuController(mainMenuFrame, this);
             mainMenuFrame.showMenu();
-        });
     }
 
     public void startGame() {
-        SwingUtilities.invokeLater(() -> {
             mainMenuFrame.startGame();
             gameFrame = new GameFrame(model);
             new GameController(gameFrame, this);
-        });
     }
 
     public void restartGame() {
-        SwingUtilities.invokeLater(() -> {
             if (gameFrame != null) {
                 gameFrame.dispose();
                 gameFrame = null;
             }
             mainMenuFrame.showGameSettings();
             mainMenuFrame.startGame();
-        });
     }
 }

@@ -4,6 +4,11 @@
   "fieldSize" : 12,
   "numberOfMines" : 2
 }, {
+  "name" : "oop",
+  "time" : 3,
+  "fieldSize" : 2,
+  "numberOfMines" : 1
+}, {
   "name" : "oks",
   "time" : 9,
   "fieldSize" : 5,
@@ -13,6 +18,11 @@
   "time" : 10,
   "fieldSize" : 5,
   "numberOfMines" : 2
+}, {
+  "name" : "gleb",
+  "time" : 11,
+  "fieldSize" : 10,
+  "numberOfMines" : 3
 }, {
   "name" : "ILYA",
   "time" : 23,
