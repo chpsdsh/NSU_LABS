@@ -9,51 +9,81 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ConsoleController {
-    private ConsoleView consoleView;
+    private final ConsoleView consoleView;
 
-    public ConsoleController(ConsoleView consoleView){
+    public ConsoleController(ConsoleView consoleView) {
         this.consoleView = consoleView;
-//        gameModel.setConsoleController(this);
+        consoleView.printInitializeParameters();
         initializeGameParameters();
     }
 
-    public void initializeGameParameters(){
+    public void initializeGameParameters() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            String parametersLine = reader.readLine();
-//            gameModel.createNewGameConsole(parametersLine);
-        }catch (IOException e){
-            throw new ReadingGameParametersException("Bad game parameters",e);
+            String[] parameters = splitLine(reader.readLine());
+            if (parameters != null) {
+                consoleView.createField(parameters);
+                inputCells();
+            } else {
+                throw new ReadingGameParametersException("Parameters mus be not null");
+            }
+        } catch (IOException e) {
+            throw new ReadingGameParametersException("Bad game parameters", e);
         }
     }
 
-    public void inputCells( boolean gameOver) {
+    public void inputCells() {
         String coordinateLine;
+        String[] coordinateString;
         consoleView.printInputInfo();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            while ((coordinateLine = reader.readLine()) != null && !gameOver) {
+            while ((coordinateLine = reader.readLine()) != null && !consoleView.isGameOver()) {
                 consoleView.printInputInfo();
-//                gameModel.executeConsoleInput(coordinateLine);
+                coordinateString = splitLine(coordinateLine);
+                if (coordinateString.length == 2) {
+                    consoleView.openCells(coordinateString);
+                } else if (coordinateString.length == 3 && coordinateString[2].equals("F")) {
+                    consoleView.drawFlag(coordinateString);
+                }
+                if (consoleView.isGameWin()) {
+                    consoleView.gameWin();
+                    writeWinnerName();
+                } else if (consoleView.isGameOver()) {
+                    consoleView.gameOver();
+                    restartOrExit();
+                }
             }
-        }catch (IOException e){
-            throw new CoordinateException("Bad coordinate input",e);
+        } catch (IOException e) {
+            throw new CoordinateException("Bad coordinate input", e);
         }
     }
 
-    public void restartOrExit(){
+    public void restartOrExit() {
+        String parametersLine;
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            String parametersLine = reader.readLine();
-//            gameModel.restartOrExit(parametersLine);
-        }catch (IOException e){
-            throw new ReadingGameParametersException("Bad game parameters",e);
+            while ((parametersLine = reader.readLine()) != null) {
+                consoleView.restartOrExit(parametersLine);
+            }
+        } catch (IOException e) {
+            throw new ReadingGameParametersException("Bad game parameters", e);
         }
     }
 
-    public void writeWinnerName(){
+    public void writeWinnerName() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String winnerName = reader.readLine();
-//                gameModel.confirmWinner(winnerName);
-        }catch (IOException e){
-            throw new ReadingGameParametersException("Bad game parameters",e);
+            consoleView.confirmWinner(winnerName);
+            consoleView.printRestartInfo();
+            restartOrExit();
+        } catch (IOException e) {
+            throw new ReadingGameParametersException("Bad game parameters", e);
         }
+    }
+
+    private String[] splitLine(String line) {
+        line = line.trim();
+        if (line.isEmpty()) {
+            return null;
+        }
+        return line.split(" ");
     }
 }

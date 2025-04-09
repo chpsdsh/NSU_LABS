@@ -1,126 +1,31 @@
 [ {
-  "name" : "zczc",
-  "time" : 2,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "s",
-  "time" : 2,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "12",
+  "name" : "qwe",
   "time" : 3,
   "fieldSize" : 12,
-  "numberOfMines" : 0
+  "numberOfMines" : 2
 }, {
-  "name" : "12",
-  "time" : 3,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
+  "name" : "oks",
+  "time" : 9,
+  "fieldSize" : 5,
+  "numberOfMines" : 1
 }, {
-  "name" : "12",
-  "time" : 3,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "12",
-  "time" : 3,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "12",
-  "time" : 3,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "asdasd",
-  "time" : 3,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "Stepa",
-  "time" : 3,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "asdasd",
-  "time" : 3,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "sa",
-  "time" : 4,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "Andrew",
-  "time" : 4,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "dsfs",
-  "time" : 4,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "ssadsa",
-  "time" : 4,
-  "fieldSize" : 12,
-  "numberOfMines" : 3
-}, {
-  "name" : "dsfsdf",
-  "time" : 5,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "sada",
-  "time" : 6,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "12312",
-  "time" : 7,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "Artemiy",
-  "time" : 7,
+  "name" : "alex",
+  "time" : 10,
   "fieldSize" : 5,
   "numberOfMines" : 2
 }, {
-  "name" : "YA",
-  "time" : 8,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
+  "name" : "ILYA",
+  "time" : 23,
+  "fieldSize" : 5,
+  "numberOfMines" : 1
 }, {
-  "name" : "kukoldini",
-  "time" : 9,
-  "fieldSize" : 12,
-  "numberOfMines" : 2
+  "name" : "Console",
+  "time" : 28,
+  "fieldSize" : 5,
+  "numberOfMines" : 1
 }, {
-  "name" : "asdjasd",
-  "time" : 11,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "sasd",
-  "time" : 11,
-  "fieldSize" : 3,
-  "numberOfMines" : 2
-}, {
-  "name" : "Kostya",
-  "time" : 12,
-  "fieldSize" : 12,
-  "numberOfMines" : 0
-}, {
-  "name" : "Ilya",
-  "time" : 12,
-  "fieldSize" : 12,
-  "numberOfMines" : 3
-}, {
-  "name" : "oksana",
-  "time" : 115,
-  "fieldSize" : 6,
-  "numberOfMines" : 0
+  "name" : "OppEnjoyer",
+  "time" : 36,
+  "fieldSize" : 5,
+  "numberOfMines" : 1
 } ]

@@ -97,14 +97,14 @@ public final class GameModel {
         numberOfFlags = this.numberOfMines;
         cells = new Cell[this.fieldSize][this.fieldSize];
         gameTimer = new Timer();
-        gameTimer.start();
+
     }
 
     public void openCells(int row, int col) {
         if (openedCells == 0) {
+            gameTimer.start();
             createField(row, col);
             revealCells(row, col);
-            System.out.println("OP cells 0");
         } else if (cells[row][col].isBomb() && !gameOver) {
             revealAllBombs();
             gameOver = true;
@@ -178,7 +178,6 @@ public final class GameModel {
                 cells[row][col].setOpened(true);
                 openedCells++;
                 numberOfFlags--;
-
             }
         }
         if (openedCells == fieldSize * fieldSize) {

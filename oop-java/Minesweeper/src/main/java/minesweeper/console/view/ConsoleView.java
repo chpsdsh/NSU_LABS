@@ -1,30 +1,33 @@
 package minesweeper.console.view;
 
+import minesweeper.console.controler.ConsoleController;
+import minesweeper.highscore.HighScore;
+import minesweeper.highscore.HighScoreHandler;
 import minesweeper.model.GameModel;
+import minesweeper.timerlistener.TimerListener;
+
+import java.util.ArrayList;
 
 public class ConsoleView {
     private char[][] field;
-    private GameModel model;
-    private String flagNumber;
+    private final GameModel model;
+    private final TimerListener timerListener;
+    private int seconds;
+    private ConsoleController consoleController;
 
     public ConsoleView(GameModel model) {
-        printInitializeParameters();
+        this.model = model;
+        timerListener = seconds -> this.seconds = seconds;
+        model.setTimerListener(timerListener);
+        consoleController = new ConsoleController(this);
     }
 
-    public void createField(int fieldSize) {
-        field = new char[fieldSize][fieldSize];
-
-        for (int i = 0; i < fieldSize; i++) {
-            for (int j = 0; j < fieldSize; j++) {
+    public void createField(String[] parameters) {
+        model.createNewGame(parameters[0], parameters[1]);
+        field = new char[model.getFieldSize()][model.getFieldSize()];
+        for (int i = 0; i < model.getFieldSize(); i++) {
+            for (int j = 0; j < model.getFieldSize(); j++) {
                 field[i][j] = '@';
-            }
-        }
-        drawField(fieldSize);
-    }
-
-    public void drawField(int fieldSize) {
-        for (int i = 0; i < fieldSize; i++) {
-            for (int j = 0; j < fieldSize; j++) {
                 System.out.print(field[i][j]);
             }
             System.out.println();
@@ -32,29 +35,53 @@ public class ConsoleView {
         System.out.println();
     }
 
-    public void printInputInfo(){
-        System.out.println("Write coordinates splitted with space");
+    public void updateField() {
+        for (int i = 0; i < model.getFieldSize(); i++) {
+            for (int j = 0; j < model.getFieldSize(); j++) {
+                if (model.isOpened(i, j) && !model.isFlag(i, j)) {
+                    updateCell(i, j, model.countBombsNear(i, j));
+                }
+            }
+        }
     }
 
-    public void printInitializeParameters(){
-        System.out.println("Write Field size and Number of mines separated with SPACE:");
+    public void drawField() {
+        System.out.println("Time: " + seconds + " Flags: " + model.getNumberOfFlags());
+        for (int i = 0; i < model.getFieldSize(); i++) {
+            for (int j = 0; j < model.getFieldSize(); j++) {
+                System.out.print(field[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
-    public void printWin(){
-        System.out.println("YOU WON!!!");
-        System.out.println("Write your name");
+    public void openCells(String[] coordinates) {
+        model.openCells(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]));
+        if (model.isGameWin()) {
+            updateField();
+            drawField();
+        } else if (model.isGameOver()) {
+            updateBombs();
+            drawField();
+        } else {
+            updateField();
+            drawField();
+        }
     }
 
-    public void printGameOver(){
-        System.out.println("GAME OVER");
-        System.out.println("WRITE RESTART/EXIT");
+    public void updateBombs() {
+        for (int i = 0; i < model.getFieldSize(); i++) {
+            for (int j = 0; j < model.getFieldSize(); j++) {
+                if (model.isBomb(i, j)) {
+                    field[i][j] = '*';
+                }
+            }
+        }
     }
 
-    public void drawCell(int row, int col, int bombCount){
-        switch (bombCount){
-            case -1:
-                field[row][col] = '*';
-                break;
+    public void updateCell(int row, int col, int bombCount) {
+        switch (bombCount) {
             case 0:
                 field[row][col] = '0';
                 break;
@@ -84,20 +111,80 @@ public class ConsoleView {
                 break;
         }
     }
-    public void drawFlag(int row, int col, boolean condition, Integer numberOfFlags){
-        if(condition) {
+
+    public void drawFlag(String[] coordinates) {
+        int row = Integer.parseInt(coordinates[0]), col = Integer.parseInt(coordinates[1]);
+        model.putFlag(row, col);
+        if (model.isFlag(row, col)) {
             field[row][col] = 'F';
-        }
-        else{
+        } else {
             field[row][col] = '@';
         }
-        System.out.println("Flags remaining: "+ numberOfFlags);
+        if (!model.isGameWin()) {
+            System.out.println("Flags remaining: " + model.getNumberOfFlags());
+            updateField();
+            drawField();
+        }
     }
 
-//    public void showHighScores(ArrayList<HighScore> scores){
-//        for (HighScore score : scores){
-//            System.out.println(score.getName()+" "+ score.getTime()+" "+score.getFieldSize());
-//        }
-//    }
-}
+    public void gameWin() {
+        drawField();
+        System.out.println("YOU WON!!!");
+        System.out.println("Write your name");
+    }
 
+    public void gameOver() {
+        updateBombs();
+        System.out.println("GAME OVER");
+        printRestartInfo();
+    }
+
+    public void restartOrExit(String parameter) {
+        switch (parameter) {
+            case "EXIT" -> model.exitGame();
+            case "RESTART" -> restartGame();
+            case "HIGHSCORE" -> showHighScores();
+            case null, default -> System.out.println("WRITE RESTART/EXIT/HIGHSCORE");
+
+        }
+    }
+
+    public void restartGame() {
+        consoleController = null;
+        field = null;
+        consoleController = new ConsoleController(this);
+    }
+
+    public void showHighScores() {
+        HighScoreHandler highScoreHandler = new HighScoreHandler("src/main/resources/Results.json");
+        ArrayList<HighScore> scores = highScoreHandler.getScores();
+        for (HighScore score : scores) {
+            System.out.println(score.getName() + " " + score.getTime() + " " + score.getFieldSize() + " " + score.getNumberOfMines());
+        }
+        printRestartInfo();
+    }
+
+    public void printInputInfo() {
+        System.out.println("Write coordinates splitted with space");
+    }
+
+    public void printInitializeParameters() {
+        System.out.println("Write Field size and Number of mines separated with SPACE:");
+    }
+
+    public void printRestartInfo() {
+        System.out.println("WRITE RESTART/EXIT/HIGHSCORE");
+    }
+
+    public void confirmWinner(String winnerName) {
+        model.confirmWinner(winnerName);
+    }
+
+    public boolean isGameOver() {
+        return model.isGameOver();
+    }
+
+    public boolean isGameWin() {
+        return model.isGameWin();
+    }
+}
