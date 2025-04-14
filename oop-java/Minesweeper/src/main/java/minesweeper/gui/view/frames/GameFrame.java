@@ -15,6 +15,22 @@ public class GameFrame extends JFrame {
     private final RestartDialog restartDialog;
     private final WinningDialog winningDialog;
 
+    public GameModel getModel() {
+        return model;
+    }
+
+    public void setNewGameMouseListener(MouseAdapter listener, int row, int col) {
+        gamePanel.setNewGameMouseListener(listener, row, col);
+    }
+
+    public void setRestartDialogListener(ActionListener listener) {
+        restartDialog.setRestartDialogListener(listener);
+    }
+
+    public void setWinningDialogListener(ActionListener listener) {
+        winningDialog.setWinningDialogListener(listener);
+    }
+
     public GameFrame(GameModel model) {
         super("MINESWEEPER");
         this.model = model;
@@ -22,7 +38,7 @@ public class GameFrame extends JFrame {
 
         this.setSize(50 * model.getFieldSize() + 100, 50 * model.getFieldSize() + 100);
         this.setLocationRelativeTo(null);
-        gamePanel = new GamePanel(model.getFieldSize(),model.getNumberOfFlags());
+        gamePanel = new GamePanel(model.getFieldSize(), model.getNumberOfFlags());
         this.model.setTimerListener(gamePanel.getTimerListener());
         restartDialog = new RestartDialog(this);
         winningDialog = new WinningDialog(this);
@@ -33,42 +49,40 @@ public class GameFrame extends JFrame {
 
     public void openCells(int row, int col) {
         model.openCells(row, col);
-        if(model.isGameWin()){
+        if (model.isGameWin()) {
             drawField();
             gameWin();
-        }
-        else if(model.isGameOver()){
+        } else if (model.isGameOver()) {
             drawBombs();
             gameOver();
-        }
-        else {
+        } else {
             drawField();
         }
     }
 
-    public void drawField() {
+    private void drawField() {
         for (int i = 0; i < model.getFieldSize(); i++) {
             for (int j = 0; j < model.getFieldSize(); j++) {
-                if(model.isOpened(i,j) && !model.isFlag(i,j)) {
+                if (model.isOpened(i, j) && !model.isFlag(i, j)) {
                     gamePanel.drawCell(i, j, model.countBombsNear(i, j));
                 }
             }
         }
     }
 
-    public void putFlag(int row, int col){
-        model.putFlag(row,col);
-        gamePanel.drawFlag(row,col,model.isFlag(row,col), model.isOpened(row, col),model.getNumberOfFlags());
-        if(model.isGameWin()){
+    public void putFlag(int row, int col) {
+        model.putFlag(row, col);
+        gamePanel.drawFlag(row, col, model.isFlag(row, col), model.isOpened(row, col), model.getNumberOfFlags());
+        if (model.isGameWin()) {
             gameWin();
         }
     }
 
-    public void drawBombs() {
+    private void drawBombs() {
         for (int i = 0; i < model.getFieldSize(); i++) {
             for (int j = 0; j < model.getFieldSize(); j++) {
-                if(model.isBomb(i,j)) {
-                    gamePanel.drawBomb(i,j);
+                if (model.isBomb(i, j)) {
+                    gamePanel.drawBomb(i, j);
                 }
             }
         }
@@ -99,23 +113,8 @@ public class GameFrame extends JFrame {
         repaint();
     }
 
-    public void confirmWinner(){
+    public void confirmWinner() {
         String winnerName = winningDialog.getWinnerName().getText();
         model.confirmWinner(winnerName);
-    }
-
-    public GameModel getModel() {
-        return model;
-    }
-
-    public void setNewGameMouseListener(MouseAdapter listener, int row, int col) {
-        gamePanel.setNewGameMouseListener(listener,row,col);
-    }
-
-    public void setRestartDialogListener(ActionListener listener){
-        restartDialog.setRestartDialogListener(listener);
-    }
-    public void setWinningDialogListener(ActionListener listener){
-        winningDialog.setWinningDialogListener(listener);
     }
 }

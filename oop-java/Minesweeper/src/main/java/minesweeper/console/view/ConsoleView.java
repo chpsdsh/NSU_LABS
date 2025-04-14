@@ -1,6 +1,6 @@
 package minesweeper.console.view;
 
-import minesweeper.console.controler.ConsoleController;
+import minesweeper.console.controller.ConsoleController;
 import minesweeper.highscore.HighScore;
 import minesweeper.highscore.HighScoreHandler;
 import minesweeper.model.GameModel;
@@ -11,13 +11,12 @@ import java.util.ArrayList;
 public class ConsoleView {
     private char[][] field;
     private final GameModel model;
-    private final TimerListener timerListener;
     private int seconds;
     private ConsoleController consoleController;
 
     public ConsoleView(GameModel model) {
         this.model = model;
-        timerListener = seconds -> this.seconds = seconds;
+        TimerListener timerListener = seconds -> this.seconds = seconds;
         model.setTimerListener(timerListener);
         consoleController = new ConsoleController(this);
     }
@@ -35,7 +34,7 @@ public class ConsoleView {
         System.out.println();
     }
 
-    public void updateField() {
+    private void updateField() {
         for (int i = 0; i < model.getFieldSize(); i++) {
             for (int j = 0; j < model.getFieldSize(); j++) {
                 if (model.isOpened(i, j) && !model.isFlag(i, j)) {
@@ -45,7 +44,7 @@ public class ConsoleView {
         }
     }
 
-    public void drawField() {
+    private void drawField() {
         System.out.println("Time: " + seconds + " Flags: " + model.getNumberOfFlags());
         for (int i = 0; i < model.getFieldSize(); i++) {
             for (int j = 0; j < model.getFieldSize(); j++) {
@@ -70,7 +69,7 @@ public class ConsoleView {
         }
     }
 
-    public void updateBombs() {
+    private void updateBombs() {
         for (int i = 0; i < model.getFieldSize(); i++) {
             for (int j = 0; j < model.getFieldSize(); j++) {
                 if (model.isBomb(i, j)) {
@@ -80,7 +79,7 @@ public class ConsoleView {
         }
     }
 
-    public void updateCell(int row, int col, int bombCount) {
+    private void updateCell(int row, int col, int bombCount) {
         switch (bombCount) {
             case 0:
                 field[row][col] = '0';
@@ -145,17 +144,16 @@ public class ConsoleView {
             case "RESTART" -> restartGame();
             case "HIGHSCORE" -> showHighScores();
             case null, default -> System.out.println("WRITE RESTART/EXIT/HIGHSCORE");
-
         }
     }
 
-    public void restartGame() {
+    private void restartGame() {
         consoleController = null;
         field = null;
         consoleController = new ConsoleController(this);
     }
 
-    public void showHighScores() {
+    private void showHighScores() {
         HighScoreHandler highScoreHandler = new HighScoreHandler("src/main/resources/Results.json");
         ArrayList<HighScore> scores = highScoreHandler.getScores();
         for (HighScore score : scores) {

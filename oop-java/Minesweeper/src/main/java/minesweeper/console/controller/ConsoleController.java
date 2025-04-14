@@ -1,4 +1,4 @@
-package minesweeper.console.controler;
+package minesweeper.console.controller;
 
 import minesweeper.exceptions.CoordinateException;
 import minesweeper.exceptions.ReadingGameParametersException;
@@ -17,7 +17,7 @@ public class ConsoleController {
         initializeGameParameters();
     }
 
-    public void initializeGameParameters() {
+    private void initializeGameParameters() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String[] parameters = splitLine(reader.readLine());
             if (parameters != null) {
@@ -31,7 +31,7 @@ public class ConsoleController {
         }
     }
 
-    public void inputCells() {
+    private void inputCells() {
         String coordinateLine;
         String[] coordinateString;
         consoleView.printInputInfo();
@@ -57,7 +57,7 @@ public class ConsoleController {
         }
     }
 
-    public void restartOrExit() {
+    private void restartOrExit() {
         String parametersLine;
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             while ((parametersLine = reader.readLine()) != null) {
@@ -68,7 +68,7 @@ public class ConsoleController {
         }
     }
 
-    public void writeWinnerName() {
+    private void writeWinnerName() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String winnerName = reader.readLine();
             consoleView.confirmWinner(winnerName);

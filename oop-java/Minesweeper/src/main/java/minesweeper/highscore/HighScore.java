@@ -6,16 +6,6 @@ public class HighScore {
     private int fieldSize;
     private int numberOfMines;
 
-    public HighScore() {
-    }
-
-    public HighScore(String name, int time, int fieldSize, int numberOfMines) {
-        this.name = name;
-        this.time = time;
-        this.fieldSize = fieldSize;
-        this.numberOfMines = numberOfMines;
-    }
-
     public int getFieldSize() {
         return fieldSize;
     }
@@ -30,6 +20,16 @@ public class HighScore {
 
     public int getNumberOfMines() {
         return numberOfMines;
+    }
+
+    public HighScore() {
+    }
+
+    public HighScore(String name, int time, int fieldSize, int numberOfMines) {
+        this.name = name;
+        this.time = time;
+        this.fieldSize = fieldSize;
+        this.numberOfMines = numberOfMines;
     }
 }
 

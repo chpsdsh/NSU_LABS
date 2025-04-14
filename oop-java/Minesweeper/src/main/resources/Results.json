@@ -9,6 +9,26 @@
   "fieldSize" : 2,
   "numberOfMines" : 1
 }, {
+  "name" : "sadad",
+  "time" : 3,
+  "fieldSize" : 5,
+  "numberOfMines" : 1
+}, {
+  "name" : "andrew",
+  "time" : 5,
+  "fieldSize" : 3,
+  "numberOfMines" : 1
+}, {
+  "name" : "oop",
+  "time" : 5,
+  "fieldSize" : 5,
+  "numberOfMines" : 1
+}, {
+  "name" : "sada",
+  "time" : 5,
+  "fieldSize" : 3,
+  "numberOfMines" : 1
+}, {
   "name" : "oks",
   "time" : 9,
   "fieldSize" : 5,
@@ -19,10 +39,20 @@
   "fieldSize" : 5,
   "numberOfMines" : 2
 }, {
+  "name" : "OOp",
+  "time" : 10,
+  "fieldSize" : 5,
+  "numberOfMines" : 2
+}, {
   "name" : "gleb",
   "time" : 11,
   "fieldSize" : 10,
   "numberOfMines" : 3
+}, {
+  "name" : "Ilya",
+  "time" : 13,
+  "fieldSize" : 5,
+  "numberOfMines" : 1
 }, {
   "name" : "ILYA",
   "time" : 23,
@@ -36,6 +66,11 @@
 }, {
   "name" : "OppEnjoyer",
   "time" : 36,
+  "fieldSize" : 5,
+  "numberOfMines" : 1
+}, {
+  "name" : "qweqwe",
+  "time" : 54,
   "fieldSize" : 5,
   "numberOfMines" : 1
 } ]

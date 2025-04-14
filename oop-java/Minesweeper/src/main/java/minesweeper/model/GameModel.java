@@ -35,7 +35,9 @@ public final class GameModel {
     }
 
     public boolean isBomb(int row, int col) {
-        return cells[row][col].isBomb();
+        if(gameOver)
+            return cells[row][col].isBomb();
+        return false;
     }
 
     public boolean isGameOver() {
@@ -117,7 +119,7 @@ public final class GameModel {
         }
     }
 
-    public void revealCells(int row, int col) {
+    private void revealCells(int row, int col) {
         if (row < 0 || col < 0 || row >= fieldSize || col >= fieldSize) {
             return;
         }
@@ -138,7 +140,7 @@ public final class GameModel {
         }
     }
 
-    public void revealAllBombs() {
+    private void revealAllBombs() {
         for (int i = 0; i < fieldSize; i++) {
             for (int j = 0; j < fieldSize; j++) {
                 if (cells[i][j].isBomb()) {
@@ -186,7 +188,7 @@ public final class GameModel {
         }
     }
 
-    public void createField(int row, int col) {
+    private void createField(int row, int col) {
         Random random = new Random();
         int minesPlanted = 0, x, y;
         for (int i = 0; i < fieldSize; i++) {

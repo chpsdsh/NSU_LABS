@@ -6,7 +6,6 @@ import minesweeper.gui.view.frames.GameFrame;
 import minesweeper.gui.view.frames.MainMenuFrame;
 import minesweeper.model.GameModel;
 
-import javax.swing.*;
 
 public class GUIView {
     private MainMenuFrame mainMenuFrame;

@@ -20,7 +20,7 @@ public final class MainMenuController {
     }
 
 
-    class MainMenuListener implements ActionListener{
+    private class MainMenuListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
             switch (e.getActionCommand()){
@@ -39,7 +39,7 @@ public final class MainMenuController {
         }
     }
 
-    class ExitToMenuListener implements ActionListener {
+    private class ExitToMenuListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             mainMenuFrame.showMenu();

@@ -12,6 +12,9 @@ public class HighScoreHandler {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final ArrayList<HighScore> scores;
 
+    public ArrayList<HighScore> getScores() {
+        return scores;
+    }
 
     public HighScoreHandler(String path) {
         file = new File(path);
@@ -34,15 +37,11 @@ public class HighScoreHandler {
         saveScores();
     }
 
-    public void saveScores() {
+    private void saveScores() {
         try {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, scores);
         } catch (IOException e) {
             throw new HighScoreHandlingException("Error saving scores ", e);
         }
-    }
-
-    public ArrayList<HighScore> getScores() {
-        return scores;
     }
 }

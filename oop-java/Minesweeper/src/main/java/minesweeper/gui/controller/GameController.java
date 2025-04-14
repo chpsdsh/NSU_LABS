@@ -24,13 +24,12 @@ public class GameController {
         gameFrame.setWinningDialogListener(new WinningDialogListener());
     }
 
-    public MouseAdapter gameMouseAdapter(int row, int col) {
+    private MouseAdapter gameMouseAdapter(int row, int col) {
         return new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent e) {
+            public void mouseClicked(MouseEvent e) {
                 if (MouseEvent.BUTTON1 == e.getButton()) {
                     gameFrame.openCells(row, col);
-
                 } else if (MouseEvent.BUTTON3 == e.getButton()) {
                     gameFrame.putFlag(row, col);
                 }
@@ -38,7 +37,7 @@ public class GameController {
         };
     }
 
-    public class RestartDialogListener implements ActionListener {
+    private class RestartDialogListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             switch (e.getActionCommand()) {
@@ -52,7 +51,7 @@ public class GameController {
         }
     }
 
-    public class WinningDialogListener implements ActionListener {
+    private class WinningDialogListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             gameFrame.confirmWinner();
