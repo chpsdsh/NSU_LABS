@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/lab1.dir/main.cpp.o CMakeFiles/lab1.dir/bitArray.cpp.o -o lab1 

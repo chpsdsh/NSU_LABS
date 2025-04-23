@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/lab3.dir/main.cpp.o CMakeFiles/lab3.dir/Parser.cpp.o CMakeFiles/lab3.dir/Converters.cpp.o CMakeFiles/lab3.dir/WavHandler.cpp.o CMakeFiles/lab3.dir/SoundProcessor.cpp.o -o lab3
