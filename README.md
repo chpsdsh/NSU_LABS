@@ -10,6 +10,6 @@
 
 ### 🎓 Второй курс
 
-- [oop-basics](https://github.com/chpsdsh/NSU_LABS/tree/main/oop-basics) — Лабораторные работы на C++
+- [oop-cpp](https://github.com/chpsdsh/NSU_LABS/tree/main/oop-cpp) — Лабораторные работы на C++
 - [oop-java](https://github.com/chpsdsh/NSU_LABS/tree/main/oop-java) — Лабораторыне работы на Java
 
