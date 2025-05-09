@@ -17,3 +17,9 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.register<JavaExec>("run") {
+    standardInput = System.`in`
+    mainClass.set("carfactory.main.Main")
+    classpath = sourceSets["main"].runtimeClasspath
+}
