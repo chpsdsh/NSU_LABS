@@ -6,7 +6,7 @@ public class CarPart {
     public CarPart(int id){
         this.id = id;
     }
-    Integer getId(){
+    public Integer getId(){
         return id;
     }
 }

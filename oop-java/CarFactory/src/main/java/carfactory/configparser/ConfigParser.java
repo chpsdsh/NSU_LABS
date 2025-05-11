@@ -42,6 +42,9 @@ public class ConfigParser {
         return workers;
     }
 
+    public boolean isLogSale() {
+        return logSale;
+    }
 
     public ConfigParser() throws ParserException {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("config.txt")) {

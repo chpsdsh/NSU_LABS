@@ -11,13 +11,22 @@ public class Storage<T>{
 
     public Storage(int size){
         this.size = size;
+
     }
 
     public synchronized int getDetailsCount() {
         return detailsCount;
     }
 
-    public synchronized void put(T detail) {
+    public boolean isFull() {
+        return isFull;
+    }
+
+    public synchronized void put(T detail) throws InterruptedException {
+        while (isFull){
+            wait();
+        }
+
         details.add(detail);
         detailsCount++;
         if (detailsCount == size) {
@@ -26,7 +35,12 @@ public class Storage<T>{
         notifyAll();
     }
 
-    public synchronized T get(){
+    public synchronized T get() throws InterruptedException {
+        while(details.isEmpty()){
+            System.out.println(detailsCount);
+            wait();
+        }
+
         detailsCount--;
         if(detailsCount != size){
             isFull = false;
@@ -34,6 +48,4 @@ public class Storage<T>{
         notifyAll();
         return details.remove();
     }
-
-
 }

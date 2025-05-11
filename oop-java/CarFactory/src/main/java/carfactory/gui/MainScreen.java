@@ -3,6 +3,7 @@ package carfactory.gui;
 import carfactory.configparser.ConfigParser;
 import carfactory.exceptions.CarFactoryException;
 import carfactory.exceptions.ParserException;
+import carfactory.factory.CarFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainScreen extends JFrame {
-    public MainScreen() throws CarFactoryException{
+    public MainScreen() throws CarFactoryException {
         super("Car Factory");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,9 +35,9 @@ public class MainScreen extends JFrame {
         storageLine.add(accessoriesStorage);
 
         JPanel supplierLine = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JLabel bodySupplier = new JLabel("Supplier Bodies: 0");
-        JLabel engineSupplier = new JLabel("Supplier Engines: 0");
-        JLabel accessoriesSupplier = new JLabel("Supplier Accessories: 0");
+        JLabel bodySupplier = new JLabel("PartSupplier Bodies: 0");
+        JLabel engineSupplier = new JLabel("PartSupplier Engines: 0");
+        JLabel accessoriesSupplier = new JLabel("PartSupplier Accessories: 0");
         supplierLine.add(bodySupplier);
         supplierLine.add(Box.createHorizontalStrut(10));
         supplierLine.add(engineSupplier);
@@ -58,12 +59,12 @@ public class MainScreen extends JFrame {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                    try {
-                        ConfigParser parser = new ConfigParser();
+                try {
+                    CarFactory carFactory = new CarFactory();
+                }catch (CarFactoryException e){
+                    throw new RuntimeException(e);
+                }
 
-                    } catch (ParserException e) {
-                        throw new RuntimeException(e);
-                    }
             }
         });
         startButton.setAlignmentX(CENTER_ALIGNMENT);
