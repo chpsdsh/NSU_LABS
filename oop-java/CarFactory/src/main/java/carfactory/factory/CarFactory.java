@@ -35,7 +35,7 @@ public class CarFactory {
 
         for (int i = 0; i < parser.getAccessorySuppliers(); i++) {
             PartSupplier<Accessory> accessoryPartSupplier = new PartSupplier<>(accessoryStorage, Accessory::new);
-            Thread accessorySupplier = new Thread(accessoryPartSupplier, "Accessory thread" + i);
+            Thread accessorySupplier = new Thread(accessoryPartSupplier, "Accessory thread " + i);
             accessorySuppliers.add(accessorySupplier);
             accessorySupplier.start();
         }
@@ -46,23 +46,21 @@ public class CarFactory {
                 engineStorage,
                 accessoryStorage,
                 carStorage);
+        Thread storageControllerThread = new Thread(storageController);
 
         List<Thread> dealers = new ArrayList<>(parser.getDealers());
+        storageControllerThread.start();
 
         for (int i = 0; i < parser.getDealers(); i++) {
-            Dealer dealer = new Dealer(carStorage,i,parser.isLogSale());
+            Dealer dealer = new Dealer(carStorage,storageController,i,parser.isLogSale());
             Thread dealerThread = new Thread(dealer, "Dealer " + i);
             dealers.add(dealerThread);
             dealerThread.start();
         }
 
-        Thread bodySupplier = new Thread(bodyPartSupplier);
-        Thread engineSupplier = new Thread((enginePartSupplier));
-        Thread storageControllerThread = new Thread(storageController);
-        storageControllerThread.start();
+        Thread bodySupplier = new Thread(bodyPartSupplier, "BodySupplier");
+        Thread engineSupplier = new Thread(enginePartSupplier,"EngineSupplier");
         bodySupplier.start();
         engineSupplier.start();
-
-        System.out.printf("asdasdas");
     }
 }

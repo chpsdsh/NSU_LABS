@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class ThreadPool {
     private final TaskQueue taskQueue = new TaskQueue();
-    private ArrayList<Thread> threads;
+    private final ArrayList<Thread> threads;
 
 
     public ThreadPool(int numThreads) {

@@ -9,7 +9,7 @@ import java.util.function.Supplier;
 public class PartSupplier<T extends CarPart> implements Runnable {
     private final Storage<T> storage;
     private final Supplier<T> partSupplier;
-    private int delay;
+    private int delay = 1;
 
     public PartSupplier(Storage<T> storage, Supplier<T> partSupplier) {
         this.storage = storage;
@@ -25,8 +25,9 @@ public class PartSupplier<T extends CarPart> implements Runnable {
         try {
             while (!Thread.currentThread().isInterrupted()) {
                 T part = partSupplier.get();
+                System.out.println("part created "+ Thread.currentThread().getName());
                 storage.put(part);
-                Thread.sleep(delay);
+                Thread.sleep(delay*1000L);
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

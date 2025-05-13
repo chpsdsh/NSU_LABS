@@ -15,6 +15,7 @@ build/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+/logs
 
 ### Eclipse ###
 .apt_generated
@@ -34,7 +35,6 @@ bin/
 /dist/
 /nbdist/
 /.nb-gradle/
-
 ### VS Code ###
 .vscode/
 

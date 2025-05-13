@@ -1,4 +1,4 @@
-package carfactory.factory;
+package carfactory.threadpool;
 
 import carfactory.car.Car;
 import carfactory.parts.Accessory;
@@ -8,22 +8,23 @@ import carfactory.storage.Storage;
 
 
 public class WorkerTask implements Runnable {
-    private Storage<Body> bodyStorage;
-    private Storage<Engine> engineStorage;
-    private Storage<Accessory> accessoryStorage;
-    private Storage<Car> carStorage;
+    private final Storage<Body> bodyStorage;
+    private final Storage<Engine> engineStorage;
+    private final Storage<Accessory> accessoryStorage;
+    private final Storage<Car> carStorage;
 
     public WorkerTask(Storage<Body> bodyStorage, Storage<Engine> engineStorage, Storage<Accessory> acessoryStorage, Storage<Car> carStorage) {
         this.bodyStorage = bodyStorage;
         this.engineStorage = engineStorage;
         this.accessoryStorage = acessoryStorage;
         this.carStorage = carStorage;
+//        System.out.println("new WorkerTask");
     }
 
     @Override
     public void run() {
         try {
-
+            System.out.println("NEW FUCKING CAR");
             Body body = bodyStorage.get();
             Engine engine = engineStorage.get();
             Accessory accessory = accessoryStorage.get();
