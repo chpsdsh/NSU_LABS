@@ -21,7 +21,7 @@ public class Car extends CarPart {
     }
 
     public String getDetailsId(){
-        return "Body "+body.getId() + "Engine "+ engine.getId() + "Accessory " + accessory.getId();
+        return "Body "+body.getId() + " Engine "+ engine.getId() + " Accessory " + accessory.getId();
     }
 
 }

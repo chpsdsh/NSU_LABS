@@ -4,6 +4,7 @@ import carfactory.car.Car;
 import carfactory.configparser.ConfigParser;
 import carfactory.exceptions.CarFactoryException;
 import carfactory.exceptions.ParserException;
+import carfactory.gui.MainScreen;
 import carfactory.parts.Accessory;
 import carfactory.parts.Body;
 import carfactory.parts.Engine;
@@ -31,13 +32,11 @@ public class CarFactory {
 
         PartSupplier<Body> bodyPartSupplier = new PartSupplier<>(bodyStorage, Body::new);
         PartSupplier<Engine> enginePartSupplier = new PartSupplier<>(engineStorage, Engine::new);
-        List<Thread> accessorySuppliers = new ArrayList<>(parser.getAccessorySuppliers());
+        List<PartSupplier<Accessory>> accessorySuppliers = new ArrayList<>(parser.getAccessorySuppliers());
 
         for (int i = 0; i < parser.getAccessorySuppliers(); i++) {
             PartSupplier<Accessory> accessoryPartSupplier = new PartSupplier<>(accessoryStorage, Accessory::new);
-            Thread accessorySupplier = new Thread(accessoryPartSupplier, "Accessory thread " + i);
-            accessorySuppliers.add(accessorySupplier);
-            accessorySupplier.start();
+            accessorySuppliers.add(accessoryPartSupplier);
         }
 
         ThreadPool threadPool = new ThreadPool(parser.getWorkers());
@@ -48,19 +47,27 @@ public class CarFactory {
                 carStorage);
         Thread storageControllerThread = new Thread(storageController);
 
-        List<Thread> dealers = new ArrayList<>(parser.getDealers());
-        storageControllerThread.start();
+        List<Dealer> dealers = new ArrayList<>(parser.getDealers());
+
 
         for (int i = 0; i < parser.getDealers(); i++) {
-            Dealer dealer = new Dealer(carStorage,storageController,i,parser.isLogSale());
-            Thread dealerThread = new Thread(dealer, "Dealer " + i);
-            dealers.add(dealerThread);
-            dealerThread.start();
+            Dealer dealer = new Dealer(carStorage, storageController, i, parser.isLogSale());
+            dealers.add(dealer);
         }
 
-        Thread bodySupplier = new Thread(bodyPartSupplier, "BodySupplier");
-        Thread engineSupplier = new Thread(enginePartSupplier,"EngineSupplier");
-        bodySupplier.start();
-        engineSupplier.start();
+        MainScreen mainScreen = new MainScreen(bodyStorage, engineStorage,
+                accessoryStorage,carStorage, bodyPartSupplier,
+                enginePartSupplier, accessorySuppliers,
+                dealers, threadPool);
+        storageControllerThread.start();
+        for(PartSupplier<Accessory> a: accessorySuppliers){
+            a.start();
+        }
+        for(Dealer d: dealers){
+            d.start();
+        }
+        bodyPartSupplier.start();
+        enginePartSupplier.start();
+
     }
 }

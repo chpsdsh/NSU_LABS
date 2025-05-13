@@ -18,20 +18,16 @@ public class WorkerTask implements Runnable {
         this.engineStorage = engineStorage;
         this.accessoryStorage = acessoryStorage;
         this.carStorage = carStorage;
-//        System.out.println("new WorkerTask");
     }
 
     @Override
     public void run() {
         try {
-            System.out.println("NEW FUCKING CAR");
             Body body = bodyStorage.get();
             Engine engine = engineStorage.get();
             Accessory accessory = accessoryStorage.get();
             Car car = new Car(body, engine, accessory);
-
             carStorage.put(car);
-
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

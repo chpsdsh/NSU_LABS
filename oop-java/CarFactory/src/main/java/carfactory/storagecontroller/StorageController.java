@@ -34,21 +34,17 @@ public class StorageController implements Runnable {
     @Override
     public void run() {
         {
-            while (!Thread.currentThread().isInterrupted()){
-                try {
+            try {
+                while (!Thread.currentThread().isInterrupted()) {
                     synchronized (saleLock) {
                         saleLock.wait();
                     }
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-
+                    threadPool.execute(new WorkerTask(bodyStorage, engineStorage, accessoryStorage, carStorage));
                 }
-
-                threadPool.execute(new WorkerTask(bodyStorage, engineStorage, accessoryStorage, carStorage));
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
 
             }
-
-
         }
     }
 }

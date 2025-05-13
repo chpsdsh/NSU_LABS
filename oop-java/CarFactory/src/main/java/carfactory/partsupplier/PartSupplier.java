@@ -6,17 +6,17 @@ import carfactory.storage.Storage;
 import java.util.function.Supplier;
 
 
-public class PartSupplier<T extends CarPart> implements Runnable {
+public class PartSupplier<T extends CarPart> extends Thread {
     private final Storage<T> storage;
     private final Supplier<T> partSupplier;
-    private int delay = 1;
+    private int delay = 1500;
 
     public PartSupplier(Storage<T> storage, Supplier<T> partSupplier) {
         this.storage = storage;
         this.partSupplier = partSupplier;
     }
 
-    private synchronized void setDelay(int delay) {
+    public void setDelay(int delay) {
         this.delay = delay;
     }
 
@@ -25,9 +25,8 @@ public class PartSupplier<T extends CarPart> implements Runnable {
         try {
             while (!Thread.currentThread().isInterrupted()) {
                 T part = partSupplier.get();
-                System.out.println("part created "+ Thread.currentThread().getName());
                 storage.put(part);
-                Thread.sleep(delay*1000L);
+                Thread.sleep(delay);
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

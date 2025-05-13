@@ -1,12 +1,19 @@
 package carfactory.threadpool;
 
 
+import carfactory.gui.ChangesListener;
+
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class ThreadPool {
     private final TaskQueue taskQueue = new TaskQueue();
     private final ArrayList<Thread> threads;
+    private ChangesListener taskQueueListener;
 
+    public void setTaskQueueListener(ChangesListener listener){
+        this.taskQueueListener = listener;
+    }
 
     public ThreadPool(int numThreads) {
         threads = new ArrayList<>(numThreads);
@@ -19,6 +26,7 @@ public class ThreadPool {
 
     public void execute(Runnable task) {
         taskQueue.put(task);
+        SwingUtilities.invokeLater(() -> taskQueueListener.onTimeChange(taskQueue.getSize()));
     }
 
     public void shutdown() {

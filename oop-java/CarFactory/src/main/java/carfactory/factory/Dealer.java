@@ -6,10 +6,10 @@ import carfactory.storagecontroller.StorageController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Dealer implements Runnable {
+public class Dealer extends Thread {
     private final Storage<Car> carStorage;
     private final StorageController storageController;
-    private int delay = 3;
+    private int delay = 1500;
     private final int number;
     private final boolean logging;
     private static final Logger logger = LogManager.getLogger(Dealer.class);
@@ -28,25 +28,20 @@ public class Dealer implements Runnable {
     @Override
     public void run() {
         try {
-            while (!Thread.currentThread().isInterrupted()) {
+            while (!this.isInterrupted()) {
                 if(carStorage.isEmpty()){
-                    System.out.println("isEMPTY");
                     storageController.notifySales();
                 }
-                System.out.println("DEALER THREAD " +Thread.currentThread().getName());
                 Car car = carStorage.get();
-                System.out.println("car");
                 storageController.notifySales();
 
                 if (logging) {
                     logger.info("Dealer: " + number + "; " + "Car ID: " + car.getId() + " (" + car.getDetailsId() + ").");
                 }
-
-                Thread.sleep(delay * 1000L);
-
+                Thread.sleep(delay);
             }
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            this.interrupt();
         }
     }
 }

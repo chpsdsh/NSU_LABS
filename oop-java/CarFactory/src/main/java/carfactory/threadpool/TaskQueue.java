@@ -6,6 +6,10 @@ import java.util.Queue;
 public class TaskQueue {
     private final Queue<Runnable> queue = new LinkedList<>();
 
+    public synchronized int getSize(){
+        return queue.size();
+    }
+
     public synchronized void put(Runnable task){
         queue.add(task);
         System.out.println(queue.size());
