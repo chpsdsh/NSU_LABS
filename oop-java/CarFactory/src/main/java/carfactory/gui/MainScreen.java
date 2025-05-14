@@ -1,6 +1,6 @@
 package carfactory.gui;
 
-import carfactory.car.Car;
+import carfactory.parts.Car;
 import carfactory.factory.CarFactory;
 import carfactory.factory.Dealer;
 import carfactory.parts.Accessory;

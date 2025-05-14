@@ -1,6 +1,6 @@
 package carfactory.factory;
 
-import carfactory.car.Car;
+import carfactory.parts.Car;
 import carfactory.configparser.ConfigParser;
 import carfactory.exceptions.CarFactoryException;
 import carfactory.exceptions.ParserException;

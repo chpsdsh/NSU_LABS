@@ -1,9 +1,4 @@
-package carfactory.car;
-
-import carfactory.parts.Accessory;
-import carfactory.parts.Body;
-import carfactory.parts.CarPart;
-import carfactory.parts.Engine;
+package carfactory.parts;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

@@ -1,6 +1,6 @@
 package carfactory.storagecontroller;
 
-import carfactory.car.Car;
+import carfactory.parts.Car;
 import carfactory.threadpool.WorkerTask;
 import carfactory.parts.Accessory;
 import carfactory.parts.Body;

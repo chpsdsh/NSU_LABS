@@ -1,6 +1,6 @@
 package carfactory.factory;
 
-import carfactory.car.Car;
+import carfactory.parts.Car;
 import carfactory.storage.Storage;
 import carfactory.storagecontroller.StorageController;
 import org.apache.logging.log4j.LogManager;
