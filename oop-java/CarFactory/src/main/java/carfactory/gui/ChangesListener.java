@@ -1,5 +1,5 @@
 package carfactory.gui;
 
 public interface ChangesListener {
-    public void onTimeChange(Integer value);
+    void onTimeChange(Integer value);
 }
