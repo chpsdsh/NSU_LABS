@@ -1,6 +1,7 @@
 package carfactory.gui;
 
 import carfactory.car.Car;
+import carfactory.factory.CarFactory;
 import carfactory.factory.Dealer;
 import carfactory.parts.Accessory;
 import carfactory.parts.Body;
@@ -12,29 +13,26 @@ import carfactory.threadpool.ThreadPool;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
 
 
 public class MainScreen extends JFrame {
-    private JLabel bodyDetailsCountText = new JLabel("");
-    private JLabel engineDetailsCountText = new JLabel("");
-    private JLabel accessoriesDetailsCountText = new JLabel("");
-    private JLabel carsCountText = new JLabel("");
-    private JLabel bodyStorageText = new JLabel("");
-    private JLabel engineStorageText = new JLabel("");
-    private JLabel accessoriesStorageText = new JLabel("");
-    private JLabel carStorageText = new JLabel("");
-    private JLabel queueTasksText = new JLabel("");
+    private final JLabel bodyDetailsCountText = new JLabel("PartSupplier Bodies: 0");
+    private final JLabel engineDetailsCountText = new JLabel("PartSupplier Engines: 0");
+    private final JLabel accessoriesDetailsCountText = new JLabel("PartSupplier Accessories: 0");
+    private final JLabel carsCountText = new JLabel("Cars Produced: 0");
+    private final JLabel bodyStorageText = new JLabel("Storage Body: 0");
+    private final JLabel engineStorageText = new JLabel("Storage Engine: 0");
+    private final JLabel accessoriesStorageText = new JLabel("Storage Accessory: 0");
+    private final JLabel carStorageText = new JLabel("Storage Cars: 0");
+    private final JLabel queueTasksText = new JLabel("Tasks in queue: 0");
 
-    private final Storage<Body> bodyStorage;
-    private final Storage<Engine> engineStorage;
-    private final Storage<Accessory> accessoryStorage;
-    private final Storage<Car> carStorage;
     private final PartSupplier<Body> bodySupplier;
     private final PartSupplier<Engine> engineSupplier;
     private final List<PartSupplier<Accessory>> accessorySuppliers;
     private final List<Dealer> dealers;
-    private final ThreadPool threadPool;
 
     public MainScreen(Storage<Body> bodyStorage,
                       Storage<Engine> engineStorage,
@@ -44,20 +42,26 @@ public class MainScreen extends JFrame {
                       PartSupplier<Engine> engineSupplier,
                       List<PartSupplier<Accessory>> accessorySuppliers,
                       List<Dealer> dealers,
-                      ThreadPool threadPool
+                      ThreadPool threadPool,
+                      CarFactory carFactory
     ) {
         super("Car Factory");
-        this.bodyStorage = bodyStorage;
-        this.engineStorage = engineStorage;
-        this.accessoryStorage = accessoryStorage;
-        this.carStorage = carStorage;
         this.bodySupplier = bodySupplier;
         this.engineSupplier = engineSupplier;
         this.accessorySuppliers = accessorySuppliers;
         this.dealers = dealers;
-        this.threadPool = threadPool;
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                carFactory.stopFactory();
+                dispose();
+                System.exit(0);
+            }
+        });
+
         setSize(900, 600);
         setLocationRelativeTo(null);
 
@@ -156,15 +160,15 @@ public class MainScreen extends JFrame {
                 int value = slider.getValue();
                 engineSupplier.setDelay(value);
             });
-            case "Accessories" -> slider.addChangeListener(e -> {
+            case "Dealer" -> slider.addChangeListener(e -> {
                 int value = slider.getValue();
-                for(Dealer d : dealers){
+                for (Dealer d : dealers) {
                     d.setDelay(value);
                 }
             });
-            case "Dealer" -> slider.addChangeListener(e -> {
+            case "Accessories" -> slider.addChangeListener(e -> {
                 int value = slider.getValue();
-                for(PartSupplier<Accessory> p : accessorySuppliers){
+                for (PartSupplier<Accessory> p : accessorySuppliers) {
                     p.setDelay(value);
                 }
             });
@@ -173,7 +177,6 @@ public class MainScreen extends JFrame {
         panel.add(Box.createVerticalStrut(5));
         panel.add(slider);
         panel.add(Box.createVerticalStrut(15));
-
         return panel;
     }
 }

@@ -1,13 +1,12 @@
 package carfactory.threadpool;
 
-public class WorkerThread implements Runnable {
+public class WorkerThread extends Thread {
     private final TaskQueue taskQueue;
 
     public WorkerThread(TaskQueue taskQueue) {
         this.taskQueue = taskQueue;
     }
 
-    @Override
     public void run() {
         try {
             while (!Thread.currentThread().isInterrupted()) {

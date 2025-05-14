@@ -12,7 +12,6 @@ public class TaskQueue {
 
     public synchronized void put(Runnable task){
         queue.add(task);
-        System.out.println(queue.size());
         notifyAll();
     }
 

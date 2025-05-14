@@ -29,12 +29,8 @@ public class Dealer extends Thread {
     public void run() {
         try {
             while (!this.isInterrupted()) {
-                if(carStorage.isEmpty()){
-                    storageController.notifySales();
-                }
                 Car car = carStorage.get();
                 storageController.notifySales();
-
                 if (logging) {
                     logger.info("Dealer: " + number + "; " + "Car ID: " + car.getId() + " (" + car.getDetailsId() + ").");
                 }

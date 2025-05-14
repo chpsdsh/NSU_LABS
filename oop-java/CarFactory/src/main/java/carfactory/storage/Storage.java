@@ -19,10 +19,6 @@ public class Storage<T>{
         this.size = size;
     }
 
-    public synchronized boolean isEmpty(){
-        return detailsCount == 0;
-    }
-
     public synchronized void setStorageChangesListener(ChangesListener listener){
         this.storageChangesListener = listener;
     }
@@ -35,7 +31,6 @@ public class Storage<T>{
         while (isFull){
             wait();
         }
-        System.out.println("Details: " + details.size());
         details.add(detail);
         detailsCount++;
         SwingUtilities.invokeLater(() -> storageChangesListener.onTimeChange(detailsCount));

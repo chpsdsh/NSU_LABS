@@ -18,7 +18,7 @@ public class ThreadPool {
     public ThreadPool(int numThreads) {
         threads = new ArrayList<>(numThreads);
         for (int i = 0; i < numThreads; i++) {
-            Thread t = new Thread(new WorkerThread(taskQueue), "WorkerThread - " + i);
+            Thread t = new WorkerThread(taskQueue);
             t.start();
             threads.add(t);
         }

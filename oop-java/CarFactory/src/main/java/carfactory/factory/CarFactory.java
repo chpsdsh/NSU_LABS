@@ -17,9 +17,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarFactory {
-    private final ConfigParser parser;
+    private final ThreadPool threadPool;
+    private final Thread storageControllerThread;
+    private final PartSupplier<Body> bodyPartSupplier;
+    private final PartSupplier<Engine> enginePartSupplier;
+    private final List<PartSupplier<Accessory>> accessorySuppliers;
+    private final List<Dealer> dealers;
 
     public CarFactory() throws CarFactoryException {
+        ConfigParser parser;
         try {
             parser = new ConfigParser();
         } catch (ParserException e) {
@@ -30,44 +36,65 @@ public class CarFactory {
         Storage<Accessory> accessoryStorage = new Storage<>(parser.getStorageAccessorySize());
         Storage<Car> carStorage = new Storage<>(parser.getStorageAutoSize());
 
-        PartSupplier<Body> bodyPartSupplier = new PartSupplier<>(bodyStorage, Body::new);
-        PartSupplier<Engine> enginePartSupplier = new PartSupplier<>(engineStorage, Engine::new);
-        List<PartSupplier<Accessory>> accessorySuppliers = new ArrayList<>(parser.getAccessorySuppliers());
+        bodyPartSupplier = new PartSupplier<>(bodyStorage, Body::new);
+        enginePartSupplier = new PartSupplier<>(engineStorage, Engine::new);
+        accessorySuppliers = new ArrayList<>(parser.getAccessorySuppliers());
 
         for (int i = 0; i < parser.getAccessorySuppliers(); i++) {
             PartSupplier<Accessory> accessoryPartSupplier = new PartSupplier<>(accessoryStorage, Accessory::new);
             accessorySuppliers.add(accessoryPartSupplier);
         }
 
-        ThreadPool threadPool = new ThreadPool(parser.getWorkers());
+        threadPool = new ThreadPool(parser.getWorkers());
+
         StorageController storageController = new StorageController(threadPool,
                 bodyStorage,
                 engineStorage,
                 accessoryStorage,
                 carStorage);
-        Thread storageControllerThread = new Thread(storageController);
 
-        List<Dealer> dealers = new ArrayList<>(parser.getDealers());
+        storageControllerThread = new Thread(storageController,"STORAGE CONTROLLER");
 
+        dealers = new ArrayList<>(parser.getDealers());
 
         for (int i = 0; i < parser.getDealers(); i++) {
             Dealer dealer = new Dealer(carStorage, storageController, i, parser.isLogSale());
             dealers.add(dealer);
         }
 
-        MainScreen mainScreen = new MainScreen(bodyStorage, engineStorage,
+        new MainScreen(bodyStorage, engineStorage,
                 accessoryStorage,carStorage, bodyPartSupplier,
                 enginePartSupplier, accessorySuppliers,
-                dealers, threadPool);
+                dealers, threadPool,this);
+
         storageControllerThread.start();
-        for(PartSupplier<Accessory> a: accessorySuppliers){
-            a.start();
-        }
-        for(Dealer d: dealers){
+        storageController.notifySales();
+
+        for(Thread d: dealers){
             d.start();
         }
+
+        for(Thread a: accessorySuppliers){
+            a.start();
+        }
+
         bodyPartSupplier.start();
         enginePartSupplier.start();
+    }
 
+    public void stopFactory(){
+        threadPool.shutdown();
+
+        storageControllerThread.interrupt();
+
+        for(Thread dealer: dealers){
+            dealer.interrupt();
+        }
+
+        bodyPartSupplier.interrupt();
+        enginePartSupplier.interrupt();
+        for (Thread accessorySupplier: accessorySuppliers){
+            accessorySupplier.interrupt();
+        }
     }
 }
