@@ -2,7 +2,7 @@ package carfactory.gui;
 
 import carfactory.parts.Car;
 import carfactory.factory.CarFactory;
-import carfactory.factory.Dealer;
+import carfactory.dealer.Dealer;
 import carfactory.parts.Accessory;
 import carfactory.parts.Body;
 import carfactory.parts.Engine;

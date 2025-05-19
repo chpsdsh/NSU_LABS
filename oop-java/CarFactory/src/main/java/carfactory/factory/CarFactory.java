@@ -1,5 +1,6 @@
 package carfactory.factory;
 
+import carfactory.dealer.Dealer;
 import carfactory.parts.Car;
 import carfactory.configparser.ConfigParser;
 import carfactory.exceptions.CarFactoryException;
