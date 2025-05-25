@@ -30,26 +30,28 @@ public class JsonClientHandler extends ClientHandler {
             reader.setLenient(true);
 
             while (!Thread.currentThread().isInterrupted()) {
-                ClientMessage clientMessage = gson.fromJson(reader, ClientMessage.class);
-                updateActivity();
-
                 try {
-                    if (clientMessage.type == null) {
+                    ClientMessage clientMessage = gson.fromJson(reader, ClientMessage.class);
+                    updateActivity();
+
+                    if (clientMessage == null || clientMessage.type == null) {
                         sendFailure("message has no type");
+                        continue;
                     }
+
                     handleClientMessage(clientMessage);
+
                 } catch (ClientHandlerException e) {
                     Thread.currentThread().interrupt();
                 }
             }
-        } catch (JsonSyntaxException e) {
-            System.err.println("Error в JsonClientHandler: " + e.getMessage());
+        } catch (JsonSyntaxException  e) {
+            System.err.println("Error in ClientHandler: " + e.getMessage());
         } finally {
+            server.removeClient(this);
             try {
-                handleLogOut();
-            } catch (ClientHandlerException e) {
-                Thread.currentThread().interrupt();
-            }
+                socket.close();
+            } catch (IOException ignored) {}
         }
     }
 
@@ -71,27 +73,27 @@ public class JsonClientHandler extends ClientHandler {
 
     @Override
     public void handleLogIn(ClientMessage clientMessage) throws ClientHandlerException {
-        setLoggingData(username, server.generateSessionID());
+        setLoggingData(clientMessage.name, server.generateSessionID());
         sendSuccess("successfully logged in", sessionId);
         server.broadcastUserLogin(username, sessionId);
     }
 
     @Override
-    public void handleLogOut() throws ClientHandlerException {
-        JsonObject json = new JsonObject();
-        json.addProperty("type", "logout");
-        json.addProperty("message", "user logged out");
+    public void handleLogOut(ClientMessage clientMessage) throws ClientHandlerException {
+        server.removeClient(this);
         try {
-            sendJson(json);
-        } catch (JsonClientHandlerException e) {
-            throw new ClientHandlerException(e.getMessage(), e);
+            socket.close();
+        } catch (IOException e) {
+            throw new ClientHandlerException("Error closing socket", e);
         }
+        server.broadcastUserDisconnect(clientMessage.name);
+        Thread.currentThread().interrupt();
     }
 
     @Override
     public void handleListRequest() throws ClientHandlerException {
         JsonObject response = new JsonObject();
-        response.addProperty("type", "success");
+        response.addProperty("type", "list");
 
         JsonArray listUsers = new JsonArray();
 
@@ -99,10 +101,9 @@ public class JsonClientHandler extends ClientHandler {
         for (ClientHandler client : loggedInClients) {
             JsonObject user = new JsonObject();
             user.addProperty("name", client.getUsername());
-            user.addProperty("type", client.getClientType());
             listUsers.add(user);
         }
-        response.add("listusers", listUsers);
+        response.addProperty("message", listUsers.toString());
         try {
             sendJson(response);
         } catch (JsonClientHandlerException e) {
@@ -123,17 +124,6 @@ public class JsonClientHandler extends ClientHandler {
     }
 
 
-    @Override
-    public void sendSuccess(String message) throws ClientHandlerException {
-        JsonObject json = new JsonObject();
-        json.addProperty("type", "success");
-        json.addProperty("message", message);
-        try {
-            sendJson(json);
-        } catch (JsonClientHandlerException e) {
-            throw new ClientHandlerException(e.getMessage(), e);
-        }
-    }
 
     @Override
     public void sendFailure(String message) throws ClientHandlerException {
@@ -142,7 +132,7 @@ public class JsonClientHandler extends ClientHandler {
         json.addProperty("message", message);
         try {
             sendJson(json);
-        } catch (JsonClientHandlerException e) {
+        } catch (JsonClientHandlerException  e) {
             throw new ClientHandlerException(e.getMessage(), e);
         }
     }
@@ -151,7 +141,20 @@ public class JsonClientHandler extends ClientHandler {
     public void sendLoginInformation(String username, String sessionId) throws ClientHandlerException {
         JsonObject json = new JsonObject();
         json.addProperty("type", "message");
-        json.addProperty("message", "User logged" + username);
+        json.addProperty("message", "User logged " + username);
+        try {
+            sendJson(json);
+        } catch (JsonClientHandlerException e) {
+            throw new ClientHandlerException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public void sendDisconnectInformation(String username) throws ClientHandlerException {
+        JsonObject json = new JsonObject();
+        json.addProperty("type", "disconnect");
+        json.addProperty("name", username);
+        json.addProperty("message", "disconnected");
         try {
             sendJson(json);
         } catch (JsonClientHandlerException e) {

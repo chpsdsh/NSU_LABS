@@ -20,16 +20,23 @@ public class ObjectClientHandler extends ClientHandler{
     }
 
     @Override
+    public void handleMessage(ClientMessage clientMessage) throws ClientHandlerException{}
+
+
+    @Override
     public void handleLogIn(ClientMessage clientMessage) throws ClientHandlerException{}
     @Override
-    public void handleLogOut() throws ClientHandlerException{}
+    public void handleLogOut(ClientMessage clientMessage) throws ClientHandlerException{}
     @Override
     public void handleListRequest() throws ClientHandlerException{}
-    @Override
-    public void sendSuccess(String message) throws ClientHandlerException{}
-    @Override
+     @Override
     public void sendFailure(String message) throws ClientHandlerException{}
     @Override
     public void sendLoginInformation(String username, String sessionId) throws ClientHandlerException{}
+
+    @Override
+    public void sendDisconnectInformation(String username)throws ClientHandlerException{}
+    @Override
+    public  void sendSuccess(String message, String sessionId) throws ClientHandlerException{}
 
 }

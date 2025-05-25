@@ -10,6 +10,8 @@ public abstract class ClientHandler implements Runnable {
     protected String username;
     protected String clientType;
     protected String sessionId;
+    protected Thread connectionPinger;
+    protected Thread inactivityPinger;
     protected volatile long lastActivityTime;
     protected volatile long lastPingTime;
 
@@ -52,7 +54,7 @@ public abstract class ClientHandler implements Runnable {
         updateActivity();
         switch (clientMessage.type) {
             case "login" -> handleLogIn(clientMessage);
-            case "disconnect" -> handleLogOut();
+            case "disconnect" -> handleLogOut(clientMessage);
             case "message" -> handleMessage(clientMessage);
             case "list" -> handleListRequest();
             default -> sendFailure("unknown command");
@@ -63,7 +65,7 @@ public abstract class ClientHandler implements Runnable {
         lastActivityTime = System.currentTimeMillis();
     }
 
-    public void updatePingTime(){
+    public void updatePingTime() {
         lastPingTime = System.currentTimeMillis();
     }
 
@@ -73,16 +75,19 @@ public abstract class ClientHandler implements Runnable {
 
     public abstract void handleLogIn(ClientMessage clientMessage) throws ClientHandlerException;
 
-    public abstract void handleLogOut() throws ClientHandlerException;
+    public abstract void handleLogOut(ClientMessage clientMessage) throws ClientHandlerException;
 
     public abstract void handleListRequest() throws ClientHandlerException;
 
     public abstract void sendSuccess(String message, String sessionId) throws ClientHandlerException;
 
-    public abstract void sendSuccess(String message) throws ClientHandlerException;
-
     public abstract void sendFailure(String message) throws ClientHandlerException;
 
     public abstract void sendLoginInformation(String username, String sessionId) throws ClientHandlerException;
+
+    public abstract void sendDisconnectInformation(String username) throws ClientHandlerException;
+
+
+
 
 }
