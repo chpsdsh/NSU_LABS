@@ -31,6 +31,9 @@ public class JsonClient {
     }
 
     public JsonClient() throws IOException {
+        long pid = ProcessHandle.current().pid();
+        System.out.println("PID: " + pid);
+
         socket = new Socket("localhost", 1234);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -52,10 +55,10 @@ public class JsonClient {
                 case "/disconnect" -> {
                     try {
                         sendDisconnect();
+                        closeClient();
                     } catch (JsonClientException e) {
                         Thread.currentThread().interrupt();
                     }
-                    System.exit(0);
                 }
                 case "/login" -> {
                     try {
@@ -108,11 +111,31 @@ public class JsonClient {
             }
             case "error" -> {
                 System.out.println("[ERROR]" + clientMessage.message);
-                sendDisconnect();
-                System.exit(0);
+                closeClient();
             }
+            case "logout" -> {
+                System.out.println("[LOGOUT] " + clientMessage.name);
+                closeClient();
+            }
+            case "login" -> System.out.println("[LOGIN] " + clientMessage.name);
             case "list" -> readUsersList(clientMessage);
-            case "disconnect" -> System.out.println("[DISCONNECT]" + clientMessage.name + " " + clientMessage.message);
+            case "ping" -> replyPing();
+            case "disconnect" -> System.out.println("[DISCONNECT] " + clientMessage.name + " " + clientMessage.message);
+        }
+    }
+
+
+    private void replyPing() throws JsonClientException {
+        ClientMessage clientMessage = new ClientMessage();
+        clientMessage.type = "ping";
+        String json = gson.toJson(clientMessage);
+        try {
+            out.write(json);
+            out.newLine();
+            out.flush();
+
+        } catch (IOException e) {
+            throw new JsonClientException("Error sending message", e);
         }
     }
 
@@ -152,6 +175,7 @@ public class JsonClient {
     private void sendDisconnect() throws JsonClientException {
         ClientMessage clientMessage = new ClientMessage();
         clientMessage.type = "disconnect";
+        clientMessage.message = "disconnected";
         clientMessage.name = name;
         clientMessage.session = sessionId;
         String json = gson.toJson(clientMessage);
@@ -163,11 +187,6 @@ public class JsonClient {
             throw new JsonClientException("Exception while disconnecting", e);
         }
 
-        try {
-            socket.close();
-        } catch (IOException e) {
-            throw new JsonClientException("Error closing socket", e);
-        }
     }
 
     private void sendLogin() throws JsonClientException {
@@ -204,5 +223,17 @@ public class JsonClient {
         } catch (IOException e) {
             throw new JsonClientException("Exception while disconnecting", e);
         }
+    }
+
+    private void closeClient() {
+        try {
+            socket.close();
+            in.close();
+            out.close();
+        } catch (IOException ignored) {
+        }
+        messageHandler.interrupt();
+        messageWriter.interrupt();
+        System.exit(0);
     }
 }

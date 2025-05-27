@@ -2,36 +2,74 @@ package onlinechat.server;
 
 import onlinechat.exceptions.ClientHandlerException;
 
+import java.io.IOException;
 import java.net.Socket;
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public abstract class ClientHandler implements Runnable {
     protected final Socket socket;
     protected final Server server;
     protected String username;
-    protected String clientType;
     protected String sessionId;
-    protected Thread connectionPinger;
-    protected Thread inactivityPinger;
     protected volatile long lastActivityTime;
     protected volatile long lastPingTime;
+    protected final BlockingQueue<ClientMessage> outgoingMessages = new LinkedBlockingQueue<>();
+    private final Thread senderThread;
+    private final Object messageLock = new Object();
+    private int lastSendIndex = 0;
+
 
     public ClientHandler(Socket socket, Server server) {
         this.socket = socket;
         this.server = server;
         lastActivityTime = System.currentTimeMillis();
+        senderThread = new Thread(this::senderLoop);
     }
 
-    public String getClientType() {
-        return clientType;
+    public void notifyMessageLock() {
+        synchronized (messageLock) {
+            messageLock.notify();
+        }
     }
+
+    public void updateLastSend() {
+        synchronized (messageLock) {
+            lastSendIndex--;
+        }
+    }
+
+    private void senderLoop() {
+        while (!Thread.currentThread().isInterrupted()) {
+            List<ClientMessage> history = server.getHistory();
+            synchronized (messageLock) {
+                while (lastSendIndex > history.size()) {
+                    try {
+                        messageLock.wait();
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+                while (lastSendIndex < history.size()) {
+                    ClientMessage msg = history.get(lastSendIndex++);
+                    try {
+                        if (!msg.session.equals(sessionId)) {
+                            sendMessage(msg);
+                        }
+                    } catch (ClientHandlerException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+            }
+        }
+    }
+
 
     public String getUsername() {
         return username;
     }
 
-    public String getSessionId() {
-        return sessionId;
-    }
 
     public long getLastActivityTime() {
         return lastActivityTime;
@@ -51,12 +89,23 @@ public abstract class ClientHandler implements Runnable {
     }
 
     protected void handleClientMessage(ClientMessage clientMessage) throws ClientHandlerException {
-        updateActivity();
+
         switch (clientMessage.type) {
-            case "login" -> handleLogIn(clientMessage);
+            case "login" -> {
+                updateActivity();
+                senderThread.start();
+                handleLogIn(clientMessage);
+            }
             case "disconnect" -> handleLogOut(clientMessage);
-            case "message" -> handleMessage(clientMessage);
-            case "list" -> handleListRequest();
+            case "message" -> {
+                updateActivity();
+                handleMessage(clientMessage);
+            }
+            case "list" -> {
+                updateActivity();
+                handleListRequest();
+            }
+            case "ping" -> updatePingTime();
             default -> sendFailure("unknown command");
         }
     }
@@ -68,6 +117,28 @@ public abstract class ClientHandler implements Runnable {
     public void updatePingTime() {
         lastPingTime = System.currentTimeMillis();
     }
+
+    public void disconnect(String reason) {
+        try {
+            sendLogOut(reason);
+        } catch (ClientHandlerException ignored) {
+        }
+        server.removeClient(this);
+        try {
+            socket.close();
+        } catch (IOException ignored) {
+        }
+
+        ClientMessage clientMessage = new ClientMessage();
+        clientMessage.type = "disconnect";
+        clientMessage.message = reason;
+        clientMessage.name = username;
+        clientMessage.session = sessionId;
+        server.broadcastMessage(clientMessage);
+    }
+
+
+    public abstract void sendLogOut(String message) throws ClientHandlerException;
 
     public abstract void handleMessage(ClientMessage clientMessage) throws ClientHandlerException;
 
@@ -83,11 +154,6 @@ public abstract class ClientHandler implements Runnable {
 
     public abstract void sendFailure(String message) throws ClientHandlerException;
 
-    public abstract void sendLoginInformation(String username, String sessionId) throws ClientHandlerException;
-
-    public abstract void sendDisconnectInformation(String username) throws ClientHandlerException;
-
-
-
+    public abstract void sendPing() throws ClientHandlerException;
 
 }

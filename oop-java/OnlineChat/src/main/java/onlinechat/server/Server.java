@@ -10,14 +10,18 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Server {
     private ServerSocket serverSocket;
     private BufferedReader input;
     private final Object clientLock = new Object();
-    private final List<ClientHandler> clients = new ArrayList<>();
+    private final List<ClientHandler> clients = new CopyOnWriteArrayList<>();
+    private final List<ClientMessage> messageHistory = new ArrayList<>();
+    private final Object historyLock = new Object();
     private Thread activityPinger;
     private Thread connectionPinger;
+    private final int MAX_HISTORY = 100;
 
     public static void main(String[] args) {
         new Server(1234);
@@ -30,40 +34,41 @@ public class Server {
             System.exit(1);
         }
         activityPinger = new Thread(this::pingActivity);
+        connectionPinger = new Thread(this::pingConnection);
+        connectionPinger.start();
         activityPinger.start();
         start();
 
     }
 
-    public void broadcastUserLogin(String username, String sessionId) throws ClientHandlerException {
-        synchronized (clientLock) {
-            for (ClientHandler client : clients) {
-                if (client.isLoggedIn() && !client.sessionId.equals(sessionId)) {
-                    client.sendLoginInformation(username, sessionId);
+    public void addToHistory(ClientMessage msg) {
+        synchronized (historyLock) {
+            if (messageHistory.size() > MAX_HISTORY) {
+                messageHistory.remove(0);
+                for (ClientHandler client : clients) {
+                    client.updateLastSend();
                 }
+            }
+        }
+        messageHistory.add(msg);
+    }
+
+
+    public List<ClientMessage> getHistory() {
+        synchronized (historyLock) {
+            return new ArrayList<>(messageHistory);
+        }
+    }
+
+    public void broadcastMessage(ClientMessage message) {
+        addToHistory(message);
+        for (ClientHandler client : clients) {
+            if (client.isLoggedIn()) {
+                client.notifyMessageLock();
             }
         }
     }
 
-    public void broadcastMessage(ClientMessage clientMessage) throws ClientHandlerException {
-        synchronized (clientLock) {
-            for (ClientHandler client : clients) {
-                if (client.isLoggedIn() && !client.sessionId.equals(clientMessage.session)) {
-                    client.sendMessage(clientMessage);
-                }
-            }
-        }
-    }
-
-    public void broadcastUserDisconnect(String username) throws ClientHandlerException {
-        synchronized (clientLock) {
-            for (ClientHandler client : clients) {
-                if (client.isLoggedIn()) {
-                    client.sendDisconnectInformation(username);
-                }
-            }
-        }
-    }
 
     public String generateSessionID() {
         return "session-" + new Random().nextInt(999999);
@@ -93,31 +98,48 @@ public class Server {
         }
     }
 
-    public void pingActivity()  {
-        while (!Thread.currentThread().isInterrupted()){
+    public void pingConnection() {
+        while (!Thread.currentThread().isInterrupted()) {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            long now = System.currentTimeMillis();
+
+            for (ClientHandler client : clients) {
+                if (client.isLoggedIn()) {
+                    try {
+                        if (now - client.getLastPingTime() > 15000) {
+                            client.disconnect("No ping response");
+                        } else {
+                            System.out.println("sendping");
+                            client.sendPing();
+                        }
+                    } catch (Exception e) {
+                        client.disconnect("Exception pinging client");
+                    }
+                }
+            }
+
+        }
+    }
+
+    public void pingActivity() {
+        while (!Thread.currentThread().isInterrupted()) {
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
             long now = System.currentTimeMillis();
-            List<ClientHandler> toRemove = new ArrayList<>();
 
-            synchronized (clientLock) {
-                for (ClientHandler client : clients) {
-                    if (client.isLoggedIn() && (now - client.getLastActivityTime() > 10000)) {
-                        try {
-                            client.sendFailure("Disconnected due to inactivity");
-                        } catch (ClientHandlerException e) {
-                            System.err.println("Error disconnecting client");
-                        }
-
-                        toRemove.add(client);
-                    }
+            for (ClientHandler client : clients) {
+                System.out.println(now - client.getLastActivityTime());
+                if (client.isLoggedIn() && (now - client.getLastActivityTime() > 20000)) {
+                    client.disconnect("Disconnected due to inactivity");
                 }
-                clients.removeAll(toRemove);
             }
-
         }
     }
 
