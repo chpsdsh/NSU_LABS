@@ -1,6 +1,8 @@
 package onlinechat.server;
 
-import onlinechat.exceptions.ClientHandlerException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,9 +21,10 @@ public class Server {
     private final List<ClientHandler> clients = new CopyOnWriteArrayList<>();
     private final List<ClientMessage> messageHistory = new ArrayList<>();
     private final Object historyLock = new Object();
-    private Thread activityPinger;
-    private Thread connectionPinger;
+    private final Thread activityPinger;
+    private final Thread connectionPinger;
     private final int MAX_HISTORY = 100;
+    private static final Logger logger = LogManager.getLogger(Server.class);
 
     public static void main(String[] args) {
         new Server(1234);
@@ -38,30 +41,32 @@ public class Server {
         connectionPinger.start();
         activityPinger.start();
         start();
-
     }
 
     public void addToHistory(ClientMessage msg) {
         synchronized (historyLock) {
+            logger.info("Adding message to history");
             if (messageHistory.size() > MAX_HISTORY) {
                 messageHistory.remove(0);
                 for (ClientHandler client : clients) {
                     client.updateLastSend();
                 }
             }
+            messageHistory.add(msg);
         }
-        messageHistory.add(msg);
     }
 
 
     public List<ClientMessage> getHistory() {
         synchronized (historyLock) {
+            logger.info("Getting history ");
             return new ArrayList<>(messageHistory);
         }
     }
 
     public void broadcastMessage(ClientMessage message) {
         addToHistory(message);
+        logger.info("Broadcasting message");
         for (ClientHandler client : clients) {
             if (client.isLoggedIn()) {
                 client.notifyMessageLock();
@@ -71,7 +76,9 @@ public class Server {
 
 
     public String generateSessionID() {
+        logger.info("Generating session id");
         return "session-" + new Random().nextInt(999999);
+
     }
 
     public List<ClientHandler> getLoggedInClients() {
@@ -89,12 +96,15 @@ public class Server {
     private void addClient(ClientHandler client) {
         synchronized (clientLock) {
             clients.add(client);
+            logger.info("Client added");
+
         }
     }
 
     protected void removeClient(ClientHandler client) {
         synchronized (clientLock) {
             clients.remove(client);
+            logger.info("Client removed");
         }
     }
 
@@ -112,16 +122,16 @@ public class Server {
                     try {
                         if (now - client.getLastPingTime() > 15000) {
                             client.disconnect("No ping response");
-                        } else {
-                            System.out.println("sendping");
-                            client.sendPing();
+                            logger.info("no ping response" + client.getUsername());
                         }
+
+                        logger.info("Pinging connection " + client.getUsername());
+                        client.sendPing();
                     } catch (Exception e) {
                         client.disconnect("Exception pinging client");
                     }
                 }
             }
-
         }
     }
 
@@ -138,12 +148,16 @@ public class Server {
                 System.out.println(now - client.getLastActivityTime());
                 if (client.isLoggedIn() && (now - client.getLastActivityTime() > 20000)) {
                     client.disconnect("Disconnected due to inactivity");
+                    logger.info("Disconnected due to inactivity " + client.getUsername());
+
                 }
             }
         }
     }
 
     public void start() {
+        logger.info("Server started");
+
         while (true) {
             try {
                 Socket clientSocket = serverSocket.accept();
@@ -151,12 +165,15 @@ public class Server {
                 String protocol = input.readLine();
                 ClientHandler clientHandler;
                 if (protocol.equals("PROTOCOL:JSON")) {
+                    logger.info("Json client connected");
                     System.out.println("JSON");
                     clientHandler = new JsonClientHandler(clientSocket, this);
                 } else if (protocol.equals("PROTOCOL:OBJECT")) {
+                    logger.info("Serialization client connected");
                     clientHandler = new ObjectClientHandler(clientSocket, this);
                 } else {
                     System.out.println("UNKNOWN PROTOCOL");
+                    logger.error("Unknown protocol");
                     clientSocket.close();
                     return;
                 }

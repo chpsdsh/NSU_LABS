@@ -1,4 +1,4 @@
-package onlinechat.client;
+package onlinechat.clients;
 
 
 import com.google.gson.*;
@@ -19,8 +19,8 @@ public class JsonClient {
     private String sessionId;
     private boolean isLoggedIn = false;
     private final Gson gson = new Gson();
-    private Thread messageHandler;
-    private Thread messageWriter;
+    private final Thread messageHandler;
+    private final Thread messageWriter;
 
     public static void main(String[] args) throws ChatException {
         try {
@@ -166,7 +166,6 @@ public class JsonClient {
             out.write(json);
             out.newLine();
             out.flush();
-
         } catch (IOException e) {
             throw new JsonClientException("Error sending message", e);
         }
