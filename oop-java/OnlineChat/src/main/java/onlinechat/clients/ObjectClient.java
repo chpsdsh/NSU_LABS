@@ -1,7 +1,7 @@
 package onlinechat.clients;
 
 import onlinechat.exceptions.ChatException;
-import onlinechat.exceptions.JsonClientException;
+import onlinechat.exceptions.ObjectClientException;
 import onlinechat.server.ClientMessage;
 
 import java.io.*;
@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 public class ObjectClient {
     private final Socket socket;
-    private final ObjectInputStream in;
-    private final ObjectOutputStream out;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
     private String name;
     private String sessionId;
     private boolean isLoggedIn = false;
@@ -21,7 +21,7 @@ public class ObjectClient {
 
     public static void main(String[] args) throws ChatException {
         try {
-            new JsonClient();
+            new ObjectClient();
         } catch (IOException e) {
             throw new ChatException("Error connecting to server", e);
         }
@@ -32,14 +32,17 @@ public class ObjectClient {
         System.out.println("PID: " + pid);
 
         socket = new Socket("localhost", 1234);
-        in = new ObjectInputStream(socket.getInputStream());
-        out = new ObjectOutputStream(socket.getOutputStream());
-        BufferedWriter typeWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-        typeWriter.write("PROTOCOL:OBJECT");
 
+        BufferedWriter typeWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
+        typeWriter.write("PROTOCOL:OBJECT");
         typeWriter.newLine();
         typeWriter.flush();
-        typeWriter.close();
+
+        out = new ObjectOutputStream(socket.getOutputStream());
+        out.flush();
+        in = new ObjectInputStream(socket.getInputStream());
+
         messageHandler = new Thread(this::messageListening);
         messageHandler.start();
         messageWriter = new Thread(this::messageWriting);
@@ -56,7 +59,7 @@ public class ObjectClient {
                     try {
                         sendDisconnect();
                         closeClient();
-                    } catch (JsonClientException e) {
+                    } catch (ObjectClientException e) {
                         Thread.currentThread().interrupt();
                     }
                 }
@@ -64,14 +67,14 @@ public class ObjectClient {
                     try {
                         sendLogin();
                         isLoggedIn = true;
-                    } catch (JsonClientException e) {
+                    } catch (ObjectClientException e) {
                         Thread.currentThread().interrupt();
                     }
                 }
                 case "/list" -> {
                     try {
                         sendList();
-                    } catch (JsonClientException e) {
+                    } catch (ObjectClientException e) {
                         Thread.currentThread().interrupt();
                     }
                 }
@@ -79,7 +82,7 @@ public class ObjectClient {
                     if (isLoggedIn) {
                         try {
                             sendMessage(input);
-                        } catch (JsonClientException e) {
+                        } catch (ObjectClientException e) {
                             Thread.currentThread().interrupt();
                         }
                     }
@@ -93,13 +96,13 @@ public class ObjectClient {
             try {
                 ClientMessage clientMessage = (ClientMessage) in.readObject();
                 handleMessage(clientMessage);
-            } catch (IOException | ClassNotFoundException | JsonClientException e) {
+            } catch (IOException | ClassNotFoundException | ObjectClientException e) {
                 Thread.currentThread().interrupt();
             }
         }
     }
 
-    private void handleMessage(ClientMessage clientMessage) throws JsonClientException {
+    private void handleMessage(ClientMessage clientMessage) throws ObjectClientException {
         switch (clientMessage.type) {
             case "message" -> readMessage(clientMessage);
             case "success" -> {
@@ -113,7 +116,7 @@ public class ObjectClient {
                 closeClient();
             }
             case "logout" -> {
-                System.out.println("[LOGOUT] " + clientMessage.name);
+                System.out.println("[LOGOUT] " + clientMessage.name + " " + clientMessage.message);
                 closeClient();
             }
             case "login" -> System.out.println("[LOGIN] " + clientMessage.name);
@@ -124,14 +127,14 @@ public class ObjectClient {
     }
 
 
-    private void replyPing() throws JsonClientException {
+    private void replyPing() throws ObjectClientException {
         ClientMessage clientMessage = new ClientMessage();
         clientMessage.type = "ping";
         try {
             out.writeObject(clientMessage);
             out.flush();
         } catch (IOException e) {
-            throw new JsonClientException("Error sending message", e);
+            throw new ObjectClientException("Error sending message", e);
         }
     }
 
@@ -147,7 +150,7 @@ public class ObjectClient {
         System.out.println(clientMessage.message);
     }
 
-    private void sendMessage(String message) throws JsonClientException {
+    private void sendMessage(String message) throws ObjectClientException {
         ClientMessage clientMessage = new ClientMessage();
         clientMessage.type = "message";
         clientMessage.name = name;
@@ -157,11 +160,11 @@ public class ObjectClient {
             out.writeObject(clientMessage);
             out.flush();
         } catch (IOException e) {
-            throw new JsonClientException("Error sending message", e);
+            throw new ObjectClientException("Error sending message", e);
         }
     }
 
-    private void sendDisconnect() throws JsonClientException {
+    private void sendDisconnect() throws ObjectClientException {
         ClientMessage clientMessage = new ClientMessage();
         clientMessage.type = "disconnect";
         clientMessage.message = "disconnected";
@@ -171,18 +174,18 @@ public class ObjectClient {
             out.writeObject(clientMessage);
             out.flush();
         } catch (IOException e) {
-            throw new JsonClientException("Exception while disconnecting", e);
+            throw new ObjectClientException("Exception while disconnecting", e);
         }
 
     }
 
-    private void sendLogin() throws JsonClientException {
+    private void sendLogin() throws ObjectClientException {
         System.out.println("Write your nickname");
         BufferedReader nameReader = new BufferedReader(new InputStreamReader(System.in));
         try {
             name = nameReader.readLine();
         } catch (IOException e) {
-            throw new JsonClientException("Error reading nickname", e);
+            throw new ObjectClientException("Error reading nickname", e);
         }
         ClientMessage clientMessage = new ClientMessage();
         clientMessage.type = "login";
@@ -191,11 +194,11 @@ public class ObjectClient {
             out.writeObject(clientMessage);
             out.flush();
         } catch (IOException e) {
-            throw new JsonClientException("Error sending login message", e);
+            throw new ObjectClientException("Error sending login message", e);
         }
     }
 
-    private void sendList() throws JsonClientException {
+    private void sendList() throws ObjectClientException {
         ClientMessage clientMessage = new ClientMessage();
         clientMessage.type = "list";
         clientMessage.name = name;
@@ -204,7 +207,7 @@ public class ObjectClient {
             out.writeObject(clientMessage);
             out.flush();
         } catch (IOException e) {
-            throw new JsonClientException("Exception while disconnecting", e);
+            throw new ObjectClientException("Exception while disconnecting", e);
         }
     }
 
@@ -215,8 +218,8 @@ public class ObjectClient {
             out.close();
         } catch (IOException ignored) {
         }
-        messageHandler.interrupt();
-        messageWriter.interrupt();
+//        messageHandler.interrupt();
+//        messageWriter.interrupt();
         System.exit(0);
     }
 }

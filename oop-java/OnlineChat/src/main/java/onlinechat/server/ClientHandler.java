@@ -44,7 +44,7 @@ public abstract class ClientHandler implements Runnable {
         while (!Thread.currentThread().isInterrupted()) {
             List<ClientMessage> history = server.getHistory();
             synchronized (messageLock) {
-                while (lastSendIndex > history.size()) {
+                if (lastSendIndex >= history.size()) {
                     try {
                         messageLock.wait();
                     } catch (InterruptedException e) {
@@ -89,7 +89,6 @@ public abstract class ClientHandler implements Runnable {
     }
 
     protected void handleClientMessage(ClientMessage clientMessage) throws ClientHandlerException {
-
         switch (clientMessage.type) {
             case "login" -> {
                 updateActivity();
@@ -138,11 +137,7 @@ public abstract class ClientHandler implements Runnable {
     }
 
 
-    public abstract void sendLogOut(String message) throws ClientHandlerException;
-
-    public abstract void handleMessage(ClientMessage clientMessage) throws ClientHandlerException;
-
-    public abstract void sendMessage(ClientMessage clientMessage) throws ClientHandlerException;
+    public abstract void handleMessage(ClientMessage clientMessage) ;
 
     public abstract void handleLogIn(ClientMessage clientMessage) throws ClientHandlerException;
 
@@ -150,10 +145,14 @@ public abstract class ClientHandler implements Runnable {
 
     public abstract void handleListRequest() throws ClientHandlerException;
 
-    public abstract void sendSuccess(String message, String sessionId) throws ClientHandlerException;
-
     public abstract void sendFailure(String message) throws ClientHandlerException;
 
+    public abstract void sendLogOut(String message) throws ClientHandlerException;
+
+    public abstract void sendMessage(ClientMessage clientMessage) throws ClientHandlerException;
+
     public abstract void sendPing() throws ClientHandlerException;
+
+    public abstract void sendSuccess(String message, String sessionId) throws ClientHandlerException;
 
 }

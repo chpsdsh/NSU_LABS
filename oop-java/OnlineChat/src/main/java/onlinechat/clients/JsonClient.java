@@ -114,7 +114,7 @@ public class JsonClient {
                 closeClient();
             }
             case "logout" -> {
-                System.out.println("[LOGOUT] " + clientMessage.name);
+                System.out.println("[LOGOUT] " +clientMessage.name + " "+ clientMessage.message);
                 closeClient();
             }
             case "login" -> System.out.println("[LOGIN] " + clientMessage.name);

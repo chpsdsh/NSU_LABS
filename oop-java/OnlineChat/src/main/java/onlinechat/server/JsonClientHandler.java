@@ -55,7 +55,7 @@ public class JsonClientHandler extends ClientHandler {
 
 
     @Override
-    public void handleMessage(ClientMessage clientMessage) throws ClientHandlerException {
+    public void handleMessage(ClientMessage clientMessage)  {
         server.broadcastMessage(clientMessage);
     }
 
@@ -119,7 +119,7 @@ public class JsonClientHandler extends ClientHandler {
         JsonObject json = new JsonObject();
         json.addProperty("type", "logout");
         json.addProperty("message", message);
-        json.addProperty("name",username);
+        json.addProperty("name", username);
         try {
             sendJson(json);
         } catch (JsonClientHandlerException e) {
@@ -159,7 +159,6 @@ public class JsonClientHandler extends ClientHandler {
     public void sendPing() {
         JsonObject ping = new JsonObject();
         ping.addProperty("type", "ping");
-
         try {
             sendJson(ping);
         } catch (JsonClientHandlerException e) {

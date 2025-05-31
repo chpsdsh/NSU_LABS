@@ -13,8 +13,10 @@ public class ObjectClientHandler extends ClientHandler {
 
     public ObjectClientHandler(Socket socket, Server server) throws IOException {
         super(socket, server);
-        reader = new ObjectInputStream(socket.getInputStream());
+
         writer = new ObjectOutputStream(socket.getOutputStream());
+        writer.flush();
+        reader = new ObjectInputStream(socket.getInputStream());
     }
 
     @Override
@@ -46,7 +48,7 @@ public class ObjectClientHandler extends ClientHandler {
 
 
     @Override
-    public void handleMessage(ClientMessage clientMessage) throws ClientHandlerException {
+    public void handleMessage(ClientMessage clientMessage) {
         server.broadcastMessage(clientMessage);
     }
 

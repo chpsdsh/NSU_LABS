@@ -16,8 +16,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Server {
     private ServerSocket serverSocket;
-    private BufferedReader input;
-    private final Object clientLock = new Object();
     private final List<ClientHandler> clients = new CopyOnWriteArrayList<>();
     private final List<ClientMessage> messageHistory = new ArrayList<>();
     private final Object historyLock = new Object();
@@ -83,29 +81,25 @@ public class Server {
 
     public List<ClientHandler> getLoggedInClients() {
         List<ClientHandler> loggedInClients = new ArrayList<>();
-        synchronized (clientLock) {
-            for (ClientHandler client : clients) {
-                if (client.isLoggedIn()) {
-                    loggedInClients.add(client);
-                }
+        for (ClientHandler client : clients) {
+            if (client.isLoggedIn()) {
+                loggedInClients.add(client);
             }
         }
+
         return loggedInClients;
     }
 
     private void addClient(ClientHandler client) {
-        synchronized (clientLock) {
-            clients.add(client);
-            logger.info("Client added");
+        clients.add(client);
+        logger.info("Client added");
 
-        }
+
     }
 
     protected void removeClient(ClientHandler client) {
-        synchronized (clientLock) {
-            clients.remove(client);
-            logger.info("Client removed");
-        }
+        clients.remove(client);
+        logger.info("Client removed" + client.getUsername());
     }
 
     public void pingConnection() {
@@ -149,7 +143,6 @@ public class Server {
                 if (client.isLoggedIn() && (now - client.getLastActivityTime() > 20000)) {
                     client.disconnect("Disconnected due to inactivity");
                     logger.info("Disconnected due to inactivity " + client.getUsername());
-
                 }
             }
         }
@@ -157,26 +150,28 @@ public class Server {
 
     public void start() {
         logger.info("Server started");
-
-        while (true) {
+        while (!Thread.currentThread().isInterrupted()) {
             try {
                 Socket clientSocket = serverSocket.accept();
-                input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 String protocol = input.readLine();
                 ClientHandler clientHandler;
+                System.out.println(protocol);
                 if (protocol.equals("PROTOCOL:JSON")) {
                     logger.info("Json client connected");
                     System.out.println("JSON");
                     clientHandler = new JsonClientHandler(clientSocket, this);
                 } else if (protocol.equals("PROTOCOL:OBJECT")) {
+                    System.out.println("OBJECT");
                     logger.info("Serialization client connected");
                     clientHandler = new ObjectClientHandler(clientSocket, this);
                 } else {
                     System.out.println("UNKNOWN PROTOCOL");
                     logger.error("Unknown protocol");
                     clientSocket.close();
-                    return;
+                    continue;
                 }
+                System.out.println("ABRAKADABR");
                 addClient(clientHandler);
                 new Thread(clientHandler).start();
 
